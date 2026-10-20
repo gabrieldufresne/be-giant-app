@@ -859,18 +859,49 @@
   </sc-if>
   <sc-if value="{{ subNotif }}" hint-placeholder-val="{{ false }}">
   <div style="padding:24px 20px 0;display:flex;flex-direction:column;gap:24px">
-    <div onClick="{{ openIOS }}" style="display:flex;align-items:center;gap:12px;padding:14px 0;border-top:1px solid #171717;border-bottom:1px solid #E6E6E6;cursor:pointer">
+    <sc-if value="{{ nsAllowed }}" hint-placeholder-val="{{ true }}">
+    <div onClick="{{ openIOS }}" style="display:flex;align-items:center;gap:12px;min-height:56px;padding:12px 0;border-top:1px solid #171717;border-bottom:1px solid #E6E6E6;cursor:pointer">
       <img src="assets/light/bell-light.svg" alt="" style="width:20px;height:20px;display:block;flex:none">
-      <div style="flex:1;display:flex;flex-direction:column;gap:2px"><div style="font-size:15px">Allowed in iOS Settings</div><div style="font-size:12px;color:#7A7A7A">Banners, sounds and badges</div></div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:2px"><div style="font-size:15px">Allowed in iPhone Settings</div><div style="font-size:12px;color:#7A7A7A">Banners, sounds and badges</div></div>
       <div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Open</div>
     </div>
+    </sc-if>
+    <sc-if value="{{ nsOff }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:16px;padding:18px 0 20px;border-top:1px solid #171717;border-bottom:1px solid #E6E6E6">
+      <div style="display:flex;gap:12px;align-items:flex-start">
+        <img src="assets/light/bell-light.svg" alt="" style="width:22px;height:22px;display:block;flex:none;margin-top:1px">
+        <div style="flex:1;display:flex;flex-direction:column;gap:4px"><div style="font-size:17px;font-weight:600">{{ nsTitle }}</div><div style="font-size:14px;line-height:1.45;color:#5C5C5C;text-wrap:pretty">{{ nsLine }}</div></div>
+      </div>
+      <sc-if value="{{ nsDenied }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;flex-direction:column">
+        <sc-for list="{{ nsSteps }}" as="st" hint-placeholder-count="3"><div style="display:flex;gap:12px;align-items:baseline;padding:8px 0;font-size:15px;line-height:1.4"><div style="width:16px;flex:none;font-weight:600">{{ st.n }}</div><div style="flex:1">{{ st.t }}</div></div></sc-for>
+      </div>
+      </sc-if>
+      <x-import component-from-global-scope="BeGiantDesignSystem_f91809.Button" dc-props="{{ btnInk }}" onClick="{{ nsGo }}" style="display:block;width:100%" hint-size="100%,52px">{{ nsBtn }}</x-import>
+    </div>
+    </sc-if>
     <div style="display:flex;flex-direction:column;gap:10px">
         <div style="position:relative;display:flex;height:38px;border-radius:8px;background:#F2F2F2;padding:3px">
           <div style="position:absolute;top:3px;bottom:3px;left:3px;right:3px;pointer-events:none"><div style="position:absolute;top:0;bottom:0;width:50%;left:{{ lvlL }};border-radius:6px;background:#171717;opacity:{{ lvlOp }};transition:left 320ms cubic-bezier(.16,1,.3,1), opacity 200ms ease"></div></div>
           <sc-for list="{{ obLevels }}" as="lv" hint-placeholder-count="3"><div onClick="{{ lv.tap }}" style="position:relative;flex:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:{{ lv.fg }};transition:color 200ms ease;cursor:pointer">{{ lv.label }}</div></sc-for>
         </div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;color:#5C5C5C"><div></div><div style="font-weight:600;color:#171717">{{ lvlNote }}</div></div>
+        <div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;line-height:1.45;color:#5C5C5C"><div style="text-wrap:pretty">{{ lvlDesc }}</div><div style="font-weight:600;color:#171717;flex:none">{{ lvlNote }}</div></div>
       </div>
+      <div style="border-top:1px solid #171717">
+        <div onClick="{{ quiet.tap }}" style="min-height:66px;display:flex;align-items:center;gap:14px;cursor:pointer;border-bottom:1px solid #E6E6E6">
+          <div style="flex:1;display:flex;flex-direction:column;gap:3px"><div style="font-size:16px">Quiet hours</div><div style="font-size:12px;line-height:1.35;color:#7A7A7A">{{ quietSub }}</div></div>
+          <div style="width:51px;height:31px;border-radius:999px;background:{{ quiet.trk }};position:relative;flex:none;transition:background-color 250ms ease"><div style="position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:999px;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.18);transform:{{ quiet.knob }};transition:transform 280ms cubic-bezier(.16,1,.3,1)"></div></div>
+        </div>
+        <sc-if value="{{ quietOn }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;animation:bgTab 250ms ease both">
+          <div style="min-height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E6E6E6;padding-left:16px;font-size:15px;color:#3D3D3D">From<label style="position:relative;height:40px;min-width:96px;box-sizing:border-box;padding:0 14px;border-radius:8px;background:#F2F2F2;display:flex;align-items:center;justify-content:center;font-size:16px;color:#171717;cursor:pointer;overflow:hidden">{{ qFromL }}<input type="time" step="900" value="{{ qFrom }}" onChange="{{ qFromSet }}" onClick="{{ qPick }}" aria-label="Quiet hours start" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;margin:0;padding:0;cursor:pointer;font-size:16px"></label></div>
+          <div style="min-height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E6E6E6;padding-left:16px;font-size:15px;color:#3D3D3D">To<label style="position:relative;height:40px;min-width:96px;box-sizing:border-box;padding:0 14px;border-radius:8px;background:#F2F2F2;display:flex;align-items:center;justify-content:center;font-size:16px;color:#171717;cursor:pointer;overflow:hidden">{{ qToL }}<input type="time" step="900" value="{{ qTo }}" onChange="{{ qToSet }}" onClick="{{ qPick }}" aria-label="Quiet hours end" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;margin:0;padding:0;cursor:pointer;font-size:16px"></label></div>
+          <div style="padding:12px 0 0;font-size:13px;line-height:1.45;color:#5C5C5C;text-wrap:pretty">{{ quietNote }}</div>
+        </div>
+        </sc-if>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7A7A7A">Fine-tune</div>
       <div style="border-top:1px solid #171717">
         <sc-for list="{{ obAlertRows }}" as="r" hint-placeholder-count="6">
           <div style="border-bottom:1px solid #E6E6E6">
@@ -892,16 +923,7 @@
             </sc-if>
           </div>
         </sc-for>
-        <div onClick="{{ quiet.tap }}" style="min-height:66px;display:flex;align-items:center;gap:14px;cursor:pointer;border-bottom:1px solid #E6E6E6">
-          <div style="flex:1;display:flex;flex-direction:column;gap:3px"><div style="font-size:16px">Quiet hours</div><div style="font-size:12px;color:#7A7A7A">Nothing arrives between 10 p.m. and 7 a.m.</div></div>
-          <div style="width:51px;height:31px;border-radius:999px;background:{{ quiet.trk }};position:relative;flex:none;transition:background-color 250ms ease"><div style="position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:999px;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.18);transform:{{ quiet.knob }};transition:transform 280ms cubic-bezier(.16,1,.3,1)"></div></div>
-        </div>
-        <sc-if value="{{ quietOn }}" hint-placeholder-val="{{ true }}">
-        <div style="display:flex;flex-direction:column;animation:bgTab 250ms ease both">
-          <div style="min-height:52px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E6E6E6;padding-left:16px;font-size:15px;color:#3D3D3D">From<div style="height:34px;padding:0 12px;border-radius:8px;background:#F2F2F2;display:flex;align-items:center;font-size:15px;color:#171717">10:00 p.m.</div></div>
-          <div style="min-height:52px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E6E6E6;padding-left:16px;font-size:15px;color:#3D3D3D">To<div style="height:34px;padding:0 12px;border-radius:8px;background:#F2F2F2;display:flex;align-items:center;font-size:15px;color:#171717">7:00 a.m.</div></div>
-        </div>
-        </sc-if>
+      </div>
       </div>
   </div>
   </sc-if>
@@ -1121,6 +1143,49 @@
   <div onClick="{{ nudgeFollow }}" style-active="transform:scale(.97)" style="height:40px;padding:0 14px;border-radius:8px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;flex:none;transition:transform 150ms ease">Follow</div>
   <div onClick="{{ nudgeClose }}" style="width:40px;height:44px;flex:none;display:flex;align-items:center;justify-content:center;cursor:pointer"><img src="assets/light/x-light.svg" alt="Dismiss" style="width:16px;height:16px;display:block"></div>
 </div>
+<sc-if value="{{ nPerm }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:93;background:rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;animation:bgTab 200ms ease both">
+  <div style="width:280px;border-radius:24px;background:rgba(246,246,246,.94);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);overflow:hidden;font-family:-apple-system,system-ui,sans-serif;text-align:center;animation:bgAlert 260ms cubic-bezier(.16,1,.3,1) both;box-shadow:0 20px 50px rgba(0,0,0,.25)">
+    <div style="padding:22px 18px 18px;display:flex;flex-direction:column;gap:6px"><div style="font-size:17px;font-weight:600;line-height:1.25">“Be Giant” Would Like to Send You Notifications</div><div style="font-size:13px;line-height:1.35;color:#3C3C43">Notifications may include alerts, sounds and icon badges. These can be configured in Settings.</div></div>
+    <div style="display:flex;border-top:.5px solid rgba(60,60,67,.3)">
+      <div onClick="{{ nPermDeny }}" style="flex:1;height:48px;display:flex;align-items:center;justify-content:center;font-size:17px;color:#007AFF;cursor:pointer;border-right:.5px solid rgba(60,60,67,.3)">Don’t Allow</div>
+      <div onClick="{{ nPermAllow }}" style="flex:1;height:48px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:600;color:#007AFF;cursor:pointer">Allow</div>
+    </div>
+  </div>
+</div>
+</sc-if>
+<sc-if value="{{ iosSet }}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;inset:0;z-index:94;background:#F2F2F7;color:#000000;font-family:-apple-system,system-ui,sans-serif;display:flex;flex-direction:column;animation:bgPush 320ms cubic-bezier(.16,1,.3,1) both">
+  <div style="flex:none;height:44px;margin-top:58px;display:flex;align-items:center;justify-content:center;position:relative;font-size:17px;font-weight:600">
+    <div onClick="{{ iosBack }}" style="position:absolute;left:8px;top:0;height:44px;padding:0 8px;display:flex;align-items:center;font-size:17px;font-weight:400;color:#007AFF;cursor:pointer">‹ Be Giant</div>Notifications
+  </div>
+  <div style="flex:1;overflow-y:auto;scrollbar-width:none;padding:16px 0 40px">
+    <div style="margin:0 16px;border-radius:10px;background:#FFFFFF;overflow:hidden">
+      <div onClick="{{ iosToggle }}" style="min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 16px;font-size:17px;cursor:pointer">Allow Notifications<div style="width:51px;height:31px;border-radius:999px;background:{{ iosTrk }};position:relative;flex:none;transition:background-color 250ms ease"><div style="position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:999px;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.18);transform:{{ iosKnob }};transition:transform 280ms cubic-bezier(.16,1,.3,1)"></div></div></div>
+    </div>
+    <sc-if value="{{ iosOn }}" hint-placeholder-val="{{ false }}">
+    <div style="animation:bgFade 250ms ease both">
+    <div style="padding:22px 32px 7px;font-size:13px;letter-spacing:.02em;text-transform:uppercase;color:rgba(60,60,67,.6)">Alerts</div>
+    <div style="margin:0 16px;border-radius:10px;background:#FFFFFF;overflow:hidden;display:flex;padding:16px 8px">
+      <sc-for list="{{ iosAlerts }}" as="ia" hint-placeholder-count="3"><div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:13px"><div style="width:56px;height:40px;border-radius:8px;background:#E5E5EA"></div>{{ ia }}<img src="assets/light/check-light.svg" alt="" style="width:20px;height:20px;display:block"></div></sc-for>
+    </div>
+    <div style="height:22px"></div>
+    <div style="margin:0 16px;border-radius:10px;background:#FFFFFF;overflow:hidden">
+      <div style="min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px 0 0;margin-left:16px;border-bottom:.5px solid rgba(60,60,67,.18);font-size:17px">Banner Style<div style="color:rgba(60,60,67,.6)">Temporary ›</div></div>
+      <div style="min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px 0 0;margin-left:16px;border-bottom:.5px solid rgba(60,60,67,.18);font-size:17px">Sounds<div style="width:51px;height:31px;border-radius:999px;background:#34C759;position:relative;flex:none"><div style="position:absolute;top:2px;right:2px;width:27px;height:27px;border-radius:999px;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.18)"></div></div></div>
+      <div style="min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px 0 0;margin-left:16px;font-size:17px">Badges<div style="width:51px;height:31px;border-radius:999px;background:#34C759;position:relative;flex:none"><div style="position:absolute;top:2px;right:2px;width:27px;height:27px;border-radius:999px;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.18)"></div></div></div>
+    </div>
+    <div style="height:22px"></div>
+    <div style="margin:0 16px;border-radius:10px;background:#FFFFFF;overflow:hidden">
+      <div style="min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px 0 0;margin-left:16px;border-bottom:.5px solid rgba(60,60,67,.18);font-size:17px">Show Previews<div style="color:rgba(60,60,67,.6)">When Unlocked ›</div></div>
+      <div style="min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px 0 0;margin-left:16px;font-size:17px">Notification Grouping<div style="color:rgba(60,60,67,.6)">Automatic ›</div></div>
+    </div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ iosOffNote }}" hint-placeholder-val="{{ true }}"><div style="padding:8px 32px 0;font-size:13px;line-height:1.35;color:rgba(60,60,67,.6)">Turn on Allow Notifications to get the stories you chose in Be Giant.</div></sc-if>
+  </div>
+</div>
+</sc-if>
 <sc-if value="{{ sysPerm }}" hint-placeholder-val="{{ false }}">
 <div style="position:absolute;inset:0;z-index:92;background:rgba(0,0,0,.28);display:flex;align-items:center;justify-content:center;animation:bgTab 200ms ease both">
   <div style="width:280px;border-radius:24px;background:rgba(246,246,246,.94);backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px);overflow:hidden;font-family:-apple-system,system-ui,sans-serif;text-align:center;animation:bgAlert 260ms cubic-bezier(.16,1,.3,1) both;box-shadow:0 20px 50px rgba(0,0,0,.25)">
@@ -1264,7 +1329,29 @@
     </div>
   </div>
   </sc-if>
-  <sc-if value="{{ obAlerts }}" hint-placeholder-val="{{ false }}">
+  <sc-if value="{{ obDeclinedV }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;top:102px;left:0;right:0;bottom:0;overflow-y:auto;scrollbar-width:none;touch-action:pan-y;animation:bgPush 400ms cubic-bezier(.16,1,.3,1) both">
+    <div style="padding:26px 20px 190px;display:flex;flex-direction:column;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7A7A7A">Step 2 of 3</div>
+        <div style="font-family:var(--font-serif);font-size:32px;line-height:1.04;letter-spacing:-.01em;text-wrap:pretty">No notifications, for now</div>
+        <div style="font-size:15px;line-height:1.45;color:#5C5C5C;text-wrap:pretty">That’s fine. Be Giant works the same without them. We kept your choices, so they’re ready if you change your mind.</div>
+      </div>
+      <div style="border-top:1px solid #171717">
+        <div onClick="{{ obDeclinedEdit }}" style="min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #E6E6E6;font-size:16px;cursor:pointer">Preset<div style="font-size:15px;color:#5C5C5C">{{ lvlName }}</div></div>
+        <div onClick="{{ obDeclinedEdit }}" style="min-height:56px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid #E6E6E6;font-size:16px;cursor:pointer">Quiet hours<div style="font-size:15px;color:#5C5C5C">{{ quietRange }}</div></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7A7A7A">Turn them on later</div>
+        <div style="display:flex;flex-direction:column;border-top:1px solid #171717">
+          <sc-for list="{{ nsSteps }}" as="st" hint-placeholder-count="3"><div style="display:flex;gap:12px;align-items:baseline;padding:14px 0;border-bottom:1px solid #E6E6E6;font-size:15px;line-height:1.4"><div style="width:16px;flex:none;font-weight:600">{{ st.n }}</div><div style="flex:1">{{ st.t }}</div></div></sc-for>
+        </div>
+        <div style="font-size:13px;line-height:1.45;color:#7A7A7A;text-wrap:pretty">We’ll remind you once, the first time you follow a topic or a writer.</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+  <sc-if value="{{ obAlertsMain }}" hint-placeholder-val="{{ false }}">
   <div style="position:absolute;top:102px;left:0;right:0;bottom:0;overflow-y:auto;scrollbar-width:none;touch-action:pan-y;animation:bgPush 400ms cubic-bezier(.16,1,.3,1) both">
     <div style="padding:26px 20px 190px;display:flex;flex-direction:column;gap:24px">
       <div style="display:flex;flex-direction:column;gap:12px">
@@ -1272,20 +1359,38 @@
         <div style="font-family:var(--font-serif);font-size:32px;line-height:1.04;letter-spacing:-.01em;text-wrap:pretty">Notifications</div>
         <div style="font-size:15px;line-height:1.45;color:#5C5C5C;text-wrap:pretty">Choose what reaches you. Start with a level, then fine-tune. You can change any of this in Settings.</div>
       </div>
-      <div ref="{{ notifRef }}" style="transform-origin:50% 0;background:rgba(246,246,246,.92);border-radius:22px;padding:12px 14px 12px 12px;display:flex;gap:11px;align-items:center;box-shadow:0 10px 30px rgba(23,23,23,.08), inset 0 0 0 .5px rgba(0,0,0,.05)">
+      <div style="position:relative;padding-bottom:{{ nxStackPad }};transition:padding-bottom 320ms cubic-bezier(.16,1,.3,1)">
+      <div style="position:absolute;left:12px;right:12px;bottom:0;height:40px;border-radius:0 0 18px 18px;background:rgba(236,236,236,.9);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.05);opacity:{{ nxStackOp }};transition:opacity 250ms ease"></div>
+      <div ref="{{ notifRef }}" style="position:relative;transform-origin:50% 0;background:rgba(246,246,246,.96);border-radius:22px;padding:12px 14px 12px 12px;display:flex;gap:11px;align-items:center;box-shadow:0 10px 30px rgba(23,23,23,.08), inset 0 0 0 .5px rgba(0,0,0,.05)">
         <img src="assets/app-icon-360.png" alt="" style="width:38px;height:38px;border-radius:9px;object-fit:cover;display:block;flex:none">
         <div style="display:flex;flex-direction:column;gap:2px;flex:1;min-width:0;font-family:-apple-system,system-ui,sans-serif">
           <div style="display:flex;justify-content:space-between;gap:8px"><div style="font-size:14px;font-weight:600">{{ nxTitle }}</div><div style="font-size:12px;color:rgba(60,60,67,.6);flex:none">{{ nxTime }}</div></div>
           <div style="font-size:14px;line-height:1.3">{{ nxBody }}</div>
         </div>
       </div>
+      </div>
       <div style="display:flex;flex-direction:column;gap:10px">
         <div style="position:relative;display:flex;height:38px;border-radius:8px;background:#F2F2F2;padding:3px">
           <div style="position:absolute;top:3px;bottom:3px;left:3px;right:3px;pointer-events:none"><div style="position:absolute;top:0;bottom:0;width:50%;left:{{ lvlL }};border-radius:6px;background:#171717;opacity:{{ lvlOp }};transition:left 320ms cubic-bezier(.16,1,.3,1), opacity 200ms ease"></div></div>
           <sc-for list="{{ obLevels }}" as="lv" hint-placeholder-count="3"><div onClick="{{ lv.tap }}" style="position:relative;flex:1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:{{ lv.fg }};transition:color 200ms ease;cursor:pointer">{{ lv.label }}</div></sc-for>
         </div>
-        <div style="display:flex;justify-content:space-between;font-size:13px;color:#5C5C5C"><div></div><div style="font-weight:600;color:#171717">{{ lvlNote }}</div></div>
+        <div style="display:flex;justify-content:space-between;gap:12px;font-size:14px;line-height:1.45;color:#5C5C5C"><div style="text-wrap:pretty">{{ lvlDesc }}</div><div style="font-weight:600;color:#171717;flex:none">{{ lvlNote }}</div></div>
       </div>
+      <div style="border-top:1px solid #171717">
+        <div onClick="{{ quiet.tap }}" style="min-height:66px;display:flex;align-items:center;gap:14px;cursor:pointer;border-bottom:1px solid #E6E6E6">
+          <div style="flex:1;display:flex;flex-direction:column;gap:3px"><div style="font-size:16px">Quiet hours</div><div style="font-size:12px;line-height:1.35;color:#7A7A7A">{{ quietSub }}</div></div>
+          <div style="width:51px;height:31px;border-radius:999px;background:{{ quiet.trk }};position:relative;flex:none;transition:background-color 250ms ease"><div style="position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:999px;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.18);transform:{{ quiet.knob }};transition:transform 280ms cubic-bezier(.16,1,.3,1)"></div></div>
+        </div>
+        <sc-if value="{{ quietOn }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex;flex-direction:column;animation:bgTab 250ms ease both">
+          <div style="min-height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E6E6E6;padding-left:16px;font-size:15px;color:#3D3D3D">From<label style="position:relative;height:40px;min-width:96px;box-sizing:border-box;padding:0 14px;border-radius:8px;background:#F2F2F2;display:flex;align-items:center;justify-content:center;font-size:16px;color:#171717;cursor:pointer;overflow:hidden">{{ qFromL }}<input type="time" step="900" value="{{ qFrom }}" onChange="{{ qFromSet }}" onClick="{{ qPick }}" aria-label="Quiet hours start" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;margin:0;padding:0;cursor:pointer;font-size:16px"></label></div>
+          <div style="min-height:56px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E6E6E6;padding-left:16px;font-size:15px;color:#3D3D3D">To<label style="position:relative;height:40px;min-width:96px;box-sizing:border-box;padding:0 14px;border-radius:8px;background:#F2F2F2;display:flex;align-items:center;justify-content:center;font-size:16px;color:#171717;cursor:pointer;overflow:hidden">{{ qToL }}<input type="time" step="900" value="{{ qTo }}" onChange="{{ qToSet }}" onClick="{{ qPick }}" aria-label="Quiet hours end" style="position:absolute;inset:0;width:100%;height:100%;opacity:0;border:0;margin:0;padding:0;cursor:pointer;font-size:16px"></label></div>
+          <div style="padding:12px 0 0;font-size:13px;line-height:1.45;color:#5C5C5C;text-wrap:pretty">{{ quietNote }}</div>
+        </div>
+        </sc-if>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7A7A7A">Fine-tune</div>
       <div style="border-top:1px solid #171717">
         <sc-for list="{{ obAlertRows }}" as="r" hint-placeholder-count="6">
           <div style="border-bottom:1px solid #E6E6E6">
@@ -1307,10 +1412,7 @@
             </sc-if>
           </div>
         </sc-for>
-        <div onClick="{{ quiet.tap }}" style="min-height:66px;display:flex;align-items:center;gap:14px;cursor:pointer;border-bottom:1px solid #E6E6E6">
-          <div style="flex:1;display:flex;flex-direction:column;gap:3px"><div style="font-size:16px">Quiet hours</div><div style="font-size:12px;color:#7A7A7A">Nothing arrives between 10 p.m. and 7 a.m.</div></div>
-          <div style="width:51px;height:31px;border-radius:999px;background:{{ quiet.trk }};position:relative;flex:none;transition:background-color 250ms ease"><div style="position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:999px;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.18);transform:{{ quiet.knob }};transition:transform 280ms cubic-bezier(.16,1,.3,1)"></div></div>
-        </div>
+      </div>
       </div>
     </div>
   </div>
@@ -1397,6 +1499,7 @@
   </sc-if>
   <sc-if value="{{ obCta }}" hint-placeholder-val="{{ false }}">
   <div style="position:absolute;left:0;right:0;bottom:0;padding:28px 20px 36px;background:linear-gradient(to top, #FFFFFF 78%, rgba(255,255,255,0));display:flex;flex-direction:column;gap:8px;z-index:3">
+    <sc-if value="{{ obHandoff }}" hint-placeholder-val="{{ false }}"><div style="padding:4px 0;text-align:center;font-size:13px;line-height:1.4;color:#5C5C5C;background:#FFFFFF;box-shadow:0 -16px 16px #FFFFFF">Your iPhone asks next. Tap Allow to finish.</div></sc-if>
     <x-import component-from-global-scope="BeGiantDesignSystem_f91809.Button" dc-props="{{ btnInk }}" disabled="{{ ctaDisabled }}" onClick="{{ obPrimary }}" style="display:block;width:100%" hint-size="100%,52px">{{ ctaLabel }}</x-import>
     <div onClick="{{ obSecondary }}" style="height:44px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5C5C5C;cursor:pointer;white-space:nowrap">{{ ctaSecondary }}</div>
   </div>
@@ -1423,6 +1526,7 @@ const W = 402, EX = 'cubic-bezier(.16,1,.3,1)', NEU = '#DCD6FF', MSL = [10, 25, 
 const LV = {light:{big:true,topics:false,writers:false,video:false,major:true,digest:true}, balanced:{big:true,topics:true,writers:true,video:false,major:true,digest:false}};
 const AK = ['big','topics','writers'];
 const FL = 'assets/fill/bookmark-simple-fill.svg', BL = 'assets/light/bookmark-simple-light.svg';
+function QT(v){ const p = String(v || '').split(':'), h = +p[0] || 0, m = +p[1] || 0; return (h % 12 || 12) + (m ? ':' + String(m).padStart(2,'0') : '') + (h < 12 ? ' a.m.' : ' p.m.'); }
 function fmt(t){ t = Math.max(0, Math.floor(t)); return Math.floor(t/60) + ':' + String(t%60).padStart(2,'0'); }
 function D(){ return window.BGD; }
 function RID(s){ let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return 'r' + (h >>> 0).toString(36); }
@@ -2125,7 +2229,8 @@ class Component extends DCLogic {
     const sw = (on) => ({trk: on ? '#171717' : '#E6E6E6', knob: on ? 'translateX(20px)' : 'none'});
     const sw2 = (on) => ({trk: on ? '#171717' : '#E6E6E6', knob: on ? 'translateX(16px)' : 'none'});
     const NXN = {big:['The big story', BY(d.LEAD).t + '. 6 min read.', '7:00 a.m.'], topics:['New in ' + (s.picks[0] || 'Economy'), BY('productivity').t + '.', 'now'], writers:['Emily Latimer has a new story', BY(d.LEAD).t + '.', '2h ago'], video:['New video', 'Taking over the family business, in a minute and a half.', 'now'], major:['Major reporting', 'A major story from Be Giant reporters, as soon as it publishes.', '8:30 a.m.'], digest:['Your week on Be Giant', 'Five stories from ' + (s.picks.slice(0, 3).join(', ') || 'the topics you follow') + '.', 'Sun 9:00 a.m.']}[s.notifKind] || [];
-    const alertDefs = [['big','The big story','One story each morning at 7 a.m.'],['topics','New in topics you follow','When a story publishes in one of your topics'],['writers','Writers you follow','When they publish something new']];
+    const qF = s.qFrom || '22:00', qT = s.qTo || '07:00', bigAt = s.alerts.quiet && qT > '07:00' && qF > qT ? QT(qT) : '7 a.m.';
+    const alertDefs = [['big','The big story','One story each morning at ' + bigAt],['topics','New in topics you follow','When a story publishes in one of your topics'],['writers','Writers you follow','When they publish something new']];
     const onCount = AK.filter(k => s.alerts[k]).length;
     const now = Date.now(), DAY = 864e5;
     const rsOk = !!s.resume && now - s.resume.at < 7 * DAY && !!BY(s.resume.id), RS = rsOk ? BY(s.resume.id) : null;
@@ -2174,7 +2279,7 @@ class Component extends DCLogic {
       topicCount:s.picks.length + ' followed', writerCount:s.writers.length + ' followed',
       setTopicChips:d.TOP.map(l => Object.assign({label:l, tap:() => this.togglePick(l)}, chipOn(s.picks.includes(l), l))),
       writerRows:authors.map(a => { const on = s.writers.includes(a.name); return {name:a.name, av:a.av, sub:a.n + (a.n === 1 ? ' story' : ' stories'), btn:on ? 'Following' : 'Follow', bg:on ? '#171717' : 'transparent', fg:on ? '#FFFFFF' : '#171717', bd:on ? '#171717' : '#D6D6D6', tap:() => this.toggleWriter(a.name)}; }),
-      quietOn:!!s.alerts.quiet, openIOS:() => this.toast('Opens iOS Settings'),
+      quietOn:!!s.alerts.quiet,
       sizeStops:[0,1,2,3,4].map(i => ({d: i === s.size ? '22px' : '8px', bg: i === s.size ? '#171717' : '#A6A6A6', tap:() => this.setState({size:i})})),
       pageOpts:seg([['paper','Light'],['night','Dark']], night ? 'night' : 'paper', v => this.setState({theme:v})),
       autoOpts:seg([['always','Always'],['wifi','Wi-Fi only'],['never','Never']], s.autoplay, v => this.setState({autoplay:v})),
@@ -2260,7 +2365,7 @@ class Component extends DCLogic {
       })(),
       savedRows:s.saved.map(id => { const x = BY(id), p = s.prog[id] || 0; return row(id, {left: p ? Math.max(1, Math.round(x.m * (1 - p))) + ' min left' : 'Unread · ' + x.m + ' min read', pct:(p * 100) + '%', mh:(s.removing === id || rm.has(id)) ? '0px' : '300px', op:(s.removing === id || rm.has(id)) ? 0 : 1}); }),
       settingsGroups:[
-        {title:'Your reading', rows:[{label:'Following', value:s.picks.length + ' topics · ' + s.writers.length + ' writers', tap:() => this.openSub('following')}, {label:'Notifications', value: lvl === 'light' ? 'Light' : lvl === 'balanced' ? 'Balanced' : 'Custom', tap:() => this.openSub('notif')}, {label:'Reading and display', value:sizeNames[s.size] + ' text', tap:() => this.openSub('reading')}]},
+        {title:'Your reading', rows:[{label:'Following', value:s.picks.length + ' topics · ' + s.writers.length + ' writers', tap:() => this.openSub('following')}, {label:'Notifications', value: !s.notifOn ? 'Off' : lvl === 'light' ? 'Light' : lvl === 'balanced' ? 'Balance' : 'Custom', tap:() => this.openSub('notif')}, {label:'Reading and display', value:sizeNames[s.size] + ' text', tap:() => this.openSub('reading')}]},
         {title:'Be Giant', rows:[{label:'Newsletter', value:'Subscribed'}, {label:'Support our journalism'}, {label:'About Be Giant', tap:() => this.openSub('page', 'about')}, {label:'Editorial standards', tap:() => this.openSub('page', 'standards')}, {label:'Privacy policy', tap:() => this.openSub('page', 'privacy')}, {label:'Terms of use', tap:() => this.openSub('page', 'terms')}, (isG ? {label:'Create free account', io:0, tap:this.openCreate} : {label:'Sign out', color:'#DB3A3A', io:0, tap:() => this.toast('Signed out')})]}
       ].map(g => ({title:g.title, rows:g.rows.map(r => Object.assign({value:'', color:'#171717', io:1, tap:() => {}}, r))})),
       /* article */
@@ -2352,7 +2457,7 @@ class Component extends DCLogic {
       obSegs:[1,2,3].map(n => ({w: n <= obIdx ? '100%' : '0%'})),
       obTopicChips:d.TOP.map(l => Object.assign({label:l, tap:() => this.togglePick(l)}, chipOn(s.picks.includes(l), l))),
       nxTitle:NXN[0] || '', nxBody:NXN[1] || '', nxTime:NXN[2] || '',
-      obLevels:[['light','Light'],['balanced','Balanced']].map(l => ({label:l[1], fg: lvl === l[0] ? '#FFFFFF' : '#171717', tap:() => this.setLevel(l[0])})),
+      obLevels:[['light','Light'],['balanced','Balance']].map(l => ({label:l[1], fg: lvl === l[0] ? '#FFFFFF' : '#171717', tap:() => this.setLevel(l[0])})),
       lvlL: (Math.max(0, lvlI) * 50) + '%', lvlOp: lvlI < 0 ? 0 : 1, lvlNote: lvl === 'custom' ? 'Custom' : '',
       weekLabel: week === 0 ? 'Nothing will be sent' : 'About ' + week + ' a week' + (s.alerts.quiet ? ', never overnight' : ''),
       obAlertRows:alertDefs.map(r => Object.assign({label:r[1], sub:r[2], isTopics:r[0] === 'topics', tap:() => this.setAlert(r[0]),
@@ -2367,8 +2472,33 @@ class Component extends DCLogic {
       ctaDisabled: s.ob === 'topics' && s.picks.length < 3,
       obPrimary: s.ob === 'alerts' ? () => this.setState({perm:true}) : this.obNext,
       ctaSecondary: s.ob === 'alerts' ? 'Not now' : 'Skip for now', obSecondary:() => { this.setState(s.ob === 'topics' ? {picks:[]} : {notifOn:false}); this.obNext(); },
-      permAllow:() => { this.setState({perm:false, notifOn:true}); this.obNext(); }, permDeny:() => { this.setState({perm:false, notifOn:false, alerts:Object.assign({}, s.alerts, {big:false, topics:false, writers:false, video:false, major:false, digest:false})}); this.obNext(); },
+      permAllow:() => { this.setState({perm:false, notifOn:true, nDenied:false, obDeclined:false}); this.obNext(); }, permDeny:() => this.setState({perm:false, notifOn:false, nDenied:true, obDeclined:true}),
       obCreate:() => this.finishAcct('email'),
+      /* ---------- P1.2 notifications: presets, quiet hours, iOS handoff, declined ---------- */
+      lvlDesc: lvl === 'light' ? 'The one big story of the day, each morning. Nothing for topics or writers.' : lvl === 'balanced' ? 'The big story, plus an alert each time a story publishes in a topic or by a writer you follow. That can be as little as one a week, depending on what you follow.' : 'Your own mix of the types below.',
+      lvlName: lvl === 'light' ? 'Light' : lvl === 'balanced' ? 'Balance' : 'Custom',
+      nxStackOp: s.notifKind !== 'big' && (s.alerts.big || s.alerts.topics || s.alerts.writers) && onCount > 1 ? 1 : 0, nxStackPad: s.notifKind !== 'big' && onCount > 1 ? '8px' : '0px',
+      qFrom:qF, qTo:qT, qFromL:QT(qF), qToL:QT(qT), quietRange: s.alerts.quiet ? QT(qF) + ' to ' + QT(qT) : 'Off',
+      qFromSet:(e) => this.setState({qFrom:e.target.value || '22:00'}), qToSet:(e) => this.setState({qTo:e.target.value || '07:00'}),
+      qPick:(e) => { try { if (e.currentTarget.showPicker) e.currentTarget.showPicker(); } catch (x) {} },
+      quietSub: s.alerts.quiet ? 'Held until morning' : 'Off. Notifications can arrive at any hour.',
+      quietNote:'Notifications are held until morning. Anything that publishes between ' + QT(qF) + ' and ' + QT(qT) + ' arrives at ' + QT(qT) + ' instead. Tap a time to change it.',
+      obHandoff:s.ob === 'alerts' && !s.obDeclined,
+      obAlertsMain:s.ob === 'alerts' && !s.obDeclined, obDeclinedV:s.ob === 'alerts' && !!s.obDeclined,
+      obDeclinedEdit:() => this.setState({obDeclined:false}),
+      nsAllowed:!!s.notifOn, nsOff:!s.notifOn, nsDenied:!s.notifOn && !!s.nDenied,
+      nsTitle: s.nDenied ? 'Notifications are off in iPhone Settings' : 'Notifications are off',
+      nsLine: s.nDenied ? 'Be Giant can’t turn them back on for you. It takes three taps in your iPhone’s Settings, and your choices below are kept.' : 'Turn them on to get the stories you choose below. Nothing arrives during quiet hours.',
+      nsSteps:[{n:'1', t:'Tap Open iPhone Settings'}, {n:'2', t:'Turn on Allow Notifications'}, {n:'3', t:'Tap ‹ Be Giant at the top to come back'}],
+      nsBtn: s.nDenied ? 'Open iPhone Settings' : 'Turn on notifications',
+      nsGo:() => s.nDenied ? this.setState({iosSet:true, iosOn:false}) : this.setState({nPerm:true}),
+      nPerm:!!s.nPerm, nPermAllow:() => { this.setState({nPerm:false, notifOn:true, nDenied:false}); this.toast('Notifications are on'); }, nPermDeny:() => this.setState({nPerm:false, nDenied:true}),
+      openIOS:() => this.setState({iosSet:true, iosOn:!!s.notifOn}),
+      iosSet:!!s.iosSet, iosOn:!!s.iosOn, iosOffNote:!s.iosOn, iosTrk: s.iosOn ? '#34C759' : '#E9E9EA', iosKnob: s.iosOn ? 'translateX(20px)' : 'none',
+      iosToggle:() => this.setState({iosOn:!s.iosOn}), iosAlerts:['Lock Screen','Notification Centre','Banners'],
+      iosBack:() => { const on = !!s.iosOn, was = !!s.notifOn; this.setState({iosSet:false, notifOn:on, nDenied:!on && (s.nDenied || was)}); if (on && !was) { this.toast('Notifications are on'); if (s.ob === 'alerts') { this.setState({obDeclined:false}); this.obNext(); } } else if (!on && was) this.toast('Notifications are off'); },
+      ...(!s.notifOn ? {obAlertSummary:'Notifications off'} : {}),
+      ...(s.ob === 'alerts' && s.obDeclined ? {ctaLabel:'Continue', obPrimary:() => { this.setState({obDeclined:false}); this.obNext(); }, ctaSecondary:'Open iPhone Settings', obSecondary:() => this.setState({iosSet:true, iosOn:false})} : {}),
       btnLight:btn('#FFFFFF', '#171717', false), btnRed:btn('#DB3A3A', '#FFFFFF', false), gRef:this.gRef, gDown:this.gDown, gMove:this.gMove, gUp:this.gUp, splashGo:this.splashGo, btnInk:btn('#171717', '#FFFFFF', false), btnOutline:btn('transparent', '#171717', true)
     };
   }
