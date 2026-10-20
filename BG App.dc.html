@@ -106,7 +106,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="Be Giant">
 <link rel="apple-touch-icon" href="assets/app-icon-360.png">
 <style>
@@ -597,10 +597,10 @@ a:hover{opacity:.6}
 
 </sc-if>
 <sc-if value="{{ isApp }}" hint-placeholder-val="{{ false }}">
-<div style="position:{{ fixPos }};inset:0;height:{{ fixH }};z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;background:{{ pageBg }};font-family:var(--font-sans);color:#171717;overscroll-behavior:none">
+<div style="position:fixed;inset:0;height:{{ fixH }};z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;background:{{ pageBg }};font-family:var(--font-sans);color:#171717;overscroll-behavior:none">
   
   <div style="position:relative;flex:none;width:{{ boxW }};height:{{ boxH }};margin-top:{{ boxMt }}">
-    <div style="position:absolute;left:0;top:0;width:402px;height:{{ phH }};transform:{{ tf }};transform-origin:0 0">
+    <div style="position:absolute;left:0;top:{{ phTop }};width:402px;height:{{ phH }};transform:{{ tf }};transform-origin:0 0">
       <sc-if value="{{ mounted }}" hint-placeholder-val="{{ true }}">
         <dc-import name="BeGiantAppPhone" reveal="{{ true }}" start="{{ appStart }}" model="m1" nav="{{ nav }}" bare="{{ bare }}" h="{{ phHn }}" hint-size="402px,874px"></dc-import>
       </sc-if>
@@ -624,12 +624,10 @@ function phoneLike(){ return !!(window.matchMedia && window.matchMedia('(pointer
 // #app forces the app, #board forces the board; otherwise phones get the app
 function wantApp(){ const h = location.hash; return h === '#app' || (h !== '#board' && phoneLike()); }
 function standalone(){ return !!(window.navigator.standalone || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches)); }
-// Home-screen apps report innerHeight without the status bar but draw under it, so use the screen there
-function viewH(){ if (!standalone()) return window.innerHeight; const p = window.matchMedia && window.matchMedia('(orientation: portrait)').matches; return p ? Math.max(window.screen.width, window.screen.height) : Math.min(window.screen.width, window.screen.height); }
 class Component extends DCLogic {
-  state = {nav:null, app: wantApp(), vw: window.innerWidth, vh: viewH(), appStart:'ob-splash', mounted:true};
+  state = {nav:null, app: wantApp(), vw: window.innerWidth, vh: window.innerHeight, appStart:'ob-splash', mounted:true};
   componentDidMount() {
-    this._r = () => this.setState({vw: window.innerWidth, vh: viewH()});
+    this._r = () => this.setState({vw: window.innerWidth, vh: window.innerHeight});
     this._h = () => this.setState({app: wantApp()});
     window.addEventListener('resize', this._r); window.addEventListener('orientationchange', this._r); window.addEventListener('hashchange', this._h);
     this.lockScroll();
@@ -655,12 +653,14 @@ class Component extends DCLogic {
     const nav = s.nav || ((p.navigationStyle ?? 'Floating') === 'Docked' ? 'docked' : 'floating');
     const on = (k) => nav === k;
     const bare = app && phoneLike();
+    // Home-screen apps get a solid iOS status bar, so trim most of the app's own 62px status strip (keep 14px of air)
+    const crop = bare && standalone() ? 48 : 0;
     let k, h;
-    if (bare) { k = s.vw / 402; h = Math.round(s.vh / k); }
+    if (bare) { k = s.vw / 402; h = Math.round(s.vh / k) + crop; }
     else { h = 874; k = Math.max(.3, Math.min(1, (s.vh - 120) / 874, (s.vw - 40) / 402)); }
     return {
-      isBoard: !app, isApp: app, bare, desk: !bare, boardChip: bare && !standalone(), fixH: bare ? s.vh + 'px' : 'auto', fixPos: bare && standalone() ? 'absolute' : 'fixed', appChip: !app && phoneLike(), pageBg: bare ? '#FFFFFF' : '#F4F4F4',
-      boxW: (402 * k) + 'px', boxH: (h * k) + 'px', boxMt: '0px', phH: h + 'px', phHn: h, tf: 'scale(' + k + ')',
+      isBoard: !app, isApp: app, bare, desk: !bare, boardChip: bare && !standalone(), fixH: bare ? s.vh + 'px' : 'auto', appChip: !app && phoneLike(), pageBg: bare ? '#FFFFFF' : '#F4F4F4',
+      boxW: (402 * k) + 'px', boxH: ((h - crop) * k) + 'px', phTop: (-crop * k) + 'px', boxMt: '0px', phH: h + 'px', phHn: h, tf: 'scale(' + k + ')',
       mounted: s.mounted, appStart: s.appStart,
       toApp: () => this.goApp(true), toBoard: () => this.goApp(false),
       startOb: () => this.remount('ob-splash'), startHome: () => this.remount('home'),
