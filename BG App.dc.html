@@ -597,7 +597,7 @@ a:hover{opacity:.6}
 
 </sc-if>
 <sc-if value="{{ isApp }}" hint-placeholder-val="{{ false }}">
-<div style="position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;background:{{ pageBg }};font-family:var(--font-sans);color:#171717;overscroll-behavior:none">
+<div style="position:{{ fixPos }};inset:0;height:{{ fixH }};z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;background:{{ pageBg }};font-family:var(--font-sans);color:#171717;overscroll-behavior:none">
   
   <div style="position:relative;flex:none;width:{{ boxW }};height:{{ boxH }};margin-top:{{ boxMt }}">
     <div style="position:absolute;left:0;top:0;width:402px;height:{{ phH }};transform:{{ tf }};transform-origin:0 0">
@@ -624,10 +624,12 @@ function phoneLike(){ return !!(window.matchMedia && window.matchMedia('(pointer
 // #app forces the app, #board forces the board; otherwise phones get the app
 function wantApp(){ const h = location.hash; return h === '#app' || (h !== '#board' && phoneLike()); }
 function standalone(){ return !!(window.navigator.standalone || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches)); }
+// Home-screen apps report innerHeight without the status bar but draw under it, so use the screen there
+function viewH(){ if (!standalone()) return window.innerHeight; const p = window.matchMedia && window.matchMedia('(orientation: portrait)').matches; return p ? Math.max(window.screen.width, window.screen.height) : Math.min(window.screen.width, window.screen.height); }
 class Component extends DCLogic {
-  state = {nav:null, app: wantApp(), vw: window.innerWidth, vh: window.innerHeight, appStart:'ob-splash', mounted:true};
+  state = {nav:null, app: wantApp(), vw: window.innerWidth, vh: viewH(), appStart:'ob-splash', mounted:true};
   componentDidMount() {
-    this._r = () => this.setState({vw: window.innerWidth, vh: window.innerHeight});
+    this._r = () => this.setState({vw: window.innerWidth, vh: viewH()});
     this._h = () => this.setState({app: wantApp()});
     window.addEventListener('resize', this._r); window.addEventListener('orientationchange', this._r); window.addEventListener('hashchange', this._h);
     this.lockScroll();
@@ -639,7 +641,7 @@ class Component extends DCLogic {
     if (app === !!this._wasApp) return;
     this._wasApp = app;
     const v = app ? 'hidden' : '', de = document.documentElement;
-    de.style.overflow = v; document.body.style.overflow = v; document.body.style.overscrollBehavior = v ? 'none' : '';
+    de.style.overflow = v; document.body.style.overflow = v; de.style.background = document.body.style.background = app && phoneLike() ? '#FFFFFF' : ''; document.body.style.overscrollBehavior = v ? 'none' : '';
     if (app) de.removeAttribute('data-dc-canvas'); else de.setAttribute('data-dc-canvas', '');
     document.querySelectorAll('style[data-dc-canvas]').forEach(el => { el.disabled = app; });
     try { if (window.parent !== window) window.parent.postMessage({type:'__dc_design_mode', mode: app ? null : 'canvas'}, '*'); } catch (e) {}
@@ -657,7 +659,7 @@ class Component extends DCLogic {
     if (bare) { k = s.vw / 402; h = Math.round(s.vh / k); }
     else { h = 874; k = Math.max(.3, Math.min(1, (s.vh - 120) / 874, (s.vw - 40) / 402)); }
     return {
-      isBoard: !app, isApp: app, bare, desk: !bare, boardChip: bare && !standalone(), appChip: !app && phoneLike(), pageBg: bare ? '#FFFFFF' : '#F4F4F4',
+      isBoard: !app, isApp: app, bare, desk: !bare, boardChip: bare && !standalone(), fixH: bare ? s.vh + 'px' : 'auto', fixPos: bare && standalone() ? 'absolute' : 'fixed', appChip: !app && phoneLike(), pageBg: bare ? '#FFFFFF' : '#F4F4F4',
       boxW: (402 * k) + 'px', boxH: (h * k) + 'px', boxMt: '0px', phH: h + 'px', phHn: h, tf: 'scale(' + k + ')',
       mounted: s.mounted, appStart: s.appStart,
       toApp: () => this.goApp(true), toBoard: () => this.goApp(false),
