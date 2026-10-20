@@ -190,7 +190,7 @@ a:hover{opacity:.6}
       <div data-screen-label="01 Notifications" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Notifications</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Step 2 of 3</div></div>
         <dc-import name="BeGiantAppPhone" start="ob-alerts" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
-        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Light, Balanced and Everything set the switches below; the ink block slides 320ms. Turning a type on drops a matching sample notification in from the top. Topics expands into one switch per topic. The weekly estimate updates live. Turn on shows the iOS permission alert.</div></sc-if>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Light and Balance set the switches below; the ink block slides 320ms. Turning a type on drops a matching sample notification in from the top. Quiet hours sit under the presets, 10 p.m. to 7 a.m. by default and editable. Turn on shows the iOS permission alert. Round 9 states are in row 09c.</div></sc-if>
       </div>
       <div data-screen-label="01 Account" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Create account</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Step 3 of 3 · main action</div></div>
@@ -507,7 +507,7 @@ a:hover{opacity:.6}
       <div data-screen-label="07 Notifications settings" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Notifications</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Settings</div></div>
         <dc-import name="BeGiantAppPhone" start="set-notif" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
-        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Same level switch and toggles as onboarding, plus iOS permission status and quiet hours times.</div></sc-if>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Same presets, quiet hours and toggles as onboarding, plus iPhone permission status. Off and declined states are in row 09c.</div></sc-if>
       </div>
       <div data-screen-label="07 Reading" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Reading and display</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Settings</div></div>
@@ -639,6 +639,50 @@ a:hover{opacity:.6}
         <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">About you · after magic link</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Name not known</div></div>
         <dc-import name="BeGiantAppPhone" start="ob-details-linked" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
         <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">A magic link only proves the email, so an optional Name field joins the list. Everything else matches Version A.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">09c · Notifications v2 · Round 9</div>
+      <div style="font-size:15px;line-height:1.5;color:#5C5C5C">P1.2. Two presets, Light and Balance, quiet hours the reader sets, the hand-off to iPhone Settings for the final Allow, and what happens after Don’t Allow.</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="09c Light" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Light</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Preset</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-alerts-light" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Light.</b> The one big story of the day, each morning at 7 a.m. Topic and writer alerts are off. The preview shows the single morning banner.</div></sc-if>
+      </div>
+      <div data-screen-label="09c Balance" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Balance</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Preset · default</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-alerts-balance" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Balance.</b> The big story plus an alert each time a story publishes in a followed topic or by a followed writer; as little as one a week. The preview stacks a second banner behind to show there can be more than one. Default until Be Giant confirms cadence.</div></sc-if>
+      </div>
+      <div data-screen-label="09c Quiet hours" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Quiet hours</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Set by the reader</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-alerts-quiet" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Quiet hours.</b> Pre-filled 10 p.m. to 7 a.m.; here edited to 11 p.m. to 6:30 a.m. Each time opens the native iOS wheel. Copy says notifications are held until morning, and the big story moves to the end time if it falls inside quiet hours.</div></sc-if>
+      </div>
+      <div data-screen-label="09c Handoff" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Final Allow</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">iOS alert</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-alerts-perm" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Handoff.</b> The step tells the reader the iPhone asks next. Turn on notifications shows the one-time iOS alert; Allow finishes the step. iOS only shows this alert once per install.</div></sc-if>
+      </div>
+      <div data-screen-label="09c Declined" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Declined</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Onboarding</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-alerts-declined" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Declined.</b> Don’t Allow lands on a calm screen, not a guilt trip. Choices are kept, and three steps say how to turn them on later. Continue moves on; Open iPhone Settings goes straight to the app’s notification page.</div></sc-if>
+      </div>
+      <div data-screen-label="09c Settings off" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Settings, declined</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Settings</div></div>
+        <dc-import name="BeGiantAppPhone" start="set-notif-off" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Later.</b> Settings > Notifications shows the off state with the same three steps and one button. If the reader never answered the alert (Not now), the button shows the iOS alert instead.</div></sc-if>
+      </div>
+      <div data-screen-label="09c iPhone Settings" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">iPhone Settings</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">System</div></div>
+        <dc-import name="BeGiantAppPhone" start="ios-notif" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">System settings.</b> The button opens the app’s own notification page (openNotificationSettingsURLString, iOS 16+). Turn on Allow Notifications, then ‹ Be Giant returns to the app with notifications on and a toast.</div></sc-if>
       </div>
     </div>
   </section>

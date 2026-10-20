@@ -168,6 +168,11 @@ window.BGD = {
   'menu':{s:{menu:true}},
   'saved-edit':{s:{screen:'saved', sEdit:true, sSel:['solar','north']}},
   'set-account':{s:{screen:'settings', sub:'account'}}, 'set-following':{s:{screen:'settings', sub:'following', writers:['Emily Latimer']}},
+  'ob-alerts-light':{s:{ob:'alerts', alerts:{quiet:true, big:true, topics:false, writers:false, video:false, major:true, digest:true}, notifKind:'big'}},
+  'ob-alerts-balance':{s:{ob:'alerts', notifKind:'topics'}}, 'ob-alerts-quiet':{s:{ob:'alerts', notifKind:'big', qFrom:'23:00', qTo:'06:30'}},
+  'ob-alerts-perm':{s:{ob:'alerts', perm:true, notifKind:'topics'}}, 'ob-alerts-declined':{s:{ob:'alerts', obDeclined:true, notifOn:false, nDenied:true}},
+  'set-notif-unasked':{s:{screen:'settings', sub:'notif', notifOn:false}}, 'set-notif-off':{s:{screen:'settings', sub:'notif', notifOn:false, nDenied:true}},
+  'ios-notif':{s:{screen:'settings', sub:'notif', notifOn:false, nDenied:true, iosSet:true, iosOn:false}}, 'ios-notif-on':{s:{screen:'settings', sub:'notif', notifOn:false, nDenied:true, iosSet:true, iosOn:true}},
   'set-notif':{s:{screen:'settings', sub:'notif'}}, 'set-reading':{s:{screen:'settings', sub:'reading'}}, 'set-page':{s:{screen:'settings', sub:'page', page:'privacy'}},
   'home-resume':{home:470}, 'end-milestone':{s:{endMod:0}, home:99999}, 'end-week':{s:{endMod:0, fin:14}, home:99999}, 'end-send':{s:{endMod:1}, home:99999},
   'rate':{s:{rate:true, endMod:0}, home:99999}
