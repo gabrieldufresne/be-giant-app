@@ -31,8 +31,6 @@
 @keyframes bgBars{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
 @keyframes bgGhost{0%,18%{transform:translateX(0)}42%,68%{transform:translateX(-118px)}92%,100%{transform:translateX(0)}}
 @keyframes bgAlert{from{opacity:0;transform:scale(1.12)}to{opacity:1;transform:scale(1)}}
-@keyframes bgGreetA{0%{opacity:0;transform:translateY(18px)}14%{opacity:1;transform:none}80%{opacity:1;transform:none;animation-timing-function:cubic-bezier(.4,0,1,1)}100%{opacity:0;transform:translateY(-6px)}}
-@keyframes bgGreetB{0%{opacity:0;transform:translateY(18px)}14%{opacity:1;transform:none}80%{opacity:1;transform:none;animation-timing-function:cubic-bezier(.4,0,1,1)}100%{opacity:0;transform:translateY(-6px)}}
 @keyframes bgGOvA{0%{opacity:0;visibility:visible}8%{opacity:1}78%{opacity:1;animation-timing-function:cubic-bezier(.4,0,1,1)}100%{opacity:0;visibility:hidden}}
 @keyframes bgGOInA{from{opacity:0;transform:translateY(22px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
 @keyframes bgGOUpA{0%,76%{transform:none}100%{transform:translateY(-12px)}}
@@ -98,11 +96,6 @@
                 <div style="position:sticky;top:0;z-index:0;aspect-ratio:2/3;overflow:clip">
                   <img ref="{{ hiImgRef }}" data-hero="1" src="https://cdn.sanity.io/images/l3tzmu37/production/5fa4d80564996ff20654a51e011b2846315ca54e-4198x2800.jpg?auto=format&amp;fit=max&amp;w=1000&amp;q=70" alt="" style="position:absolute;left:0;right:0;top:0;width:100%;height:calc(100% + 48px);object-fit:cover;object-position:55% 0%;display:block;will-change:transform">
                   <div style="position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.42) 0%, rgba(0,0,0,0) 150px)"></div>
-                  <sc-if value="{{ greetSlide }}" hint-placeholder-val="{{ false }}">
-                  <div data-p32="greet-slide" aria-live="polite" style="position:absolute;left:20px;right:20px;bottom:98px;display:flex;pointer-events:none;opacity:0;animation:{{ greetAnim }}">
-                    <div style="background:#FFFFFF;padding:6px 10px;font-family:var(--font-serif);font-weight:300;font-size:22px;line-height:1.2;color:#171717">{{ greetText }}</div>
-                  </div>
-                  </sc-if>
                 </div>
                 <div ref="{{ hiCopyRef }}" style="position:relative;z-index:1;margin-top:-84px;padding:0 20px;display:flex;flex-direction:column;align-items:flex-start;color:#171717;will-change:opacity">
                   <div style="font-family:var(--font-serif);font-weight:300;font-size:32px;line-height:1.35;letter-spacing:-.01em"><span style="-webkit-box-decoration-break:clone;box-decoration-break:clone;background:#FFFFFF;padding:6px 10px">Why the next generation actually wants to inherit the family business</span></div>
@@ -125,19 +118,6 @@
               </sc-if>
             </div>
             <div style="position:relative;background:#FFFFFF;padding:30px 0 0;min-height:700px">
-              <sc-if value="{{ greetLine }}" hint-placeholder-val="{{ false }}">
-              <div data-p32="greet-line" style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:0 20px 24px">
-                <div style="font-size:15px;font-weight:500;color:#171717;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ greetText }}</div>
-                <div style="font-size:12px;color:#7A7A7A;flex:none">{{ greetDate }}</div>
-              </div>
-              </sc-if>
-              <sc-if value="{{ greetBold }}" hint-placeholder-val="{{ false }}">
-              <div data-p32="greet-bold" style="padding:6px 20px 36px;display:flex;flex-direction:column;gap:10px">
-                <div style="font-size:12px;line-height:14px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#7A7A7A">{{ greetDate }}</div>
-                <div style="font-family:var(--font-serif);font-weight:400;font-size:36px;line-height:1.04;letter-spacing:-.01em;color:#171717;text-wrap:balance">{{ greetText }}</div>
-                <div style="font-size:16px;line-height:1.4;color:#5C5C5C;text-wrap:pretty">{{ greetSub }}</div>
-              </div>
-              </sc-if>
               <sc-if value="{{ hasResume }}" hint-placeholder-val="{{ false }}">
               <div style="padding:0 20px 36px;animation:bgFadeIn 400ms cubic-bezier(.16,1,.3,1) both">
                 <div style="display:flex;align-items:center;justify-content:space-between;padding-bottom:10px"><x-import component-from-global-scope="BeGiantDesignSystem_f91809.Eyebrow" hint-size="110px,14px">Jump back in</x-import><div onClick="{{ resumeDismiss }}" style="width:36px;height:36px;margin-right:-8px;display:flex;align-items:center;justify-content:center;cursor:pointer"><img src="assets/light/x-light.svg" alt="Dismiss" style="width:16px;height:16px;display:block"></div></div>
@@ -2212,7 +2192,7 @@ class Component extends DCLogic {
       aa:{badge:tg(A), color:col(A), pillar:A.p, next:next, hasCorr:!!A.corr, corrLabel:A.corr ? A.corr.label : '', corrDate:A.corr ? A.corr.date : '', corrText:A.corr ? A.corr.text : '', title:A.t, dek:A.d, avatar:A.av, byline:'By ' + A.a + (A.ph ? ' · ' + A.ph : ''), date:A.date, mins:A.m + ' min read',
         img:d.IM(A.img), pos:A.pos || '50% 50%', hasCap:!!A.cap, cap:A.cap || '', credit:A.credit || '', blocks:blocks, follows:follows, more:more}};
   }
-  /* ---------- P3.2 greeting exploration (board only; greet prop is off in the live app) ---------- */
+  /* ---------- P3.2 greeting: G4 overlay, opt-in via greet="overlay" (board only for now) ---------- */
   greetVals(P, s){
     const g = P.greet || '', hr = new Date().getHours();
     const at = P.greetAt || (hr >= 5 && hr < 12 ? 'morning' : hr >= 12 && hr < 17 ? 'afternoon' : 'evening');
@@ -2220,10 +2200,8 @@ class Component extends DCLogic {
     const X = ((P.greetRun || 0) % 2) ? 'B' : 'A';
     const subs = {morning:'Here’s what’s new since last night.', afternoon:'Here’s what’s new since this morning.', evening:'Here’s what you missed today.'};
     return {
-      greetSlide: g === 'slide', greetLine: g === 'line', greetBold: g === 'bold',
-      greetText: 'Good ' + at + (first ? ', ' + first : ''), greetSub: subs[at],
+      greetSub: subs[at],
       greetDate: new Date().toLocaleDateString('en-CA', {weekday:'long', month:'long', day:'numeric'}),
-      greetAnim: (((P.greetRun || 0) % 2) ? 'bgGreetB' : 'bgGreetA') + ' 3200ms cubic-bezier(.16,1,.3,1) 600ms both',
       // Overlay: dark veil, centred greeting rises in line by line, holds, then everything fades to reveal Home (3.2s)
       greetOverlay: g === 'overlay' && !s.ob,
       goLine1: 'Good ' + at + (first ? ',' : ''), goLine2: first,
