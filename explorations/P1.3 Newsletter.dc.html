@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P1.3 Newsletter</title>
+<!-- The phone component and its assets use paths relative to the site root, so this page resolves everything from there. -->
+<base href="../">
+<link rel="icon" href="assets/app-icon-360.png">
+<script src="support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/colors.css">
+<link rel="stylesheet" href="_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/typography.css">
+<link rel="stylesheet" href="_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/semantic.css">
+<style>
+body{margin:0;background:#F4F4F4;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+a{color:#171717;text-underline-offset:3px}
+a:hover{opacity:.6}
+</style>
+</helmet>
+<div style="font-family:var(--font-sans);color:#171717;padding:48px 40px 96px;box-sizing:border-box">
+<div style="max-width:1360px">
+
+  <!-- Header -->
+  <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+    <img src="assets/be-giant-logo.svg" alt="Be Giant" style="height:26px;width:auto;display:block">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6B6B6B">Round 9 · P1.3 exploration</div>
+    <a href="BG%20App.dc.html" style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Back to board</a>
+  </div>
+  <div style="font-family:var(--font-serif);font-size:56px;line-height:1;letter-spacing:-.01em;margin-top:32px">Newsletter opt-in placements</div>
+  <div style="font-size:17px;line-height:1.5;color:#3D3D3D;max-width:780px;margin-top:16px">Three places to offer the Be Giant newsletter, each with what an existing subscriber sees and what happens after someone says no. Getting an email in your inbox is a bigger commitment than visiting the website, so each option asks once, plainly, and someone who is already subscribed is never asked. Every phone below is live: tap the checkbox, Subscribe or Not now. Nothing here changes the live app. The new states only switch on when a phone is given <span style="font-family:ui-monospace,Menlo,monospace;font-size:14px">news="a" | "b" | "c"</span>.</div>
+
+  <!-- Recommendation -->
+  <div style="margin-top:40px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #171717;padding:28px 32px;max-width:980px;box-sizing:border-box;display:flex;flex-direction:column;gap:12px">
+    <div style="display:flex;align-items:center;gap:12px"><div style="height:22px;padding:0 9px;border-radius:999px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Recommendation</div><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#6B6B6B">Option C, plus the Settings row for everyone</div></div>
+    <div style="font-family:var(--font-serif);font-size:32px;line-height:1.08;letter-spacing:-.01em;text-wrap:pretty">Ask after the second finished story, in a half sheet, and ask once more at most.</div>
+    <div style="font-size:15px;line-height:1.55;color:#3D3D3D;text-wrap:pretty">By that point the reader has read two full stories, so they know what they would be signing up for. That is the right moment for a bigger commitment. It keeps onboarding as short as P1.1 made it, and it follows the brief's rule that personal data is asked for gradually. Signed-in readers subscribe with one tap, because we already know their email, and we can check it against the list so existing subscribers never see the sheet. Guests can subscribe too, by typing an email, without having to create an account first. A and B both ask before the reader has read anything. B also adds the newsletter to a screen that is already all about personal details.</div>
+    <div style="font-size:14px;line-height:1.5;color:#5C5C5C;text-wrap:pretty"><span style="font-weight:600;color:#171717">If Be Giant makes newsletter signups a core KPI,</span> add A as well, but not B. A reaches the most people, because everyone who gets to the account step sees it, and C then skips anyone who ticked the box. B reaches the fewest: only readers who sign up and then stay on About you.</div>
+  </div>
+
+  <!-- Comparison -->
+  <div style="margin-top:56px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6B6B6B">Side by side</div>
+  <div style="margin-top:16px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #E6E6E6;overflow-x:auto">
+    <div style="display:grid;grid-template-columns:220px repeat(3,minmax(240px,1fr));min-width:980px">
+      <div style="padding:16px 20px;border-bottom:1px solid #171717"></div>
+      <sc-for list="{{ heads }}" as="h" hint-placeholder-count="3">
+        <div style="padding:16px 20px;border-bottom:1px solid #171717;display:flex;align-items:center;gap:10px"><div style="height:22px;min-width:22px;padding:0 7px;box-sizing:border-box;border-radius:6px;background:{{ h.chipBg }};color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;letter-spacing:.08em">{{ h.k }}</div><div style="font-size:16px;font-weight:600">{{ h.name }}</div></div>
+      </sc-for>
+      <sc-for list="{{ rows }}" as="r" hint-placeholder-count="8">
+        <div style="padding:14px 20px;border-bottom:1px solid #E6E6E6;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5C5C5C;line-height:1.5">{{ r.label }}</div>
+        <sc-for list="{{ r.cells }}" as="c" hint-placeholder-count="3">
+          <div style="padding:14px 20px;border-bottom:1px solid #E6E6E6;font-size:14px;line-height:1.45;color:#3D3D3D;background:{{ c.bg }};text-wrap:pretty">{{ c.t }}</div>
+        </sc-for>
+      </sc-for>
+    </div>
+  </div>
+  <div style="font-size:12px;line-height:1.5;color:#6B6B6B;margin-top:10px;max-width:780px">Shaded cells are where an option is weakest.</div>
+
+  <!-- Re-ask rule -->
+  <div style="margin-top:56px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6B6B6B">After someone says no</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px;max-width:1100px">
+    <div style="background:#FFFFFF;box-shadow:inset 0 0 0 1px #E6E6E6;padding:24px;display:flex;flex-direction:column;gap:10px">
+      <div style="font-family:var(--font-serif);font-size:24px;line-height:1.1">A and B: never asked again</div>
+      <div style="font-size:14px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">The checkbox sits in plain view on a screen the reader has to read anyway. Leaving it unticked is a real answer, so we don't come back with a pop-up later, which would feel like a second sales pitch. From then on the newsletter is only in Settings, where the note says "We won't ask again".</div>
+    </div>
+    <div style="background:#FFFFFF;box-shadow:inset 0 0 0 1px #E6E6E6;padding:24px;display:flex;flex-direction:column;gap:10px">
+      <div style="font-family:var(--font-serif);font-size:24px;line-height:1.1">C: once more at most, then never</div>
+      <div style="font-size:14px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">A sheet that appears at the end of a story often gets "Not now" just because the reader wants to keep reading. So C asks one more time, at least 30 days later and after 5 more finished stories. The second ask uses different words, says it is the last one, and its button says No thanks. After that, the newsletter is only in Settings.</div>
+    </div>
+    <div style="background:#FFFFFF;box-shadow:inset 0 0 0 1px #E6E6E6;padding:24px;display:flex;flex-direction:column;gap:10px">
+      <div style="font-family:var(--font-serif);font-size:24px;line-height:1.1">Rules for all three</div>
+      <div style="font-size:14px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">The checkbox is never ticked for the reader: CASL needs a clear yes from them. No reader gets the newsletter ask and an account or notification ask in the same session. Turning the newsletter off in Settings counts as a no, so it is never asked again. And existing subscribers are never asked at all.</div>
+    </div>
+  </div>
+
+  <!-- Option A -->
+  <div style="margin-top:72px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+    <div style="height:26px;min-width:26px;padding:0 8px;box-sizing:border-box;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;align-self:center">A</div>
+    <div style="font-family:var(--font-serif);font-size:40px;line-height:1">On the free account step</div>
+  </div>
+  <div style="font-size:15px;line-height:1.5;color:#3D3D3D;max-width:820px;margin-top:12px;text-wrap:pretty">One checkbox between the intro and the sign-in buttons. It goes above the buttons, because the Apple and Google buttons go straight to the system sheet, so the box has to be seen before the reader taps one. Whatever is ticked here applies to whichever sign-in they choose.</div>
+</div>
+  <div style="display:flex;gap:48px;align-items:flex-start;margin-top:28px;overflow-x:auto;padding-bottom:12px">
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">A1</div><div style="font-size:17px;font-weight:600">Ask</div></div>
+      <dc-import name="BeGiantAppPhone" start="ob-account" news="a" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Unticked by default. The line underneath says what they get and that it is free to leave. 26px box, and the whole row is the tap target.</div>
+    </div>
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">A2</div><div style="font-size:17px;font-weight:600">Already subscribed</div></div>
+      <dc-import name="BeGiantAppPhone" start="set-account" news="a" news-state="subscribed" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Someone who subscribed in the app already has an account, so they never see this step again. Their status lives in Settings &gt; Account, under Newsletter, next to their email (scroll down inside the phone). <b style="font-weight:600">The weak spot:</b> a website subscriber setting up the app sees the box anyway, because we don't know their email until after they sign in. Ticking it again does nothing.</div>
+    </div>
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">A3</div><div style="font-size:17px;font-weight:600">Left unticked</div></div>
+      <dc-import name="BeGiantAppPhone" start="set-account" news="a" news-state="declined" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Never asked again. Settings shows the newsletter turned off, with "We won't ask again" and one line on what it is. Turning it on is a single tap.</div>
+    </div>
+  </div>
+
+<div style="max-width:1360px">
+  <!-- Option B -->
+  <div style="margin-top:72px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+    <div style="height:26px;min-width:26px;padding:0 8px;box-sizing:border-box;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;align-self:center">B</div>
+    <div style="font-family:var(--font-serif);font-size:40px;line-height:1">After the personal details</div>
+  </div>
+  <div style="font-size:15px;line-height:1.5;color:#3D3D3D;max-width:820px;margin-top:12px;text-wrap:pretty">The same checkbox, placed below the fields on About you (after Apple, Google or a magic link) and on the email sign-up form. After Apple or Google we already have the email, so we can check it against the list and leave the box out for existing subscribers. The email form can't check until the reader types their address.</div>
+</div>
+  <div style="display:flex;gap:48px;align-items:flex-start;margin-top:28px;overflow-x:auto;padding-bottom:12px">
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">B1</div><div style="font-size:17px;font-weight:600">Ask, after Apple or Google</div></div>
+      <dc-import name="BeGiantAppPhone" start="ob-details" news="b" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Below city, age and gender, so it's the fourth optional thing on a screen of personal questions. Finish and Skip for now both keep whatever the box is set to.</div>
+    </div>
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">B2</div><div style="font-size:17px;font-weight:600">Ask, email form</div></div>
+      <dc-import name="BeGiantAppPhone" start="ob-email" news="b" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Below the password, above the privacy line and Create account. If the address turns out to be on the list already, ticking the box does nothing.</div>
+    </div>
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">B3</div><div style="font-size:17px;font-weight:600">Already subscribed</div></div>
+      <dc-import name="BeGiantAppPhone" start="ob-details" news="b" news-state="subscribed" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">The Apple or Google email is already on the list, so About you has no checkbox and no message about it. They can see their status in Settings &gt; Account (as in A2).</div>
+    </div>
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">B4</div><div style="font-size:17px;font-weight:600">Left unticked</div></div>
+      <dc-import name="BeGiantAppPhone" start="set-account" news="b" news-state="declined" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Same as A: never asked again, and the newsletter is only in Settings.</div>
+    </div>
+  </div>
+
+<div style="max-width:1360px">
+  <!-- Option C -->
+  <div style="margin-top:72px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+    <div style="height:26px;min-width:26px;padding:0 8px;box-sizing:border-box;border-radius:6px;background:#DB3A3A;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;align-self:center">C</div>
+    <div style="font-family:var(--font-serif);font-size:40px;line-height:1">After the second finished story</div>
+    <div style="height:22px;padding:0 9px;border-radius:999px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;align-self:center">Recommended</div>
+  </div>
+  <div style="font-size:15px;line-height:1.5;color:#3D3D3D;max-width:820px;margin-top:12px;text-wrap:pretty">A half sheet that slides up once the reader reaches the end of their second finished story, built like the existing account and notification asks: a kicker with an icon, a serif headline, one line, a black button and Not now. It never sits on top of the story. It comes up after the story ends, and not in a session where another ask has already shown. In these phones, one story already counts as finished, so the sheet appears at the end of this one. After Not now, open Your next read and finish it to see the one re-ask.</div>
+</div>
+  <div style="display:flex;gap:48px;align-items:flex-start;margin-top:28px;overflow-x:auto;padding-bottom:12px">
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#DB3A3A;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">C1</div><div style="font-size:17px;font-weight:600">Ask, signed in</div></div>
+      <dc-import name="BeGiantAppPhone" start="article-end" news="c" news-read="1" news-open="1" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">One tap: the sheet shows the address it will go to. The line says why we are asking now ("You've finished two stories"). Not now closes it and allows one more ask later. Tapping the backdrop counts as Not now.</div>
+    </div>
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#DB3A3A;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">C2</div><div style="font-size:17px;font-weight:600">Ask, guest</div></div>
+      <dc-import name="BeGiantAppPhone" start="news-guest-end" news="c" news-read="1" news-open="1" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Guests type an email; no account is needed. We have not checked the address yet, so we send a confirmation email and the toast says so. The account ask (P1.4) waits for another session.</div>
+    </div>
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#DB3A3A;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">C3</div><div style="font-size:17px;font-weight:600">Already subscribed</div></div>
+      <dc-import name="BeGiantAppPhone" start="article-end" news="c" news-state="subscribed" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">No sheet: the story ends exactly as it does today. Their status is in Settings &gt; Account (as in A2), and the Newsletter row in Settings says Subscribed.</div>
+    </div>
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#DB3A3A;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">C4</div><div style="font-size:17px;font-weight:600">The one re-ask</div></div>
+      <dc-import name="BeGiantAppPhone" start="article-end" news="c" news-state="later" news-open="1" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">This only comes after a Not now, at least 30 days and 5 finished stories later. It has a new headline, says it is the last ask, and the button says No thanks. After this, the reader is never asked again.</div>
+    </div>
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#DB3A3A;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">C5</div><div style="font-size:17px;font-weight:600">Said no twice</div></div>
+      <dc-import name="BeGiantAppPhone" start="set-account" news="c" news-state="declined" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">The sheet never comes back. Settings shows the newsletter turned off, with "We won't ask again". This is the same screen as A3 and B4, so every option ends up in the same place.</div>
+    </div>
+  </div>
+
+<div style="max-width:1360px">
+  <!-- Settings -->
+  <div style="margin-top:72px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6B6B6B">Where status lives</div>
+  <div style="font-size:15px;line-height:1.5;color:#3D3D3D;max-width:820px;margin-top:12px;text-wrap:pretty"><b style="font-weight:600">Settings &gt; Account, in a Newsletter section above Sign-in.</b> It goes in Account rather than Notifications because the newsletter goes to the reader's email address, which is shown on that page, while Notifications is only about alerts on the phone. Settings already has a static Newsletter row in its Be Giant group. With <span style="font-family:ui-monospace,Menlo,monospace;font-size:13px">news</span> set, that row shows Subscribed or Off and opens Account. A toast confirms every change. Turning the newsletter off says plainly that the account, topics and notifications are not affected.</div>
+  <div style="display:flex;gap:48px;align-items:flex-start;margin-top:28px;overflow-x:auto;padding-bottom:12px">
+    <div style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+      <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#6B6B6B;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">S1</div><div style="font-size:17px;font-weight:600">Settings, Newsletter row</div></div>
+      <dc-import name="BeGiantAppPhone" start="settings" news="c" news-state="subscribed" model="m1" hint-size="402px,874px"></dc-import>
+      <div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Scroll to Be Giant: the Newsletter row shows the real status and opens Settings &gt; Account.</div>
+    </div>
+  </div>
+
+  <!-- Open questions -->
+  <div style="margin-top:72px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#6B6B6B">Open questions for Be Giant</div>
+  <div style="margin-top:16px;max-width:980px;border-top:1px solid #171717">
+    <sc-for list="{{ questions }}" as="q" hint-placeholder-count="6">
+      <div style="padding:16px 0;border-bottom:1px solid #E6E6E6;display:grid;grid-template-columns:260px 1fr;gap:20px">
+        <div style="font-size:15px;font-weight:600;line-height:1.4">{{ q.q }}</div>
+        <div style="font-size:14px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">{{ q.a }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="font-size:12px;line-height:1.5;color:#6B6B6B;margin-top:24px;max-width:780px">Notes: docs/round-9/P1.3-newsletter.md. The C sheet uses Phosphor envelope-simple-light; the checkboxes use check-light.</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const WEAK = '#FBF1EF';
+const ROWS = [
+  ['Where', 'Create your free account, above the sign-in buttons', 'About you and the email form, below the fields', 'Half sheet at the end of the second finished story'],
+  ['Who sees it', 'Everyone who reaches the account step, including people who then tap Not now', 'Only readers who create an account and stay on About you', 'Every reader who finishes two stories, guests included'],
+  ['Has read anything yet', 'No', 'No', 'Yes, two full stories'],
+  ['Knows if already subscribed', 'No, sign-in comes after the ask', 'Yes after Apple, Google or a link; no on the email form', 'Yes when signed in; for guests, checked when they submit'],
+  ['Cost to onboarding', 'One more decision on the step that carries the most', 'A fourth optional item on a screen of personal questions', 'None'],
+  ['Asks for data gradually', 'Partly', 'No, it adds to the screen that asks for the most', 'Yes'],
+  ['Re-ask rule', 'Never; the box left unticked is the answer', 'Never; the box left unticked is the answer', 'Once more after 30 days and 5 more stories, then never'],
+  ['Likely volume and intent', 'Most people see it, but they have read nothing yet', 'Fewest people see it, and it comes during setup', 'Fewer see it than A, but the reader has just finished a story']
+];
+const WEAKS = {'2,1':1,'2,2':1,'3,1':1,'4,1':1,'4,2':1,'5,2':1,'7,2':1,'1,2':1};
+const QUESTIONS = [
+  {q:'Is newsletter signup a core KPI?', a:'This decides between C alone and A plus C. If it is, A adds the most reach and C still catches readers later. If it is not, C alone gets the fewest complaints. Either way, we recommend against B.'},
+  {q:'Which list, and how often?', a:'Is there one Be Giant newsletter or several (a daily brief, a weekly, regional or topic lists)? The copy says "our reporting from across Canada, by email" and names no schedule, because we don’t know it yet. If there are several lists, the Settings row turns into a short list of switches, and C offers the one closest to the story they just read.'},
+  {q:'Does the app need double opt-in for CASL?', a:'CASL, Canada’s anti-spam law, needs express consent: a box the reader ticks (never ticked for them) or a clear button, plus the sender’s name, contact details and a way to unsubscribe in every email, with unsubscribes processed within 10 business days. CASL doesn’t strictly require double opt-in. We suggest it for guests in C, because their typed email hasn’t been checked. Apple, Google and magic-link addresses are already confirmed. Be Giant’s counsel should confirm, and the app needs to record when and where each consent was given.'},
+  {q:'Apple’s Hide My Email', a:'Readers who use Sign in with Apple may share a relay address, which won’t match the website list. So a website subscriber may still see A, B or C once. Should "Already subscribed" also try their typed email, or do we accept the occasional repeat?'},
+  {q:'Which platform runs the list?', a:'Field Office needs the email service provider (for example Mailchimp or another) and an API that answers "is this address subscribed?". The subscribed states in all three options depend on it.'},
+  {q:'Sheet frequency alongside P1.4', a:'P1.4 sets when the guest account asks appear. We propose a shared rule: at most one ask (account, notifications or newsletter) per session, with the newsletter last in line.'}
+];
+class Component extends DCLogic {
+  renderVals(){
+    return {
+      heads: [{k:'A', name:'Account step', chipBg:'#171717'}, {k:'B', name:'After personal details', chipBg:'#171717'}, {k:'C', name:'After the second story', chipBg:'#DB3A3A'}],
+      rows: ROWS.map((r, i) => ({label:r[0], cells:[1, 2, 3].map(j => ({t:r[j], bg: WEAKS[i + ',' + j] ? WEAK : '#FFFFFF'}))})),
+      questions: QUESTIONS
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -144,6 +144,7 @@ window.BGD = {
   'guest':{s:G({reads:{Economy:2}})}, 'guest-foryou':{s:G({feed:1})},
   'guest-notif':{s:G({art:'family', picks:['Small business'], folN:1, nAsked:true, nAsk:{label:'Small business', kind:'topic'}}), art:99999},
   'guest-nudge':{s:G({nudge:'Economy', nudgeL:'Economy', reads:{Economy:3}, nudged:['Economy']}), home:470},
+  'news-guest-end':{s:G({art:'family'}), art:99999},
   'guest-share':{s:G({art:'family', gate:'share', gateK:'share', gAsked:true, shareN:1}), art:700},
   'guest-save':{s:G({gate:'save', gateK:'save', gAsked:true, saved:['potash','productivity'], saveN:2}), home:560},
   'guest-follow':{s:G({feed:1, fyBuilt:true, picks:['Economy','Housing','Climate'], gate:'follow', gateK:'follow', gAsked:true})},
