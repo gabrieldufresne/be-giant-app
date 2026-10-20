@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>P3.1 For You icon</title>
+<link rel="icon" href="../assets/app-icon-360.png">
+<script src="../support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="../_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/fonts.css">
+<link rel="stylesheet" href="../_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/colors.css">
+<link rel="stylesheet" href="../_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/typography.css">
+<link rel="stylesheet" href="../_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/semantic.css">
+<style>
+body{margin:0;background:#F4F4F4;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+a{color:#171717;text-underline-offset:3px}
+a:hover{opacity:.6}
+</style>
+</helmet>
+<div style="font-family:var(--font-sans);color:#171717;padding:48px 40px 96px;max-width:1360px;margin:0 auto;box-sizing:border-box">
+
+  <!-- Header -->
+  <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+    <img src="../assets/be-giant-logo.svg" alt="Be Giant" style="height:26px;width:auto;display:block">
+    <div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7A7A7A">Round 9 · P3.1 exploration</div>
+    <a href="../BG App.dc.html" style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Back to board</a>
+  </div>
+  <div style="font-family:var(--font-serif);font-size:56px;line-height:1;letter-spacing:-.01em;margin-top:32px">For You icon and followed-tag cue</div>
+  <div style="font-size:17px;line-height:1.5;color:#3D3D3D;max-width:760px;margin-top:16px">The sparkle on the For You switch and next to followed tags (D28) reads as an AI mark: it is the same shape Gemini and most assistants use. Six replacements below, from restrained to playful, chosen to say "picked because of you" rather than "generated for you". Nothing here changes the live app until one is picked.</div>
+
+  <!-- Today -->
+  <div style="margin-top:32px;display:flex;align-items:center;gap:16px;padding:16px 20px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #E6E6E6;max-width:760px;box-sizing:border-box">
+    <img src="../assets/light/sparkle.svg" alt="" style="width:32px;height:32px;display:block;flex:none">
+    <div style="flex:1;font-size:14px;line-height:1.45;color:#3D3D3D"><span style="font-weight:600;color:#171717">Today: sparkle.</span> A four-point star with small sparks. Every major assistant uses this shape for "AI did this".</div>
+    <div style="flex:none;height:24px;padding:0 10px;border-radius:999px;background:#FDE7E4;color:#B4231A;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Reads as AI</div>
+  </div>
+
+  <!-- Comparison board -->
+  <div style="margin-top:72px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7A7A7A">Comparison board</div>
+  <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#6B6B6B;margin-top:16px;padding-bottom:10px;border-bottom:1px solid #E6E6E6"><div>Restrained</div><div>Playful</div></div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:16px">
+    <sc-for list="{{ options }}" as="o" hint-placeholder-count="6">
+      <div style="background:#FFFFFF;box-shadow:inset 0 0 0 1px {{ o.ring }};padding:20px;display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;align-items:center;justify-content:space-between;height:20px">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.12em;color:#7A7A7A">{{ o.num }}</div>
+          <sc-if value="{{ o.pick }}" hint-placeholder-val="{{ false }}"><div style="height:20px;padding:0 8px;border-radius:999px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">{{ o.pickLabel }}</div></sc-if>
+        </div>
+        <div style="height:88px;display:flex;align-items:center;justify-content:center;background:#FAFAFA">
+          <sc-if value="{{ o.maya }}" hint-placeholder-val="{{ false }}">
+            <div style="width:80px;height:80px;padding:8px;box-sizing:border-box;border:1.5px dashed #A3A3A3;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;line-height:1.25;font-weight:600;color:#6B6B6B">Illustration: Maya</div>
+          </sc-if>
+          <sc-if value="{{ o.notMaya }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;align-items:center;gap:18px"><div aria-hidden="true" style="background:url({{ o.icon }}) center/contain no-repeat;width:44px;height:44px;display:block"></div><div aria-hidden="true" style="background:url({{ o.iconFill }}) center/contain no-repeat;width:28px;height:28px;display:block;opacity:.85"></div></div>
+          </sc-if>
+        </div>
+        <div>
+          <div style="font-family:var(--font-serif);font-size:24px;line-height:1.05">{{ o.name }}</div>
+          <div style="font-size:12px;color:#7A7A7A;margin-top:4px">{{ o.source }}</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px 18px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap"><div aria-hidden="true" style="background:url({{ o.icon }}) center/contain no-repeat;width:13px;height:13px;display:block"></div>For You</div>
+          <div style="display:flex;align-items:center;gap:6px;height:14px"><div style="width:12px;height:12px;flex:none;background:#DCD6FF"></div><div style="font-size:12px;line-height:14px;font-weight:500;text-transform:uppercase">Economy</div><div aria-hidden="true" style="background:url({{ o.icon }}) center/contain no-repeat;width:12px;height:12px;display:block"></div></div>
+        </div>
+        <div style="font-size:13px;line-height:1.45;color:#3D3D3D">{{ o.says }}</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:auto">
+          <div style="height:22px;padding:0 9px;border-radius:999px;background:{{ o.riskBg }};color:{{ o.riskFg }};display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">{{ o.riskLabel }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="font-size:12px;line-height:1.5;color:#7A7A7A;margin-top:12px;max-width:760px">Large icon is Phosphor light, the smaller one Phosphor fill (a possible active-state weight). The two Maya options show a Phosphor stand-in at small sizes so they can be judged in place; the final marks need drawing.</div>
+
+  <!-- Top two -->
+  <div style="margin-top:72px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7A7A7A">Top two</div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px;margin-top:16px">
+    <sc-for list="{{ topTwo }}" as="t" hint-placeholder-count="2">
+      <div style="background:#FFFFFF;box-shadow:inset 0 0 0 1px #E6E6E6;padding:28px;display:flex;gap:24px">
+        <div style="flex:none;width:80px;height:80px;display:flex;align-items:center;justify-content:center;background:#FAFAFA">
+          <sc-if value="{{ t.maya }}" hint-placeholder-val="{{ false }}"><div style="width:68px;height:68px;padding:6px;box-sizing:border-box;border:1.5px dashed #A3A3A3;border-radius:6px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:11px;line-height:1.25;font-weight:600;color:#6B6B6B">Illustration: Maya</div></sc-if>
+          <sc-if value="{{ t.notMaya }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="background:url({{ t.icon }}) center/contain no-repeat;width:40px;height:40px;display:block"></div></sc-if>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">{{ t.rank }}</div>
+          <div style="font-family:var(--font-serif);font-size:32px;line-height:1">{{ t.name }}</div>
+          <div style="font-size:15px;line-height:1.5;color:#3D3D3D">{{ t.why }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- Per option -->
+  <div style="margin-top:72px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7A7A7A">Each option in place</div>
+  <div style="font-size:14px;line-height:1.5;color:#3D3D3D;margin-top:8px;max-width:760px">The Home / For You switch at real size (44px tall, 100px segments, 13px icon), copied from the app header: on the solid white header, over the hero photo, and on a dark surface. Then the For You reason line and a followed tag in a row, light and dark, at the live 12px.</div>
+
+  <sc-for list="{{ options }}" as="o" hint-placeholder-count="6">
+    <div style="margin-top:32px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #E6E6E6;padding:28px">
+      <div style="display:flex;align-items:baseline;gap:16px;flex-wrap:wrap">
+        <div style="font-size:11px;font-weight:600;letter-spacing:.12em;color:#7A7A7A">{{ o.num }}</div>
+        <div style="font-family:var(--font-serif);font-size:32px;line-height:1">{{ o.name }}</div>
+        <div style="font-size:13px;color:#7A7A7A">{{ o.source }}</div>
+        <div style="height:22px;padding:0 9px;border-radius:999px;background:{{ o.riskBg }};color:{{ o.riskFg }};display:flex;align-items:center;align-self:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">{{ o.riskLabel }}</div>
+      </div>
+      <div style="font-size:14px;line-height:1.5;color:#3D3D3D;margin-top:10px;max-width:820px">{{ o.note }}</div>
+
+      <div style="display:flex;gap:24px;margin-top:24px;flex-wrap:wrap;align-items:flex-start">
+        <sc-if value="{{ o.maya }}" hint-placeholder-val="{{ false }}">
+          <div style="width:208px;height:208px;flex:none;box-sizing:border-box;border:1.5px dashed #A3A3A3;border-radius:6px;padding:20px;display:flex;flex-direction:column;justify-content:center;gap:10px;text-align:center;color:#7A7A7A">
+            <div style="font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">Illustration: Maya</div>
+            <div style="font-size:12px;line-height:1.45">{{ o.mayaBrief }}</div>
+            <div style="font-size:11px;line-height:1.4;color:#6B6B6B">Stand-in at small sizes: {{ o.standIn }}</div>
+          </div>
+        </sc-if>
+
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <sc-for list="{{ o.contexts }}" as="c" hint-placeholder-count="3">
+            <div style="display:flex;gap:12px;align-items:center">
+              <div style="width:84px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#7A7A7A">{{ c.label }}</div>
+              <sc-for list="{{ c.states }}" as="s" hint-placeholder-count="2">
+                <div style="width:236px;height:76px;box-sizing:border-box;padding:0 14px;display:flex;flex-direction:column;justify-content:center;gap:6px;background:{{ c.ground }};background-image:{{ c.photo }};background-size:cover;background-position:center 30%;box-shadow:inset 0 0 0 1px {{ c.edge }}">
+                  <div style="position:relative;display:flex;height:44px;width:208px;padding:4px;box-sizing:border-box;border-radius:999px;background:{{ c.track }};backdrop-filter:blur(14px) saturate(1.6);-webkit-backdrop-filter:blur(14px) saturate(1.6);box-shadow:{{ c.trackRing }}">
+                    <div style="position:absolute;top:4px;bottom:4px;left:{{ s.pillLeft }};width:100px;border-radius:999px;background:#FFFFFF;box-shadow:{{ c.pillShadow }}"></div>
+                    <div style="position:relative;width:100px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:{{ s.homeFg }}">Home</div>
+                    <div style="position:relative;width:100px;display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:{{ s.fyFg }}"><div aria-hidden="true" style="background:url({{ o.icon }}) center/contain no-repeat;width:13px;height:13px;display:block;filter:{{ s.fyFilter }}"></div>For You</div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </sc-for>
+          <div style="display:flex;gap:12px"><div style="width:84px"></div><div style="width:236px;font-size:11px;color:#6B6B6B">For You inactive</div><div style="width:236px;font-size:11px;color:#6B6B6B">For You active</div></div>
+        </div>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <sc-for list="{{ o.rows }}" as="r" hint-placeholder-count="2">
+            <div style="width:260px;box-sizing:border-box;padding:18px 20px 22px;background:{{ r.bg }};box-shadow:inset 0 0 0 1px {{ r.edge }};display:flex;flex-direction:column;gap:10px">
+              <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:{{ r.label }}">{{ r.name }}</div>
+              <div style="display:flex;align-items:center;gap:6px;font-size:12px;line-height:14px;color:{{ r.muted }}"><div aria-hidden="true" style="background:url({{ o.icon }}) center/contain no-repeat;width:12px;height:12px;display:block;flex:none;filter:{{ r.filter }};opacity:{{ r.iconOp }}"></div>Because you follow Economy</div>
+              <div style="font-family:var(--font-serif);font-size:24px;line-height:1.04;letter-spacing:-.01em;color:{{ r.fg }}">The rent is too high, and the data says it will stay that way</div>
+              <div style="display:flex;align-items:center;gap:6px;height:14px;margin-top:4px"><div style="width:12px;height:12px;flex:none;background:#DCD6FF"></div><div style="font-size:12px;line-height:14px;font-weight:500;text-transform:uppercase;white-space:nowrap;color:{{ r.fg }};transform:translateY(.5px)">Economy</div><div aria-hidden="true" style="background:url({{ o.icon }}) center/contain no-repeat;width:12px;height:12px;display:block;flex:none;filter:{{ r.filter }}"></div></div>
+              <div style="font-size:11px;color:{{ r.muted }};margin-top:2px">Followed tag, as on Home and in articles</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-for>
+
+  <!-- AI risk -->
+  <div style="margin-top:72px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7A7A7A">AI-symbol risk</div>
+  <div style="margin-top:16px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #E6E6E6">
+    <sc-for list="{{ risks }}" as="k" hint-placeholder-count="4">
+      <div style="display:flex;gap:20px;align-items:flex-start;padding:18px 24px;border-top:1px solid {{ k.rule }}">
+        <div style="flex:none;width:110px"><div style="display:inline-flex;height:22px;padding:0 9px;border-radius:999px;background:{{ k.bg }};color:{{ k.fg }};align-items:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">{{ k.level }}</div></div>
+        <div aria-hidden="true" style="background:url({{ k.icon }}) center/contain no-repeat;width:20px;height:20px;display:block;flex:none;margin-top:1px"></div>
+        <div style="font-size:14px;line-height:1.5;color:#3D3D3D"><span style="font-weight:600;color:#171717">{{ k.name }}.</span> {{ k.text }}</div>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="margin-top:48px;font-size:12px;line-height:1.5;color:#7A7A7A;max-width:760px">Notes, Maya brief and open questions: docs/round-9/P3.1-for-you-icon.md. New Phosphor files added for this exploration (MIT, from @phosphor-icons/core 2.1.1): heart, compass, hand-heart, star, book-open-user, star-four, light and fill.</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const L = '../assets/light/', F = '../assets/fill/';
+const RISK = {
+  low: {label:'Low AI risk', bg:'#E8F3EA', fg:'#2C6B3A'},
+  watch: {label:'Watch', bg:'#FFF3D6', fg:'#8A5A00'},
+  high: {label:'Reads as AI', bg:'#FDE7E4', fg:'#B4231A'}
+};
+const OPTIONS = [
+  {key:'page', name:'Person and page', icon:'book-open-user', risk:'low',
+    source:'Phosphor book-open-user',
+    says:'A reader with an open book. Literal: your reading.',
+    note:'The most literal of the six: a person over an open book. No AI association. At 12 to 13px the figure and the pages merge into a busy blot, so it is better suited to a larger slot (a For You page title, an empty state) than to the switch or the tag marker.'},
+  {key:'compass', name:'Compass', icon:'compass', risk:'low',
+    source:'Phosphor compass',
+    says:'Finding your way. Calm, editorial, a little impersonal.',
+    note:'Reads cleanly at every size and has no AI history. The catch is meaning: a compass says discovery, which is the job of the Discover tab, not of a feed built from what you follow. Next to a followed tag it reads as "explore this", not "you follow this".'},
+  {key:'heart', name:'Heart', icon:'heart', risk:'low', pick:'Pick 1',
+    source:'Phosphor heart',
+    says:'Things you care about. The most universal personal mark.',
+    note:'Clear at 12px, warm without being cute, and nothing like an AI mark. The app has no likes, so the heart is free to mean "yours": the topics and writers you care about. Pairs well with the reason line. Watch: the heart must never become a like button on stories, or the meaning splits.'},
+  {key:'bookheart', name:'Bookmark-heart hybrid', icon:'bookmark-simple-light', iconFile:true, maya:true, risk:'low',
+    source:'Custom, to be drawn',
+    standIn:'Phosphor bookmark',
+    mayaBrief:'A single bookmark with a small heart cut into or sitting on it. Phosphor light stroke weight so it sits with the other icons.',
+    says:'Saved plus loved. Ownable, but close to Save.',
+    note:'Ownable and personal, with no AI association. The risk is confusion with Save: the bookmark already means Save across the app (cards, articles, the Saved tab), and at 13px the heart inside is hard to see, so it will read as "saved". Worth drawing only if Save moves to a different mark.'},
+  {key:'handheart', name:'Hand and heart', icon:'hand-heart', risk:'watch',
+    source:'Phosphor hand-heart',
+    says:'Offered with care. Warm, but reads as give or donate.',
+    note:'The warmest of the Phosphor options and clearly human. For a non-profit newsroom it also reads as "donate" or "support us", the symbol we would want for a giving prompt. Using it for For You would blur the two. Busy at 12px.'},
+  {key:'star', name:'Hand-drawn star', icon:'star', maya:true, risk:'watch', pick:'Pick 2',
+    source:'Custom in Maya’s illustration style',
+    standIn:'Phosphor star (five points)',
+    mayaBrief:'One five-point star in Maya’s hand-drawn line, slightly uneven, open centre. No companion sparks, no four-point shape, no glow.',
+    says:'A single star from our own illustrator. Ownable and playful.',
+    note:'Keeps the meaning readers already learned from D28 (a star marks what you follow) while dropping the AI shape. A five-point, hand-drawn single star reads as a doodle in a margin, not a generative mark. The Phosphor star stands in here; the real one needs Maya, held to the rules on the left so it never drifts back toward a sparkle.'}
+];
+const TOP = [
+  {rank:'Pick 1 · ships now', key:'heart', name:'Heart',
+    why:'The strongest personal signal of the six, crisp at 12 and 13px in every context, and nothing like an AI mark. It exists in Phosphor today, so it can replace the sparkle in one pass (switch, tag marker, reason line, Following row in Settings). Condition: no story-level likes, ever, so the heart keeps meaning "what you follow".'},
+  {rank:'Pick 2 · needs Maya', key:'star', name:'Hand-drawn star', maya:true,
+    why:'The most ownable: it brings Maya’s illustration voice into the chrome and keeps the star readers already associate with follows. It wins over the heart only if drawn well, as a single five-point star with no sparks. Until it is drawn, the Phosphor star is a safe stand-in, close to a "favourites" star but not an AI one.'}
+];
+const RISKS = [
+  {level:'high', key:'sparkle', icon:L + 'sparkle.svg', name:'Sparkle (today)', text:'The four-point star with small sparks is the shared mark for AI features (Gemini, assistants in mail, docs and phones). Replace everywhere it appears, including Show me a random story and For you today.'},
+  {level:'high', key:'four', icon:L + 'star-four-light.svg', name:'Any four-point star', text:'Even alone and without sparks, a four-point star reads as AI. Rule this shape out for the Maya brief too.'},
+  {level:'watch', key:'star', icon:L + 'star-light.svg', name:'Hand-drawn star', text:'Low as long as it has five points and stands alone. It becomes AI-adjacent the moment it gets extra sparks, a glow, a gradient or a twinkle animation. Write those out of the brief.'},
+  {level:'watch', key:'handheart', icon:L + 'hand-heart-light.svg', name:'Hand and heart', text:'Not an AI risk, but a meaning clash: it is the common donate symbol, which Be Giant may need for giving prompts.'},
+  {level:'low', key:'rest', icon:L + 'heart-light.svg', name:'Heart, compass, person and page, bookmark-heart', text:'No AI association. Their risks are about meaning (compass overlaps Discover, bookmark-heart overlaps Save) and legibility at 12px (person and page).'}
+];
+class Component extends DCLogic {
+  state = {};
+  heroPhoto() {
+    return 'linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,0)), url(../assets/imagery-web/saskatchewan-twisters.jpg)';
+  }
+  contexts() {
+    const hero = this.heroPhoto();
+    return [
+      {label:'Light', ground:'#FFFFFF', photo:'none', edge:'#E6E6E6', track:'rgb(23 23 23 / .06)', trackRing:'none', pillShadow:'0 1px 3px rgba(0,0,0,.12)',
+        states:[{pillLeft:'4px', homeFg:'#171717', fyFg:'#171717', fyFilter:'none'}, {pillLeft:'104px', homeFg:'#171717', fyFg:'#171717', fyFilter:'none'}]},
+      {label:'Over hero', ground:'#3A464C', photo:hero, edge:'transparent', track:'rgb(23 23 23 / .45)', trackRing:'inset 0 0 0 .5px rgba(255,255,255,.2)', pillShadow:'none',
+        states:[{pillLeft:'4px', homeFg:'#171717', fyFg:'#FFFFFF', fyFilter:'invert(1)'}, {pillLeft:'104px', homeFg:'#FFFFFF', fyFg:'#171717', fyFilter:'none'}]},
+      {label:'Dark', ground:'#171717', photo:'none', edge:'#171717', track:'rgba(255,255,255,.12)', trackRing:'none', pillShadow:'none',
+        states:[{pillLeft:'4px', homeFg:'#171717', fyFg:'#FFFFFF', fyFilter:'invert(1)'}, {pillLeft:'104px', homeFg:'#FFFFFF', fyFg:'#171717', fyFilter:'none'}]}
+    ];
+  }
+  rows() {
+    return [
+      {name:'For You row · light', bg:'#FFFFFF', edge:'#E6E6E6', fg:'#171717', muted:'#5C5C5C', label:'#A3A3A3', filter:'none', iconOp:'1'},
+      {name:'For You row · dark', bg:'#171717', edge:'#171717', fg:'#FFFFFF', muted:'rgba(255,255,255,.62)', label:'rgba(255,255,255,.4)', filter:'invert(1)', iconOp:'.7'}
+    ];
+  }
+  iconOf(o) { return o.iconFile ? L + o.icon + '.svg' : L + o.icon + '-light.svg'; }
+  fillOf(o) { return o.iconFile ? F + 'bookmark-simple-fill.svg' : F + o.icon + '-fill.svg'; }
+  renderVals() {
+    const ctx = this.contexts(), rows = this.rows();
+    const options = OPTIONS.map((o, i) => {
+      const r = RISK[o.risk];
+      return {...o, num: String(i + 1).padStart(2, '0'), icon: this.iconOf(o), iconFill: this.fillOf(o), maya: !!o.maya, notMaya: !o.maya,
+        pick: !!o.pick, pickLabel: o.pick || '', ring: o.pick ? '#171717' : '#E6E6E6',
+        riskLabel: r.label, riskBg: r.bg, riskFg: r.fg, standIn: o.standIn || '', mayaBrief: o.mayaBrief || '',
+        contexts: ctx, rows: rows};
+    });
+    const topTwo = TOP.map(t => { const o = OPTIONS.find(x => x.key === t.key); return {...t, icon: this.iconOf(o), maya: !!t.maya, notMaya: !t.maya}; });
+    const risks = RISKS.map((k, i) => { const r = RISK[k.level]; return {...k, level: r.label, bg: r.bg, fg: r.fg, rule: i ? '#E6E6E6' : 'transparent'}; });
+    return {options, topTwo, risks};
+  }
+}
+</script>
+</body>
+</html>
