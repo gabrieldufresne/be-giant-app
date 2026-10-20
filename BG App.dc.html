@@ -118,7 +118,7 @@ a:hover{opacity:.6}
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" data-bg-color="#171717"><rect width="100" height="100" fill="#171717"></rect><text x="50" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#FFFFFF">BG</text></svg></template>
 <sc-if value="{{ isBoard }}" hint-placeholder-val="{{ true }}">
 <sc-if value="{{ appChip }}" hint-placeholder-val="{{ false }}">
-<div onClick="{{ toApp }}" aria-label="Open the app" style="position:absolute;top:calc(env(safe-area-inset-top) + 14px);left:16px;z-index:50;height:32px;padding:0 12px 0 10px;border-radius:999px;display:flex;align-items:center;gap:6px;background:#171717;color:#FFFFFF;box-shadow:0 4px 14px rgba(0,0,0,.18);font-family:var(--font-sans);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer"><img src="assets/light/play-light.svg" alt="" style="width:15px;height:15px;display:block;filter:invert(1)">View as app</div>
+<div onClick="{{ toApp }}" aria-label="Open the app" style="position:absolute;top:calc(env(safe-area-inset-top) + 14px);left:16px;z-index:50;height:32px;padding:0 12px 0 10px;border-radius:999px;display:flex;align-items:center;gap:6px;background:#171717;color:#FFFFFF;box-shadow:0 4px 14px rgba(0,0,0,.18);font-family:var(--font-sans);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer"><img src="assets/light/play-light.svg" alt="" style="width:15px;height:15px;display:block;filter:invert(1)">View as app</div>
 </sc-if>
 <div style="width:max-content;min-width:100%;padding:64px 96px 160px;display:flex;flex-direction:column;gap:96px;font-family:var(--font-sans);color:#171717;background:#F4F4F4">
 
@@ -607,7 +607,7 @@ a:hover{opacity:.6}
     </div>
   </div>
   <sc-if value="{{ boardChip }}" hint-placeholder-val="{{ false }}">
-  <div onClick="{{ toBoard }}" aria-label="Open the review board" style="position:absolute;top:8px;right:10px;z-index:2;height:26px;padding:0 10px 0 8px;border-radius:999px;display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(12px) saturate(1.6);backdrop-filter:blur(12px) saturate(1.6);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.1);font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#171717;cursor:pointer"><img src="assets/light/squares-four-light.svg" alt="" style="width:14px;height:14px;display:block">Board</div>
+  <div onClick="{{ toBoard }}" aria-label="Open the review board" style="position:absolute;top:8px;right:10px;z-index:2;height:26px;padding:0 10px 0 8px;border-radius:999px;display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(12px) saturate(1.6);backdrop-filter:blur(12px) saturate(1.6);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.1);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#171717;cursor:pointer"><img src="assets/light/squares-four-light.svg" alt="" style="width:14px;height:14px;display:block">Board</div>
   </sc-if>
   <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
   <div style="margin-top:20px;display:flex;align-items:center;gap:3px;background:#FFFFFF;border:1px solid #E4E4E4;border-radius:999px;padding:4px">
