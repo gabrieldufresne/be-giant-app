@@ -113,6 +113,7 @@
 body{margin:0;background:#F4F4F4;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
 a{color:#171717;text-underline-offset:3px}
 a:hover{opacity:.6}
+@keyframes bgVerIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
 </style>
 </helmet>
 <template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" data-bg-color="#171717"><rect width="100" height="100" fill="#171717"></rect><text x="50" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#FFFFFF">BG</text></svg></template>
@@ -609,6 +610,9 @@ a:hover{opacity:.6}
   <sc-if value="{{ boardChip }}" hint-placeholder-val="{{ false }}">
   <div onClick="{{ toBoard }}" aria-label="Open the review board" style="position:absolute;top:8px;right:10px;z-index:2;height:26px;padding:0 10px 0 8px;border-radius:999px;display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(12px) saturate(1.6);backdrop-filter:blur(12px) saturate(1.6);box-shadow:inset 0 0 0 .5px rgba(0,0,0,.1);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#171717;cursor:pointer"><img src="assets/light/squares-four-light.svg" alt="" style="width:14px;height:14px;display:block">Board</div>
   </sc-if>
+  <sc-if value="{{ newVer }}" hint-placeholder-val="{{ false }}">
+  <div role="status" style="position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom) + 96px);transform:translateX(-50%);z-index:3;display:flex;align-items:center;gap:4px;height:44px;padding:0 4px 0 16px;border-radius:999px;background:#171717;color:#FFFFFF;box-shadow:0 8px 24px rgba(0,0,0,.24);font-size:13px;white-space:nowrap;animation:bgVerIn 320ms cubic-bezier(.16,1,.3,1) both">A new version is ready<div onClick="{{ refreshApp }}" style="margin-left:8px;height:36px;padding:0 14px;border-radius:999px;background:#FFFFFF;color:#171717;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">{{ verLabel }}</div><div onClick="{{ dismissVer }}" aria-label="Dismiss" style="width:36px;height:36px;display:flex;align-items:center;justify-content:center;cursor:pointer"><img src="assets/light/x-light.svg" alt="" style="width:16px;height:16px;display:block;filter:invert(1)"></div></div>
+  </sc-if>
   <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
   <div style="margin-top:20px;display:flex;align-items:center;gap:3px;background:#FFFFFF;border:1px solid #E4E4E4;border-radius:999px;padding:4px">
     <div onClick="{{ startOb }}" style="cursor:pointer;border-radius:999px;padding:10px 16px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase">Restart</div>
@@ -624,6 +628,10 @@ function phoneLike(){ return !!(window.matchMedia && window.matchMedia('(pointer
 // #app forces the app, #board forces the board; otherwise phones get the app
 function wantApp(){ const h = location.hash; return h === '#app' || (h !== '#board' && phoneLike()); }
 function standalone(){ return !!(window.navigator.standalone || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches)); }
+// Prototype updates: compare each file's version tag on the server with the cached copy, and offer a refresh
+// The page is checked at its own address (query included), since that is the copy the browser loaded
+const vfiles = () => [location.href.split('#')[0], 'BeGiantAppPhone.dc.html', 'bg-app-data.js', 'ios-frame.js', 'support.js'];
+function fileTag(r){ return r.headers.get('etag') || r.headers.get('last-modified') || r.headers.get('content-length') || ''; }
 class Component extends DCLogic {
   state = {nav:null, app: wantApp(), vw: window.innerWidth, vh: window.innerHeight, appStart:'ob-splash', mounted:true};
   componentDidMount() {
@@ -631,8 +639,11 @@ class Component extends DCLogic {
     this._h = () => this.setState({app: wantApp()});
     window.addEventListener('resize', this._r); window.addEventListener('orientationchange', this._r); window.addEventListener('hashchange', this._h);
     this.lockScroll();
+    this._v = () => { if (document.visibilityState === 'visible') this.checkVersion(); };
+    document.addEventListener('visibilitychange', this._v); this._vt = setInterval(this._v, 120000);
+    Promise.all(vfiles().map(f => fetch(f, {cache:'force-cache'}).then(fileTag))).then(t => { this._ver = t.join('|'); setTimeout(this._v, 3000); }).catch(() => {});
   }
-  componentWillUnmount() { window.removeEventListener('resize', this._r); window.removeEventListener('orientationchange', this._r); window.removeEventListener('hashchange', this._h); this.lockScroll(true); }
+  componentWillUnmount() { document.removeEventListener('visibilitychange', this._v); clearInterval(this._vt); window.removeEventListener('resize', this._r); window.removeEventListener('orientationchange', this._r); window.removeEventListener('hashchange', this._h); this.lockScroll(true); }
   isAppNow() { const s = this.state; return !!(s.app || (this.props.view === 'App' && !s.boardOverride)); }
   lockScroll(off) {
     const app = !off && this.isAppNow();
@@ -647,6 +658,12 @@ class Component extends DCLogic {
 
   goApp(on) { try { history.replaceState(null, '', on ? '#app' : phoneLike() ? '#board' : location.pathname + location.search); } catch (e) {} this.setState({app:on, boardOverride:!on}); setTimeout(this._r, 60); }
   componentDidUpdate(pp) { this.lockScroll(); if (pp && pp.view !== this.props.view) this.setState({boardOverride:false, app: this.props.view === 'App' || wantApp()}); }
+  checkVersion() {
+    if (!this._ver || this.state.newVer || this.state.verOff) return;
+    Promise.all(vfiles().map(f => fetch(f, {method:'HEAD', cache:'no-store'}).then(fileTag))).then(t => { if (t.join('|') !== this._ver) this.setState({newVer:true}); }).catch(() => {});
+  }
+  // Re-download every file so the HTTP cache (10 minutes on GitHub Pages) can't serve the old copy, then reload
+  refreshApp() { if (this.state.refreshing) return; this.setState({refreshing:true}); Promise.all(vfiles().map(f => fetch(f, {cache:'reload'}).catch(() => null))).then(() => location.reload()); }
   remount(start) { this.setState({mounted:false, appStart:start}, () => setTimeout(() => this.setState({mounted:true}), 30)); }
   renderVals() {
     const p = this.props, s = this.state, app = s.app || (p.view === 'App' && !s.boardOverride), auto = (p.autoplay ?? false) && !app, d = (n) => auto ? n : '';
@@ -664,6 +681,7 @@ class Component extends DCLogic {
       mounted: s.mounted, appStart: s.appStart,
       toApp: () => this.goApp(true), toBoard: () => this.goApp(false),
       startOb: () => this.remount('ob-splash'), startHome: () => this.remount('home'),
+      newVer: app && !!s.newVer, verLabel: s.refreshing ? 'Refreshing' : 'Refresh', refreshApp: () => this.refreshApp(), dismissVer: () => this.setState({newVer:false, verOff:true}),
       nav, notes: p.showNotes ?? false,
       setFloat: () => this.setState({nav:'floating'}), setDock: () => this.setState({nav:'docked'}),
       fBg: on('floating') ? '#171717' : 'transparent', fFg: on('floating') ? '#FFFFFF' : '#171717',
