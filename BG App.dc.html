@@ -594,6 +594,55 @@ a:hover{opacity:.6}
     </div>
   </section>
 
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">09b · Onboarding v2 · Round 9</div>
+      <div style="font-size:15px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">Welcome, then three steps: topics, notifications, free account. Every step has Skip, and anything skipped can be picked up later from the guest asks and the unfinished-profile strip. Taps to finish with Apple: 6 at minimum, 9 with every optional answer (8 without gender). Taps to skip: 2 (Get started, Skip).</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="09b Topics" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Topics</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Step 1 of 3 · pre-checked</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-topics" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Three already on.</b> Economy, Housing and Climate start checked, so Continue works on the first tap and the 3-topic target is met by default. The list is labelled as placeholder until Be Giant sends the final topics.</div></sc-if>
+      </div>
+      <div data-screen-label="09b Account" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Create account</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Step 3 of 3 · four options</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-account" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Free in the headline.</b> Apple and Google lead in their own styles. Below an "or with email" rule: Email me a sign-in link (magic link), then Use a password instead as a text link. The summary above stays editable.</div></sc-if>
+      </div>
+      <div data-screen-label="09b Account five" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Five providers</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Layout check</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-account-5" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">It scales.</b> Brand buttons stack above the rule; email options stay below it. A fifth provider (Microsoft, in its own style) is one more 52px row, nothing else moves.</div></sc-if>
+      </div>
+      <div data-screen-label="09b Magic link" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Magic link</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">After Email me a link</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-link" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">One field and one button. New and returning readers see the same screen; there is no separate sign-in. Use a password instead goes to the full email form.</div></sc-if>
+      </div>
+      <div data-screen-label="09b Link sent" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Check your email</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Link sent</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-link-sent" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">The address with Change, Open Mail, and Resend. Open Mail stands in for tapping the link, which makes the account and lands on About you.</div></sc-if>
+      </div>
+      <div data-screen-label="09b About you gender" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">About you · with gender</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Version A · 3 fields</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-details" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Name and email filled in from Apple.</b> City (Use location fills it in one tap), age range and gender, all optional. Skip for now or Finish both land on Home.</div></sc-if>
+      </div>
+      <div data-screen-label="09b About you no gender" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">About you · without gender</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Version B · 2 fields</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-details-nogender" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Fewer fields.</b> City and age only: one fewer question and one fewer tap to complete. Recommended unless Be Giant needs gender for reach reporting.</div></sc-if>
+      </div>
+      <div data-screen-label="09b About you link" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">About you · after magic link</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Name not known</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-details-linked" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">A magic link only proves the email, so an optional Name field joins the list. Everything else matches Version A.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 </sc-if>
