@@ -34,7 +34,7 @@
 </style>
 </helmet>
 <x-import component-from-global-scope="IOSDevice" dark="{{ darkChrome }}" keyboard="{{ kb }}" bare="{{ bare }}" width="{{ devW }}" height="{{ devH }}" hint-size="402px,874px">
-<div ref="{{ rootRef }}" onPointerDown="{{ onDown }}" onPointerMove="{{ onMove }}" onPointerUp="{{ onUp }}" onPointerCancel="{{ onUp }}" onClickCapture="{{ onClickCap }}" style="position:relative;z-index:0;width:100%;height:100%;overflow:hidden;background:#FFFFFF;font-family:var(--font-sans);color:#171717;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent">
+<div ref="{{ rootRef }}" onPointerDown="{{ onDown }}" onPointerMove="{{ onMove }}" onPointerUp="{{ onUp }}" onPointerCancel="{{ onUp }}" onClickCapture="{{ onClickCap }}" style="position:relative;z-index:0;width:100%;height:100%;overflow:clip;background:#FFFFFF;font-family:var(--font-sans);color:#171717;touch-action:pan-y;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent">
 
 <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
 <div style="position:absolute;inset:0;animation:bgTab 250ms ease both">
@@ -1138,7 +1138,7 @@
 
 <div onClick="{{ closeSheets }}" style="position:absolute;inset:0;z-index:60;background:rgba(0,0,0,.2);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);opacity:{{ bdOp }};pointer-events:{{ bdPe }};transition:opacity 250ms ease"></div>
 
-<div style="position:absolute;z-index:61;left:8px;right:8px;bottom:8px;background:#FFFFFF;border-radius:32px;padding:10px 20px 30px;transform:{{ shareTf }};transition:transform 320ms cubic-bezier(.16,1,.3,1);box-shadow:var(--shadow-layer);display:flex;flex-direction:column;gap:16px">
+<div style="position:absolute;z-index:61;left:8px;right:8px;bottom:8px;background:#FFFFFF;border-radius:32px;padding:10px 20px 30px;transform:{{ shareTf }};visibility:{{ shareVis }};transition:transform 320ms cubic-bezier(.16,1,.3,1), visibility 320ms;box-shadow:var(--shadow-layer);display:flex;flex-direction:column;gap:16px">
   <div style="width:36px;height:5px;border-radius:3px;background:#D6D6D6;align-self:center"></div>
   <div style="display:flex;gap:14px;align-items:center"><img src="{{ shareImg }}" alt="" style="width:72px;height:72px;object-fit:cover;object-position:{{ sharePos }};display:block;flex:none"><div style="display:flex;flex-direction:column;gap:5px;min-width:0"><div style="font-family:var(--font-serif);font-size:20px;line-height:1.1;text-wrap:pretty">{{ shareTitle }}</div><div style="font-size:12px;color:#7A7A7A">begiant.ca · {{ shareMeta }}</div></div></div>
   <div style="border-top:1px solid #171717">
@@ -1147,7 +1147,7 @@
   <div onClick="{{ closeSheets }}" style="height:52px;border-radius:8px;box-shadow:inset 0 0 0 1px #171717;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">Cancel</div>
 </div>
 
-<div style="position:absolute;z-index:61;left:8px;right:8px;bottom:8px;background:#FFFFFF;border-radius:32px;padding:10px 20px 30px;transform:{{ accTf }};transition:transform 320ms cubic-bezier(.16,1,.3,1);box-shadow:var(--shadow-layer);display:flex;flex-direction:column;gap:18px">
+<div style="position:absolute;z-index:61;left:8px;right:8px;bottom:8px;background:#FFFFFF;border-radius:32px;padding:10px 20px 30px;transform:{{ accTf }};visibility:{{ accVis }};transition:transform 320ms cubic-bezier(.16,1,.3,1), visibility 320ms;box-shadow:var(--shadow-layer);display:flex;flex-direction:column;gap:18px">
   <div style="width:36px;height:5px;border-radius:3px;background:#D6D6D6;align-self:center"></div>
   <sc-if value="{{ acctGuest }}" hint-placeholder-val="{{ false }}">
   <div style="display:flex;flex-direction:column;gap:16px">
@@ -1172,7 +1172,7 @@
   <div style="font-size:13px;line-height:1.45;color:#5C5C5C">Be Giant is a non-profit. Reader support keeps every story free.</div>
 </div>
 
-<div style="position:absolute;z-index:61;left:8px;right:8px;bottom:8px;background:#FFFFFF;border-radius:32px;padding:10px 20px 26px;transform:{{ gateTf }};transition:transform 320ms cubic-bezier(.16,1,.3,1);box-shadow:var(--shadow-layer);display:flex;flex-direction:column;gap:20px">
+<div style="position:absolute;z-index:61;left:8px;right:8px;bottom:8px;background:#FFFFFF;border-radius:32px;padding:10px 20px 26px;transform:{{ gateTf }};visibility:{{ gateVis }};transition:transform 320ms cubic-bezier(.16,1,.3,1), visibility 320ms;box-shadow:var(--shadow-layer);display:flex;flex-direction:column;gap:20px">
   <div style="width:36px;height:5px;border-radius:3px;background:#D6D6D6;align-self:center"></div>
   <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
     <div style="display:flex;align-items:center;gap:8px"><img src="{{ gateIcon }}" alt="" style="width:18px;height:18px;display:block"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase">{{ gateKick }}</div></div>
@@ -1186,7 +1186,7 @@
   <div style="font-size:12px;line-height:1.45;color:#7A7A7A;text-align:center;margin-top:-6px">Reading stays free with or without an account.</div>
 </div>
 
-<div style="position:absolute;z-index:61;left:8px;right:8px;bottom:8px;background:#FFFFFF;border-radius:32px;padding:10px 20px 26px;transform:{{ nAskTf }};transition:transform 320ms cubic-bezier(.16,1,.3,1);box-shadow:var(--shadow-layer);display:flex;flex-direction:column;gap:20px">
+<div style="position:absolute;z-index:61;left:8px;right:8px;bottom:8px;background:#FFFFFF;border-radius:32px;padding:10px 20px 26px;transform:{{ nAskTf }};visibility:{{ nAskVis }};transition:transform 320ms cubic-bezier(.16,1,.3,1), visibility 320ms;box-shadow:var(--shadow-layer);display:flex;flex-direction:column;gap:20px">
   <div style="width:36px;height:5px;border-radius:3px;background:#D6D6D6;align-self:center"></div>
   <div style="display:flex;flex-direction:column;gap:10px;padding-top:4px">
     <div style="display:flex;align-items:center;gap:8px"><img src="assets/light/bell-light.svg" alt="" style="width:18px;height:18px;display:block"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase">Notifications</div></div>
@@ -1541,9 +1541,12 @@ class Component extends DCLogic {
     if (!D.on) { D.off += D.vel * dt; D.vel *= Math.pow(0.05, dt); }
     const yaw = t * 0.14 + D.off, pitch = -0.3 + Math.sin(t * 0.3) * 0.06;
     const grow = 1 - Math.pow(1 - Math.min(1, t / 1.8), 4);
-    let Rs = 180 * (0.3 + 0.7 * grow), fade = 1;
+    const dd = 560, mix = 0.1, S0 = 44;
+    // Largest radius whose widest cover (x·perspective ≈ 1.06R, half the biggest tier ≈ 0.63·S0) stays 8px inside the screen
+    const R0 = Math.min(180, (w / 2 - 8 - S0 * 0.63) / 1.06);
+    let Rs = R0 * (0.3 + 0.7 * grow), fade = 1;
     if (this._gX) { const k = (now - this._gX) / 1000; Rs *= 1 + 7 * k * k; fade = Math.max(0, 1 - k * 1.4); }
-    const cx = w / 2, cy = Math.max(280, Math.min(h * 0.36, h - 560)), dd = 560, mix = 0.1, S0 = 44;
+    const cx = w / 2, cy = Math.max(280, Math.min(h * 0.36, h - 560));
     const cyw = Math.cos(yaw), syw = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
     for (const g of this._G) {
       const x = g.x * cyw + g.z * syw; let z = -g.x * syw + g.z * cyw;
@@ -2155,8 +2158,8 @@ class Component extends DCLogic {
       showStrip:isPart && !s.stripOff, profDone:pDone + ' of 4', profSegs:PF.map((k, i) => ({bg: i < pDone ? '#171717' : 'rgba(23,23,23,.16)'})),
       profMissing: pMiss.length ? 'Add your ' + andJ(pMiss) + '. Only ever counted in aggregate.' : 'All done',
       openProfile:() => this.openSub('account'), stripDismiss:(e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({stripOff:true}); },
-      gateTf: s.gate ? 'translateY(0)' : 'translateY(110%)', gateKick:GT[0], gateIcon:GT[1], gateTitle:GT[2], gateLine:GT[3], gateCreate:this.openCreate, gateLater:this.gateLater,
-      nAskTf: s.nAsk ? 'translateY(0)' : 'translateY(110%)', nAskTitle: NA.kind === 'writer' ? 'Hear when ' + NA.label + ' publishes' : 'Hear when ' + NA.label + ' has a new story',
+      gateTf: s.gate ? 'translateY(0)' : 'translateY(110%)', gateVis: s.gate ? 'visible' : 'hidden', gateKick:GT[0], gateIcon:GT[1], gateTitle:GT[2], gateLine:GT[3], gateCreate:this.openCreate, gateLater:this.gateLater,
+      nAskTf: s.nAsk ? 'translateY(0)' : 'translateY(110%)', nAskVis: s.nAsk ? 'visible' : 'hidden', nAskTitle: NA.kind === 'writer' ? 'Hear when ' + NA.label + ' publishes' : 'Hear when ' + NA.label + ' has a new story',
       nAskLine: NA.kind === 'writer' ? 'One alert when they publish something new. Change it anytime in Settings.' : 'One alert when a story publishes in a topic you follow. Change it anytime in Settings.',
       nAllow:() => this.setState({nAsk:null, sysPerm:true}), nLater:() => this.setState({nAsk:null}),
       sysPerm:!!s.sysPerm, sysDeny:() => this.setState({sysPerm:false}),
@@ -2316,9 +2319,9 @@ class Component extends DCLogic {
       toastB: ((mpShow && !mpInline) ? 166 : (barGone ? 40 : 104)) + 'px',
       /* sheets */
       closeSheets:() => { if (s.gate) this.gateLater(); this.setState({sheet:null, share:false, menu:false, shareKind:null, nAsk:null}); }, bdOp: anySheet ? 1 : 0, bdPe: anySheet ? 'auto' : 'none',
-      shareTf: s.share ? 'translateY(0)' : 'translateY(110%)', shareImg: s.shareKind === 'milestone' ? 'assets/app-icon-360.png' : IM(shareSt.img), sharePos:shareSt.pos || '50% 50%', shareTitle: s.shareKind === 'milestone' ? 'My ' + ord(s.fin) + ' story on Be Giant' : shareSt.t, shareMeta: s.shareKind === 'milestone' ? 'Reading card · begiant.ca' : shareSt.a,
+      shareTf: s.share ? 'translateY(0)' : 'translateY(110%)', shareVis: s.share ? 'visible' : 'hidden', shareImg: s.shareKind === 'milestone' ? 'assets/app-icon-360.png' : IM(shareSt.img), sharePos:shareSt.pos || '50% 50%', shareTitle: s.shareKind === 'milestone' ? 'My ' + ord(s.fin) + ' story on Be Giant' : shareSt.t, shareMeta: s.shareKind === 'milestone' ? 'Reading card · begiant.ca' : shareSt.a,
       shareRows:[['Copy link','assets/light/plus-light.svg','Link copied'],['Messages','assets/light/arrow-up-right-light.svg','Sent'],['Mail','assets/light/arrow-up-right-light.svg','Draft ready in Mail'],['More options','assets/light/share-fat-light.svg','']].map(r => ({label:r[0], icon:r[1], tap:() => { this.setState({share:false}); if (r[2]) this.toast(r[2]); if (isG) { const n = (s.shareN || 0) + 1; this.setState({shareN:n}); if (n === 1) this.askAcct('share', 900); } }})),
-      accTf: s.sheet === 'account' ? 'translateY(0)' : 'translateY(110%)',
+      accTf: s.sheet === 'account' ? 'translateY(0)' : 'translateY(110%)', accVis: s.sheet === 'account' ? 'visible' : 'hidden',
       accRows:(isPart ? [{label:'Finish your profile', value:pDone + ' of 4', icon:'assets/light/user-circle-light.svg', tap:() => this.openSub('account')}] : []).concat([
         {label:'Following', value:s.picks.length + ' topics · ' + s.writers.length + ' writers', icon:'assets/light/sparkle.svg', tap:() => this.openSub('following')},
         {label:'Saved', value:String(s.saved.length), icon:BL, tap:this.goSaved},
