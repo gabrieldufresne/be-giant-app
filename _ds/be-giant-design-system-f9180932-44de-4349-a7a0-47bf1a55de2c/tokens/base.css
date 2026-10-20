@@ -1,0 +1,35 @@
+/* Editorial text classes lifted from the app's @layer components. These are the
+   named text styles the newsroom designs with. */
+body{background:var(--background);color:var(--foreground);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+h1,h2,h3,h4,h5,h6{font-weight:500;letter-spacing:var(--tracking-heading);text-wrap:pretty;margin:0}
+a[href],button,[role='button']{cursor:pointer}
+a{color:var(--ink);text-decoration:none}
+a:hover{opacity:var(--hover-opacity)}
+
+.bg-container{margin:0 auto;padding:0 var(--container-gutter);max-width:var(--container-max-width)}
+.section-padding{padding:var(--space-12) var(--space-6)}
+
+.heading-display-xl{font-family:var(--font-serif);font-size:var(--text-display-xl);font-weight:400;line-height:100%;color:var(--foreground)}
+.heading-display{font-family:var(--font-serif);font-size:var(--text-display);font-weight:400;line-height:var(--text-display-lh);letter-spacing:var(--tracking-heading);color:var(--foreground)}
+.heading-article-title{font-family:var(--font-serif);font-size:var(--text-h1);font-weight:400;line-height:1.1;letter-spacing:var(--tracking-heading);color:var(--ink)}
+.heading-section{font-family:var(--font-serif);font-size:var(--text-h3);font-weight:300;line-height:var(--text-h3-lh);letter-spacing:var(--tracking-heading);color:var(--ink)}
+.heading-article-lg{font-family:var(--font-serif);font-size:var(--text-h4);font-weight:300;line-height:var(--text-h4-lh);color:var(--ink)}
+.heading-article{font-family:var(--font-serif);font-size:var(--text-h5);font-weight:300;line-height:var(--text-h5-lh);color:var(--ink)}
+
+.text-eyebrow{font-family:var(--font-sans);font-weight:600;font-size:var(--text-eyebrow);line-height:var(--text-eyebrow-lh);text-transform:uppercase;color:var(--ink)}
+.text-franchise{font-family:var(--font-sans);font-weight:500;font-size:var(--text-franchise);line-height:var(--text-franchise-lh);text-transform:uppercase;color:var(--ink)}
+.meta-date{font-size:var(--text-date);line-height:var(--text-date-lh);color:var(--ink-muted)}
+.meta-author{font-weight:400;color:var(--ink)}
+.meta-row{display:flex;align-items:center;gap:var(--space-1);font-size:var(--text-date)}
+.text-image-credit{font-size:var(--text-image-credit);line-height:1.3;color:var(--ink-muted)}
+
+.prose{font-size:var(--text-body-main);line-height:var(--text-body-main-lh);font-weight:300}
+.prose a{text-decoration:underline;text-underline-offset:0.15em}
+
+.link-more{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-button);line-height:var(--text-button-lh);text-transform:uppercase;color:var(--ink)}
+.link-more:hover{text-decoration:underline;opacity:1}
+
+.footer-texture-layer{background-image:url('../assets/textures/footer-texture.png');background-size:310px 310px}
+.footer-logo-on-ink{filter:brightness(0) invert(1)}
+.hairline-border{border-width:1px}
+@supports (border:0.5px solid){.hairline-border{border-width:0.5px}}

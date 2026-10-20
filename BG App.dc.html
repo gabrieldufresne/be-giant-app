@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Be Giant App</title>
+<link rel="apple-touch-icon" href="assets/app-icon.png">
+<link rel="icon" href="assets/app-icon-360.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Be Giant">
+<meta name="theme-color" content="#ffffff">
+<script src="./support.js"></script>
+<meta name="ext-resource-dependency" content="assets/light/arrow-up-right-light.svg" data-resource-id="rv3ib3f">
+<meta name="ext-resource-dependency" content="assets/light/arrow-up-right.svg" data-resource-id="rw88sda">
+<meta name="ext-resource-dependency" content="assets/light/bell-light.svg" data-resource-id="r156jns0">
+<meta name="ext-resource-dependency" content="assets/light/bell.svg" data-resource-id="r1kuqum9">
+<meta name="ext-resource-dependency" content="assets/light/book-open.svg" data-resource-id="r16qdi4g">
+<meta name="ext-resource-dependency" content="assets/light/bookmark-simple-light.svg" data-resource-id="r1t32458">
+<meta name="ext-resource-dependency" content="assets/light/bookmark-simple.svg" data-resource-id="r1rtmpvh">
+<meta name="ext-resource-dependency" content="assets/light/caret-down-light.svg" data-resource-id="r1jggcx7">
+<meta name="ext-resource-dependency" content="assets/light/caret-down.svg" data-resource-id="r5z104e">
+<meta name="ext-resource-dependency" content="assets/light/caret-left-light.svg" data-resource-id="r80ttem">
+<meta name="ext-resource-dependency" content="assets/light/caret-left.svg" data-resource-id="rohkvhn">
+<meta name="ext-resource-dependency" content="assets/light/caret-right-light.svg" data-resource-id="r1qecspp">
+<meta name="ext-resource-dependency" content="assets/light/caret-right.svg" data-resource-id="r12ut29g">
+<meta name="ext-resource-dependency" content="assets/light/caret-up-light.svg" data-resource-id="rjncuzq">
+<meta name="ext-resource-dependency" content="assets/light/caret-up.svg" data-resource-id="r170m0kz">
+<meta name="ext-resource-dependency" content="assets/light/check-light.svg" data-resource-id="r1cc9lqp">
+<meta name="ext-resource-dependency" content="assets/light/check.svg" data-resource-id="r1r96gaw">
+<meta name="ext-resource-dependency" content="assets/light/clock-counter-clockwise-light.svg" data-resource-id="rbtcpsx">
+<meta name="ext-resource-dependency" content="assets/light/clock-counter-clockwise.svg" data-resource-id="rwqpz20">
+<meta name="ext-resource-dependency" content="assets/light/film-slate-light.svg" data-resource-id="rbwc2fr">
+<meta name="ext-resource-dependency" content="assets/light/film-slate.svg" data-resource-id="r180k7d6">
+<meta name="ext-resource-dependency" content="assets/light/funnel-light.svg" data-resource-id="r3m6rq5">
+<meta name="ext-resource-dependency" content="assets/light/funnel.svg" data-resource-id="r108j7ec">
+<meta name="ext-resource-dependency" content="assets/light/house-light.svg" data-resource-id="r1kwjhhx">
+<meta name="ext-resource-dependency" content="assets/light/house.svg" data-resource-id="r1gz0qr0">
+<meta name="ext-resource-dependency" content="assets/light/list.svg" data-resource-id="r1swo33s">
+<meta name="ext-resource-dependency" content="assets/light/magnifying-glass-light.svg" data-resource-id="r2fkvj9">
+<meta name="ext-resource-dependency" content="assets/light/magnifying-glass.svg" data-resource-id="ro92icc">
+<meta name="ext-resource-dependency" content="assets/light/play-light.svg" data-resource-id="r1pswj3r">
+<meta name="ext-resource-dependency" content="assets/light/play.svg" data-resource-id="r1trz2cq">
+<meta name="ext-resource-dependency" content="assets/light/plus-light.svg" data-resource-id="r16oz0nd">
+<meta name="ext-resource-dependency" content="assets/light/plus.svg" data-resource-id="rk6eijk">
+<meta name="ext-resource-dependency" content="assets/light/share-fat-light.svg" data-resource-id="rny4re8">
+<meta name="ext-resource-dependency" content="assets/light/share-fat.svg" data-resource-id="rq9wfu9">
+<meta name="ext-resource-dependency" content="assets/light/sparkle.svg" data-resource-id="r1afwe0a">
+<meta name="ext-resource-dependency" content="assets/light/squares-four-light.svg" data-resource-id="r1fe6wde">
+<meta name="ext-resource-dependency" content="assets/light/squares-four.svg" data-resource-id="r1r9128f">
+<meta name="ext-resource-dependency" content="assets/light/trophy-light.svg" data-resource-id="rwqs43b">
+<meta name="ext-resource-dependency" content="assets/light/user-circle-light.svg" data-resource-id="rqw0rg7">
+<meta name="ext-resource-dependency" content="assets/light/user-circle.svg" data-resource-id="r19q9uga">
+<meta name="ext-resource-dependency" content="assets/light/user-light.svg" data-resource-id="ruuwm3y">
+<meta name="ext-resource-dependency" content="assets/light/user.svg" data-resource-id="r1m9fc9n">
+<meta name="ext-resource-dependency" content="assets/light/x-light.svg" data-resource-id="r1vizh35">
+<meta name="ext-resource-dependency" content="assets/light/x.svg" data-resource-id="r19mu4t4">
+<meta name="ext-resource-dependency" content="assets/fill/bookmark-simple-fill.svg" data-resource-id="rqeod58">
+<meta name="ext-resource-dependency" content="assets/fill/play-fill.svg" data-resource-id="r1anwtpj">
+<meta name="ext-resource-dependency" content="assets/imagery-web/battery-st-johns.jpg" data-resource-id="rbexl5g">
+<meta name="ext-resource-dependency" content="assets/imagery-web/coastal-geographer-erosion.jpg" data-resource-id="r1cdd5ua">
+<meta name="ext-resource-dependency" content="assets/imagery-web/daniel-litt-mathematician.jpg" data-resource-id="rid5a3t">
+<meta name="ext-resource-dependency" content="assets/imagery-web/group-portrait-klyne.jpg" data-resource-id="rjf98n3">
+<meta name="ext-resource-dependency" content="assets/imagery-web/lutheran-church-winnipeg.jpg" data-resource-id="rn3kuv1">
+<meta name="ext-resource-dependency" content="assets/imagery-web/mine-waste-rover.jpg" data-resource-id="ruejn9t">
+<meta name="ext-resource-dependency" content="assets/imagery-web/nivatha-balendra-dispersa.jpg" data-resource-id="rbp2iy3">
+<meta name="ext-resource-dependency" content="assets/imagery-web/paris-ontario-plaque.jpg" data-resource-id="r15sht0h">
+<meta name="ext-resource-dependency" content="assets/imagery-web/perimeter-imaging-device.jpg" data-resource-id="rqfxexh">
+<meta name="ext-resource-dependency" content="assets/imagery-web/researcher-leaving-us.jpg" data-resource-id="rismdjo">
+<meta name="ext-resource-dependency" content="assets/imagery-web/saskatchewan-twisters.jpg" data-resource-id="rytny2l">
+<meta name="ext-resource-dependency" content="assets/imagery-web/school-bus-collage.jpg" data-resource-id="r1hdy61f">
+<meta name="ext-resource-dependency" content="assets/imagery-web/stonewall-flooding.jpg" data-resource-id="r188s4nc">
+<meta name="ext-resource-dependency" content="assets/imagery-web/summerside-solar.jpg" data-resource-id="r1pai6va">
+<meta name="ext-resource-dependency" content="assets/imagery-web/talampassi-portrait.jpg" data-resource-id="r1lrb3y1">
+<meta name="ext-resource-dependency" content="assets/imagery-web/toronto-wildfire-smoke.jpg" data-resource-id="rc2zock">
+<meta name="ext-resource-dependency" content="assets/imagery-web/tyler-rogers-jays.jpg" data-resource-id="rrxxuhz">
+<meta name="ext-resource-dependency" content="assets/imagery-web/upei-simulation-centre.jpg" data-resource-id="r1m63svr">
+<meta name="ext-resource-dependency" content="assets/gradients/orange-to-yellow-ltr.svg" data-resource-id="rase3vn">
+<meta name="ext-resource-dependency" content="assets/gradients/pink-to-purple-ltr.svg" data-resource-id="ryxom5b">
+<meta name="ext-resource-dependency" content="assets/gradients/pink-to-red-btt.svg" data-resource-id="r14f2ckq">
+<meta name="ext-resource-dependency" content="assets/gradients/red-to-orange-btt.svg" data-resource-id="r1p16zem">
+<meta name="ext-resource-dependency" content="assets/illustrations/girl-on-planet.svg" data-resource-id="r6zk4cg">
+<meta name="ext-resource-dependency" content="assets/illustrations/BG-Illo-Newsletter_Mailbox.svg" data-resource-id="rjtjoik">
+<meta name="ext-resource-dependency" content="assets/be-giant-logo.svg" data-resource-id="r18is5ws">
+<meta name="ext-resource-dependency" content="assets/app-icon-360.png" data-resource-id="r1f08r5l">
+<meta name="ext-resource-dependency" content="uploads/BeGiant-Farmer.mp4" data-resource-id="r1wzslvl">
+<meta name="ext-resource-dependency" content="uploads/BeGiant-Math.mp4" data-resource-id="r8t8a2c">
+<meta name="ext-resource-dependency" content="uploads/BeGiant-PawPaw.mp4" data-resource-id="r1ju64sq">
+<meta name="ext-resource-dependency" content="https://cdn.sanity.io/images/l3tzmu37/production/5fa4d80564996ff20654a51e011b2846315ca54e-4198x2800.jpg?auto=format&amp;fit=max&amp;w=1000&amp;q=70" data-resource-id="rv7acze">
+<meta name="ext-resource-dependency" content="https://cdn.sanity.io/images/l3tzmu37/production/a461491243e3613f717825129849579b6b90f31c-2880x1922.jpg?auto=format&amp;fit=max&amp;w=1000&amp;q=70" data-resource-id="rwsqp5e">
+<meta name="ext-resource-dependency" content="https://cdn.sanity.io/images/l3tzmu37/production/756c93fe0134e16ab175132290be2020c1d86256-2160x2160.jpg?auto=format&amp;fit=max&amp;w=1000&amp;q=70" data-resource-id="r178jts">
+<meta name="ext-resource-dependency" content="https://cdn.sanity.io/images/l3tzmu37/production/6ffb98068463bf20358b37183cf4b811bad01802-2880x1921.jpg?auto=format&amp;fit=max&amp;w=1000&amp;q=70" data-resource-id="robo509">
+<meta name="ext-resource-dependency" content="https://cdn.sanity.io/images/l3tzmu37/production/1abf9136a563795fa3bc4531ed047c28b1ab6441-1920x1282.jpg?auto=format&amp;fit=max&amp;w=1000&amp;q=70" data-resource-id="r8lzrbd">
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/colors.css">
+<link rel="stylesheet" href="_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/typography.css">
+<link rel="stylesheet" href="_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/tokens/semantic.css">
+<script src="_ds/be-giant-design-system-f9180932-44de-4349-a7a0-47bf1a55de2c/_ds_bundle.js"></script>
+<script src="bg-app-data.js"></script>
+<script src="ios-frame.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Be Giant">
+<link rel="apple-touch-icon" href="assets/app-icon-360.png">
+<style>
+body{margin:0;background:#F4F4F4;-webkit-tap-highlight-color:transparent;-webkit-text-size-adjust:100%}
+a{color:#171717;text-underline-offset:3px}
+a:hover{opacity:.6}
+</style>
+</helmet>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" data-bg-color="#171717"><rect width="100" height="100" fill="#171717"></rect><text x="50" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="34" fill="#FFFFFF">BG</text></svg></template>
+<sc-if value="{{ isBoard }}" hint-placeholder-val="{{ true }}">
+<div style="width:max-content;min-width:100%;padding:64px 96px 160px;display:flex;flex-direction:column;gap:96px;font-family:var(--font-sans);color:#171717;background:#F4F4F4">
+
+  <div style="display:flex;align-items:baseline;gap:20px"><img src="assets/be-giant-logo.svg" alt="Be Giant" style="height:26px;width:auto;display:block;align-self:center"><div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7A7A7A">App design · iOS · Round 2</div><div onClick="{{ toApp }}" style-hover="opacity:.8" style="align-self:center;height:40px;padding:0 16px;border-radius:999px;background:#171717;color:#FFFFFF;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">View as app</div></div>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">06 · Home hero · pick one</div>
+      <div style="font-size:15px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">Four ways to show more of the photo. The live app uses <a href="#6d">6d</a>.</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div id="6a" data-screen-label="6a Hero Photo, then headline" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">6a</div><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Photo, then headline</div></div>
+        <dc-import name="BeGiantAppPhone" start="home" hero="below" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">The photo runs full width with only a light scrim behind the status bar. The headline, dek and byline sit below it on white. Nothing covers the image.</div></sc-if>
+      </div>
+      <div id="6b" data-screen-label="6b Hero Short scrim" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">6b</div><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Short scrim</div></div>
+        <dc-import name="BeGiantAppPhone" start="home" hero="short" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Full-height photo. The scrim covers only the bottom third, with the tag, a smaller headline and the byline. The dek moves into the article.</div></sc-if>
+      </div>
+      <div id="6c" data-screen-label="6c Hero Cream caption card" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">6c</div><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Cream caption card</div></div>
+        <dc-import name="BeGiantAppPhone" start="home" hero="card" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Full-height photo with no bottom scrim. The headline sits in a cream floating card, like the featured story on begiant.ca.</div></sc-if>
+      </div>
+      <div id="6d" data-screen-label="6d Hero Highlight boxes" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px"><div style="height:22px;padding:0 8px;border-radius:6px;background:#171717;color:#FFFFFF;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.08em">6d</div><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Highlight boxes</div></div>
+        <dc-import name="BeGiantAppPhone" start="home" hero="highlight" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">From the website's new full-bleed hero (HeroFullBleed.tsx). The photo pins in place while the headline, dek and byline scroll up over it in white boxes, one per line. At rest only the headline overlaps the photo, and the copy stops 48px above the photo's bottom edge. Scroll to see it.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">Trial · Card home · board only</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="Trial Card home" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Card home</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Tap a story</div></div>
+        <dc-import name="BeGiantAppPhone" start="home" model="m1" nav="{{ nav }}" home-alt="{{ true }}" alt-bg="{{ trialBg }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Stack.</b> Cards stick under the status bar and are pushed back (scale 94%, dimmed) as the next card slides over. Tall cards scroll through first, then stick. Tap any story card to open the article.</div></sc-if>
+      </div>
+      <div data-screen-label="Trial Card article" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Card article</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Scroll to read</div></div>
+        <dc-import name="BeGiantAppPhone" start="alt-article" model="m1" nav="{{ nav }}" home-alt="{{ true }}" alt-bg="{{ trialBg }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Article.</b> Same card language as Home: photo first as the hero, then the headline card, body in one white card with pull quotes, topics to follow, then quick reads and the next story. The red pie at the top fills as you read.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">01 · Onboarding · topics only</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="01 Welcome" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Welcome</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">First launch</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-splash" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Globe (1b).</b> 32 story covers on a slowly turning sphere that assembles from its centre; back covers small and faint, front ones solid. Drag to spin. Logo and copy centred on white; headline in two lines that rise in 120ms apart, dek lines from 1.4s, buttons last at 2.1s. Get started throws the sphere outward, then Topics.</div></sc-if>
+      </div>
+      <div data-screen-label="01 Topics" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Topics</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Step 1 of 3</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-topics" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> A chip presses to 0.95, fills ink in 150ms and a check grows in from zero width (250ms), so the label slides right. The button counts down to three, then reads Continue with the total.</div></sc-if>
+      </div>
+      <div data-screen-label="01 Notifications" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Notifications</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Step 2 of 3</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-alerts" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Light, Balanced and Everything set the switches below; the ink block slides 320ms. Turning a type on drops a matching sample notification in from the top. Topics expands into one switch per topic. The weekly estimate updates live. Turn on shows the iOS permission alert.</div></sc-if>
+      </div>
+      <div data-screen-label="01 Account" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Create account</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Step 3 of 3 · main action</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-account" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">One tap first.</b> Apple (black, per Apple) and Google lead; email sits third as a quiet outline. The setup summary above the buttons shows what the account keeps, so signing up reads as saving work, not starting a form. No fields on this screen.</div></sc-if>
+      </div>
+      <div data-screen-label="01 About you" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">About you</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">After Apple or Google</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-details" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Account already made.</b> Name and email come from Apple or Google and are shown, not asked. Three optional answers: city (one tap with Use location), age range and gender as chips, so nothing needs typing. Finish or Skip both land on Home; anything left blank becomes the unfinished-profile strip (D25).</div></sc-if>
+      </div>
+      <div data-screen-label="01 Email sign-up" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Email sign-up</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">After Continue with email</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-email" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Full form, only for those who pick it.</b> Name, age, city, email and password with the storage disclaimer, unchanged from before. Back returns to the one-tap options.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">01b · Skipped onboarding · guest</div>
+      <div style="font-size:15px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">Soft gate: every action finishes first, then a half sheet asks. One ask per session. Not now snoozes asks for 7 days; after three dismissals only the avatar asks. Account asks: first share, second save, third follow, first milestone.</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="01b Guest Home" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Guest Home</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Try it · live</div></div>
+        <dc-import name="BeGiantAppPhone" start="guest" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Skip anywhere in onboarding and you land here. Reading, saving and following all work without an account. The avatar turns into a guest icon and offers a free account. Open and close the lead story to see the topic nudge.</div></sc-if>
+      </div>
+      <div data-screen-label="01b For You, no topics" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">For You, no topics</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Empty state</div></div>
+        <dc-import name="BeGiantAppPhone" start="guest-foryou" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">If the reader skipped topics, For You becomes the topic picker: pick 3 to build it. No account needed. Building it counts as the third follow, so the account ask can follow.</div></sc-if>
+      </div>
+      <div data-screen-label="01b First follow" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">First follow</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Notification ask</div></div>
+        <dc-import name="BeGiantAppPhone" start="guest-notif" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">If they skipped notifications, the first follow asks for them once, in context. Turn on brings up the iOS alert. It never shows at the same time as an account ask.</div></sc-if>
+      </div>
+      <div data-screen-label="01b Topic nudge" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Topic nudge</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">After 3 reads</div></div>
+        <dc-import name="BeGiantAppPhone" start="guest-nudge" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">After three stories in the same unfollowed topic, a cream card offers to follow it. Shown once per topic, gone after 9 seconds.</div></sc-if>
+      </div>
+      <div data-screen-label="01b First share" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">First share</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Account ask</div></div>
+        <dc-import name="BeGiantAppPhone" start="guest-share" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">The ask waits until the share sheet has closed, so it never gets in the way of sharing.</div></sc-if>
+      </div>
+      <div data-screen-label="01b Second save" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Second save</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Account ask</div></div>
+        <dc-import name="BeGiantAppPhone" start="guest-save" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">The save is done first, then the sheet explains what an account adds: saves on every device.</div></sc-if>
+      </div>
+      <div data-screen-label="01b Third follow" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Third follow</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Account ask</div></div>
+        <dc-import name="BeGiantAppPhone" start="guest-follow" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Fires when topics plus writers followed reaches three, from any follow button or the For You picker.</div></sc-if>
+      </div>
+      <div data-screen-label="01b First milestone" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">First milestone</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Account ask</div></div>
+        <dc-import name="BeGiantAppPhone" start="guest-milestone" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">Fires 1.8s after the confetti on the 10-story card: keep your reading record.</div></sc-if>
+      </div>
+      <div data-screen-label="01b Create account" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Create account</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">From any ask</div></div>
+        <dc-import name="BeGiantAppPhone" start="guest-create" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">The onboarding form, opened on its own with a close button. Email completes the profile. Apple or Google skip age and city, which leaves the profile unfinished.</div></sc-if>
+      </div>
+      <div data-screen-label="01b Unfinished profile" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Unfinished profile</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Banner</div></div>
+        <dc-import name="BeGiantAppPhone" start="partial-home" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">A cream strip under the header: what is missing and how far along. Tap opens Account details. Dismissing it hides it for good.</div></sc-if>
+      </div>
+      <div data-screen-label="01b After dismissing" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">After dismissing</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Avatar dot</div></div>
+        <dc-import name="BeGiantAppPhone" start="partial-sheet" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px">A red dot stays on the avatar, and Finish your profile tops the account sheet until the profile is complete.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">02 · Home and For You</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="02 Home" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Home · the big story</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Tab · Home</div></div>
+        <dc-import name="BeGiantAppPhone" start="home" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> The photo drifts at 0.4× scroll speed and the cover copy fades by 300px. Tapping the cover grows the photo into the article hero (440ms).</div></sc-if>
+      </div>
+      <div data-screen-label="02 Jump back in" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Jump back in</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">New</div></div>
+        <dc-import name="BeGiantAppPhone" start="home-resume" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Appears after the lead story when a reader left a story between 10% and 90% read in the last 7 days. Shows minutes left. Tap reopens the story where they stopped; X dismisses it. Finishing the story clears it.</div></sc-if>
+      </div>
+      <div data-screen-label="02 Header solid" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Header turns solid</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Scrolled</div></div>
+        <dc-import name="BeGiantAppPhone" start="home-scrolled" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Over the last 50px of the cover, the header blends from clear to 86% white with a 20px blur, its type from white to ink, and the website's 1px header shadow fades in. The status bar flips dark at the halfway point.</div></sc-if>
+      </div>
+      <div data-screen-label="02 For You" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">For You</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Swipe left from Home</div></div>
+        <dc-import name="BeGiantAppPhone" start="foryou" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> The pager follows your finger 1:1 and settles in 320ms; the underline crossfades between labels. Edit topics reopens the topic picker.</div></sc-if>
+      </div>
+<div data-screen-label="02 For You end" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">End of For You</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Scroll-triggered</div></div>
+        <dc-import name="BeGiantAppPhone" start="foryou-end" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Within 240px of the end, five squares fill one by one (90ms stagger), then the message rises 10px and fades in. Scrolling back up resets it so it replays. The button opens a random story.</div></sc-if>
+      </div>
+      <div data-screen-label="02 Pull to refresh" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Pull to refresh</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Looping · drag to try</div></div>
+        <dc-import name="BeGiantAppPhone" start="home-refresh" model="m1" nav="{{ nav }}" demo="{{ dRefresh }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> The page moves at half your finger's distance and a 2px line fills to the 60px threshold, where the label pulses once and reads Release. Loading holds at 64px with a looping sweep. New stories fade into the list with a red New label. Touch the phone to stop the loop and drag the cover down.</div></sc-if>
+      </div>
+      <div data-screen-label="02 Swipe to save" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Swipe to save</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Gesture</div></div>
+        <dc-import name="BeGiantAppPhone" start="home-save" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> An ink panel shows through as the row moves. Past 96px the icon scales to 1.15. Release slides the row home (250ms) and shows a Saved toast with View. Swipe is the only way to save from a list; the article keeps its Save tool.</div></sc-if>
+      </div>
+      <div data-screen-label="02 Tab bar minimises" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Tab bar minimises</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Looping · floating only</div></div>
+        <dc-import name="BeGiantAppPhone" start="home-listen" model="m1" nav="{{ nav }}" demo="{{ dCollapse }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> iOS 26 behaviour. Scrolling down shrinks the glass bar to the active tab, its highlight becoming a circle that matches Search (380ms), and the audio player slides into the gap beside Search. Scrolling up or tapping the bar restores it. Switching tabs stretches the selection like liquid before it settles (460ms).</div></sc-if>
+      </div>
+      <div data-screen-label="02 End milestone" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">End of Home · milestone</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">10, 25, 50, 100</div></div>
+        <dc-import name="BeGiantAppPhone" start="end-milestone" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Two modules rotate under “You’re up to date”: this card and Send a story. At 10, 25, 50, 100 stories the card becomes an award with confetti (tap the card to replay). The white panel ranks the reader against others; the dots count stories to the next milestone (red dot is the goal). The card is the share image.</div></sc-if>
+      </div>
+      <div data-screen-label="02 End week" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">End of Home · overview</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Between milestones</div></div>
+        <dc-import name="BeGiantAppPhone" start="end-week" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Between milestones the same card shows an overview: stories finished, minutes read, top topic and the reader’s rank in it. No confetti.</div></sc-if>
+      </div>
+      <div data-screen-label="02 End send" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">End of Home · send a story</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Rotates</div></div>
+        <dc-import name="BeGiantAppPhone" start="end-send" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Suggests a story the reader finished. The link opens in the app, or the App Store if the friend doesn’t have it. A quiet “Rate it on the App Store” link sits under every module.</div></sc-if>
+      </div>
+      <div data-screen-label="02 Rate prompt" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Rating prompt</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">iOS system</div></div>
+        <dc-import name="BeGiantAppPhone" start="rate" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Apple’s own review prompt, asked after the third finished story and never more than Apple allows (3 times a year). Picking stars swaps Not Now for Cancel and Submit.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-family:var(--font-sans);font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">03 · Article · the tab bar becomes reading tools</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="03 Article hero" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Hero</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Opened from Home</div></div>
+        <dc-import name="BeGiantAppPhone" start="article" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> The hero arrives from the tapped image (shared element, 440ms) and the text fades in. In the bar, tabs drop 10px and fade while six tools fade in, in the same place.</div></sc-if>
+      </div>
+      <div data-screen-label="03 Article body" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Body and progress</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Scrolled</div></div>
+        <dc-import name="BeGiantAppPhone" start="article-body" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Past the hero, a 50px frosted strip fades in behind the status bar with the 2px progress line on its edge. No title. Scrolling down hides the tools (250ms); any upward scroll brings them back.</div></sc-if>
+      </div>
+      <div data-screen-label="03 Text size" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Text and page</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Aa panel</div></div>
+        <dc-import name="BeGiantAppPhone" start="article-aa" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> A glass panel grows from the Aa button (0.97 to 1, 320ms). It only sets text size, across five steps, and the body resizes live. Light and dark stay on the contrast button.</div></sc-if>
+      </div>
+      <div data-screen-label="03 Night" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Night page</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Contrast</div></div>
+        <dc-import name="BeGiantAppPhone" start="article-night" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Background, text and rules crossfade over 250ms; the tools turn to dark glass with them.</div></sc-if>
+      </div>
+      <div data-screen-label="03 Listen" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Listen</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Mini player</div></div>
+        <dc-import name="BeGiantAppPhone" start="article-listen" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> The glass player rises 16px into place above the tools. Three bars pulse while audio plays. When the tools hide, the player drops to the bottom edge.</div></sc-if>
+      </div>
+      <div data-screen-label="03 Share" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Share</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Sheet</div></div>
+        <dc-import name="BeGiantAppPhone" start="article-share" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> The sheet floats 8px in from the edges, as iOS 26 sheets do, and rises over 320ms on the website's mega-menu backdrop.</div></sc-if>
+      </div>
+      <div data-screen-label="03 Follow topics" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Follow similar topics</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Looping · end of story</div></div>
+        <dc-import name="BeGiantAppPhone" start="article-end" model="m1" nav="{{ nav }}" demo="{{ dFollow }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Replaces Filed under. Follow presses to 0.94, fills ink and grows a check (250ms); the sub-line changes to In your For You and a toast confirms. The writer can be followed from the same list.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">04 · Discover · the Search tab</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="04 Discover" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Discover</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Tab · Search</div></div>
+        <dc-import name="BeGiantAppPhone" start="search" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Content rises 6px and fades in (250ms). Topics you follow carry a dot. Video tiles open the Video feed at that film.</div></sc-if>
+      </div>
+      <div data-screen-label="04 Typing" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Typing</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Instant results</div></div>
+        <dc-import name="BeGiantAppPhone" start="search-typing" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> On focus the title collapses (250ms), Cancel slides in and the field gets an ink outline. Topics match first, then stories with the match set in bold.</div></sc-if>
+      </div>
+      <div data-screen-label="04 Results" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Results</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Submitted</div></div>
+        <dc-import name="BeGiantAppPhone" start="search-results" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Filter chips slide in under the field and scroll sideways. Results support swipe to save.</div></sc-if>
+      </div>
+      <div data-screen-label="04 Filtered" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Filtered</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Economy · Ideas</div></div>
+        <dc-import name="BeGiantAppPhone" start="search-filtered" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> A chip fills ink in 150ms and the list updates immediately.</div></sc-if>
+      </div>
+      <div data-screen-label="04 No results" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">No results</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Empty state</div></div>
+        <dc-import name="BeGiantAppPhone" start="search-none" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> The brand illustration and message enter with fadeIn (400ms). Suggested words run a new search.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">05 · Video · Feed and Grid</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="05 Feed" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Feed</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Tab · Video</div></div>
+        <dc-import name="BeGiantAppPhone" start="video" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Native scroll snap, one film per swipe. The active film drifts slowly and its progress line runs in real time. The tab bar turns to dark glass.</div></sc-if>
+      </div>
+      <div data-screen-label="05 Paused" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Tap and double tap</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Paused</div></div>
+        <dc-import name="BeGiantAppPhone" start="video-paused" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> One tap pauses, and a glass play disc fades in. A double tap saves: a large bookmark pops in the middle (900ms) and a toast confirms. Read the story pauses the film and pushes the article.</div></sc-if>
+      </div>
+      <div data-screen-label="05 Grid" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Grid</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">View switch</div></div>
+        <dc-import name="BeGiantAppPhone" start="video-grid" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> The white pill slides between Feed and Grid (320ms) and the grid fades up. The tab bar minimises while you scroll the grid.</div></sc-if>
+      </div>
+      <div data-screen-label="05 Grid to feed" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Feed to grid and back</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Looping</div></div>
+        <dc-import name="BeGiantAppPhone" start="video" model="m1" nav="{{ nav }}" demo="{{ dVideo }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> A grid tile grows to full screen on black (420ms), then the feed takes over at that film. Home's Watch rail and Discover's video tiles use the same grow.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">06 · Saved · offline by default</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="06 Saved" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Saved</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Tab · Saved</div></div>
+        <dc-import name="BeGiantAppPhone" start="saved" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Each story shows a 2px progress line and minutes left, updated when you leave the article.</div></sc-if>
+      </div>
+      <div data-screen-label="06 Saved edit" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Edit and clear</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">New</div></div>
+        <dc-import name="BeGiantAppPhone" start="saved-edit" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Edit swaps the tab bar for an action bar. Tap rows to select, then Remove; or Clear finished, or Clear all. No confirm dialog: a 5-second Undo toast instead.</div></sc-if>
+      </div>
+<div data-screen-label="06 Saved by topic" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Grouped by topic</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Sort</div></div>
+        <dc-import name="BeGiantAppPhone" start="saved-topic" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> The white thumb slides between Latest, By topic and By author (320ms). The list re-enters with a 6px rise and fade (250ms).</div></sc-if>
+      </div>
+      <div data-screen-label="06 Swipe to remove" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Swipe to remove</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Gesture</div></div>
+        <dc-import name="BeGiantAppPhone" start="saved-swipe" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> The same swipe in brand red. On release the row collapses in 260ms and a toast offers Undo.</div></sc-if>
+      </div>
+      <div data-screen-label="06 Saved empty" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Empty</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">First visit</div></div>
+        <dc-import name="BeGiantAppPhone" start="saved-empty" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> A sample row swipes left and returns on a 3.4s loop to teach the gesture.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">07 · Account and settings</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="07 Account sheet" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Account sheet</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">From avatar</div></div>
+        <dc-import name="BeGiantAppPhone" start="account" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> The sheet rises over 320ms. Following and Notifications open their settings screens.</div></sc-if>
+      </div>
+      <div data-screen-label="07 Settings" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Settings</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Pushed</div></div>
+        <dc-import name="BeGiantAppPhone" start="settings" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Pushes in 28px from the right as it fades (300ms). Display holds the tab bar labels switch (off by default) and the night page. The notification level reads the same names as onboarding.</div></sc-if>
+      </div>
+      <div data-screen-label="07 Account" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Account</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Settings</div></div>
+        <dc-import name="BeGiantAppPhone" start="set-account" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Name, age, city and email are editable. Sign-in method, password reset, sign out and delete account (Apple requires in-app deletion when sign-up exists).</div></sc-if>
+      </div>
+      <div data-screen-label="07 Following" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Following</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Settings</div></div>
+        <dc-import name="BeGiantAppPhone" start="set-following" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Topics use the onboarding bubbles. Writers list every byline with Follow / Following.</div></sc-if>
+      </div>
+      <div data-screen-label="07 Notifications settings" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Notifications</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Settings</div></div>
+        <dc-import name="BeGiantAppPhone" start="set-notif" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Same level switch and toggles as onboarding, plus iOS permission status and quiet hours times.</div></sc-if>
+      </div>
+      <div data-screen-label="07 Reading" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Reading and display</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Settings</div></div>
+        <dc-import name="BeGiantAppPhone" start="set-reading" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Behaviour.</b> Text size with a live sample, article page Light or Dark, video autoplay, tab bar labels, offline downloads.</div></sc-if>
+      </div>
+      <div data-screen-label="07 Static page" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Static page</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Template</div></div>
+        <dc-import name="BeGiantAppPhone" start="set-page" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Template.</b> One layout for About, Editorial standards, Privacy policy and Terms. Copy is placeholder for editorial and legal.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">08 · Model 3 · Read and Watch, everything else in a menu</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="08 M3 Read" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Read</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Model 3</div></div>
+        <dc-import name="BeGiantAppPhone" start="home" model="m3" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="08 M3 Menu" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Menu</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Bottom sheet</div></div>
+        <dc-import name="BeGiantAppPhone" start="menu" model="m3" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="08 M3 Watch" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Watch</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Model 3</div></div>
+        <dc-import name="BeGiantAppPhone" start="video" model="m3" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="08 M3 Search" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Discover page</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">From menu</div></div>
+        <dc-import name="BeGiantAppPhone" start="search-results" model="m3" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="08 M3 Article" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Article</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Model 3</div></div>
+        <dc-import name="BeGiantAppPhone" start="article-body" model="m3" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="08 M3 Saved" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Saved page</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">From menu</div></div>
+        <dc-import name="BeGiantAppPhone" start="saved" model="m3" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">09 · Key transitions · looping</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="09 Open story" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Cover to article</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">440ms · growth</div></div>
+        <dc-import name="BeGiantAppPhone" start="home" model="m1" nav="{{ nav }}" demo="{{ dOpen }}" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="09 Feeds" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Home to For You</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">320ms · growth</div></div>
+        <dc-import name="BeGiantAppPhone" start="home" model="m1" nav="{{ nav }}" demo="{{ dFeeds }}" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="09 Save" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Swipe to save</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">250ms return</div></div>
+        <dc-import name="BeGiantAppPhone" start="home-list" model="m1" nav="{{ nav }}" demo="{{ dSave }}" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="09 Swipe back" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Push and swipe back</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">340ms / 300ms</div></div>
+        <dc-import name="BeGiantAppPhone" start="home-scrolled" model="m1" nav="{{ nav }}" demo="{{ dBack }}" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="09 Reading tools" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Reading tools</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Aa · Night · Listen</div></div>
+        <dc-import name="BeGiantAppPhone" start="article-body" model="m1" nav="{{ nav }}" demo="{{ dReading }}" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="09 Search" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Instant search</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Per keystroke</div></div>
+        <dc-import name="BeGiantAppPhone" start="search" model="m1" nav="{{ nav }}" demo="{{ dSearch }}" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="09 M3 menu" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Menu and mode switch</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Model 3</div></div>
+        <dc-import name="BeGiantAppPhone" start="home" model="m3" demo="{{ dMenu }}" hint-size="402px,874px"></dc-import>
+      </div>
+      <div data-screen-label="09 Onboarding" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Onboarding to Home</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">400ms steps</div></div>
+        <dc-import name="BeGiantAppPhone" start="ob-splash" model="m1" nav="{{ nav }}" demo="{{ dOnb }}" hint-size="402px,874px"></dc-import>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</sc-if>
+<sc-if value="{{ isApp }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;background:{{ pageBg }};font-family:var(--font-sans);color:#171717;overscroll-behavior:none">
+  
+  <div style="position:relative;flex:none;width:{{ boxW }};height:{{ boxH }};margin-top:{{ boxMt }}">
+    <div style="position:absolute;left:0;top:0;width:402px;height:{{ phH }};transform:{{ tf }};transform-origin:0 0">
+      <sc-if value="{{ mounted }}" hint-placeholder-val="{{ true }}">
+        <dc-import name="BeGiantAppPhone" reveal="{{ true }}" start="{{ appStart }}" model="m1" nav="{{ nav }}" bare="{{ bare }}" h="{{ phHn }}" hint-size="402px,874px"></dc-import>
+      </sc-if>
+    </div>
+  </div>
+  <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+  <div style="margin-top:20px;display:flex;align-items:center;gap:3px;background:#FFFFFF;border:1px solid #E4E4E4;border-radius:999px;padding:4px">
+    <div onClick="{{ startOb }}" style="cursor:pointer;border-radius:999px;padding:10px 16px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase">Restart</div>
+    <div onClick="{{ startHome }}" style="cursor:pointer;border-radius:999px;padding:10px 16px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase">Skip to Home</div>
+    <div onClick="{{ toBoard }}" style="cursor:pointer;border-radius:999px;padding:10px 16px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:#171717;color:#FFFFFF">Back to board</div>
+  </div>
+  </sc-if>
+</div>
+</sc-if></x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;view&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Board&quot;,&quot;App&quot;],&quot;default&quot;:&quot;Board&quot;,&quot;tsType&quot;:&quot;'Board' | 'App'&quot;,&quot;section&quot;:&quot;View&quot;},&quot;navigationStyle&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Floating&quot;,&quot;Docked&quot;],&quot;default&quot;:&quot;Floating&quot;,&quot;tsType&quot;:&quot;'Floating' | 'Docked'&quot;,&quot;section&quot;:&quot;View&quot;},&quot;trialBackground&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;options&quot;:[&quot;#0E0E0E&quot;,&quot;#171717&quot;,&quot;#F2F2F2&quot;,&quot;#EDE7DA&quot;],&quot;default&quot;:&quot;#0E0E0E&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Card home trial&quot;},&quot;autoplay&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Board&quot;},&quot;showNotes&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Board&quot;}}">
+function phoneLike(){ return !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches) && window.innerWidth <= 540; }
+class Component extends DCLogic {
+  state = {nav:null, app: location.hash === '#app' || phoneLike(), vw: window.innerWidth, vh: window.innerHeight, appStart:'ob-splash', mounted:true};
+  componentDidMount() {
+    this._r = () => this.setState({vw: window.innerWidth, vh: window.innerHeight});
+    this._h = () => this.setState({app: location.hash === '#app' || phoneLike()});
+    window.addEventListener('resize', this._r); window.addEventListener('orientationchange', this._r); window.addEventListener('hashchange', this._h);
+    this.lockScroll();
+  }
+  componentWillUnmount() { window.removeEventListener('resize', this._r); window.removeEventListener('orientationchange', this._r); window.removeEventListener('hashchange', this._h); this.lockScroll(true); }
+  isAppNow() { const s = this.state; return !!(s.app || (this.props.view === 'App' && !s.boardOverride)); }
+  lockScroll(off) {
+    const app = !off && this.isAppNow();
+    if (app === !!this._wasApp) return;
+    this._wasApp = app;
+    const v = app ? 'hidden' : '', de = document.documentElement;
+    de.style.overflow = v; document.body.style.overflow = v; document.body.style.overscrollBehavior = v ? 'none' : '';
+    if (app) de.removeAttribute('data-dc-canvas'); else de.setAttribute('data-dc-canvas', '');
+    document.querySelectorAll('style[data-dc-canvas]').forEach(el => { el.disabled = app; });
+    try { if (window.parent !== window) window.parent.postMessage({type:'__dc_design_mode', mode: app ? null : 'canvas'}, '*'); } catch (e) {}
+  }
+
+  goApp(on) { try { history.replaceState(null, '', on ? '#app' : location.pathname + location.search); } catch (e) {} this.setState({app:on, boardOverride:!on}); }
+  componentDidUpdate(pp) { this.lockScroll(); if (pp && pp.view !== this.props.view) this.setState({boardOverride:false, app: this.props.view === 'App' || location.hash === '#app' || phoneLike()}); }
+  remount(start) { this.setState({mounted:false, appStart:start}, () => setTimeout(() => this.setState({mounted:true}), 30)); }
+  renderVals() {
+    const p = this.props, s = this.state, app = s.app || (p.view === 'App' && !s.boardOverride), auto = (p.autoplay ?? false) && !app, d = (n) => auto ? n : '';
+    const nav = s.nav || ((p.navigationStyle ?? 'Floating') === 'Docked' ? 'docked' : 'floating');
+    const on = (k) => nav === k;
+    const bare = app && phoneLike();
+    let k, h;
+    if (bare) { k = s.vw / 402; h = Math.round(s.vh / k); }
+    else { h = 874; k = Math.max(.3, Math.min(1, (s.vh - 120) / 874, (s.vw - 40) / 402)); }
+    return {
+      isBoard: !app, isApp: app, bare, desk: !bare, pageBg: bare ? '#FFFFFF' : '#F4F4F4',
+      boxW: (402 * k) + 'px', boxH: (h * k) + 'px', boxMt: '0px', phH: h + 'px', phHn: h, tf: 'scale(' + k + ')',
+      mounted: s.mounted, appStart: s.appStart,
+      toApp: () => this.goApp(true), toBoard: () => this.goApp(false),
+      startOb: () => this.remount('ob-splash'), startHome: () => this.remount('home'),
+      nav, notes: p.showNotes ?? false,
+      setFloat: () => this.setState({nav:'floating'}), setDock: () => this.setState({nav:'docked'}),
+      fBg: on('floating') ? '#171717' : 'transparent', fFg: on('floating') ? '#FFFFFF' : '#171717',
+      dBg: on('docked') ? '#171717' : 'transparent', dFg: on('docked') ? '#FFFFFF' : '#171717',
+      dOpen: d('open'), dFeeds: d('feeds'), dSave: d('save'), dRefresh: d('refresh'), dBack: d('back'), dCollapse: d('collapse'), dFollow: d('follow'),
+      dReading: d('reading'), dSearch: d('search'), dVideo: d('video'), dMenu: d('menu'), dOnb: d('onboarding'), trialBg: p.trialBackground ?? '#0E0E0E'
+    };
+  }
+}
+</script>
+</body>
+</html>

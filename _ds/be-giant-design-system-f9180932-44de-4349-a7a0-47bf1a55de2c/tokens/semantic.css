@@ -1,0 +1,53 @@
+/* Semantic aliases. Components reference these, not the raw palette. */
+:root{
+  --ink:#171717;
+  --ink-muted:#7A7A7A;
+  --ink-secondary:#5C5C5C;
+
+  --background:#FFFFFF;
+  --foreground:#171717;
+  --card:#FFFFFF;
+  --card-foreground:#171717;
+  --popover:#FFFFFF;
+  --popover-foreground:#171717;
+
+  --primary:#171717;
+  --primary-foreground:#FFFFFF;
+  --secondary:#FAF7F0;
+  --secondary-foreground:#171717;
+  --muted:#FAF7F0;
+  --muted-foreground:#7A7A7A;
+  --accent:#FAF7F0;
+  --accent-foreground:#171717;
+  --destructive:#DB3A3A;
+
+  --surface-cream:var(--color-cream);
+  --surface-warm:var(--color-beige);
+  --surface-neutral:var(--color-grey-200);
+
+  --border:var(--color-border-subtle);
+  --border-strong:var(--color-grey-500);
+  --divider:var(--color-grey-500);
+  --input:#A6A6A6;
+  --ring:#A6A6A6;
+}
+.dark{
+  --ink:#FFFFFF;
+  --ink-muted:#F2F2F2;
+  --background:#171717;
+  --foreground:#FFFFFF;
+  --card:#171717;
+  --card-foreground:#FFFFFF;
+  --popover:#171717;
+  --popover-foreground:#FFFFFF;
+  --primary:#FFFFFF;
+  --primary-foreground:#171717;
+  --secondary:#7A7A7A;
+  --secondary-foreground:#FFFFFF;
+  --muted:#7A7A7A;
+  --muted-foreground:#F2F2F2;
+  --accent:#7A7A7A;
+  --accent-foreground:#FFFFFF;
+  --border:#A6A6A6;
+  --input:rgba(255,255,255,0.15);
+}

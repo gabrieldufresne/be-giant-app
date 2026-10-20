@@ -1,0 +1,32 @@
+/* Spacing follows a 4px base. The editorial layouts lean on a small set of
+   repeated values rather than a long ramp. */
+:root{
+  --space-0-5:2px;
+  --space-1:4px;
+  --space-1-5:6px;
+  --space-2:8px;
+  --space-2-5:10px;
+  --space-3:12px;
+  --space-4:16px;
+  --space-5:20px;
+  --space-6:24px;   /* container gutter, card padding */
+  --space-8:32px;
+  --space-10:40px;
+  --space-12:48px;  /* section rhythm, desktop article gutter */
+  --space-16:64px;  /* large section padding */
+  --space-20:80px;
+
+  /* Layout */
+  --container-max-width:1280px;
+  --container-bleed-max:1280px;
+  --container-gutter:24px;
+  --article-measure:700px;   /* body column */
+  --article-hero-measure:800px;
+  --sidebar-width:350px;
+  --pillar-sidebar-width:320px;
+
+  /* Header geometry */
+  --header-compact-h:48px;
+  --header-expanded-h:110px;
+}
+@media (min-width:1024px){:root{--header-expanded-h:250px}}

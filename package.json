@@ -1,0 +1,9 @@
+{
+  "name": "be-giant-app",
+  "private": true,
+  "version": "0.7.0",
+  "description": "Be Giant app prototype: review board + full-screen phone app",
+  "scripts": {
+    "dev": "npx --yes serve . -l 3000"
+  }
+}

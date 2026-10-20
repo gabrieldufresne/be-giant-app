@@ -1,0 +1,57 @@
+/* Brand palette — Figma "Name / Value". These are the raw values; use the
+   semantic aliases in semantic.css for text, surface and border decisions. */
+:root{
+  /* Accents */
+  --color-violet:#A293F5;
+  --color-purple:#936A9B;
+  --color-magenta:#DD68BB;
+  --color-yellow:#F5CA55;
+  --color-peach:#FF9072;
+  --color-red:#DB3A3A;
+  --color-blue:#0052ff;
+
+  /* Neutrals + warm papers */
+  --color-white:#FFFFFF;
+  --color-cream:#FAF7F0;
+  --color-beige:#EDE7DA;
+  --color-grey-200:#F2F2F2;
+  --color-grey-500:#A6A6A6;
+  --color-grey-700:#7A7A7A;
+  --color-grey-800:#5C5C5C;
+  --color-black:#171717;
+  --color-pure-black:#000;
+
+  /* Utility */
+  --color-topic-neutral:#DCD6FF;
+  --color-border-subtle:#e6e6e6;
+  --color-brand:var(--color-red);
+  --color-framework:#000;
+
+  /* Series / franchise colours (static assignments) */
+  --color-series-future:var(--color-red);
+  --color-series-hearmeout:var(--color-magenta);
+  --color-series-solve:var(--color-yellow);
+  --color-series-exchange:var(--color-peach);
+  --color-series-habitats:var(--color-violet);
+  --color-series-braingains:var(--color-purple);
+
+  /* Chart ramp (accents in palette order) */
+  --chart-1:var(--color-violet);
+  --chart-2:var(--color-magenta);
+  --chart-3:var(--color-yellow);
+  --chart-4:var(--color-peach);
+  --chart-5:var(--color-purple);
+
+  /* Legacy grey scale kept for compatibility with older components */
+  --color-gray-50:#f6f6f8;
+  --color-gray-100:#eeeef1;
+  --color-gray-200:#e3e4e8;
+  --color-gray-300:#bbbdc9;
+  --color-gray-400:#9499ad;
+  --color-gray-500:#727892;
+  --color-gray-600:#515870;
+  --color-gray-700:#383d51;
+  --color-gray-800:#252837;
+  --color-gray-900:#1b1d27;
+  --color-gray-950:#13141b;
+}

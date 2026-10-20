@@ -1,0 +1,37 @@
+# Working rules for this project
+
+## What this is
+A clickable, high-fidelity prototype of the Be Giant iOS news app. It is plain static HTML/JS (no build step). It is a design reference and a testable prototype, not production code.
+
+- `BG App.dc.html` — the review board AND the shareable app. On a phone (coarse pointer, width ≤ 540), with `#app` in the URL, or via the "View as app" button, it shows the single full-screen app.
+- `BeGiantAppPhone.dc.html` — the app itself. One component, used by every phone on the board. All screens are sections inside it.
+- `bg-app-data.js` — stories, imagery, videos, onboarding content, presets.
+- `support.js` — the runtime that renders `.dc.html` files (loads React 18 from unpkg). Do not edit.
+- `ios-frame.js` — device bezel used on the board.
+- `_ds/` — Be Giant design system bundle: tokens, fonts, components. Do not edit; upstream is `field-office/client-giant`.
+- `assets/` — Phosphor light/fill icons, imagery, illustrations, gradients, app icon. `uploads/` — the three short-form videos.
+- `docs/` — PRD v2 (source of truth), strategic foundation, original wireflow PRD, decision roadmap.
+
+## Running
+`npm run dev` (or `npx serve .`) then open http://localhost:3000. Must be served over http — opening the file directly (file://) will not load the phone component.
+
+## How `.dc.html` files work
+Each file is a full HTML page: `<head>` loads `support.js`; the body holds an `<x-dc>` template plus a `<script data-dc-script>` logic class (`class Component extends DCLogic`).
+- Template holes are dotted lookups only: `{{ item.title }}`. No expressions in holes; compute in `renderVals()`.
+- Loops/conditions: `<sc-for list="{{ items }}" as="item">`, `<sc-if value="{{ flag }}">`.
+- Child components: `<dc-import name="BeGiantAppPhone" ...></dc-import>` mounts the sibling file of that name.
+- Styling is inline `style="…"` only. Pseudo-states via `style-hover`, `style-active`. `<helmet>` holds only font/keyframe/reset CSS and script tags.
+- `renderVals()` returns everything the template reads (values, arrays, handlers).
+
+## Rules
+- Source of truth: `docs/Be Giant App - PRD v2.md`. Read it at the start of a round. Update its decisions log, feature inventory and round log at the end of every round.
+- Prefer targeted edits to `BeGiantAppPhone.dc.html`. Do not rewrite it unless asked. New screens are new sections inside it.
+- Batch edits for a round into as few passes as possible. Structural changes first, polish second.
+- Before a large rebuild, snapshot to `BeGiantAppPhone-backup.dc.html` (git-ignored); delete once approved. Prefer a git branch instead.
+- Visual rules: Be Giant design system, white pages, hairline rules #E6E6E6, square media, rounded only for controls.
+- Cream (#FAF7F0) is allowed as a page option on articles and as the ground for floating cards (end-of-Home milestone, send-a-story).
+- Floating cards are the one exception to the square rule: 12px card radius, 6px media inside. In-feed content, rows and media stay square.
+- Feed ends (Home, For You) sit on a light grey surface below the white feed.
+- Serif (Serrif Condensed) for editorial, never bold. Gibson for everything else. Sentence case headlines; uppercase only for chrome. No emoji. Canadian spelling.
+- Icons: Phosphor light from `assets/light/`. Do not draw SVG icons.
+- Keep every asset path relative. The site is deployed as static files (GitHub Pages), so a broken relative path breaks the phone build.
