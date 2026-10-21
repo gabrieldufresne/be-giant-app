@@ -2074,11 +2074,12 @@ class Component extends DCLogic {
   };
   resumeOpen = () => { const r = this.state.resume; if (!r) return; this._resumeTo = r.p; this.openArticle(r.id, false); };
   /* ---------- First-load swipe-to-save hint ---------- */
-  // Checked every second by tick(): plays once per phone, the first time the top story row is fully on screen
+  // Checked every second by tick(): plays the first time the top Latest story is fully on screen.
+  // Prototype: once each time the app is opened, so reviewers see it. Build: once per install.
   checkSwipeHint(){
     const st = this.state;
     if (this._hintDone || !this.props.bare || !st.ready || st.ob || st.art || st.screen !== 'home') return;
-    let seen = false; try { seen = localStorage.getItem('bg-swipe-hint') === '1'; } catch (e) {}
+    let seen = false; try { seen = sessionStorage.getItem('bg-swipe-hint') === '1'; } catch (e) {}
     if (seen) { this._hintDone = true; return; }
     const root = this.rootRef.current, row = root && root.querySelector('[data-row]');
     if (!row) return;
@@ -2086,7 +2087,7 @@ class Component extends DCLogic {
     if (r.top >= rr.top + 60 && r.bottom <= rr.bottom - 110) { this._hintDone = true; this.playSwipeHint(); }
   }
   playSwipeHint(){
-    try { localStorage.setItem('bg-swipe-hint', '1'); } catch (e) {}
+    try { sessionStorage.setItem('bg-swipe-hint', '1'); } catch (e) {}
     this.setState({hintSave:true}); this.toast('Swipe left on any story to save it', null, 5200);
     clearTimeout(this._hT); this._hT = setTimeout(() => this.setState({hintSave:false}), 5800);
   }
