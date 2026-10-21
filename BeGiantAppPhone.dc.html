@@ -147,10 +147,11 @@
                   <div data-fg="1" onClick="{{ it.open }}" style="position:relative;background:#FFFFFF;display:flex;gap:16px;padding:20px 20px 20px;cursor:pointer;animation:{{ it.peek }}">
                     <div style="position:absolute;left:20px;right:20px;top:0;height:1px;background:#E6E6E6"></div>
                     <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:9px">
-                      <div style="display:flex;align-items:center;gap:10px">
+                      <sc-if value="{{ it.notQuick }}" hint-placeholder-val="{{ true }}"><div style="display:flex;align-items:center;gap:10px">
                         <div style="display:flex;align-items:center;gap:6px;height:14px"><div style="width:12px;height:12px;flex:none;background:{{ it.color }}"></div><div style="font-size:12px;line-height:14px;font-weight:500;text-transform:uppercase;white-space:nowrap;color:#171717;transform:translateY(.5px)">{{ it.badge }}</div><sc-if value="{{ it.fol }}" hint-placeholder-val="{{ false }}"><img src="assets/light/star-light.svg" alt="Following" style="width:12px;height:12px;display:block;transform:translateY(-.75px);flex:none;filter:none"></sc-if></div>
                         <sc-if value="{{ it.isNew }}" hint-placeholder-val="{{ false }}"><div style="font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#DB3A3A">New</div></sc-if>
-                      </div>
+                      </div></sc-if>
+                      <sc-if value="{{ it.quick }}" hint-placeholder-val="{{ false }}"><div style="display:flex;align-items:center;gap:6px;height:22px"><img src="assets/light/timer-light.svg" alt="" style="width:22px;height:22px;display:block;flex:none"><div style="font-size:17px;line-height:22px;font-weight:600;color:#171717;white-space:nowrap">{{ it.mins }}</div></div></sc-if>
                       <div style="font-family:var(--font-serif);font-size:22px;line-height:1.1;letter-spacing:-.01em;text-wrap:pretty">{{ it.title }}</div>
                       <div style="display:flex;align-items:center;justify-content:space-between">
                         <div style="font-size:12px;color:#7A7A7A">{{ it.meta }}</div>
@@ -162,10 +163,10 @@
                 </div>
                 </sc-if>
                 <sc-if value="{{ it.isHead }}" hint-placeholder-val="{{ false }}">
-                <div style="padding:36px 20px 14px;display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+                <div style="padding:40px 20px 14px"><div style="border-top:1px solid #171717;padding-top:16px;display:flex;align-items:baseline;justify-content:space-between;gap:12px">
                   <x-import component-from-global-scope="BeGiantDesignSystem_f91809.Eyebrow" hint-size="100px,14px">{{ it.head }}</x-import>
                   <div style="font-size:12px;color:#7A7A7A">{{ it.headNote }}</div>
-                </div>
+                </div></div>
                 </sc-if>
                 <sc-if value="{{ it.isRail }}" hint-placeholder-val="{{ false }}">
                 <div style="background:#171717;padding:28px 0 30px;margin:20px 0 8px">
@@ -2396,7 +2397,7 @@ class Component extends DCLogic {
     const row = (id, extra) => {
       const x = BY(id), on = sv.has(id), bt = tagOf(x);
       return Object.assign({isRow:true, isRail:false, isNew:false, id:id, title:x.t, dek:x.d, img:IM(x.img), pos:x.pos || '50% 50%', badge:bt, fol:pk.has(bt), color:x.s ? SC[x.s] : NEU, isFr:!!x.s,
-        meta:x.a + ' · ' + x.m + ' min read', anim:'none', peek:'none', peekAct:'none', saveIcon: on ? FL : BL, actLabel: on ? 'Unsave' : 'Save', actIcon: on ? FL : BL,
+        meta:x.a + ' · ' + x.m + ' min read', anim:'none', peek:'none', peekAct:'none', quick:false, notQuick:true, mins:'', saveIcon: on ? FL : BL, actLabel: on ? 'Unsave' : 'Save', actIcon: on ? FL : BL,
         open: (e) => this.openStory(id, e), toggle: (e) => { e.stopPropagation(); this.toggleSave(id, false, e); }}, extra || {});
     };
     const vids = d.VID.map((v, i) => { const x = BY(v.st); return {i:i, hasVid:!!v.src, noVid:!v.src, src:v.src || '', title:v.t, dur:v.dur, img:IM(x.img), pos:x.pos || '50% 50%', badge:tagOf(x), fol:pk.has(tagOf(x)), color:x.s ? SC[x.s] : NEU, isFr:!!x.s, by:'From the story by ' + x.a, open:(e) => this.openVideo(i, e)}; });
@@ -2405,8 +2406,8 @@ class Component extends DCLogic {
       s.fresh ? d.FRESH.map(id => row(id, {isNew:true, anim:'bgFadeIn 400ms ' + EX + ' both'})) : [],
       d.LATEST_A.map(id => row(id)), [{isRow:false, isRail:true, id:'rail', vids:vids.slice(0, 6)}],
       // Short stories (under 10 minutes) get their own labelled section after Watch
-      [{isRow:false, isRail:false, isHead:true, id:'shorts', head:'Short stories', headNote:'Under 10 min'}], shortIds.slice(0, 3).map(id => row(id, {meta:BY(id).m + ' min read · ' + BY(id).a})),
-      d.LATEST_B.map(id => row(id)));
+      [{isRow:false, isRail:false, isHead:true, id:'shorts', head:'Short stories', headNote:'Under 10 min'}], shortIds.slice(0, 3).map(id => row(id, {quick:true, notQuick:false, mins:BY(id).m + ' min read', meta:BY(id).a})),
+      [{isRow:false, isRail:false, isHead:true, id:'popular', head:'Popular', headNote:''}], d.LATEST_B.map(id => row(id)));
     // First-load hint: the first story row slides left to show its Save panel, twice (looping on the board)
     if (s.hintSave) { const fr = homeItems.find(x => x.isRow), n = s.hintLoop ? 'infinite' : '2';
       if (fr) Object.assign(fr, {peek:'bgPeekFg 2600ms cubic-bezier(.16,1,.3,1) 300ms ' + n, peekAct:'bgPeekAct 2600ms ease 300ms ' + n}); }
