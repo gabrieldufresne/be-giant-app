@@ -2,9 +2,10 @@
 
 **Owner:** August Strategy · **Build partner:** Field Office
 **Status:** Living document. Updated at the end of every design round.
-**Last updated:** October 14, 2026, after Round 4 (card home trial)
-**Supersedes:** `uploads/GIANT-App-Wireflow-PRD.md` (Phase I wireflow). Phase I stays the record of the original structure. Where the two disagree, this document wins.
-**Design files:** `BG App.dc.html` (board, and the full-screen app on phones or at `#app`), `BeGiantAppPhone.dc.html` (the app itself), `bg-app-data.js` (content). Earlier phase files are in `archive/`; Wireflow v2 and the Decision Roadmap stay at the root for reference.
+**Last updated:** October 20, 2026, after Round 10 (team review feedback)
+**Supersedes:** `docs/GIANT-App-Wireflow-PRD.md` (Phase I wireflow). Phase I stays the record of the original structure. Where the two disagree, this document wins.
+**Repo:** https://github.com/gabrieldufresne/be-giant-app (public). Preview: https://gabrieldufresne.github.io/be-giant-app/ (GitHub Pages, deployed from `main`).
+**Design files:** `BG App.dc.html` (board, and the full-screen app on phones or at `#app`), `BeGiantAppPhone.dc.html` (the app itself), `bg-app-data.js` (content). Explorations that compare options live in `explorations/`; round notes in `docs/round-9/`. Reference docs are in `docs/`: Strategic Foundation, Phase I wireflow PRD, Decision Roadmap, the Oct 19 prompt pack and the Round 9 plan. Earlier phase files (`archive/`, `Welcome Explorations.dc.html`) stayed in the Claude design project and are not in this repo.
 
 ---
 
@@ -27,7 +28,7 @@ From the Strategic Foundation: the app is Be Giant's direct line to its readers.
 |---|---|---|---|
 | 0. Strategy | Strategic Foundation, Decision Roadmap | Leadership alignment | Done |
 | 1. Wireflow | Phase I PRD, Wireflow v1 and v2 | Structure approved | Done |
-| 2. UX and UI design | Board, live prototype, this PRD | Every Must feature designed, navigation model chosen, client sign-off | **In progress: Round 1 of edits** |
+| 2. UX and UI design | Board, live prototype, this PRD | Every Must feature designed, navigation model chosen, client sign-off | **In progress: Round 10** |
 | 3. Design QA and spec | Annotated specs, motion spec, component list, edge states | Field Office confirms it can be built as specified | Not started |
 | 4. Build | iOS app | Feature-complete build | Not started |
 | 5. Beta | TestFlight with staff and friendly readers | Crash-free, analytics firing, content pipeline proven | Not started |
@@ -49,7 +50,7 @@ Changes from Phase I are marked **(changed)**.
 | D4 | **(changed)** Account lives behind the avatar on Home, not in a tab. | Pre-R1 | Frees a tab for Video. |
 | D5 | Tab bar follows iOS 26: a floating glass bar (Home, Video, Saved) with Search as its own round button. It shrinks while scrolling. A docked alternative stays on the board. | R1 | Final pick between floating and docked is open (Q1). |
 | D6 | Onboarding is Welcome, Topics, Notifications and Create account. Topics are the only personalization step; pillars, series and writers were removed. | R1 | Phase I had welcome, topics, notifications. |
-| D7 | Notifications start from a level (Light, Balanced, Everything) and break down per type and per followed topic, with quiet hours. | R1 | Strategic Foundation: segmentation beats blanket sends. |
+| D7 | Notifications start from a level and break down per type and per followed topic, with quiet hours. | R1 | Levels updated in R7 (Everything removed) and R9 (D36). Strategic Foundation: segmentation beats blanket sends. |
 | D8 | Article reading tools replace the tab bar: Back, Aa, Listen, Night, Share, Save. Progress is a thin line under the status bar only. | Pre-R1, R1 | |
 | D9 | Article ends with "Follow similar topics" (plus the writer), then "More like this". No newsletter block in articles. | R1 | Replaces "Filed under". |
 | D10 | **(changed)** Listen (text to speech) is in V1 as a mini player. | Pre-R1 | Phase I had it out of scope. Needs a technical decision (Q4). |
@@ -58,24 +59,35 @@ Changes from Phase I are marked **(changed)**.
 | D13 | Saving from lists is swipe only. Save icons are removed from cards, the cover and the video feed. The article keeps Save in its reading tools; video keeps double tap. | R2 | |
 | D14 | Tab bar is icons only by default. Labels are a Display setting. | R2 | |
 | D15 | **(changed from D1)** Article page is light or dark only, via the contrast tool. Cream and Paper options are removed; Aa sets text size only. | R2 | |
-| D16 | Onboarding topic picker uses round bubbles in light tints of the brand accents (violet, magenta, yellow, peach). Selected bubbles fill with the full accent and show a check. | R2b | Colour is decorative here only; franchise colours still identify series elsewhere. |
+| D16 | **(superseded by D27)** Onboarding topic picker uses round bubbles in light tints of the brand accents (violet, magenta, yellow, peach). Selected bubbles fill with the full accent and show a check. | R2b | Colour is decorative here only; franchise colours still identify series elsewhere. |
+| D17 | **(superseded by D33)** Create account leads with an email form (name, age, city, email, password). Apple and Google sit below as secondary, styled to each company's guidelines. A storage disclaimer sits above the button. | R2b | Age and city support audience reporting. Needs legal review of the disclaimer copy. |
 | D18 | Saved has an Edit mode: select and remove, Clear finished, Clear all. No confirm dialog; a 5-second Undo toast. | R3 | |
 | D19 | Settings is a hub with real screens: Account, Following, Notifications, Reading and display, plus one static page template. Nothing links back into onboarding. | R3 | Account includes delete account (App Store requirement). |
 | D20 | Jump back in is a row after the lead story on Home, for a story left 10–90% read within 7 days. | R3 | |
-| D21 | The end of Home rotates two beige share cards: a reading card (an award with confetti at 10, 25, 50, 100 stories; an overview between them, with a segmented progress bar and a reader rank in the style of “top 4% of readers”) and Send a story. Rating uses Apple's prompt after the third finished story, plus a quiet link at the end of Home. | R3 | Gamification stays in the brand's voice: no streaks, no badges. |
-| D22 | Floating cards (end-of-Home milestone and send-a-story) may use cream #FAF7F0 and a subtle radius (12px card, 6px media). This is the only exception to the square rule; in-feed content stays square. | R3 | Overrides the earlier cream-only-for-articles rule. |
+| D21 | The end of Home rotates two share cards (white since R10, D44): a reading card (an award with confetti at 10, 25, 50, 100 stories; an overview between them, with a segmented progress bar and a reader rank in the style of “top 4% of readers”) and Send a story. Rating uses Apple's prompt after the third finished story, plus a quiet link at the end of Home. | R3 | Gamification stays in the brand's voice: no streaks, no badges. |
+| D22 | Floating cards (end-of-Home milestone and send-a-story) use a subtle radius (12px card, 6px media). This is the only exception to the square rule; in-feed content stays square. | R3 | Cream background replaced by white in R10 (D44). |
 | D23 | Card home stays a board-only trial. No scroll-linked card motion (not buildable reliably). Topic tags are lilac squares; series keep their accent. Its article uses the same card language on the dark ground: one white body card with quotes, inline photos and corrections inside it, then follow topics, a Next story card and quick reads. Reading tools sit in a bottom pill that hides on scroll down. | R4 | Trial only; not replacing Home. |
-| D17 | Create account leads with an email form (name, age, city, email, password). Apple and Google sit below as secondary, styled to each company's guidelines. A storage disclaimer sits above the button. | R2b | Age and city support audience reporting. Needs legal review of the disclaimer copy. |
 | D24 | **(changed)** Guests can do everything without an account. Skipping onboarding makes a guest whose saves, follows and settings stay on the phone. Soft gate: the action finishes first, then a half sheet offers a free account. Asks come at the first share (after the sheet closes), second save, third follow and first milestone. One ask per session; Not now snoozes asks for 7 days; after three dismissals only the avatar asks. | R5 | Replaces the login-modal-first plan in the inventory. Protects the 3+ topics target. |
 | D25 | An unfinished profile (Apple or Google sign-in, or a form left half done) shows a dismissible cream strip under the Home header with progress. Once dismissed, a red dot stays on the avatar and Finish your profile tops the account sheet. | R5 | |
 | D26 | Topics for guests: For You becomes a pick-3 topic picker until three are followed; a cream nudge offers to follow a topic after three reads in it; article-end follow works without an account. The first follow asks for notifications once if they were skipped. | R5 | |
 | D27 | **(changed from D16)** Topic chips are outlines: grey at rest, ink when followed, with a small check in a circle of the topic's accent. 40px tall, 14px text. Setup summary chips are outlines with an accent dot. | R6 | Less colour; clearer on and off states. |
-| D28 | Followed topics are marked with the small For You sparkle, not a check. For You rows lead with the reason ("Because you follow Economy") instead of the tag. | R6 | |
+| D28 | Followed topics are marked with the small For You mark (a sparkle until R9, now a star, D37), not a check. For You rows lead with the reason ("Because you follow Economy") instead of the tag. | R6 | |
 | D29 | Serif page titles step down one size across the app (for example Settings and Saved 52 → 44px, onboarding 36 → 32px, article 40 → 34px). | R6 | |
 | D30 | Video feed: no topic tag or author line; the title is 17px sans; Read and Share are unlabelled round buttons, with Read on top. | R6 | |
+| D31 | Home hero is 6d, highlight boxes, from the website's HeroFullBleed: a pinned 2:3 photo with slight parallax; headline, dek and byline in white line boxes that scroll up over it and fade out near the top. 6a–6c stay on the board for reference. | R6 | |
 | D32 | Welcome is 1b, the Globe: story covers in mixed sizes on a slowly turning sphere (drag to spin) above centred logo and copy on white. Headline reveals line by line, then the dek, then buttons. Get started is brand red and throws the sphere outward into Topics. | R7 | Chosen over 1a Flow and 1c Reels in Welcome Explorations. |
 | D33 | **(changed from D17)** Create account is split. Step 3 offers Continue with Apple, Continue with Google and, third, Continue with email, under a summary of what the account keeps; no fields. Apple or Google then shows About you: name and email confirmed from the provider, plus optional city (with Use location), age range and gender as chips. Email shows the full form. Blanks feed the unfinished-profile strip (D25). | R7 | Fewer fields before the account exists; personal details asked only after the account is made, and all optional. |
-| D31 | Home hero is 6d, highlight boxes, from the website's HeroFullBleed: a pinned 2:3 photo with slight parallax; headline, dek and byline in white line boxes that scroll up over it and fade out near the top. 6a–6c stay on the board for reference. | R6 | |
+| D34 | The home-screen preview (Add to Home Screen) uses a solid iOS status bar. The native build should do what Instagram does: content runs under the status bar with iOS 26's soft scroll-edge blur, and the header controls sit above it. | R8 | A web app can't put controls above iOS's blur, so the prototype can't show the native behaviour. Don't read the solid bar as the intended design. |
+| D35 | Onboarding is a welcome plus three steps: topics, notifications, free account. Three topics start checked. Every step has one "Skip for now", anchored at the bottom; there is no Skip in the top bar. The account step offers Continue with Apple, Continue with Google, Email me a sign-in link (magic link) and Use a password instead, with no summary of choices above them. About you is designed with and without gender. | R9, R10 | P1.1. Gender, the final topic list and which topics are pre-checked are open (Q10, Q11). |
+| D36 | **(changed from D7)** Notification presets are Light (the big story of the day) and Balance (the big story plus followed topics and writers). Quiet hours are on by default, 10 p.m. to 7 a.m., editable, and shown as one compact row; anything inside them is held until morning. A line before Allow says the iPhone asks next. Declining leads to a calm "No notifications, for now" screen, and Settings shows allowed, never asked or declined. | R9, R10 | P1.2. Quiet hours are a server-side hold, not iOS Focus. Cadence and triggers are open (Q13). |
+| D37 | **(changed from D28)** For You and followed tags use a star (Phosphor `star`), not the sparkle, which reads as an AI mark. | R9 | P3.1 explored six options. Heart was the agent's top pick; a hand-drawn star by Maya could replace the Phosphor one later. Any four-point star is ruled out. |
+| D38 | The greeting is G4: a dark veil over Home with the date, "Good morning, [name]" rising in at the centre, and a what's-new line; it holds, then fades to Home (3.2s). Guests get the greeting without a name. Reduce Motion keeps only the fade. | R9 | P3.2. Chosen over three lighter treatments, which were removed. Built and on the board, but not yet switched on in the app (Q15). |
+| D39 | Discover drops Series and Pillars. It adds Near you (stories from the reader's city or province, or a Use my location card for readers without one) and Discover by province (all 13, the reader's own first). Every story carries a place. | R10 | Story places in the prototype are inferred from the copy; the build needs a location field in Sanity (Q14). |
+| D40 | After the Watch rail, Home shows Short stories (three stories under 10 minutes, each with a stopwatch and a large read time instead of a topic tag), then a Popular section with the rest. Home holds 12 stories in all. Discover's short stories rail uses the same under-10-minute rule. | R10 | |
+| D41 | Sharing uses the native share sheet (UIActivityViewController on iOS, the Android sharesheet). The prototype shows iOS. The branded share sheet is gone. | R10 | |
+| D42 | The first time the first Latest story is fully on screen, it slides left to show its Save panel, with a tip: "Swipe left on any story to save it". Once per install in the build; once each time the app opens in the prototype. | R10 | |
+| D43 | The For You end button reads "Show me a bonus story". The send-a-story card no longer says where the link opens. | R10 | |
+| D44 | **(changed from D22)** The end-of-Home milestone and send-a-story cards are white on the grey feed end. Panels inside them use #F2F2F2. | R10 | Cream stays for article pages, the unfinished-profile strip and the topic nudge. |
 
 ---
 
@@ -88,28 +100,29 @@ Changes from Phase I are marked **(changed)**.
 
 | Feature | Priority | Design status | Gap or next step |
 |---|---|---|---|
-| Home: lead story, latest, Watch rail | Must | Designed | Phase I also had a trending rail and a series rail on Home. Decide whether they return (Q5). |
-| For You (personalized feed with reasons) | Must | Designed | Define the empty state for readers who skip topics. |
+| Home: lead story, latest, Watch rail, short stories, popular | Must | Designed | R10: Short stories and Popular after Watch (D40). Greeting G4 built, not yet on (D38, Q15). |
+| For You (personalized feed with reasons) | Must | Designed | Star mark (D37); bonus story at the end (D43). Empty state for readers who skip topics is the guest topic picker (D26). |
 | Pull to refresh, new-story indicator | Must | Designed | |
 | Article reading view | Must | Partial | Missing: inline images, author link to the Author screen, correction or editor's note block, swipe to the next article. |
 | Text size and night page | Must | Designed | Page colour options removed in R2. |
 | Listen (text to speech) | Should | Designed | Needs a voice and vendor decision (Q4). |
-| Share sheet | Must | Designed | Use the native iOS sheet in build. |
+| Share sheet | Must | Designed | Native share sheet, iOS shown (D41). |
 | Follow similar topics at article end | Must | Designed | |
-| Discover (browse and search) | Must | Designed | |
+| Discover (browse and search) | Must | Designed | R10: Series and Pillars removed; Near you and Discover by province added (D39). Needs a location field in Sanity (Q14). |
 | Feed pattern (topic or pillar list, filters, pagination) | Must | Partial | Search results cover it. Still missing: a filter sheet and a loading state when you scroll to the end. |
-| **Series hub** | Must | **Not designed** | Intro, featured entry, entries list, follow series. |
+| **Series hub** | Must | **Not designed** | Intro, featured entry, entries list, follow series. With Series out of Discover (D39), decide where a reader finds a series. |
 | **Author profile** | Must | **Not designed** | Bio, follow writer, stories list. Follow writer already exists at article end. |
 | Video Feed and Grid | Must | Designed | Needs an autoplay and sound policy (Q6) and captions. |
 | Card long-press menu (Save, Share, Follow topic) | Should | Not designed | |
+| Swipe-to-save hint | Should | Designed | R10 (D42). Board phone 02 Swipe hint. |
 
 ### Account and retention
 
 | Feature | Priority | Design status | Gap or next step |
 |---|---|---|---|
-| Onboarding (4 steps) | Must | Designed | |
-| Notification levels and permission | Must | Designed | Copy for each notification type needs editorial sign-off. |
-| Create account (email form, Apple, Google) | Must | Partial | Email form with name, age, city and data disclaimer designed. Missing: sign-in versus create toggle, validation and error states, age minimum. |
+| Onboarding (welcome and 3 steps) | Must | Designed | R9 and R10 (D35). Board row 09b. |
+| Notification levels and permission | Must | Designed | R9 (D36): Light and Balance, quiet hours, iPhone Settings handoff, declined state. Board row 09c. Copy needs editorial sign-off; cadence and triggers open (Q13). |
+| Create account (Apple, Google, magic link, password) | Must | Partial | R9: magic link and a five-provider layout. Missing: sign-in versus create, validation and error states, age minimum. |
 | Logged-out states and login gating | Must | Designed | R5: soft gate (D24). Guest Home, For You picker, topic nudge, first-follow notification ask, four account asks, create account opened on its own, unfinished profile strip and avatar dot. Missing: Saved empty state copy for guests, sign in with an existing account from the ask. |
 | Saved, offline, reading progress | Must | Designed | R3: Edit mode with Clear finished and Clear all. Missing: logged-out state and an out-of-storage message. |
 | Jump back in | Should | Designed | R3. |
@@ -117,7 +130,7 @@ Changes from Phase I are marked **(changed)**.
 | Account sheet and Settings | Must | Designed | R3: Account, Following, Notifications, Reading and display screens. |
 | Preferences: manage followed topics and writers | Must | Designed | Following screen in Settings (R3). |
 | Notification tap opens the article | Must | Not designed | Includes cold start from a notification. |
-| Newsletter signup | Should | Not designed in V1 | Removed from articles in R1. Decide where it lives: Settings, Home, or a one-time prompt (Q7). |
+| Newsletter signup | Should | Explored | R9: `explorations/P1.3 Newsletter.dc.html` compares the account step, About you, and a one-time sheet after the second story, plus a switch in Settings. Recommended: the sheet plus Settings. Waits on Q7 and Q9. |
 | Static pages (About, Editorial standards, Privacy, Terms) | Must | Designed | One template (R3). Copy is placeholder for editorial and legal. Corrections page still to add. |
 
 ### Platform and quality (needed before build)
@@ -125,7 +138,7 @@ Changes from Phase I are marked **(changed)**.
 | Feature | Priority | Status | Note |
 |---|---|---|---|
 | Loading, error and offline states (skeletons, retry, no connection) | Must | Not designed | Every screen needs one. |
-| Accessibility: Dynamic Type, VoiceOver labels, reduced motion, contrast | Must | Not specified | The motion spec on the board needs a reduced-motion version. |
+| Accessibility: Dynamic Type, VoiceOver labels, reduced motion, contrast | Must | Not specified | G4 has a Reduce Motion version; the Globe welcome and the other motion still need one. |
 | Universal links from begiant.ca into the app | Must | Not specified | Field Office |
 | Analytics events (onboarding steps, opt-in, follows, saves, video plays) | Must | Not specified | Ties to the success measures in section 1. |
 | CMS fields the app needs (focal point, video files, audio, notification copy) | Must | Not specified | Check against the Sanity schema. |
@@ -147,6 +160,13 @@ Changes from Phase I are marked **(changed)**.
 | Q6 | Video: autoplay on Wi-Fi only, starts muted? | Be Giant | Round 2 |
 | Q7 | Where does newsletter signup live? | Be Giant | Round 2 |
 | Q8 | Is Android in scope for V1? | Be Giant | Before Phase 4 |
+| Q9 | Is newsletter signup a core KPI? Decides between the one-time sheet alone and adding the account-step checkbox. Also: which lists, how often, and CASL consent and double opt-in for guest emails. | Be Giant (and counsel) | Before the newsletter ships |
+| Q10 | Collect gender, or drop it? | Be Giant | Before build |
+| Q11 | Final onboarding topic list, and which three start checked. | Be Giant | Before build |
+| Q12 | Magic-link lifetime, whether the link opens on another device, and whether a fifth sign-in provider (Microsoft) is wanted. | Be Giant with Field Office | Before build |
+| Q13 | Notification cadence and push triggers: is the big story daily and at a fixed time, is there a cap for Balance, and should quiet hours deliver held alerts one by one or as a summary? | Be Giant | Before build |
+| Q14 | Can stories carry a location in Sanity, and who tags them? Needed for Near you and Discover by province. | Field Office with Be Giant | Before build |
+| Q15 | Switch the G4 greeting on in the app? | Gabriel | Next round |
 
 ---
 
@@ -195,3 +215,13 @@ Notifications: removed New video, Major reporting and Sunday digest; three types
 Account: split into a one-tap choice (Apple, Google, then email) and a second screen. Apple or Google leads to About you (optional city, age range and gender chips); email leads to the full form (D33). New board phones: About you and Email sign-up. Onboarding demo updated.
 Feed ends: Home and For You now end with a distinct grey surface (#F0F0F0) after the white feed. The caught-up message is centred (eyebrow, serif title, line, button) on both; on Home the milestone and send-a-story cards and the rate link sit on the same grey.
 Notification levels: Everything removed; Light (The big story) and Balanced (all three types) remain, in Settings and onboarding.
+
+### Round 8 (October 20, 2026)
+Moved from the Claude design project to this repo and GitHub Pages. Fixed the app screen sliding up to show hidden sheets (the root no longer scrolls; closed sheets are hidden), and pulled the Globe in so it fits at 390px (radius now set by the screen width, about 156 on the 402px canvas; was 180 in D32). Phones get a Board chip and a View as app chip; the board header says the round and the hero row is 00. Added a home-screen preview with a solid status bar (D34), a "new version is ready" toast with Refresh, and darker glass behind the Home / For You switch.
+
+### Round 9 (October 20, 2026): Oct 19 team review, batch 1
+Ran the prompt pack (`docs/Round 9 plan.md`) as one agent per prompt, each on its own branch, merged after review. P1.1 onboarding (D35), P1.2 notifications and quiet hours (D36), P3.1 For You mark, with the star chosen (D37), P3.2 greeting, with G4 chosen (D38). P1.3 newsletter stays an exploration until Q9 is answered. P1.4, P1.5 and P3.3 are on hold. Also: the board became a Figma-style canvas (pinch or Cmd + scroll to zoom, drag to pan, Fit and 100% in the corner); the placeholder-topics line and the "Kept in your account" summary were removed.
+
+### Round 10 (October 20, 2026): follow-up feedback
+One bottom-anchored "Skip for now" in onboarding and a compact quiet-hours row (D35, D36). Discover: Series and Pillars out, Near you and Discover by province in (D39). Home: Short stories with a stopwatch and read time, then Popular (D40). Native share sheet (D41). First-load swipe-to-save hint on the first Latest story (D42). "Bonus story" and the send-a-story line (D43). End-of-Home cards on white (D44).
+Notes for each prompt are in `docs/round-9/`.
