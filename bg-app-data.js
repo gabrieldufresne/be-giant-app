@@ -116,8 +116,13 @@ var VID = [
  {st:'battery',t:'The Battery, before the next storm',dur:'1:56',secs:116},
  {st:'church',t:'Walking through the church conversion',dur:'1:40',secs:100}
 ];
+// Where each story is reported from (city, province code); national stories have none
+var PLACES = {potash:['Saskatoon','SK'], mls:['Halifax','NS'], church:['Winnipeg','MB'], solar:['Summerside','PE'], rover:['Sudbury','ON'], perimeter:['Toronto','ON'], coast:['Gulf of St. Lawrence','QC'], dispersa:['Halifax','NS'], litt:['Toronto','ON'], stonewall:['Stonewall','MB'], smoke:['Toronto','ON'], twisters:['Regina','SK'], upei:['Charlottetown','PE'], battery:['St. John\u2019s','NL'], talampassi:['Montreal','QC'], klyne:['Saskatoon','SK'], rogers:['Toronto','ON']};
+ST.forEach(function (x) { var p = PLACES[x.id]; if (p) { x.city = p[0]; x.pv = p[1]; } });
+var PROV = {BC:'British Columbia', AB:'Alberta', SK:'Saskatchewan', MB:'Manitoba', ON:'Ontario', QC:'Quebec', NB:'New Brunswick', NS:'Nova Scotia', PE:'Prince Edward Island', NL:'Newfoundland and Labrador', YT:'Yukon', NT:'Northwest Territories', NU:'Nunavut'};
+
 window.BGD = {
- IM: IM, SC: SC, ST: ST, VID: VID,
+ IM: IM, SC: SC, ST: ST, VID: VID, PROV: PROV,
  LEAD: 'family',
  PILL: ['People','Places','Ideas'],
  PILLIMG: {People:'talampassi-portrait', Places:'coastal-geographer-erosion', Ideas:'perimeter-imaging-device'},
@@ -126,7 +131,7 @@ window.BGD = {
  SIM: {family:['Economy','Small business','Work']},
  ORDER: ['family','potash','productivity','mls','summit','rover','church','solar','dispersa','coast','north'],
  LATEST_A: ['potash','productivity','rover'],
- LATEST_B: ['mls','summit','church','solar','coast','north','stonewall','smoke'],
+ LATEST_B: ['mls','summit','church','solar','coast'],
  FRESH: ['twisters','upei'],
  FY: [{id:'productivity',why:'Because you follow Economy'},{id:'church',why:'Because you follow Housing'},{id:'coast',why:'Because you follow Climate'},{id:'summit',why:'New from Stephen Maher'},{id:'battery',why:'Read by people who follow Housing'}],
  TRENDING: ['family','north','potash','solar','church'],
@@ -136,7 +141,7 @@ window.BGD = {
  PRE: {
   'ob-splash':{s:{ob:'splash'}}, 'ob-topics':{s:{ob:'topics'}}, 'ob-alerts':{s:{ob:'alerts'}}, 'ob-account':{s:{ob:'account'}}, 'ob-details':{s:{ob:'details', obVia:'apple'}}, 'ob-email':{s:{ob:'details', obVia:'email'}},
   'ob-account-5':{s:{ob:'account', obProv5:true}}, 'ob-link':{s:{ob:'details', obVia:'link'}}, 'ob-link-sent':{s:{ob:'details', obVia:'link', linkSent:true, lEmail:'maya.okafor@gmail.com'}}, 'ob-details-linked':{s:{ob:'details', obVia:'linked', lEmail:'maya.okafor@gmail.com'}}, 'ob-details-nogender':{s:{ob:'details', obVia:'apple', dNoGender:true}},
-  'home':{}, 'home-scrolled':{home:760}, 'home-list':{home:560},
+  'home':{}, 'home-scrolled':{home:760}, 'home-list':{home:560}, 'home-hint':{home:560, s:{hintSave:true, hintLoop:true}},
   'home-refresh':{},
   'home-save':{home:560, swipe:{sel:'[data-row="productivity"]', dx:-118}, hold:true},
   'foryou':{s:{feed:1}}, 'foryou-end':{s:{feed:1}, fy:99999}, 'saved-topic':{s:{screen:'saved',savedSort:'topic'}},
