@@ -416,8 +416,8 @@ a:hover{opacity:.6}
 
   <section style="display:flex;flex-direction:column;gap:28px">
     <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
-      <div style="font-family:var(--font-sans);font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">03b · Article modules · Round 9, Phases 1 and 2</div>
-      <div style="font-size:15px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">The website's in-body blocks, rebuilt for the phone. Real begiant.ca stories, ported from Sanity, all at the top of Home in the app view: RBC summit, geothermal, Hamilton fishway, solar parking lots, Churchill's little industries and Canada's long history. On in the app view and on these phones (mods="on"). Inventory and plan: docs/round-9/article-modules.md.</div>
+      <div style="font-family:var(--font-sans);font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">03b · Article modules · Round 9, Phases 1 to 3</div>
+      <div style="font-size:15px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">The website's in-body blocks, rebuilt for the phone. Real begiant.ca stories, ported from Sanity, all at the top of Home in the app view: Drucker and Ozempic, Churchill's megaproject, Keshavjee's lungs, the Pelican-case clinic, Churchill's little industries, Hamilton fishway, solar parking lots, RBC summit, geothermal and Canada's long history. On in the app view and on these phones (mods="on"). Inventory and plan: docs/round-9/article-modules.md.</div>
     </div>
     <div style="display:flex;gap:56px;align-items:flex-start">
       <div data-screen-label="03b Subheads and links" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
@@ -484,6 +484,41 @@ a:hover{opacity:.6}
         <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">List</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Bullets</div></div>
         <dc-import name="BeGiantAppPhone" start="mod-list" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
         <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">List.</b> Square bullets in the text colour at body size; they grow with Aa.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Parallax" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Parallax</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Panel over the photo</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-parallax" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Parallax.</b> The photo pins at screen height and each text block scrolls up over it once, in a solid panel, so the words never depend on the photo’s contrast. No scroll-jacking: the page moves at reading speed, and the photo lets go after the last panel. Display text is the serif at 26 to 32px with Aa.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Parallax, arriving" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Parallax, arriving</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Photo first</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-parallax-top" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Arriving.</b> The photo fills the screen on its own first, as on the website, then the first panel rises from below.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Parallax, still" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Parallax, still</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Reduce Motion or large text</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-parallax-still" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Still version.</b> With Reduce Motion on, or Aa at the three largest sizes, nothing pins: the photo sits in the column at its own shape and the text follows with a rule beside it.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Newsletter" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Newsletter</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Signed in</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-news" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Newsletter.</b> Cream card (the topic-nudge allowance) with the editor’s line and one Subscribe button; signed-in readers subscribe in one tap with the email on their account. It shares P1.3’s state: once subscribed, the card is gone from every story and Settings shows Subscribed.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Newsletter, guest" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Newsletter, guest</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Email field</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-news-guest" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Guest.</b> Adds an email field; Subscribe sends a confirmation email.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Callout" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Callout</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Survey</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-callout" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Callout.</b> Editor promos such as “Take our survey” and Weather Week: a hairline box, serif title, body and one full-width button that opens the link in the in-app browser. The website’s SVG icon is dropped on the phone.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Annotated image" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Annotated image</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Numbered points</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-annot" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Annotated image.</b> Numbered points on the photo, 30px with a 44px tap area, and the same numbers in a list underneath that is always visible. Tapping a point highlights it and brings its entry into view; tapping an entry highlights its point. No hover, no hidden slider.</div></sc-if>
       </div>
     </div>
   </section>

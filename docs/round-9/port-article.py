@@ -43,7 +43,9 @@ BODY = '''body[]{_type, style, listItem, "sp": children[]{text, marks}, "lk": ma
   sourceType, url, "file": videoFile.asset->url, title, durationSeconds, "poster": posterImage.asset._ref,
   overline, body, "btn": button.buttonText, "btnHref": coalesce(button.link.href, button.link.article->slug.current),
   "bg": backgroundImage{"img": asset._ref, "cap": coalesce(caption, asset->description), "cr": coalesce(credit, asset->creditLine)}, textColor, gradientIntensity,
-  "blocks": contentBlocks[]{eyebrow, "text": pt::text(body), textStyle, alignment, "img": image.asset._ref, imagePosition}}''' % (LINK, IMGF, REL, REL)
+  "blocks": contentBlocks[]{eyebrow, "paras": body[_type=="block"]{style, "t": pt::text(@)}, textStyle, alignment, "img": image.asset._ref, "icap": coalesce(image.caption, image.asset->description), "icr": coalesce(image.credit, image.asset->creditLine), imagePosition},
+  "nlHead": heading, "nlBody": body, "nlName": newsletter->title,
+  "ann": annotations[]{label, description, dotX, dotY, dotXMobile, dotYMobile}, "aimg": image.asset._ref}''' % (LINK, IMGF, REL, REL)
 HEAD = '''{"slug": slug.current, "pillarSlug": primaryPillar->slug.current, title, dek, publishedAt, readTime, "authors": authors[]->{name, "s": slug.current},
   "hero": heroImage.asset._ref, "heroCap": coalesce(heroImage.caption, heroImage.asset->description), "heroCredit": coalesce(heroImage.credit, heroImage.asset->creditLine),
   photosCredit, "topics": topics[]->title, "pillar": primaryPillar->title'''
@@ -134,13 +136,22 @@ def body(blocks, ids):
             ss = [x['s'] for x in (b.get('rels') or []) if x]
             rels += ss; out.append({'k': 'rels', 'head': (b.get('heading') or 'Related stories').strip(), 'ids': [ids(s) for s in ss]})
         elif ty == 'newsletterCTA':
-            out.append({'k': 'news'})
+            o = {'k': 'news'}
+            if b.get('nlHead'): o['head'] = b['nlHead'].strip()
+            if isinstance(b.get('nlBody'), str) and b['nlBody'].strip(): o['line'] = b['nlBody'].strip()
+            out.append(o)
+        elif ty == 'annotatedImage' and b.get('aimg'):
+            out.append({'k': 'annot', 'img': img(b['aimg'], 1200), 'cap': (b.get('caption') or '').strip(), 'credit': (b.get('credit') or '').strip(),
+                        'pins': [{k: v for k, v in {'label': (a.get('label') or '').strip(), 'text': (a.get('description') or '').strip(),
+                                  'x': a.get('dotXMobile') if a.get('dotXMobile') is not None else a.get('dotX'), 'y': a.get('dotYMobile') if a.get('dotYMobile') is not None else a.get('dotY')}.items() if v not in (None, '')}
+                                 for a in (b.get('ann') or [])]})
         elif ty == 'callout':
             out.append({'k': 'callout', 'over': b.get('overline') or '', 'title': b.get('title') or '', 'body': b.get('body') if isinstance(b.get('body'), str) else '', 'btn': b.get('btn') or '', 'href': b.get('btnHref') or ''})
         elif ty == 'articleParallax' and b.get('bg'):
             out.append({'k': 'parallax', 'bg': img(b['bg']['img'], 1400), 'cap': (b['bg'].get('cap') or '').strip(), 'credit': (b['bg'].get('cr') or '').strip(),
                         'tone': b.get('textColor') or 'light', 'tint': b.get('gradientIntensity') or 'normal',
-                        'blocks': [{k: v for k, v in {'eyebrow': c.get('eyebrow'), 'text': c.get('text'), 'style': c.get('textStyle'), 'align': c.get('alignment'), 'img': img(c.get('img')), 'side': c.get('imagePosition')}.items() if v} for c in (b.get('blocks') or [])]})
+                        'blocks': [{k: v for k, v in {'eyebrow': (c.get('eyebrow') or '').strip(), 'paras': [p['t'].strip() for p in (c.get('paras') or []) if (p.get('t') or '').strip()],
+                                    'style': c.get('textStyle') or 'display', 'img': img(c.get('img')), 'icap': (c.get('icap') or '').strip(), 'icr': (c.get('icr') or '').strip()}.items() if v} for c in (b.get('blocks') or [])]})
     return out, rels
 
 def main():
@@ -169,7 +180,7 @@ def main():
         if not a: continue
         st = head(a, sid); st['body'] = [a['p1'].strip()] if a.get('p1') else []
         stubs.append(st)
-    js = lambda o: json.dumps(o, ensure_ascii=True)
+    js = lambda o: json.dumps(o, ensure_ascii=True).replace('\\u200b', '').replace('\\ufeff', '')  # editors' zero-width spaces
     with open(outp, 'w') as f:
         f.write('// ST\n' + ',\n'.join(' ' + js(s) for s in stories) + '\n// MST\n' + ',\n'.join(' ' + js(s) for s in stubs) + '\n')
     for s in stories: print(s['id'], s['t'], len(s['body']), 'blocks', sorted({b.get('k') or ('q' if isinstance(b, dict) else 'p') for b in s['body'] if isinstance(b, dict)}))

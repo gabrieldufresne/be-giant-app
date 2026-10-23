@@ -1,6 +1,6 @@
 # In-article modules: inventory and plan
 
-Status (October 23, 2026): Gabriel accepted the leans on all nine questions below. **Phases 1 and 2 are built** and on in the app view (`mods="on"`); see "Phase 1: built" and "Phase 2: built" at the end. Phases 3 and 4 not started.
+Status (October 23, 2026): Gabriel accepted the leans on all nine questions below. **Phases 1 to 3 are built** and on in the app view (`mods="on"`); see the "built" sections at the end. Phase 4 (fallbacks) not started.
 
 ## Sources
 
@@ -201,3 +201,49 @@ Newsletter CTAs, callouts and parallax are already in the data as `{k:'news'}`, 
 **For the PRD (coordinating session):** Q6 (video autoplay) can be answered for articles: tap to play, no autoplay, as Gabriel accepted. The Video tab's own policy is still open.
 
 **Next:** Phase 3: parallax, newsletter CTA, callout and annotated image.
+
+## Phase 3: built (October 23, 2026)
+
+Parallax, newsletter CTA, callout and annotated image, with four more real stories.
+
+**Stories** (ported with `port-article.py`, which now also brings over annotated images, newsletter text and parallax paragraphs, and strips editors' zero-width spaces):
+
+| Id | Story | Shows |
+|---|---|---|
+| `drucker` | The Canadian scientist behind Ozempic on why he never, ever gave up (Dan Bilefsky, Oct 2) | Two parallax blocks, newsletter CTA, image pair, full-width images, wide video, six dividers |
+| `churchill` | The polar bear capital of the world has multibillion-dollar megaproject ambitions (Tom Jokinen, Oct 16) | Three parallax blocks (flexible text, one with the overlay off), newsletter, pair, Short. Replaces the earlier short entry. |
+| `lungs` | Dr. Shaf Keshavjee's dream: first, fix lung transplants… (Karen Zagor, Sept 11) | Two display-style parallax blocks with an inset photo, dividers |
+| `pelican` | How a Canadian cardiologist built a portable 'hospital in a Pelican case' (Rebecca Gao) | Annotated image (7 points), newsletter CTA, related stories |
+
+There are two more short entries, `gold` and `milica`. The callout is shown on `parking`, from Phase 2.
+
+**Home:**
+- Latest is now `drucker`, `churchill`, `lungs`, `pelican`, `bears`.
+- Popular is now `fishway`, `parking`, `rbc`, `geo`, `historica`, `potash`.
+- `productivity`, `mls`, `summit` and `church` leave Home but stay in search and For You.
+
+**What each block does:**
+
+| Block | Data | Mobile version as built |
+|---|---|---|
+| Parallax | `{k:'parallax', bg, tone, tint, blocks:[{eyebrow, paras, style, img}]}` | The photo pins at the phone's height (`position:sticky` inside the article scroller), with the editor's tint (60, 40 or 25 %, or off). The text arrives after 78% of a screen, each block in a solid panel: ink at 90% with white text, or white for dark-tone blocks. Legibility never depends on the photo. Display style is the serif at regular weight, 26 to 32px with Aa. Flexible style is body text. An inset photo sits at the top of its panel. The photo lets go 62% of a screen after the last panel, and the caption follows on the text margin. **Still version**, used for Reduce Motion or Aa sizes 4 and 5: the photo in the column at its own shape, then the text with a 2px rule beside it. Nothing scroll-jacks: the page always moves at the reader's speed. |
+| Newsletter CTA | `{k:'news', head, line}` | A cream card (the topic-nudge allowance), square, with an envelope icon and a "The Be Giant newsletter" overline. Then the editor's heading (default "Get our reporting by email"), their line and a 48px ink Subscribe button. Signed in: "Sends to [account email]", and one tap subscribes. Guest: an email field, and Subscribe sends a confirmation. It shares P1.3's `nl` state, so once subscribed the card says "You're subscribed" in that story, disappears from every other story, and Settings shows Subscribed. |
+| Callout | `{k:'callout', over, title, body, btn, href}` | A 1px box in the text colour, with the overline, a 26px serif title and 16px body. One 48px outlined button with an arrow opens the link (in the build, the in-app browser). The editor's SVG icon is dropped. |
+| Annotated image | `{k:'annot', img, pins:[{label, text, x, y}]}` | The photo at its own shape. Numbered points use the editor's mobile position when set, otherwise the desktop one. They're 30px white (34px ink when selected), with a 44px tap area. A line under the photo says the numbers are tappable. Below that, a numbered list of every label and description, always visible. Tapping a point selects it and scrolls its entry into view; tapping an entry selects its point. Tapping the photo opens the photo viewer. |
+
+**Board:** seven more phones in 03b: Parallax (a panel over the pinned photo), Parallax arriving, Parallax still, Newsletter signed in, Newsletter guest, Callout and Annotated image (point 3 selected). Module presets now re-apply their scroll at 1.8 and 3.2 seconds, because the article grows as captions load. An `artOff` of 0 now counts.
+
+**Fix outside the modules:** the frosted 50px strip behind the status bar was painted underneath the article body on `main`, because the body has z-index 1 and the strip had none. So it never showed over the text, though the 03 Article note says it should. It now has z-index 2. That keeps the clock readable over a pinned parallax photo, and over body text generally.
+
+**Checked in the browser:**
+- All seven presets land exactly on their block.
+- The parallax photo pins and the panel scrolls over it.
+- The still version shows at Aa size 4.
+- Subscribe turns the card into "You're subscribed" and shows the toast.
+- Tapping list entry 6 selects point 6.
+- In the app view, Drucker opens from Home with all 16 of its blocks.
+- The board loads 20 module phones with no script errors.
+
+Not checked: Reduce Motion itself (the browser pane can't switch it on). The still version is the same one large text gets.
+
+**Next:** Phase 4, fallbacks for horizontal scroll, social posts, HTML embeds, audio and footnotes. None of the published articles use them now, except two social posts.
