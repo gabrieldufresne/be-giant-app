@@ -47,6 +47,7 @@ claude
 | `assets/` | Icons (Phosphor light/fill), imagery, illustrations, app icon |
 | `uploads/` | Short-form videos used in Watch |
 | `docs/` | PRD v2 (source of truth), strategic foundation, original wireflow PRD, decision roadmap |
+| `docs/handoff/` | Developer handoff for Field Office: one spec per area with element IDs, the Sanity contract and a change log. Start at `docs/handoff/README.md` |
 | `index.html`, `app.html` | Short links to the board and the app |
 
 ## For developers

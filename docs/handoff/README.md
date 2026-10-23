@@ -26,7 +26,7 @@ If this folder and the prototype disagree, tell August Strategy; the prototype i
 |---|---|---|---|
 | [01-foundations.md](01-foundations.md) | FND | Platform, colour, type, shape, icons, motion, accessibility baseline | Designed |
 | [02-app-shell-and-navigation.md](02-app-shell-and-navigation.md) | NAV | Tab bar, headers, status bar, sheets, toasts, gestures, transitions | Designed |
-| [03-onboarding.md](03-onboarding.md) | ONB | Welcome (Globe), topics, notifications step, account, About you | Designed |
+| [03-onboarding.md](03-onboarding.md) | ONB | Welcome (Globe), topics, notifications step, account, About you | Designed (sign in and account errors approved, D59, board only until built; Reduce Motion not designed) |
 | [04-guest-and-account-gating.md](04-guest-and-account-gating.md) | GATE | Guests, soft-gate asks, unfinished profile, topic nudge | Designed |
 | [05-home-and-for-you.md](05-home-and-for-you.md) | HOME | Home feed, lead story, Jump back in, Watch rail, end of Home, For You | Designed |
 | [06-article.md](06-article.md) | ART | Reading view: hero, byline, tools, progress, Aa, night, article end | Designed |
@@ -36,8 +36,8 @@ If this folder and the prototype disagree, tell August Strategy; the prototype i
 | [10-saved.md](10-saved.md) | SAVED | Saved list, offline, Edit mode | Designed |
 | [11-account-and-settings.md](11-account-and-settings.md) | SET | Account sheet, Settings hub and its screens | Designed |
 | [12-notifications-newsletter-listen-share.md](12-notifications-newsletter-listen-share.md) | NOTIF, NEWS, LISTEN, SHARE | Notification presets and permission, newsletter, Listen, share sheet | Partial |
-| [14-author-profile.md](14-author-profile.md) | AUTH | Writer page: name, bio, Learn more, Follow, Share, stories by the writer | Designed (Round 11) |
-| [15-loading-errors-offline.md](15-loading-errors-offline.md) | LOAD, ERR | Launch screen, skeletons, slow connection, paging, offline banner and screens, server error, not found, video error | Proposed (Round 11, board only) |
+| [14-author-profile.md](14-author-profile.md) | AUTH | Writer page: name, bio, Learn more, Follow, Share, stories by the writer | Designed (Round 11, including shared bylines, D61) |
+| [15-loading-errors-offline.md](15-loading-errors-offline.md) | LOAD, ERR | Launch screen, skeletons, slow connection, paging, offline banner and screens, server error, not found, video error | Designed (loading is a board spec, D55; errors and offline approved for the app, D58, not built yet) |
 | [13-content-model.md](13-content-model.md) | CMS, Q-, SCR-, API- | The Sanity contract: queries per screen, fields per body module, schema change requests, data rules, outside APIs, universal links, reader data | Partial (SCR-01 to SCR-10 pending) |
 
 Each file starts with the same header: ID prefix, status, last changed, board section, where to find it in the prototype, decisions, open questions, and **Affects / depends on** (the other areas a change here touches). Then: Summary, Elements and behaviour (a table with IDs and a **Data** column), States, Motion, Accessibility, Data and analytics, Open items.
@@ -92,6 +92,9 @@ Found while writing these specs and ruled on by Gabriel on October 23, 2026. The
 
 ## Change log
 Newest first. Each entry lists what changed, the IDs, and the other areas it affects.
+
+### October 23, 2026: Round 11 docs sweep
+- **UI only.** Area files brought in line with the Round 11 calls: `02-…` (profile is a pushed screen; the writer chooser uses the sheet pattern; August recommends floating and Model 1), `04-…` (GATE-13 Sign in from an ask now decided, D59), `05-…` (HOME-06 greeting on once a day, D56; no Trending rail, D60; loading and error states point to `15-…`).
 
 ### October 23, 2026: Round 11 QA fix (shared bylines)
 - **UI only.** Gabriel's phone QA: stories by several writers only linked to the first. Now built per D61: AUTH-14 writer chooser from the byline, and one row per writer in ART-10. New board phone "Shared byline" (section 10).
