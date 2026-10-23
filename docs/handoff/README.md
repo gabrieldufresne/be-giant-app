@@ -93,6 +93,10 @@ Found while writing these specs and ruled on by Gabriel on October 23, 2026. The
 ## Change log
 Newest first. Each entry lists what changed, the IDs, and the other areas it affects.
 
+### October 23, 2026: Round 12 QA fix (Settings › Newsletter)
+- **UI only.** Gabriel's QA: the hub's Newsletter row opened the whole Account page. Now it opens its own screen with only newsletter settings: SET-30 (new). SET-17 (the section in Account) is Removed; SET-28 re-pointed; NEWS-06 updated. Guests waiting to confirm see "To confirm" and can resend the email (D64). Decision D70.
+  - **Affects:** `11-account-and-settings.md`, `12-…` (NEWS-06).
+
 ### October 23, 2026: Round 12 (Q7 to Q14 recorded and built)
 - **UI only.** Built in the app and on the board: newsletter in three places, the account-step checkbox, the second-story sheet and Settings (D62; NEWS-01, NEWS-03); double opt-in for guests (D64; MOD-44, NEWS-03); no gender (D65; ONB-19, ONB-20); the three most-read topics pre-checked (D66; ONB-07); links work on any device (D67; ONB-18); the big story only when there is one (D68; NOTIF-02, NOTIF-03, NOTIF-05).
 - **Data / schema.** SCR-01 confirmed (D69); SCR-04 drops `preselectedTopics` for an analytics source (D66); SCR-05 option B (D68); API-01 confirmation email on for guests (D64). iOS first, Android after V1 (D63).

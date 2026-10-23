@@ -113,6 +113,7 @@ Changes from Phase I are marked **(changed)**.
 | D67 | **(answers Q12)** Sign-in links work once, for 15 minutes, on any device. No Microsoft sign-in. | R12 | ONB-18, ONB-29. Built. |
 | D68 | **(answers Q13)** The big story is pushed only when one merits it, at most once a day, chosen by editors; no fixed morning time. | R12 | NOTIF-02, 03, 05; SCR-05 option B. Built. |
 | D69 | **(answers Q14)** Editors tag each story's place (city and province) at publish; national stories are left blank; the archive is backfilled once. | R12 | SCR-01. Data work for Field Office and Be Giant. |
+| D70 | **(changes the X-18 ruling)** Settings › Newsletter is its own screen with only newsletter settings: the switch, the address it goes to, and for guests a confirm or subscribe step. Account no longer has a newsletter section. | R12 QA | SET-30; SET-17 removed. |
 
 ---
 
@@ -274,3 +275,6 @@ Gabriel gave August's answers to Q7 to Q14 (recorded in the Open questions table
 
 ### Round 12 (October 23, 2026)
 Gabriel's list: record and build his answers to Q7 to Q14. Recorded as D62 to D69 and the questions closed. Built in the app and on the board: the newsletter in three places with double opt-in for guests (D62, D64; the article card's guest state now reads "Almost there" and asks the reader to confirm by email); no gender in About you (D65); the three most-read topics pre-checked (D66); sign-in links that work on any device (D67); the big story pushed only when there is one, with the notification copy rewritten (D68). Data work for Field Office: SCR-01 place field (D69), SCR-04 analytics source for pre-checks, SCR-05 option B, Beehiiv confirmation email (API-01). Android after V1 (D63). Still to build from Round 11: D56 greeting, D58 errors, D59 sign in.
+
+### Round 12 QA (October 23, 2026)
+Gabriel tested on the phone: everything passed except Settings › Newsletter, which opened the whole Account page. Fixed (D70): Newsletter is its own screen with only newsletter settings (SET-30), the section left Account (SET-17 removed), and guests waiting to confirm see "To confirm" with a Resend.

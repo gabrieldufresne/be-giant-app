@@ -426,7 +426,7 @@ window.BGD = {
   'account':{s:{sheet:'account'}}, 'settings':{s:{screen:'settings'}},
   'menu':{s:{menu:true}},
   'saved-edit':{s:{screen:'saved', sEdit:true, sSel:['solar','north']}},
-  'set-account':{s:{screen:'settings', sub:'account'}}, 'set-following':{s:{screen:'settings', sub:'following', writers:['Emily Latimer']}},
+  'set-account':{s:{screen:'settings', sub:'account'}}, 'set-news':{s:{screen:'settings', sub:'newsletter', nl:'yes'}}, 'set-news-guest':{s:G({screen:'settings', sub:'newsletter', nl:'yes', nlPend:true, nlEmail:'maya.okafor@gmail.com'})}, 'set-following':{s:{screen:'settings', sub:'following', writers:['Emily Latimer']}},
   'ob-alerts-light':{s:{ob:'alerts', alerts:{quiet:true, big:true, topics:false, writers:false, video:false, major:true, digest:true}, notifKind:'big'}},
   'ob-alerts-balance':{s:{ob:'alerts', notifKind:'topics'}}, 'ob-alerts-quiet':{s:{ob:'alerts', notifKind:'big', qFrom:'23:00', qTo:'06:30'}},
   'ob-alerts-perm':{s:{ob:'alerts', perm:true, notifKind:'topics'}}, 'ob-alerts-declined':{s:{ob:'alerts', obDeclined:true, notifOn:false, nDenied:true}},

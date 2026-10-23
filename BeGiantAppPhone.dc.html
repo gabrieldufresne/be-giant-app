@@ -853,20 +853,6 @@
       <div style="font-size:12px;line-height:1.5;color:#5C5C5C;text-wrap:pretty">Age and city are only counted in aggregate, to understand who Be Giant reaches. They are never sold or shared with advertisers.</div>
       <div style="padding-top:4px"><x-import component-from-global-scope="BeGiantDesignSystem_f91809.Button" dc-props="{{ btnInk }}" onClick="{{ saveAcct }}" style="display:block;width:100%" hint-size="100%,52px">Save changes</x-import></div>
     </div>
-    <!-- P1.3 newsletter status in Settings > Account (opt-in via news="a" | "b" | "c") -->
-    <sc-if value="{{ nlSet }}" hint-placeholder-val="{{ false }}">
-    <div>
-      <div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7A7A7A;padding-bottom:10px">Newsletter</div>
-      <div style="border-top:1px solid #171717">
-        <div onClick="{{ nlSetTap }}" role="switch" aria-checked="{{ nlOnAria }}" style="min-height:66px;display:flex;align-items:center;gap:14px;cursor:pointer;border-bottom:1px solid #E6E6E6;padding:10px 0;box-sizing:border-box">
-          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px"><div style="font-size:16px">The Leap</div><div style="font-size:12px;line-height:1.35;color:#7A7A7A;overflow:hidden;text-overflow:ellipsis">{{ nlSetSub }}</div></div>
-          <div style="width:51px;height:31px;border-radius:999px;background:{{ nlTrk }};position:relative;flex:none;transition:background-color 250ms ease"><div style="position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:999px;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.18);transform:{{ nlKnob }};transition:transform 280ms cubic-bezier(.16,1,.3,1)"></div></div>
-        </div>
-      </div>
-      <div style="font-size:12px;line-height:1.5;color:#5C5C5C;padding-top:10px;text-wrap:pretty">{{ nlSetNote }}</div>
-    </div>
-    </sc-if>
-    <!-- /P1.3 Settings -->
     <div>
       <div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7A7A7A;padding-bottom:10px">Sign-in</div>
       <div style="border-top:1px solid #171717">
@@ -878,6 +864,32 @@
       <div onClick="{{ signOut }}" style="min-height:54px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #E6E6E6;font-size:16px;cursor:pointer">Sign out</div>
       <div onClick="{{ delAcct }}" style="min-height:54px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #E6E6E6;font-size:16px;cursor:pointer;padding:14px 0;align-items:flex-start;flex-direction:column;gap:4px"><div style="color:#DB3A3A">Delete account</div><div style="font-size:12px;line-height:1.4;color:#7A7A7A">Removes your account, follows and saved stories. This can’t be undone.</div></div>
     </div>
+  </div>
+  </sc-if>
+  <!-- Round 12 QA: Settings > Newsletter, its own screen (was a section of Account) -->
+  <sc-if value="{{ subNews }}" hint-placeholder-val="{{ false }}">
+  <div style="padding:24px 20px 0;display:flex;flex-direction:column;gap:24px">
+    <div style="font-size:15px;line-height:1.45;color:#5C5C5C;text-wrap:pretty">The Leap is our newsletter: reporting from across Canada, by email. Free, and you can unsubscribe anytime.</div>
+    <sc-if value="{{ nsRow }}" hint-placeholder-val="{{ true }}">
+    <div>
+      <div style="border-top:1px solid #171717">
+        <div onClick="{{ nlSetTap }}" role="switch" aria-checked="{{ nlOnAria }}" style="min-height:66px;display:flex;align-items:center;gap:14px;cursor:pointer;border-bottom:1px solid #E6E6E6;padding:10px 0;box-sizing:border-box">
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px"><div style="font-size:16px">The Leap</div><div style="font-size:12px;line-height:1.35;color:#7A7A7A;overflow:hidden;text-overflow:ellipsis">{{ nlSetSub }}</div></div>
+          <div style="width:51px;height:31px;border-radius:999px;background:{{ nlTrk }};position:relative;flex:none;transition:background-color 250ms ease"><div style="position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:999px;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.18);transform:{{ nlKnob }};transition:transform 280ms cubic-bezier(.16,1,.3,1)"></div></div>
+        </div>
+        <sc-if value="{{ nsResend }}" hint-placeholder-val="{{ false }}"><div onClick="{{ nsResendTap }}" style="min-height:54px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E6E6E6;cursor:pointer"><div style="font-size:15px">Resend the confirmation email</div><img src="assets/light/caret-right-light.svg" alt="" style="width:16px;height:16px;display:block;opacity:.5"></div></sc-if>
+        <sc-if value="{{ nsSigned }}" hint-placeholder-val="{{ true }}"><div onClick="{{ nsToAccount }}" style="min-height:54px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #E6E6E6;cursor:pointer"><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:15px">Email address</div><div style="font-size:12px;color:#7A7A7A">{{ nlEmailShown }}. Change it in Account</div></div><img src="assets/light/caret-right-light.svg" alt="" style="width:16px;height:16px;display:block;opacity:.5"></div></sc-if>
+      </div>
+      <div style="font-size:12px;line-height:1.5;color:#5C5C5C;padding-top:10px;text-wrap:pretty">{{ nlSetNote }}</div>
+    </div>
+    </sc-if>
+    <sc-if value="{{ nsGuestAsk }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;flex-direction:column;gap:14px;border-top:1px solid #171717;padding-top:18px">
+      <label style="display:flex;flex-direction:column;gap:6px"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C">Email</div><input type="email" value="{{ nlEmail }}" onInput="{{ nlEmailChange }}" placeholder="you@example.com" style="width:100%;height:44px;box-sizing:border-box;padding:0 14px;border:0;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #D6D6D6;font-family:var(--font-sans);font-size:16px;color:#171717;outline:none" style-focus="box-shadow:inset 0 0 0 1.5px #171717"></label>
+      <x-import component-from-global-scope="BeGiantDesignSystem_f91809.Button" dc-props="{{ btnInk }}" onClick="{{ nsGuestSub }}" style="display:block;width:100%" hint-size="100%,52px">Subscribe</x-import>
+      <div style="font-size:12px;line-height:1.5;color:#5C5C5C;text-wrap:pretty">We&rsquo;ll email you a link to confirm. No account needed.</div>
+    </div>
+    </sc-if>
   </div>
   </sc-if>
   <sc-if value="{{ subFollowing }}" hint-placeholder-val="{{ false }}">
@@ -2275,7 +2287,7 @@ class Component extends DCLogic {
         return Object.assign({}, F, {isNews:true, nlDone:st === 'yes', nlAsk:st !== 'yes', head:b.head || 'Get our reporting by email', line:b.line || 'Our reporting from across Canada, by email. Free, and you can unsubscribe anytime.',
           nlSigned:!g, nlGuest:g, nlTo:'Sends to ' + email, nlDoneTitle:g ? 'Almost there' : 'You\u2019re subscribed', nlDoneLine:g ? 'Check your email: tap the link in it to confirm, and the first one is on its way. You can unsubscribe anytime.' : 'Sent to ' + email + '. You can turn it off in Settings.', // D64: double opt-in for guests
           nlEmail:s.nlEmail || '', nlEmailChange:(e) => this.setState({nlEmail:e.target.value}),
-          sub:() => { this.setState({nl:'yes', nlJust:A.id}); this.toast(g ? 'Check your email to confirm' : 'You\u2019re subscribed to the newsletter'); }});
+          sub:() => { this.setState({nl:'yes', nlJust:A.id, nlPend:g}); this.toast(g ? 'Check your email to confirm' : 'You\u2019re subscribed to the newsletter'); }});
       }
       if (b.k === 'callout') {
         const href = b.href ? (/^https?:/.test(b.href) ? b.href : 'https://www.begiant.ca/' + b.href.replace(/^\//, '')) : '';
@@ -2667,7 +2679,7 @@ class Component extends DCLogic {
   }
   nlClose(yes){
     const s = this.state, st = this.nlSt(), g = s.guest === 'guest';
-    this.setState({nlOpen:false, nl: yes ? 'yes' : (st === 'later' ? 'no' : 'later')});
+    this.setState({nlOpen:false, nl: yes ? 'yes' : (st === 'later' ? 'no' : 'later'), nlPend: yes && g});
     if (yes) this.toast(g ? 'Check your email to confirm' : 'You’re subscribed to the newsletter');
   }
   newsVals(P, s, V){
@@ -2680,9 +2692,12 @@ class Component extends DCLogic {
       nlChkSub: 'Our reporting from across Canada, by email. Free, and you can unsubscribe anytime.',
       nlToggle: () => this.setState(x => ({nlChk:!x.nlChk, nl: !x.nlChk ? 'yes' : null})),
       nlTrk: on ? '#171717' : '#E6E6E6', nlKnob: on ? 'translateX(20px)' : 'none', nlOnAria: on ? 'true' : 'false',
-      nlSetSub: on ? 'Sent to ' + email : 'Not subscribed',
-      nlSetNote: on ? 'Turning this off stops the newsletter only. Your account, topics and notifications stay as they are.' : (asked ? 'We won’t ask again. Turn it on here anytime: our reporting from across Canada, by email.' : 'Our reporting from across Canada, by email. Free, and you can unsubscribe anytime.'),
-      nlSetTap: () => { this.setState({nl: on ? 'off' : 'yes', nlChk: !on}); this.toast(on ? 'Unsubscribed from the newsletter' : 'You’re subscribed to the newsletter'); },
+      nlSetSub: on ? (g && s.nlPend ? 'Waiting for you to confirm. Check ' + (s.nlEmail || 'your email') : 'Sent to ' + email) : 'Not subscribed',
+      nsRow: !g || on, nsGuestAsk: g && !on, nsSigned: !g, nsResend: g && on && !!s.nlPend,
+      nsGuestSub: () => { this.setState({nl:'yes', nlPend:true}); this.toast('Check your email to confirm'); },
+      nsResendTap: () => this.toast('Sent again to ' + (s.nlEmail || 'your email')), nsToAccount: () => this.openSub('account'),
+      nlSetNote: on ? 'Turning this off stops the newsletter only. Your account, topics and notifications stay as they are.' : (asked ? 'We won’t ask again. Turn it on here anytime.' : 'Turn it on and The Leap goes to the address below.'),
+      nlSetTap: () => { this.setState({nl: on ? 'off' : 'yes', nlChk: !on, nlPend: false}); this.toast(on ? 'Unsubscribed from the newsletter' : 'You’re subscribed to the newsletter'); },
       nlTf: open ? 'translateY(0)' : 'translateY(110%)', nlVis: open ? 'visible' : 'hidden',
       nlTitle: again ? 'Still want the newsletter?' : 'Get our reporting by email',
       nlLine: again ? 'One last ask. The Leap, our newsletter, brings stories like the ones you’ve been reading to your inbox.' : 'You’ve finished two stories. The Leap, our newsletter, brings more like them to your inbox, from across Canada.',
@@ -2693,7 +2708,7 @@ class Component extends DCLogic {
     };
     if (open) Object.assign(o, {bdOp:1, bdPe:'auto', closeSheets: () => this.nlClose(false)});
     // Settings root: the existing static Newsletter row reflects the real state and opens Account
-    if (Array.isArray(V.settingsGroups)) o.settingsGroups = V.settingsGroups.map(gr => Object.assign({}, gr, {rows: gr.rows.map(r => r.label === 'Newsletter' ? Object.assign({}, r, {value: on ? 'Subscribed' : 'Off', tap: () => this.openSub('account')}) : r)}));
+    if (Array.isArray(V.settingsGroups)) o.settingsGroups = V.settingsGroups.map(gr => Object.assign({}, gr, {rows: gr.rows.map(r => r.label === 'Newsletter' ? Object.assign({}, r, {value: on ? (g && s.nlPend ? 'To confirm' : 'Subscribed') : 'Off', tap: () => this.openSub('newsletter')}) : r)}));
     return o;
   }
   /* ---------- Discover: stories near the reader, and by province ---------- */
@@ -2801,7 +2816,7 @@ class Component extends DCLogic {
     const N = this.newsVals(this.props, this.state, V);
     if (this.props.news) return Object.assign(V, N);
     // X-18: without the P1.3 prop, still show the real newsletter state in Settings (hub row and the Account switch)
-    ['nlSet','nlTrk','nlKnob','nlOnAria','nlSetSub','nlSetNote','nlSetTap','settingsGroups'].forEach(k => { if (k in N) V[k] = N[k]; });
+    ['nlSet','nlTrk','nlKnob','nlOnAria','nlSetSub','nlSetNote','nlSetTap','settingsGroups','nsRow','nsGuestAsk','nsSigned','nsResend','nsGuestSub','nsResendTap','nsToAccount','nlEmail','nlEmailChange','nlEmailShown'].forEach(k => { if (k in N) V[k] = N[k]; });
     return V;
   }
   /* ---------- /P1.3 ---------- */
@@ -2947,8 +2962,8 @@ class Component extends DCLogic {
     const fyEmpty = GS !== 'none' && s.picks.length < 3 && !s.fyBuilt;
     const nudgeOn = !!s.nudge && !art && !s.ob && !s.share && !s.sheet && !s.gate && !s.nAsk && scr === 'home';
     return {
-      hasSub:!!s.sub, subTitle:{account:'Account', following:'Following', notif:'Notifications', reading:'Reading and display', page:PG.t}[s.sub] || '', subIsPage:s.sub === 'page', subBack:() => this.setState({sub:null}),
-      subAccount:s.sub === 'account', subFollowing:s.sub === 'following', subNotif:s.sub === 'notif', subReading:s.sub === 'reading', subPage:s.sub === 'page',
+      hasSub:!!s.sub, subTitle:{account:'Account', following:'Following', notif:'Notifications', reading:'Reading and display', newsletter:'Newsletter', page:PG.t}[s.sub] || '', subIsPage:s.sub === 'page', subBack:() => this.setState({sub:null}),
+      subAccount:s.sub === 'account', subNews:s.sub === 'newsletter', subFollowing:s.sub === 'following', subNotif:s.sub === 'notif', subReading:s.sub === 'reading', subPage:s.sub === 'page',
       openAcct:() => GS === 'guest' ? this.openCreate() : this.openSub('account'), acct:s.acct,
       acctRowName: isG ? 'Create your free account' : s.acct.name, acctRowSub: isG ? 'Keep saves and topics on every device' : s.acct.email + (isPart ? ' · ' + pDone + ' of 4 done' : ' · Account details'),
       acctGuest:isG, acctSigned:!isG, avGuest:isG, avSigned:!isG, avDot:isPart && !!s.stripOff, openCreate:this.openCreate,

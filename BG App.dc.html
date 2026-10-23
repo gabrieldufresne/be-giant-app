@@ -632,6 +632,16 @@ a:hover{opacity:.6}
         <dc-import name="BeGiantAppPhone" news="ac" still="{{ still }}" start="settings" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
         <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Motion.</b> Pushes in 28px from the right as it fades (300ms). Display holds the tab bar labels switch (off by default) and the night page. The notification level reads the same names as onboarding.</div></sc-if>
       </div>
+      <div data-screen-label="07 Newsletter" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Newsletter</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Round 12 QA</div></div>
+        <dc-import name="BeGiantAppPhone" news="ac" still="{{ still }}" start="set-news" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Its own screen.</b> Settings › Newsletter opens this, not Account: one line on The Leap, the switch, and the address it goes to (changed in Account).</div></sc-if>
+      </div>
+      <div data-screen-label="07 Newsletter guest" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Newsletter, guest</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">To confirm</div></div>
+        <dc-import name="BeGiantAppPhone" news="ac" still="{{ still }}" start="set-news-guest" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Guest, waiting to confirm (D64).</b> The switch says to check the email; Resend sends the confirmation again. A guest who isn&rsquo;t subscribed sees an email field and Subscribe instead.</div></sc-if>
+      </div>
       <div data-screen-label="07 Account" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Account</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Settings</div></div>
         <dc-import name="BeGiantAppPhone" news="ac" still="{{ still }}" start="set-account" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>

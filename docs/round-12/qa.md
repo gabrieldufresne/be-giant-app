@@ -37,6 +37,12 @@ Point to any item by its number (for example "2.3") and say what happened. A scr
 - 7.2 Finish two stories (scroll each to the very end). After the second, a sheet asks "Get our reporting by email". Not now closes it; it doesn't come back in the same session.
 - 7.3 If you already subscribed (3.2 or 7.1), the sheet never appears.
 
+## 7b. Settings › Newsletter (fix after QA)
+- 7.4 Settings › Newsletter opens a screen titled Newsletter, not Account. It has the switch for The Leap and the address it goes to.
+- 7.5 Tap Email address: Account opens. Account itself has no newsletter section any more.
+- 7.6 As a guest who subscribed from a story card, the Settings row says "To confirm", and the screen offers "Resend the confirmation email".
+- 7.7 As a guest, turn the switch off: an email field and Subscribe appear instead.
+
 ## 8. Nothing else changed
 - 8.1 Author profiles, shared bylines and the back stack from Round 11 still work.
 - 8.2 Home, For You, Discover, Video and Saved look and work as before.
