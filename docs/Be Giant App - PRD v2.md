@@ -176,14 +176,14 @@ Changes from Phase I are marked **(changed)**.
 | Q4 | Listen: synthetic voice vendor, or narrated audio only? | Field Office | Phase 3 |
 | ~~Q5~~ | ~~Do trending and series rails come back on Home?~~ Answered by D60 (no). | August | Closed |
 | Q6 | Video: autoplay on Wi-Fi only, starts muted? (Answered for articles by D46: tap to play. Still open for the Video tab.) | Be Giant | Round 2 |
-| Q7 | Where does newsletter signup live? | Be Giant | Round 2 |
-| Q8 | Is Android in scope for V1? | Be Giant | Before Phase 4 |
-| Q9 | Is newsletter signup a core KPI? Decides between the one-time sheet alone and adding the account-step checkbox. Also: which lists, how often, and CASL consent and double opt-in for guest emails. | Be Giant (and counsel) | Before the newsletter ships |
-| Q10 | Collect gender, or drop it? | Be Giant | Before build |
-| Q11 | Final onboarding topic list, and which three start checked. | Be Giant | Before build |
-| Q12 | Magic-link lifetime, whether the link opens on another device, and whether a fifth sign-in provider (Microsoft) is wanted. | Be Giant with Field Office | Before build |
-| Q13 | Notification cadence and push triggers: is the big story daily and at a fixed time, is there a cap for Balance, and should quiet hours deliver held alerts one by one or as a summary? | Be Giant | Before build |
-| Q14 | Can stories carry a location in Sanity, and who tags them? Needed for Near you and Discover by province. | Field Office with Be Giant | Before build |
+| Q7 | Where does newsletter signup live? **August's answer (Oct 23): all three:** the account-step checkbox, the one-time sheet after the second story, and the Settings switch, plus the editor-placed article card (D50). | Be Giant | Waiting on Be Giant to confirm |
+| Q8 | Is Android in scope for V1? **August's answer (Oct 23): iOS first; Android after V1.** | Be Giant | Waiting on Be Giant to confirm |
+| Q9 | Is newsletter signup a core KPI? Decides between the one-time sheet alone and adding the account-step checkbox. Also: which lists, how often, and CASL consent and double opt-in for guest emails. **August's answer (Oct 23): a core KPI, with double opt-in.** This reverses the X-16 ruling under D50: guests who subscribe get a confirmation email, so the app needs Beehiiv's confirmation on for app signups (API-01), and the card's done state becomes "Check your email to confirm". | Be Giant (and counsel) | Waiting on Be Giant to confirm |
+| Q10 | Collect gender, or drop it? **August's answer (Oct 23): drop gender.** About you without gender (ONB-20 version B) becomes the only version. | Be Giant | Waiting on Be Giant to confirm |
+| Q11 | Final onboarding topic list, and which three start checked. **August's answer (Oct 23): pre-check the three most-read topics,** from analytics, updated automatically. Needs a per-topic readership source (the `trendingData` feed is per story) and a fallback set; SCR-04 keeps the ordered list but drops `preselectedTopics`. | Be Giant | Waiting on Be Giant to confirm |
+| Q12 | Magic-link lifetime, whether the link opens on another device, and whether a fifth sign-in provider (Microsoft) is wanted. **August's answer (Oct 23): 15 minutes, single use, works on any device; no Microsoft.** | Be Giant with Field Office | Waiting on Be Giant to confirm |
+| Q13 | Notification cadence and push triggers: is the big story daily and at a fixed time, is there a cap for Balance, and should quiet hours deliver held alerts one by one or as a summary? **August's answer (Oct 23): no fixed time; editors push the big story only when one merits it, at most once a day.** The Light preset copy ("One story each morning at 7") and the quiet-hours line need rewriting; SCR-05 option B (`article.sendAsBigStory`) fits this better than the homepage hero. | Be Giant | Waiting on Be Giant to confirm |
+| Q14 | Can stories carry a location in Sanity, and who tags them? Needed for Near you and Discover by province. **August's answer (Oct 23): editors tag a place at publish** (SCR-01, city and province; national stories blank), with a one-time backfill of the archive. | Field Office with Be Giant | Waiting on Be Giant to confirm |
 | ~~Q15~~ | ~~Switch the G4 greeting on in the app?~~ Answered by D56 (on, once a day). | Gabriel | Closed |
 | Q16 | Minimum age for an account. **August recommends no minimum:** keep the optional age range and no gate (the board's age-gate phone stays for reference only). Counsel to confirm, including Quebec's Law 25 (a parent's consent under 14). | Be Giant (and counsel) | Before build |
 
@@ -260,3 +260,6 @@ Gabriel answered the open calls: loading as skeletons plus option B, board only 
 
 ### Round 11 QA (October 23, 2026)
 Gabriel tested on the phone: everything passed except shared bylines, which only linked to the first writer. Fixed by building D61: a writer chooser from the byline, and one row per writer at the end of the story. Still to build: D56, D58, D59.
+
+### Open questions Q7 to Q14 (October 23, 2026)
+Gabriel gave August's answers to Q7 to Q14 (recorded in the Open questions table) for Be Giant to confirm: newsletter in all three places (Q7); iOS first (Q8); newsletter a core KPI with double opt-in (Q9); no gender (Q10); pre-check the three most-read topics (Q11); 15-minute single-use links on any device, no Microsoft (Q12); big-story pushes only when merited, at most daily (Q13); editors tag places at publish (Q14). Knock-on work once confirmed: the newsletter card's guest flow gets a confirmation email (reverses X-16); P1.3 options A and C move into the app; About you loses gender; the Light preset and quiet-hours copy change; SCR-04 and SCR-05 change in the Sanity contract. None of this is built yet.

@@ -93,6 +93,9 @@ Found while writing these specs and ruled on by Gabriel on October 23, 2026. The
 ## Change log
 Newest first. Each entry lists what changed, the IDs, and the other areas it affects.
 
+### October 23, 2026: August's answers to Q7 to Q14 (waiting on Be Giant)
+- **Data / schema, pending.** Recorded in the PRD's Open questions; no area file changes until Be Giant confirms. Expected knock-ons: `12-…` and `07-…` MOD-44 (double opt-in for guest newsletter signups, reversing X-16; the account-step checkbox and the one-time sheet), `03-…` (About you without gender; most-read topics pre-checked), `13-…` (SCR-04 drops `preselectedTopics` for an analytics source; SCR-05 option B; SCR-01 confirmed; API-01 confirmation email on), `12-…` NOTIF (Light preset copy without a fixed 7 a.m.).
+
 ### October 23, 2026: Round 11 docs sweep
 - **UI only.** Area files brought in line with the Round 11 calls: `02-…` (profile is a pushed screen; the writer chooser uses the sheet pattern; August recommends floating and Model 1), `04-…` (GATE-13 Sign in from an ask now decided, D59), `05-…` (HOME-06 greeting on once a day, D56; no Trending rail, D60; loading and error states point to `15-…`).
 
