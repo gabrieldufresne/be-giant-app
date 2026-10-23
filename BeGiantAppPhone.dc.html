@@ -629,7 +629,7 @@
         <div onClick="{{ r.open }}" style="display:flex;gap:14px;align-items:center;margin:0 20px;padding:12px 0;border-top:1px solid #E6E6E6;cursor:pointer">
           <img data-hero="1" src="{{ r.img }}" alt="" style="width:72px;height:72px;object-fit:cover;object-position:{{ r.pos }};display:block;flex:none">
           <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:4px">
-            <div style="font-family:var(--font-serif);font-size:18px;line-height:1.12">{{ r.pre }}<span style="background:#FAF7F0;box-shadow:0 0 0 2px #FAF7F0;font-weight:600">{{ r.mid }}</span>{{ r.post }}</div>
+            <div style="font-family:var(--font-serif);font-size:18px;line-height:1.12">{{ r.pre }}<span style="background:#FAF7F0;box-shadow:0 0 0 2px #FAF7F0">{{ r.mid }}</span>{{ r.post }}</div>
             <div style="font-size:12px;color:#7A7A7A">{{ r.meta }}</div>
           </div>
         </div>
@@ -669,7 +669,7 @@
     <div style="padding:30px 28px 160px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;animation:bgFadeIn 400ms cubic-bezier(.16,1,.3,1) both">
       <img src="assets/illustrations/girl-on-planet.svg" alt="" style="width:170px;height:170px;display:block">
       <div style="font-family:var(--font-serif);font-size:28px;line-height:1.06;text-wrap:pretty">{{ noneTitle }}</div>
-      <div style="font-size:15px;line-height:1.45;color:#5C5C5C;text-wrap:pretty">Check the spelling, or try a broader word. Search covers every story and video on begiant.ca.</div>
+      <div style="font-size:15px;line-height:1.45;color:#5C5C5C;text-wrap:pretty">Check the spelling, or try a broader word. Search covers every story on begiant.ca.</div>
       <sc-if value="{{ hasFilters }}" hint-placeholder-val="{{ false }}"><div onClick="{{ clearFilters }}" style="height:44px;padding:0 16px;border-radius:8px;box-shadow:inset 0 0 0 1px #171717;display:flex;align-items:center;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">Clear filters</div></sc-if>
       <div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7A7A7A;padding-top:12px">Try</div>
       <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center">
@@ -845,7 +845,7 @@
     </div>
     <div style="display:flex;flex-direction:column;gap:12px">
       <label style="display:flex;flex-direction:column;gap:6px"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C">Name</div><input type="text" value="{{ acct.name }}" onChange="{{ setName }}" style="width:100%;height:44px;box-sizing:border-box;padding:0 14px;border:0;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #D6D6D6;font-family:var(--font-sans);font-size:16px;color:#171717;outline:none;transition:box-shadow 150ms ease" style-focus="box-shadow:inset 0 0 0 1.5px #171717"></label>
-      <div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px"><label style="display:flex;flex-direction:column;gap:6px"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C">Age</div><input type="number" value="{{ acct.age }}" onChange="{{ setAge }}" style="width:100%;height:44px;box-sizing:border-box;padding:0 14px;border:0;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #D6D6D6;font-family:var(--font-sans);font-size:16px;color:#171717;outline:none;transition:box-shadow 150ms ease" style-focus="box-shadow:inset 0 0 0 1.5px #171717"></label><label style="display:flex;flex-direction:column;gap:6px"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C">City</div><input type="text" value="{{ acct.city }}" onChange="{{ setCity }}" style="width:100%;height:44px;box-sizing:border-box;padding:0 14px;border:0;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #D6D6D6;font-family:var(--font-sans);font-size:16px;color:#171717;outline:none;transition:box-shadow 150ms ease" style-focus="box-shadow:inset 0 0 0 1.5px #171717"></label></div>
+      <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:10px"><label style="display:flex;flex-direction:column;gap:6px"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C">City</div><input type="text" value="{{ acct.city }}" onChange="{{ setCity }}" style="width:100%;height:44px;box-sizing:border-box;padding:0 14px;border:0;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #D6D6D6;font-family:var(--font-sans);font-size:16px;color:#171717;outline:none;transition:box-shadow 150ms ease" style-focus="box-shadow:inset 0 0 0 1.5px #171717"></label></div><div style="display:flex;flex-direction:column;gap:10px"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C">Age range</div><div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ acctAgeChips }}" as="c" hint-placeholder-count="4"><div onClick="{{ c.tap }}" role="button" style-active="transform:scale(.97)" style="height:40px;padding:0 16px;border-radius:999px;background:{{ c.bg }};color:{{ c.fg }};box-shadow:inset 0 0 0 1px {{ c.bd }};display:flex;align-items:center;font-size:14px;cursor:pointer;transition:background 150ms ease,color 150ms ease">{{ c.label }}</div></sc-for></div></div>
       <label style="display:flex;flex-direction:column;gap:6px"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C">Email</div><input type="email" value="{{ acct.email }}" onChange="{{ setEmail }}" style="width:100%;height:44px;box-sizing:border-box;padding:0 14px;border:0;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #D6D6D6;font-family:var(--font-sans);font-size:16px;color:#171717;outline:none;transition:box-shadow 150ms ease" style-focus="box-shadow:inset 0 0 0 1.5px #171717"></label>
       <div style="font-size:12px;line-height:1.5;color:#5C5C5C;text-wrap:pretty">Age and city are only counted in aggregate, to understand who Be Giant reaches. They are never sold or shared with advertisers.</div>
       <div style="padding-top:4px"><x-import component-from-global-scope="BeGiantDesignSystem_f91809.Button" dc-props="{{ btnInk }}" onClick="{{ saveAcct }}" style="display:block;width:100%" hint-size="100%,52px">Save changes</x-import></div>
@@ -856,7 +856,7 @@
       <div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7A7A7A;padding-bottom:10px">Newsletter</div>
       <div style="border-top:1px solid #171717">
         <div onClick="{{ nlSetTap }}" role="switch" aria-checked="{{ nlOnAria }}" style="min-height:66px;display:flex;align-items:center;gap:14px;cursor:pointer;border-bottom:1px solid #E6E6E6;padding:10px 0;box-sizing:border-box">
-          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px"><div style="font-size:16px">The Be Giant newsletter</div><div style="font-size:12px;line-height:1.35;color:#7A7A7A;overflow:hidden;text-overflow:ellipsis">{{ nlSetSub }}</div></div>
+          <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:3px"><div style="font-size:16px">The Leap</div><div style="font-size:12px;line-height:1.35;color:#7A7A7A;overflow:hidden;text-overflow:ellipsis">{{ nlSetSub }}</div></div>
           <div style="width:51px;height:31px;border-radius:999px;background:{{ nlTrk }};position:relative;flex:none;transition:background-color 250ms ease"><div style="position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:999px;background:#FFFFFF;box-shadow:0 2px 4px rgba(0,0,0,.18);transform:{{ nlKnob }};transition:transform 280ms cubic-bezier(.16,1,.3,1)"></div></div>
         </div>
       </div>
@@ -1078,7 +1078,7 @@
           <sc-if value="{{ b.hasCap }}" hint-placeholder-val="{{ true }}"><div style="padding:10px 24px 0"><x-import component-from-global-scope="BeGiantDesignSystem_f91809.FigureCaption" caption="{{ b.cap }}" credit="{{ b.credit }}" light="{{ night }}" hint-size="100%,16px"></x-import></div></sc-if>
         </div></sc-if>
         <sc-if value="{{ b.isNews }}" hint-placeholder-val="{{ false }}"><div data-mod="news" style="margin:6px 0;background:#FAF7F0;color:#171717;padding:22px 20px 20px;display:flex;flex-direction:column;gap:12px">
-          <div style="display:flex;align-items:center;gap:8px"><img src="assets/light/envelope-simple-light.svg" alt="" style="width:20px;height:20px;display:block"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C">The Be Giant newsletter</div></div>
+          <div style="display:flex;align-items:center;gap:8px"><img src="assets/light/envelope-simple-light.svg" alt="" style="width:20px;height:20px;display:block"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C">The Leap</div></div>
           <sc-if value="{{ b.nlAsk }}" hint-placeholder-val="{{ true }}"><div style="display:flex;flex-direction:column;gap:12px">
             <div style="font-family:var(--font-serif);font-size:26px;line-height:1.08;letter-spacing:-.01em;text-wrap:pretty">{{ b.head }}</div>
             <div style="font-size:16px;line-height:1.45;color:#3D3D3D;text-wrap:pretty">{{ b.line }}</div>
@@ -1640,7 +1640,7 @@
       </div>
       <!-- P1.3 newsletter, option A (opt-in via news="a"): checkbox on the free account step -->
       <sc-if value="{{ nlA }}" hint-placeholder-val="{{ false }}">
-      <div onClick="{{ nlToggle }}" role="checkbox" aria-checked="{{ nlChkAria }}" style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-top:1px solid #E6E6E6;border-bottom:1px solid #E6E6E6;cursor:pointer"><div style="width:26px;height:26px;border-radius:6px;box-sizing:border-box;flex:none;background:{{ nlBoxBg }};box-shadow:inset 0 0 0 1.5px {{ nlBoxBd }};display:flex;align-items:center;justify-content:center;transition:background-color 150ms ease"><img src="assets/light/check-light.svg" alt="" style="width:18px;height:18px;display:block;filter:invert(1);opacity:{{ nlChkOp }};transition:opacity 150ms ease"></div><div style="flex:1;display:flex;flex-direction:column;gap:4px"><div style="font-size:16px;line-height:1.3;color:#171717">Send me the Be Giant newsletter</div><div style="font-size:13px;line-height:1.4;color:#5C5C5C;text-wrap:pretty">{{ nlChkSub }}</div></div></div>
+      <div onClick="{{ nlToggle }}" role="checkbox" aria-checked="{{ nlChkAria }}" style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-top:1px solid #E6E6E6;border-bottom:1px solid #E6E6E6;cursor:pointer"><div style="width:26px;height:26px;border-radius:6px;box-sizing:border-box;flex:none;background:{{ nlBoxBg }};box-shadow:inset 0 0 0 1.5px {{ nlBoxBd }};display:flex;align-items:center;justify-content:center;transition:background-color 150ms ease"><img src="assets/light/check-light.svg" alt="" style="width:18px;height:18px;display:block;filter:invert(1);opacity:{{ nlChkOp }};transition:opacity 150ms ease"></div><div style="flex:1;display:flex;flex-direction:column;gap:4px"><div style="font-size:16px;line-height:1.3;color:#171717">Send me The Leap, our newsletter</div><div style="font-size:13px;line-height:1.4;color:#5C5C5C;text-wrap:pretty">{{ nlChkSub }}</div></div></div>
       </sc-if>
       <!-- /P1.3 A -->
       <div style="display:flex;flex-direction:column;gap:10px">
@@ -1676,7 +1676,7 @@
       </div>
       <!-- P1.3 newsletter, option B (opt-in via news="b"): checkbox after the personal data fields; hidden when the address is already on the list -->
       <sc-if value="{{ nlB }}" hint-placeholder-val="{{ false }}">
-      <div onClick="{{ nlToggle }}" role="checkbox" aria-checked="{{ nlChkAria }}" style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-top:1px solid #E6E6E6;border-bottom:1px solid #E6E6E6;cursor:pointer"><div style="width:26px;height:26px;border-radius:6px;box-sizing:border-box;flex:none;background:{{ nlBoxBg }};box-shadow:inset 0 0 0 1.5px {{ nlBoxBd }};display:flex;align-items:center;justify-content:center;transition:background-color 150ms ease"><img src="assets/light/check-light.svg" alt="" style="width:18px;height:18px;display:block;filter:invert(1);opacity:{{ nlChkOp }};transition:opacity 150ms ease"></div><div style="flex:1;display:flex;flex-direction:column;gap:4px"><div style="font-size:16px;line-height:1.3;color:#171717">Send me the Be Giant newsletter</div><div style="font-size:13px;line-height:1.4;color:#5C5C5C;text-wrap:pretty">{{ nlChkSub }}</div></div></div>
+      <div onClick="{{ nlToggle }}" role="checkbox" aria-checked="{{ nlChkAria }}" style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-top:1px solid #E6E6E6;border-bottom:1px solid #E6E6E6;cursor:pointer"><div style="width:26px;height:26px;border-radius:6px;box-sizing:border-box;flex:none;background:{{ nlBoxBg }};box-shadow:inset 0 0 0 1.5px {{ nlBoxBd }};display:flex;align-items:center;justify-content:center;transition:background-color 150ms ease"><img src="assets/light/check-light.svg" alt="" style="width:18px;height:18px;display:block;filter:invert(1);opacity:{{ nlChkOp }};transition:opacity 150ms ease"></div><div style="flex:1;display:flex;flex-direction:column;gap:4px"><div style="font-size:16px;line-height:1.3;color:#171717">Send me The Leap, our newsletter</div><div style="font-size:13px;line-height:1.4;color:#5C5C5C;text-wrap:pretty">{{ nlChkSub }}</div></div></div>
       </sc-if>
       <!-- /P1.3 B -->
     </div>
@@ -1722,16 +1722,17 @@
       </div>
       <div style="display:flex;flex-direction:column;gap:12px">
         <label style="display:flex;flex-direction:column;gap:6px;"><div style="display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C"><div>Name</div></div><input type="text" placeholder="First and last name" style="width:100%;height:44px;box-sizing:border-box;padding:0 14px;border:0;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #D6D6D6;font-family:var(--font-sans);font-size:16px;color:#171717;outline:none;transition:box-shadow 150ms ease" style-focus="box-shadow:inset 0 0 0 1.5px #171717"></label>
-        <div style="display:grid;grid-template-columns:96px minmax(0,1fr);gap:10px">
-          <label style="display:flex;flex-direction:column;gap:6px;"><div style="display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C"><div>Age</div></div><input type="number" placeholder="34" style="width:100%;height:44px;box-sizing:border-box;padding:0 14px;border:0;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #D6D6D6;font-family:var(--font-sans);font-size:16px;color:#171717;outline:none;transition:box-shadow 150ms ease" style-focus="box-shadow:inset 0 0 0 1.5px #171717"></label>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr);gap:10px">
+          <!-- X-14: age range chips, as in About you -->
           <label style="display:flex;flex-direction:column;gap:6px;"><div style="display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C"><div>City</div></div><input type="text" placeholder="Saskatoon, SK" style="width:100%;height:44px;box-sizing:border-box;padding:0 14px;border:0;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #D6D6D6;font-family:var(--font-sans);font-size:16px;color:#171717;outline:none;transition:box-shadow 150ms ease" style-focus="box-shadow:inset 0 0 0 1.5px #171717"></label>
         </div>
+        <div style="display:flex;flex-direction:column;gap:10px"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C">Age range</div><div style="display:flex;flex-wrap:wrap;gap:8px"><sc-for list="{{ dAgeChips }}" as="c" hint-placeholder-count="4"><div onClick="{{ c.tap }}" role="button" style-active="transform:scale(.97)" style="height:40px;padding:0 16px;border-radius:999px;background:{{ c.bg }};color:{{ c.fg }};box-shadow:inset 0 0 0 1px {{ c.bd }};display:flex;align-items:center;font-size:14px;cursor:pointer;transition:background 150ms ease,color 150ms ease">{{ c.label }}</div></sc-for></div></div>
         <label style="display:flex;flex-direction:column;gap:6px;"><div style="display:flex;justify-content:space-between;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C"><div>Email</div></div><input type="email" placeholder="you@example.com" style="width:100%;height:44px;box-sizing:border-box;padding:0 14px;border:0;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #D6D6D6;font-family:var(--font-sans);font-size:16px;color:#171717;outline:none;transition:box-shadow 150ms ease" style-focus="box-shadow:inset 0 0 0 1.5px #171717"></label>
         <label style="display:flex;flex-direction:column;gap:6px"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#5C5C5C">Password</div><div style="position:relative"><input type="{{ pwType }}" placeholder="At least 8 characters" style="width:100%;height:44px;box-sizing:border-box;padding:0 14px;border:0;border-radius:8px;background:#FFFFFF;box-shadow:inset 0 0 0 1px #D6D6D6;font-family:var(--font-sans);font-size:16px;color:#171717;outline:none;transition:box-shadow 150ms ease;padding-right:68px" style-focus="box-shadow:inset 0 0 0 1.5px #171717"><div onClick="{{ pwToggle }}" style="position:absolute;top:0;right:4px;height:44px;padding:0 12px;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">{{ pwLabel }}</div></div></label>
       </div>
       <!-- P1.3 newsletter, option B on the email form (opt-in via news="b") -->
       <sc-if value="{{ nlBEmail }}" hint-placeholder-val="{{ false }}">
-      <div onClick="{{ nlToggle }}" role="checkbox" aria-checked="{{ nlChkAria }}" style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-top:1px solid #E6E6E6;border-bottom:1px solid #E6E6E6;cursor:pointer"><div style="width:26px;height:26px;border-radius:6px;box-sizing:border-box;flex:none;background:{{ nlBoxBg }};box-shadow:inset 0 0 0 1.5px {{ nlBoxBd }};display:flex;align-items:center;justify-content:center;transition:background-color 150ms ease"><img src="assets/light/check-light.svg" alt="" style="width:18px;height:18px;display:block;filter:invert(1);opacity:{{ nlChkOp }};transition:opacity 150ms ease"></div><div style="flex:1;display:flex;flex-direction:column;gap:4px"><div style="font-size:16px;line-height:1.3;color:#171717">Send me the Be Giant newsletter</div><div style="font-size:13px;line-height:1.4;color:#5C5C5C;text-wrap:pretty">{{ nlChkSub }}</div></div></div>
+      <div onClick="{{ nlToggle }}" role="checkbox" aria-checked="{{ nlChkAria }}" style="display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-top:1px solid #E6E6E6;border-bottom:1px solid #E6E6E6;cursor:pointer"><div style="width:26px;height:26px;border-radius:6px;box-sizing:border-box;flex:none;background:{{ nlBoxBg }};box-shadow:inset 0 0 0 1.5px {{ nlBoxBd }};display:flex;align-items:center;justify-content:center;transition:background-color 150ms ease"><img src="assets/light/check-light.svg" alt="" style="width:18px;height:18px;display:block;filter:invert(1);opacity:{{ nlChkOp }};transition:opacity 150ms ease"></div><div style="flex:1;display:flex;flex-direction:column;gap:4px"><div style="font-size:16px;line-height:1.3;color:#171717">Send me The Leap, our newsletter</div><div style="font-size:13px;line-height:1.4;color:#5C5C5C;text-wrap:pretty">{{ nlChkSub }}</div></div></div>
       </sc-if>
       <!-- /P1.3 B email -->
       <div style="display:flex;flex-direction:column;gap:14px">
@@ -1795,7 +1796,7 @@ class Component extends DCLogic {
       picks:['Economy','Housing','Climate'], writers:[], alerts:Object.assign({quiet:true}, LV.balanced), topicOff:[], notifKind:'big',
       toast:'', toastAct:null, toastOn:false, fresh:false, refreshing:false, fly:null, flyArt:null,
       sub:null, page:null, sEdit:false, sSel:[], rmMany:[], resume:{id:'productivity', p:.38, at:Date.now() - 864e5}, endMod:0, fin:10, finN:2, rated:false, rate:false, stars:0, autoplay:'wifi', annI:{}, nlJust:null, pv:null, pvCap:true, pvZoom:false, vp:null, galI:{}, dl:true, shareKind:null,
-      acct:{name:'Maya Okafor', age:'34', city:'Toronto, ON', email:'maya.okafor@gmail.com'},
+      acct:{name:'Maya Okafor', age:'25–34', city:'Toronto, ON', email:'maya.okafor@gmail.com'},
       guest:'none', solo:false, obVia:null, dAge:'', dGender:'', dCity:'', dLocating:false, gate:null, gateK:'save', gAsked:false, gSnooze:0, gNo:0, shareN:0, saveN:0, folN:0, notifOn:true, nAsk:null, nLast:null, nAsked:false, sysPerm:false, reads:{}, nudge:null, nudgeL:'', nudged:[], fyBuilt:false, stripOff:false};
     ['pvRef','pvTrackRef','rootRef','trackRef','homeScrollRef','homeInnerRef','coverImgRef','coverTextRef','pullLabelRef','pullBarRef','fyScrollRef','swRef','searchScrollRef','inputRef','artRef','artScrollRef','artProgRef','artHeroRef','hiImgRef','hiCopyRef','altScrollRef','altArtScrollRef','altPieRef','altPctRef','altBarRef','vFeedRef','popRef','tabIndRef','notifRef','msRef','cfRef'].forEach(k => this[k] = React.createRef());
     this._p = 0; this._solid = 0; this._init = Object.assign({}, this.state);
@@ -2057,7 +2058,7 @@ class Component extends DCLogic {
     if (s.screen === 'video' && !s.art) { this._g = null; return; }
     const rr = root.getBoundingClientRect(), k = rr.width / W;
     const g = {sx:e.clientX, sy:e.clientY, k:k, x:(e.clientX - rr.left) / k, axis:null, dx:0, dy:0, pt:e.pointerType};
-    if (s.art) { g.mode = cl('[data-hscroll]') ? 'art' : 'edge'; g.row = null; }
+    if (s.art) { g.mode = (cl('[data-hscroll]') || g.x > 30) ? 'art' : 'edge'; g.row = null; } // X-15: back swipe only from the left edge, like iOS
     else { g.mode = 'base'; g.row = cl('[data-row]'); g.pager = !!cl('[data-pager]') && !cl('[data-hscroll]'); }
     this._g = g;
   };
@@ -2156,9 +2157,9 @@ class Component extends DCLogic {
         if (st === 'yes' && !just) return null;
         const email = (s.acct && s.acct.email) || 'maya.okafor@gmail.com';
         return Object.assign({}, F, {isNews:true, nlDone:st === 'yes', nlAsk:st !== 'yes', head:b.head || 'Get our reporting by email', line:b.line || 'Our reporting from across Canada, by email. Free, and you can unsubscribe anytime.',
-          nlSigned:!g, nlGuest:g, nlTo:'Sends to ' + email, nlDoneLine:g ? 'Check your email to confirm. You can unsubscribe anytime.' : 'Sent to ' + email + '. You can turn it off in Settings.',
+          nlSigned:!g, nlGuest:g, nlTo:'Sends to ' + email, nlDoneLine:g ? 'It\u2019s on its way to your inbox. You can unsubscribe anytime.' : 'Sent to ' + email + '. You can turn it off in Settings.',
           nlEmail:s.nlEmail || '', nlEmailChange:(e) => this.setState({nlEmail:e.target.value}),
-          sub:() => { this.setState({nl:'yes', nlJust:A.id}); this.toast(g ? 'Check your email to confirm' : 'You\u2019re subscribed to the newsletter'); }});
+          sub:() => { this.setState({nl:'yes', nlJust:A.id}); this.toast('You\u2019re subscribed to the newsletter'); }});
       }
       if (b.k === 'callout') {
         const href = b.href ? (/^https?:/.test(b.href) ? b.href : 'https://www.begiant.ca/' + b.href.replace(/^\//, '')) : '';
@@ -2258,14 +2259,15 @@ class Component extends DCLogic {
   openCreate = () => this.setState({ob:'account', solo:true, obOut:false, gate:null, sheet:null, menu:false, share:false, aa:false});
   closeSolo(){ this.setState({obOut:true}); clearTimeout(this._obT); this._obT = setTimeout(() => this.setState({ob:null, obOut:false, solo:false}), 400); }
   afterFollow(l, kind, total){
-    const s = this.state, first = !s.folN; this.setState({folN:(s.folN || 0) + 1});
-    if (total === 3 && this.askAcct('follow', 1100)) return;
+    // X-09: the account ask counts follows made after onboarding (folN), not onboarding picks; X-11: the alert ask is for any reader with alerts off
+    const s = this.state, first = !s.folN, n = (s.folN || 0) + 1; this.setState({folN:n});
+    if (n === 3 && this.askAcct('follow', 1100)) return;
     if (first && !s.notifOn && !s.nAsked) { this.setState({nAsked:true}); clearTimeout(this._nT); this._nT = setTimeout(() => { if (!this.state.gate) this.setState({nAsk:{label:l, kind:kind}, nLast:{label:l, kind:kind}}); }, 1100); }
   }
   finishAcct(kind){
     const s = this.state, soc = kind === 'social', city = (s.dCity || '').trim(), full = !soc || (s.dAge && city);
     const email = soc && s.obVia === 'apple' ? 'maya.o@privaterelay.appleid.com' : 'maya.okafor@gmail.com';
-    this.setState({guest: full ? 'none' : 'partial', acct: soc ? {name:'Maya Okafor', age:s.dAge || '', city:city, gender:s.dGender || '', email:email} : {name:'Maya Okafor', age:'34', city:'Toronto, ON', email:email}, stripOff:false, gate:null});
+    this.setState({guest: full ? 'none' : 'partial', acct: soc ? {name:'Maya Okafor', age:s.dAge || '', city:city, gender:s.dGender || '', email:email} : {name:'Maya Okafor', age:s.dAge || '25–34', city:'Toronto, ON', email:email}, stripOff:false, gate:null});
     if (s.solo) this.closeSolo(); else this.obDone();
     clearTimeout(this._acT); this._acT = setTimeout(() => this.toast(s.solo ? 'Account created. Your saves and topics are synced' : 'Account created. Welcome to Be Giant'), 500);
   }
@@ -2277,7 +2279,7 @@ class Component extends DCLogic {
   };
   removeSaved(id){
     this.setState({removing:id});
-    setTimeout(() => { this._undo = id; this.setState(s => ({removing:null, saved:s.saved.filter(x => x !== id)})); this.toast('Removed from Saved', 'undo'); }, 260);
+    setTimeout(() => { this._undo = id; this.setState(s => ({removing:null, saved:s.saved.filter(x => x !== id)})); this.toast('Removed from Saved', 'undo', 5000); }, 260);
   }
   bulkRemove(ids, label){
     if (!ids.length) return; const prev = this.state.saved.slice();
@@ -2340,9 +2342,9 @@ class Component extends DCLogic {
     const s = this.state, has = s.picks.includes(l);
     this.setState({picks: has ? s.picks.filter(x => x !== l) : s.picks.concat([l])});
     if (say) this.toast(has ? 'Unfollowed ' + l : 'Following ' + l + ' in For You');
-    if (say && !has && s.guest === 'guest') this.afterFollow(l, 'topic', s.picks.length + 1 + s.writers.length);
+    if (say && !has) this.afterFollow(l, 'topic', s.picks.length + 1 + s.writers.length);
   }
-  toggleWriter(n){ const s = this.state, has = s.writers.includes(n); this.setState({writers: has ? s.writers.filter(x => x !== n) : s.writers.concat([n])}); this.toast(has ? 'Unfollowed ' + n : 'Following ' + n); if (!has && s.guest === 'guest') this.afterFollow(n, 'writer', s.picks.length + s.writers.length + 1); }
+  toggleWriter(n){ const s = this.state, has = s.writers.includes(n); this.setState({writers: has ? s.writers.filter(x => x !== n) : s.writers.concat([n])}); this.toast(has ? 'Unfollowed ' + n : 'Following ' + n); if (!has) this.afterFollow(n, 'writer', s.picks.length + s.writers.length + 1); }
   /* ---------- video ---------- */
   scrollFeedTo(i, smooth){ const f = this.vFeedRef.current; if (!f) return; if (smooth) f.scrollTo({top:i * f.clientHeight, behavior:'smooth'}); else f.scrollTop = i * f.clientHeight; }
   openVideo(i, e){
@@ -2550,7 +2552,7 @@ class Component extends DCLogic {
   nlClose(yes){
     const s = this.state, st = this.nlSt(), g = s.guest === 'guest';
     this.setState({nlOpen:false, nl: yes ? 'yes' : (st === 'later' ? 'no' : 'later')});
-    if (yes) this.toast(g ? 'Check your email to confirm' : 'You’re subscribed to the newsletter');
+    if (yes) this.toast('You’re subscribed to the newsletter');
   }
   newsVals(P, s, V){
     const st = this.nlSt(), on = st === 'yes', chk = !!s.nlChk, g = s.guest === 'guest', email = (s.acct && s.acct.email) || 'maya.okafor@gmail.com';
@@ -2567,7 +2569,7 @@ class Component extends DCLogic {
       nlSetTap: () => { this.setState({nl: on ? 'off' : 'yes', nlChk: !on}); this.toast(on ? 'Unsubscribed from the newsletter' : 'You’re subscribed to the newsletter'); },
       nlTf: open ? 'translateY(0)' : 'translateY(110%)', nlVis: open ? 'visible' : 'hidden',
       nlTitle: again ? 'Still want the newsletter?' : 'Get our reporting by email',
-      nlLine: again ? 'One last ask. The Be Giant newsletter brings stories like the ones you’ve been reading to your inbox.' : 'You’ve finished two stories. The Be Giant newsletter brings more like them to your inbox, from across Canada.',
+      nlLine: again ? 'One last ask. The Leap, our newsletter, brings stories like the ones you’ve been reading to your inbox.' : 'You’ve finished two stories. The Leap, our newsletter, brings more like them to your inbox, from across Canada.',
       nlFoot: again ? 'We won’t ask again. It’s always in Settings.' : 'Free. Unsubscribe anytime, from any email or in Settings.',
       nlLaterLabel: again ? 'No thanks' : 'Not now',
       nlGuest: g, nlSigned: !g, nlEmailShown: email, nlEmail: s.nlEmail || '', nlEmailChange: (e) => this.setState({nlEmail:e.target.value}),
@@ -2596,7 +2598,14 @@ class Component extends DCLogic {
       provTiles:order.map(k => ({label:d.PROV[k], count:counts[k] ? counts[k] + (counts[k] === 1 ? ' story' : ' stories') : 'No stories yet', sub:counts[k] ? '#7A7A7A' : '#A6A6A6', bd:k === code ? '#171717' : '#D6D6D6', tap:() => this.applyTag(d.PROV[k])}))
     };
   }
-  renderVals(){ const V = this.baseVals(); return this.props.news && this.state.ready && window.BGD ? Object.assign(V, this.newsVals(this.props, this.state, V)) : V; }
+  renderVals(){
+    const V = this.baseVals(); if (!this.state.ready || !window.BGD) return V;
+    const N = this.newsVals(this.props, this.state, V);
+    if (this.props.news) return Object.assign(V, N);
+    // X-18: without the P1.3 prop, still show the real newsletter state in Settings (hub row and the Account switch)
+    ['nlSet','nlTrk','nlKnob','nlOnAria','nlSetSub','nlSetNote','nlSetTap','settingsGroups'].forEach(k => { if (k in N) V[k] = N[k]; });
+    return V;
+  }
   /* ---------- /P1.3 ---------- */
   baseVals(){
     const s = this.state, P = this.props, H = this.H(), bare = !!P.bare;
@@ -2655,9 +2664,9 @@ class Component extends DCLogic {
     const searching = !!(q || s.filters.length);
     const sIdle = !s.focus && !searching, sFocusEmpty = s.focus && !q, sTyping = s.focus && !!q;
     const sResults = !s.focus && searching && res.length > 0, sNone = !s.focus && searching && res.length === 0;
-    const chips = ['All'].concat(d.PILL, d.SER).map(l => { const on = l === 'All' ? !s.filters.length : s.filters.includes(l);
+    const chips = ['All'].concat(d.TOP).map(l => { const on = l === 'All' ? !s.filters.length : s.filters.includes(l);
       return {label:l, sw:d.SER.includes(l), color:SC[l] || NEU, bg:on ? '#171717' : 'transparent', fg:on ? '#FFFFFF' : '#171717', bd:on ? '#171717' : '#D6D6D6', tap:() => this.toggleFilter(l)}; });
-    const allTags = d.TOP.map(l => [l, 'Topic']).concat(d.SER.map(l => [l, 'Series']), d.PILL.map(l => [l, 'Pillar']));
+    const allTags = d.TOP.map(l => [l, 'Topic']);
     const tagSugs = q ? allTags.filter(t => t[0].toLowerCase().includes(q)).slice(0, 3).map(t => ({label:t[0], kind:t[1], color:SC[t[0]] || NEU, tap:() => this.applyTag(t[0])})) : [];
     const hl = (title) => { const lo = title.toLowerCase(); let k = lo.indexOf(q), len = q.length; if (k < 0 && toks[0]) { k = lo.indexOf(toks[0]); len = toks[0].length; } if (k < 0) return {pre:title, mid:'', post:''}; return {pre:title.slice(0, k), mid:title.slice(k, k + len), post:title.slice(k + len)}; };
     const instant = res.slice(0, 4).map(x => Object.assign(hl(x.t), {img:IM(x.img), pos:x.pos || '50% 50%', meta:(x.s || x.tags[0]) + ' · ' + x.a, open:(e) => { this.blurInput(); this.openStory(x.id, e); }}));
@@ -2706,14 +2715,14 @@ class Component extends DCLogic {
     /* onboarding */
     const obIdx = {topics:1, alerts:2, account:3, details:3}[s.ob] || 0;
     const pi = (l) => Math.max(0, d.TOP.indexOf(l)) % 4;
-    const chipOn = (on, l) => ({bd: on ? '#171717' : '#D6D6D6', dot:ACC[pi(l)], cw: on ? '20px' : '0px', cm: on ? '8px' : '0px', co: on ? 1 : 0, pl: on ? '10px' : '14px'});
+    const chipOn = (on, l) => ({bd: on ? '#171717' : '#D6D6D6', dot:D().SC[l] || NEU, cw: on ? '20px' : '0px', cm: on ? '8px' : '0px', co: on ? 1 : 0, pl: on ? '10px' : '14px'});
     const lvl = Object.keys(LV).find(k => AK.every(x => !!s.alerts[x] === LV[k][x])) || 'custom';
     const lvlI = ['light','balanced'].indexOf(lvl);
     const tOn = s.picks.filter(l => !s.topicOff.includes(l)).length;
     const week = (s.alerts.big ? 7 : 0) + (s.alerts.topics ? tOn : 0) + (s.alerts.writers ? 1 : 0) + (s.alerts.video ? 2 : 0) + (s.alerts.digest ? 1 : 0);
     const sw = (on) => ({trk: on ? '#171717' : '#E6E6E6', knob: on ? 'translateX(20px)' : 'none'});
     const sw2 = (on) => ({trk: on ? '#171717' : '#E6E6E6', knob: on ? 'translateX(16px)' : 'none'});
-    const NXN = {big:['The big story', BY(d.LEAD).t + '. 6 min read.', '7:00 a.m.'], topics:['New in ' + (s.picks[0] || 'Economy'), BY('productivity').t + '.', 'now'], writers:['Emily Latimer has a new story', BY(d.LEAD).t + '.', '2h ago'], video:['New video', 'Taking over the family business, in a minute and a half.', 'now'], major:['Major reporting', 'A major story from Be Giant reporters, as soon as it publishes.', '8:30 a.m.'], digest:['Your week on Be Giant', 'Five stories from ' + (s.picks.slice(0, 3).join(', ') || 'the topics you follow') + '.', 'Sun 9:00 a.m.']}[s.notifKind] || [];
+    const NXN = {big:['The big story', BY(d.LEAD).t + '. 6 min read.', '7:00 a.m.'], topics:['New in ' + (s.picks[0] || 'Economy'), BY('productivity').t + '.', 'now'], writers:['Emily Latimer has a new story', BY(d.LEAD).t + '.', '2h ago']}[s.notifKind] || []; // X-19: examples for the three current types only
     const qF = s.qFrom || '22:00', qT = s.qTo || '07:00', bigAt = s.alerts.quiet && qT > '07:00' && qF > qT ? QT(qT) : '7 a.m.';
     const alertDefs = [['big','The big story','One story each morning at ' + bigAt],['topics','New in topics you follow','When a story publishes in one of your topics'],['writers','Writers you follow','When they publish something new']];
     const onCount = AK.filter(k => s.alerts[k]).length;
@@ -2726,7 +2735,7 @@ class Component extends DCLogic {
     const authors = []; d.ST.forEach(x => { if (!x.a) return; let a = authors.find(y => y.name === x.a); if (!a) { a = {name:x.a, av:x.av || AV0, n:0}; authors.push(a); } a.n++; });
     const PG = (d.PAGES || {})[s.page] || {t:'', up:'', intro:'', secs:[]};
     const seg = (opts, cur, set) => opts.map(o => ({label:o[1], bg: cur === o[0] ? '#171717' : 'transparent', fg: cur === o[0] ? '#FFFFFF' : '#171717', tap:() => set(o[0])}));
-    const finished = s.saved.filter(id => (s.prog[id] || 0) >= .98), rm = new Set(s.rmMany), SEND = BY('perimeter');
+    const finished = s.saved.filter(id => (s.prog[id] || 0) >= .9), rm = new Set(s.rmMany), SEND = BY('perimeter');
     const acctSet = (k) => (e) => this.setState({acct:Object.assign({}, this.state.acct, {[k]:e.target.value})});
     const GS = s.guest || 'none', isG = GS === 'guest', isPart = GS === 'partial';
     const andJ = (a) => a.length < 2 ? (a[0] || '') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
@@ -2744,7 +2753,7 @@ class Component extends DCLogic {
       subAccount:s.sub === 'account', subFollowing:s.sub === 'following', subNotif:s.sub === 'notif', subReading:s.sub === 'reading', subPage:s.sub === 'page',
       openAcct:() => GS === 'guest' ? this.openCreate() : this.openSub('account'), acct:s.acct,
       acctRowName: isG ? 'Create your free account' : s.acct.name, acctRowSub: isG ? 'Keep saves and topics on every device' : s.acct.email + (isPart ? ' · ' + pDone + ' of 4 done' : ' · Account details'),
-      acctGuest:isG, acctSigned:!isG, avGuest:isG, avSigned:!isG, avDot:isPart, openCreate:this.openCreate,
+      acctGuest:isG, acctSigned:!isG, avGuest:isG, avSigned:!isG, avDot:isPart && !!s.stripOff, openCreate:this.openCreate,
       showStrip:isPart && !s.stripOff, profDone:pDone + ' of 4', profSegs:PF.map((k, i) => ({bg: i < pDone ? '#171717' : 'rgba(23,23,23,.16)'})),
       profMissing: pMiss.length ? 'Add your ' + andJ(pMiss) + '. Only ever counted in aggregate.' : 'All done',
       openProfile:() => this.openSub('account'), stripDismiss:(e) => { if (e && e.stopPropagation) e.stopPropagation(); this.setState({stripOff:true}); },
@@ -2759,7 +2768,8 @@ class Component extends DCLogic {
       fyEmpty:fyEmpty, fyFull:!fyEmpty, fyChips:d.TOP.slice(0, 12).map(l => Object.assign({label:l, tap:() => this.togglePick(l)}, chipOn(s.picks.includes(l), l))),
       fyBuildOff: s.picks.length < 3, fyBuildLabel: s.picks.length >= 3 ? 'Build my For You · ' + s.picks.length + ' topics' : 'Pick ' + (3 - s.picks.length) + ' more',
       fyBuild:() => { if (s.picks.length < 3) return; this.setState({fyBuilt:true}, () => { const el = this.fyScrollRef.current; if (el) el.scrollTop = 0; }); if (GS === 'guest') this.askAcct('follow', 900); }, acctInit:s.acct.name.split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join('') || 'BG',
-      setName:acctSet('name'), setAge:acctSet('age'), setCity:acctSet('city'), setEmail:acctSet('email'),
+      setName:acctSet('name'), setAge:acctSet('age'),
+      acctAgeChips:['Under 25','25\u201334','35\u201344','45\u201354','55\u201364','65+'].map(l => Object.assign({label:l, tap:() => this.setState(st => ({acct:Object.assign({}, st.acct, {age: st.acct.age === l ? '' : l})}))}, l === s.acct.age ? {bg:'#171717', fg:'#FFFFFF', bd:'#171717'} : {bg:'transparent', fg:'#171717', bd:'#D6D6D6'})), setCity:acctSet('city'), setEmail:acctSet('email'),
       saveAcct:() => { if (isPart && !pMiss.length) { this.setState({guest:'none'}); this.toast('Profile complete. Thanks'); } else this.toast('Account updated'); }, changePw:() => this.toast('Reset link sent to ' + s.acct.email), signOut:() => this.toast('Signed out'), delAcct:() => this.toast('Check your email to confirm deletion'),
       topicCount:s.picks.length + ' followed', writerCount:s.writers.length + ' followed',
       setTopicChips:d.TOP.map(l => Object.assign({label:l, tap:() => this.togglePick(l)}, chipOn(s.picks.includes(l), l))),
@@ -2839,7 +2849,7 @@ class Component extends DCLogic {
       sortOpts:[['latest','Latest'],['topic','By topic'],['author','By author']].map(o => ({label:o[1], fg: s.savedSort === o[0] ? '#171717' : '#7A7A7A', tap:() => this.setState({savedSort:o[0]})})),
       savedItems:(() => {
         const anim = {latest:'bgTab', topic:'bgTabB', author:'bgTabC'}[s.savedSort] + ' 250ms ease both';
-        const rows = s.saved.map(id => { const x = BY(id), p = s.prog[id] || 0, sel = s.sSel.includes(id); return row(id, {isHead:false, anim:anim, selBg: sel ? '#171717' : 'transparent', selBd: sel ? '#171717' : '#A6A6A6', selOp: sel ? 1 : 0, open: s.sEdit ? () => this.setState({sSel: sel ? s.sSel.filter(y => y !== id) : s.sSel.concat([id])}) : (e) => this.openStory(id, e), left: p >= .98 ? 'Finished' : p ? Math.max(1, Math.round(x.m * (1 - p))) + ' min left' : 'Unread · ' + x.m + ' min read', pct:(p * 100) + '%', mh:(s.removing === id || rm.has(id)) ? '0px' : '300px', op:(s.removing === id || rm.has(id)) ? 0 : 1}); });
+        const rows = s.saved.map(id => { const x = BY(id), p = s.prog[id] || 0, sel = s.sSel.includes(id); return row(id, {isHead:false, anim:anim, selBg: sel ? '#171717' : 'transparent', selBd: sel ? '#171717' : '#A6A6A6', selOp: sel ? 1 : 0, open: s.sEdit ? () => this.setState({sSel: sel ? s.sSel.filter(y => y !== id) : s.sSel.concat([id])}) : (e) => this.openStory(id, e), left: p >= .9 ? 'Finished' : p ? Math.max(1, Math.round(x.m * (1 - p))) + ' min left' : 'Unread · ' + x.m + ' min read', pct:(p * 100) + '%', mh:(s.removing === id || rm.has(id)) ? '0px' : '300px', op:(s.removing === id || rm.has(id)) ? 0 : 1}); });
         if (s.savedSort === 'latest') return rows;
         const byA = s.savedSort === 'author', groups = [], m = {};
         rows.forEach(r => { const k = byA ? BY(r.id).a : r.badge; if (!m[k]) { m[k] = {k:k, rows:[]}; groups.push(m[k]); } m[k].rows.push(r); });
@@ -2911,7 +2921,7 @@ class Component extends DCLogic {
       themes:[['paper','Paper','#FFFFFF','#171717'],['cream','Cream','#FAF7F0','#171717'],['night','Night','#171717','#FFFFFF']].map(t => ({label:t[1], bg:t[2], fg:t[3], tap:() => this.setState({theme:t[0]}),
         ring: s.theme === t[0] ? 'inset 0 0 0 2px ' + (dark ? '#FFFFFF' : '#171717') : 'inset 0 0 0 1px ' + (dark ? 'rgba(255,255,255,.2)' : '#E6E6E6')})),
       /* toast */
-      toastText:s.toast, hasToastAct:!!s.toastAct, toastActLabel: s.toastAct === 'undo' ? 'Undo' : 'View', toastTap:this.toastTap,
+      toastText:s.toast, hasToastAct:!!s.toastAct, toastActLabel: (s.toastAct === 'undo' || s.toastAct === 'undoAll') ? 'Undo' : 'View', toastTap:this.toastTap,
       toastOp: s.toastOn ? 1 : 0, toastTf: s.toastOn ? 'translateY(0)' : 'translateY(10px)', toastPe: s.toastOn ? 'auto' : 'none',
       toastB: ((mpShow && !mpInline) ? 166 : (barGone ? 40 : 104)) + 'px',
       /* sheets */
@@ -2957,7 +2967,7 @@ class Component extends DCLogic {
         subH: (r[0] === 'topics' && s.alerts.topics) ? (s.picks.length * 48 + 14) + 'px' : '0px',
         subs: r[0] === 'topics' ? s.picks.map(l => Object.assign({label:l, tap:() => this.setTopicAlert(l)}, sw2(!s.topicOff.includes(l)))) : []}, sw(!!s.alerts[r[0]]))),
       quiet:Object.assign({tap:() => this.setAlert('quiet')}, sw(!!s.alerts.quiet)),
-      obPickChips:s.picks.map(l => ({label:l, bg:ACC[pi(l)]})),
+      obPickChips:s.picks.map(l => ({label:l, bg:D().SC[l] || NEU})), // X-12
       pwType: s.pwShow ? 'text' : 'password', pwLabel: s.pwShow ? 'Hide' : 'Show', pwToggle:(e) => { if (e) e.preventDefault(); this.setState({pwShow:!s.pwShow}); },
       obAlertSummary: onCount ? onCount + (onCount === 1 ? ' notification type on' : ' notification types on') : 'Notifications off',
       obEditTopics:() => this.setState({ob:'topics'}),

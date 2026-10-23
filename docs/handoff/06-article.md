@@ -28,7 +28,7 @@ One scrolling page per story: hero photo, headline block, the body (paragraphs p
 | ART-17 | Save | Save tool toggles saved; the icon fills. | Toast "Saved for offline reading" with View. Guests: second save triggers the account ask (D24). | Account, CMS-51 |
 | ART-18 | Share | Native share sheet (D41). | See `12-notifications-newsletter-listen-share.md`. | URL `https://www.begiant.ca/stories/{pillarSlug}/{slug.current}` |
 | ART-19 | Listen | Mini player rises above the tools. | See `12-notifications-newsletter-listen-share.md` (Q4). | See LISTEN; SCR-06 |
-| ART-20 | Back | Back tool, or an edge swipe from the left. | Swipe past 120pt closes; otherwise snaps back (250ms). Horizontal scrollers in the body (galleries) don't trigger it. | — |
+| ART-20 | Back | Back tool, or a swipe that starts at the left edge (first 30pt; D52). | Swipe past 120pt closes; otherwise snaps back (250ms). Horizontal scrollers in the body (galleries) don't trigger it. | — |
 | ART-21 | Reading progress | Progress is saved for saved stories; leaving at 90% or more counts the story as finished (feeds the end-of-Home reading card and the rating prompt after three finished stories). A story left 10 to 90% read in the last 7 days feeds Jump back in (D20). | | Account, CMS-52 |
 | ART-22 | Website hero options | The app has one article hero. The website's hero variants and layout flags don't change the app. | — | `heroType`, `headlineBelowImageOnMobile`, `showSidebar`, `layout`, `heroImageDisplay`: ignored by the app |
 

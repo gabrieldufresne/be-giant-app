@@ -84,4 +84,4 @@ Data hygiene, not a schema change: 43 of 53 shorts have no `thumbnail` and 47 no
 6. Resume position after leaving the tab.
 7. Single versus double tap: the prototype toggles pause on each tap of a double tap. The build should wait out the double-tap window.
 8. Reduce Motion behaviour.
-9. Sizes differ from the Round 6 log ("64px glass" side buttons, 32px title). The prototype has 54pt and 30pt. Confirm and update D30.
+9. ~~Side button and title sizes~~: decided (X-20), 54pt and 30pt as built.

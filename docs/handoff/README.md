@@ -47,32 +47,32 @@ Each file starts with the same header: ID prefix, status, last changed, board se
 - **Data column:** Sanity fields as paths (for example `article.readTime`, `author.firstName` + `author.lastName`), "App state (device)", "Account (backend)", an outside API (API-01 onward), or "Missing in schema", which points to a schema change request (SCR) in `13-content-model.md`. "—" means pure UI.
 - **Change tags:** every change-log entry is tagged **UI only** (no Sanity or API work) or **Data / schema** (touches queries, fields, schema or APIs).
 
-## Open discrepancies: prototype vs decisions
-Found while writing these specs (October 23, 2026), each checked in the code. Until August Strategy rules on one, **build to the decision (D number)**, not the prototype. When one is settled, strike it through here and fix the area file.
+## Discrepancies: prototype vs decisions (all resolved)
+Found while writing these specs and ruled on by Gabriel on October 23, 2026. The prototype, the PRD and the area files now follow each ruling. If a new discrepancy turns up, add it here as X-22 onward, and **build to the decision (D number)** until it's ruled on.
 
-| # | Where | Prototype does | Decision or note says | Area |
-|---|---|---|---|---|
-| X-01 | Home story count | 15 stories (lead, 5 Latest, 3 short, 6 Popular), 17 after a refresh, since the article-module stories were added | 12 (D40) | HOME |
-| X-02 | Saved undo | Single swipe-remove: Undo toast lasts 2.4s. Bulk remove: the toast's button says "View" but undoes. | 5-second Undo (D18) | SAVED |
-| X-03 | Search filters | Filter chips and tag suggestions still offer series and pillars | Series and Pillars removed from Discover (D39) | DISC |
-| X-04 | Milestones | 10, 25, 50, 100, 250, 500 | 10, 25, 50, 100 (D21) | HOME |
-| X-05 | "Finished" | Saved and Clear finished use 98%; Jump back in, reading card and rating prompt use 90% | One definition needed (feature inventory) | SAVED, HOME, ART-21 |
-| X-06 | Search instant results | Matched text in the serif at weight 600 | Serif is never bold (foundations) | DISC |
-| X-07 | Search no-results copy | Says search covers every video | `shortStory` isn't in the search index | DISC |
-| X-08 | Avatar dot | Shows for any unfinished profile | Appears once the profile strip is dismissed (D25) | GATE |
-| X-09 | Follow ask | Fires at three topics plus writers, counting the three pre-checked onboarding topics | Third follow (D24) | GATE |
-| X-10 | Milestone ask | Any milestone while eligible | First milestone (D24) | GATE |
-| X-11 | First-follow notification ask | Guests only | The declined screen promises everyone a reminder at their first follow | GATE, NOTIF |
-| X-12 | Topic chip check | Cycles four accents by position | The topic's accent (D27); Sanity has `topic.color` | ONB |
-| X-13 | Guest avatar | Same `user-circle` for everyone | Board note: turns into a guest icon | GATE |
-| X-14 | Age | Email form asks exact age; About you asks an age range | Pick one (D33) | ONB, SET |
-| X-15 | Back swipe | Accepted from anywhere on the article | Standard left-edge gesture (spec) | NAV, ART-20 |
-| X-16 | Newsletter confirmation | Guests are told "Check your email to confirm" | The website endpoint sends no confirmation email (API-01); Q9 decides double opt-in | MOD-44, NEWS |
-| X-17 | Newsletter name | "The Be Giant newsletter" | The only active newsletter in Sanity is "The Leap" | MOD-44, NEWS |
-| X-18 | Settings newsletter row | The hub row is a static "Subscribed" | Should reflect the real state and open Account | SET |
-| X-19 | Notification preview | Example copy for the removed video, major and digest types | Three types remain (R7, D36) | NOTIF |
-| X-20 | Video side buttons | 54pt buttons, 30pt title | Round 6 log: 64pt glass, 32pt title | VID |
-| X-21 | Round notes | `docs/round-9/P1.1-onboarding.md` still describes the top-bar Skip and earlier rules | D35 replaced them | ONB |
+| # | Where | Prototype did | Decision or note said | Area | Ruling |
+|---|---|---|---|---|---|
+| X-01 | Home story count | 15 stories (lead, 5 Latest, 3 short, 6 Popular), 17 after a refresh, since the article-module stories were added | 12 (D40) | HOME | Back to 12 (D40) |
+| X-02 | Saved undo | Single swipe-remove: Undo toast lasts 2.4s. Bulk remove: the toast's button says "View" but undoes. | 5-second Undo (D18) | SAVED | 5s Undo for every remove, labelled Undo (D18) |
+| X-03 | Search filters | Filter chips and tag suggestions still offer series and pillars | Series and Pillars removed from Discover (D39) | DISC | Topics only (D39) |
+| X-04 | Milestones | 10, 25, 50, 100, 250, 500 | 10, 25, 50, 100 (D21) | HOME | Keep 250 and 500 (D21 updated) |
+| X-05 | "Finished" | Saved and Clear finished use 98%; Jump back in, reading card and rating prompt use 90% | One definition needed (feature inventory) | SAVED, HOME, ART-21 | 90% everywhere (new D51) |
+| X-06 | Search instant results | Matched text in the serif at weight 600 | Serif is never bold (foundations) | DISC | Cream highlight, regular weight |
+| X-07 | Search no-results copy | Says search covers every video | `shortStory` isn't in the search index | DISC | Copy says stories only; indexing videos is a later request |
+| X-08 | Avatar dot | Shows for any unfinished profile | Appears once the profile strip is dismissed (D25) | GATE | After the strip is dismissed (D25) |
+| X-09 | Follow ask | Fires at three topics plus writers, counting the three pre-checked onboarding topics | Third follow (D24) | GATE | Third follow made after onboarding (D24 updated) |
+| X-10 | Milestone ask | Any milestone while eligible | First milestone (D24) | GATE | Any milestone, within the caps (D24 updated) |
+| X-11 | First-follow notification ask | Guests only | The declined screen promises everyone a reminder at their first follow | GATE, NOTIF | Anyone with alerts off (D26 updated) |
+| X-12 | Topic chip check | Cycles four accents by position | The topic's accent (D27); Sanity has `topic.color` | ONB | `topic.color`, else neutral `#DCD6FF` (D27 updated) |
+| X-13 | Guest avatar | Same `user-circle` for everyone | Board note: turns into a guest icon | GATE | Same icon for everyone |
+| X-14 | Age | Email form asks exact age; About you asks an age range | Pick one (D33) | ONB, SET | Age range everywhere (D33 updated) |
+| X-15 | Back swipe | Accepted from anywhere on the article | Standard left-edge gesture (spec) | NAV, ART-20 | Left edge only (new D52) |
+| X-16 | Newsletter confirmation | Guests are told "Check your email to confirm" | The website endpoint sends no confirmation email (API-01); Q9 decides double opt-in | MOD-44, NEWS | No confirmation email, as on the website (D50 updated) |
+| X-17 | Newsletter name | "The Be Giant newsletter" | The only active newsletter in Sanity is "The Leap" | MOD-44, NEWS | `newsletter.title` (today "The Leap") |
+| X-18 | Settings newsletter row | The hub row is a static "Subscribed" | Should reflect the real state and open Account | SET | Live state, opens Account |
+| X-19 | Notification preview | Example copy for the removed video, major and digest types | Three types remain (R7, D36) | NOTIF | Examples for the three current types (D36 note) |
+| X-20 | Video side buttons | 54pt buttons, 30pt title | Round 6 log: 64pt glass, 32pt title | VID | Keep 54pt and 30pt (D30 note) |
+| X-21 | Round notes | `docs/round-9/P1.1-onboarding.md` still describes the top-bar Skip and earlier rules | D35 replaced them | ONB | Marked superseded; current spec is 03-onboarding.md |
 
 ## How the areas connect
 
@@ -88,6 +88,11 @@ Found while writing these specs (October 23, 2026), each checked in the code. Un
 
 ## Change log
 Newest first. Each entry lists what changed, the IDs, and the other areas it affects.
+
+### October 23, 2026: rulings on X-01 to X-21
+- **UI only.** Gabriel ruled on all 21 discrepancies (table above). Changed: HOME-18 (12 stories), SAVED-07/10/12 and NAV-17 (5s Undo, 90% finished), DISC-13/15/17 (regular highlight, topic filters, copy), GATE-03/09/14 (follow ask after onboarding, dot after dismissal, alert ask for anyone), ONB-08/22 (topic colour, age range), NAV-23 and ART-20 (left-edge back swipe), NOTIF-02 (three types), MOD-44, SET-17/28 and NEWS (newsletter name, no confirmation email, live row). New decisions D51 (finished = 90%) and D52 (left-edge back).
+- **Data / schema.** ONB-08 now reads `topic.color` (with a neutral fallback); MOD-44, SET-17 and SET-28 read `newsletter.title`.
+  - **Affects:** `05-…`, `10-…` and `06-…` (finished definition), `04-…` and `12-…` (alert ask), `13-content-model.md` (no new fields).
 
 ### October 23, 2026: Sanity contract
 - **Data / schema.** `13-content-model.md` is now the Sanity contract, with field names checked against the website's schema at `e8a1d3d`:

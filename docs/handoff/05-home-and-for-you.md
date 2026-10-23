@@ -25,7 +25,7 @@ Home is the front page: one big lead story that scrolls away (nothing pins, D11)
 | HOME-15 | Section head | Starts Short stories and Popular. | Padding 40 20 14; 1pt ink rule, then 16pt below it the Eyebrow and a 12pt `#7A7A7A` note: "Short stories" / "Under 10 min"; "Popular" / no note. | — |
 | HOME-16 | Short stories (D40) | Three stories under 10 minutes. A stopwatch and a large read time replace the tag line; meta shows the author only. | Phosphor `timer` 22pt + "{n} min read" Gibson 17pt SemiBold. Otherwise as HOME-10. | Live stories with `readTime < 10`, newest first, first three, not already on Home. Stories with no `readTime` are left out. |
 | HOME-17 | Popular | The rest of Home, rows as HOME-10. Six rows in the prototype. | — | `trendingData.articles[]->` (GA4-ranked), editor `pinnedArticles[]->` first, minus `excludedArticles[]` and any story already on Home; website fallback when empty: latest. |
-| HOME-18 | Story count (D40) | Home holds 12 stories in all, no duplicates across sections. | Prototype now: 1 lead + 5 Latest + 3 short + 6 Popular = 15 (17 after a refresh). See Open items. | — |
+| HOME-18 | Story count (D40) | Home holds 12 stories in all, no duplicates across sections. | 1 lead + 3 Latest + 3 Short stories + 5 Popular = 12 (D40, confirmed X-01); a refresh adds the new stories on top. | — |
 | HOME-19 | Pull to refresh | Pull down at the top of Home only. The page moves at half the finger's distance; a 2pt line fills to the 60pt threshold, where the label pulses and reads Release. Release past 60pt holds at 64pt with a looping sweep until the fetch returns. | Behind the page: `#171717`, label 11pt SemiBold .14em uppercase white, 112pt from the top: "Pull to refresh", "Release to refresh", "Updating". Line 96 × 2pt. Pulse 280ms; sweep 900ms loop; release 320ms EX. Native: the system refresh control styled to match, if possible. | Refetches every Home source. |
 | HOME-20 | New-story indicator | After a refresh, stories published since the last fetch fade in at the top of Latest with a red New label; a toast confirms; the update time changes. | "New" 10pt SemiBold .14em uppercase `#DB3A3A`. Row fade 400ms. Toast "2 new stories on Home" (count). A pill announcing new stories while scrolled down is Not designed. | `article.publishedAt` > App state (device) last fetch time. |
 | HOME-21 | Home feed end | Grey surface after the white feed with a centred caught-up message. | `#F0F0F0`, margin-top 40, padding 56 20 150, gap 44. "All caught up" 11pt SemiBold .14em `#5C5C5C`; serif 24pt "You're up to date"; 14pt `#5C5C5C` "That's everything from the last seven days. Older stories are in Discover."; outline button 44pt, radius 8, 1pt ink, "Open Discover". | The copy implies a 7-day window; the sources above have none. Decide (Open items). |
@@ -71,7 +71,7 @@ Home is the front page: one big lead story that scrolls away (nothing pins, D11)
 ## Data and analytics
 - **Fetch plan:** one homepage query (`homepage` singleton, `heroArticle` and `shortStoriesSection` sections), one live-stories query for Latest and Short stories, one `trendingData` query for Popular, de-duplicated in the app in section order (lead, Jump back in, Latest, Short stories, Popular). Card fields as the website's `articleCard` projection. Images through the Sanity image URL builder with hotspot and crop.
 - **Reader data:** followed topics and writers, saved ids, reading progress, finished count and minutes, hint and rating flags, last fetch time. Guests: device only. Signed in: Account (backend), so it follows the reader to a new phone.
-- **"Finished"** is 90% read in the prototype for Jump back in, the reading card and the rating prompt; Saved uses 98% (`10-saved.md`). One definition is needed.
+- ~~"Finished"~~: resolved (D51, X-05), 90% read everywhere.
 - **Missing in schema (for the change request):**
   - `shortStory.article` (SCR-03): reference to `article`; filled by editors when they add a short; without it the Watch rail tile and the Video feed's Read button (`09-video.md`) can't open the story.
   - No new field for Popular or the reader rank: Popular uses `trendingData`; the rank percentile needs an analytics service, not Sanity.
@@ -81,7 +81,7 @@ Home is the front page: one big lead story that scrolls away (nothing pins, D11)
 - **Story count:** 15 on Home now (article-module stories added on October 23) against D40's 12. Decide which wins.
 - **Lead source:** the app should follow the website's pin with `pinUntil`, or have its own pick. Confirm with Be Giant.
 - **Seven-day window** in the caught-up copy has no matching rule in the sources.
-- **Milestones:** the code lists 10, 25, 50, 100, 250, 500; D21 names 10, 25, 50, 100.
+- ~~Milestones~~: resolved (X-04), 10, 25, 50, 100, 250, 500.
 - For You: an Edit topics entry exists in code (`tuneFy`) but nothing on screen opens it. The "Not bad for a weekday" line needs a weekend or neutral version.
 - Card rotation rule and which finished story Send a story uses.
 - Q5 (trending and series rails back on Home), Q15 (greeting on).
