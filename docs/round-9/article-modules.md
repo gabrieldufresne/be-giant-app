@@ -1,6 +1,6 @@
 # In-article modules: inventory and plan
 
-Status: research only. Nothing in the app has changed. Waiting on Gabriel's answers before any build.
+Status (October 23, 2026): Gabriel accepted the leans on all nine questions below. **Phase 1 is built**, opt-in only (`mods="on"`); see "Phase 1: built" at the end. Phases 2 to 4 not started.
 
 ## Sources
 
@@ -117,3 +117,43 @@ Update the PRD v2 feature inventory (Article reading view), decisions log and ro
 5. **Fallback rule.** When the app meets a block type it doesn't know (new blocks will keep arriving), what should it do: skip it silently, or show a link card to the web version?
 6. **Links.** Will internal links (article, author, topic, page) resolve to app screens through universal links (PRD, Field Office row)?
 7. **Schema drift.** The gallery schema promises thumbnails and pop-ups that the site doesn't render, and the parallax docstring says mobile has no parallax while the code pins the image on phones. Which is intended? It affects what editors expect to see in the app.
+
+## Phase 1: built (October 23, 2026)
+
+Board section **03b · Article modules · Round 9, Phase 1**, right after 03 Article: seven phones, one per module, each with `mods="on"` and a preset that scrolls to its block. Nothing changes without the prop, so the shared app and every other phone are as before.
+
+**Test content.** Two real begiant.ca stories, ported from Sanity with their text, photos, captions and links:
+
+- "Inside 7 of Canada's biggest challenges – and how we can meet them" (`rbc`). It has seven H3 subheads, 11 links, an image pair, an inline image, three related reads and a pull quote.
+- "How tapping into the Earth's layers could yield limitless energy" (`geo`). It has a small, a medium and a full-width image, three short dividers, a related-stories box, 6 links and a pull quote.
+
+Five more entries (`mda`, `arctic`, `spaceport`, `cups`, `sewage`) are the stories those related reads point to: the real headline, dek, photo and opening paragraph, like the app's other short entries. All seven live in `MST` in `bg-app-data.js`, outside `ST`, so Home, search and the other lists don't change. The newsletter CTAs and the video in the originals are left out until Phases 2 and 3. Lists are supported but not shown, since neither story has one (only 2 published articles do).
+
+**What each block does** (`modBlocks()` in `BeGiantAppPhone.dc.html`):
+
+| Block | Data | Mobile version as built |
+|---|---|---|
+| Subhead | `{k:'h', text}` | Serif at regular weight, 22 to 28px following the Aa size, 14px of extra space above |
+| Links and italics | `{k:'p', r:[...]}` runs | Underlined in the text colour, 1px. A begiant.ca story the app has (matched by `slug`) opens in place. A topic link, an unknown story or an outside site shows a toast saying where it would go (the topic, the story in the app, or the site in the in-app browser). |
+| List | `{k:'ul', items}` | 6px square bullets in the text colour, at body size |
+| Inline image | `{k:'img', size}` | Small and medium at body width, full width edge to edge with the caption kept on the text margin. Each keeps its own shape (aspect ratio read from the Sanity file name, so the layout doesn't jump). Square corners. The design system's FigureCaption sits below. |
+| Image pair | `{k:'pair'}` | The two photos stack at body width, then per-image captions if set, then the shared caption |
+| Divider | `{k:'rule', style}` | Short (64px, centred), line or dotted, in the text colour, 22px above and below |
+| Related read | `{k:'rel', id}` | Ink rule above, hairline below. "Related" overline, serif headline (18 to 24px with Aa), byline and read time, an 80px square photo. The whole row is the tap target and opens the story with the photo transition. |
+| Related stories | `{k:'rels', head, ids}` | The editor's heading, then up to three rows in the same style. Missing stories are skipped. |
+
+Stories shown by a related read or related stories are skipped in More like this (only while `mods` is on).
+
+**Checked in the browser.**
+
+- Every preset scrolls to its block.
+- Night page and the largest Aa size, for subheads, links and related rows.
+- A story link opens MDA in place.
+- The related read and the related stories rows open their stories.
+- An outside link and a topic link show their toasts.
+- With mods off, the RBC story shows plain paragraphs only.
+- The board loads with no console errors, and the 03 Article phones still show the family story's pull quote.
+
+**For the PRD (coordinating session):** the feature inventory row for "Article reading view" can drop "inline images" from Missing once Phase 1 is approved and switched on. Proposed decision: in-body modules follow `docs/round-9/article-modules.md`. Phase 1 shipped opt-in.
+
+**Next:** Phase 2 (video, gallery, full-screen photo viewer).

@@ -416,6 +416,50 @@ a:hover{opacity:.6}
 
   <section style="display:flex;flex-direction:column;gap:28px">
     <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-family:var(--font-sans);font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">03b · Article modules · Round 9, Phase 1</div>
+      <div style="font-size:15px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">The website's in-body blocks, rebuilt for the phone. Two real begiant.ca stories, ported from Sanity: the RBC summit story and the geothermal story. Opt-in with mods="on"; not in the live app yet. Inventory and plan: docs/round-9/article-modules.md.</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="03b Subheads and links" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Subheads and links</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">The RBC summit story</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-text" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Text.</b> Subheads in the serif at regular weight, one step above the body, and they follow the Aa size. Links are underlined in the text colour. A Be Giant story the app has opens in place; topics, other stories and outside sites say where they would go (in the build: the topic, the story, or the in-app browser).</div></sc-if>
+      </div>
+      <div data-screen-label="03b Image pair" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Image pair</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Stacked</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-pair" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Image pair.</b> On a phone the two photos stack at full body width, each in its own shape, then the shared caption. Per-image captions, when an editor sets them, sit under each photo. Matches the website and Apple News on phones.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Related read" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Related read</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Editor-placed, mid-story</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-rel" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Related read.</b> One row: the Related label, headline, byline and read time, with an 80px square photo. The whole row is the tap target and opens the story with the usual photo transition. Stories shown here are skipped in More like this.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Inline image, small" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Inline image, small</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Body width</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-img" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Inline image.</b> Small and medium images both fill the body width on a phone, square-cornered, in their own shape. Left and right floats become centred. Caption and credit sit below.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Inline image, full width" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Inline image, full width</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Edge to edge</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-full" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Full width.</b> Runs edge to edge; the caption stays on the text margin.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Divider" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Divider</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Short, centred</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-rule" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Divider.</b> Editors mostly use the short centred rule to break a long story into parts. Line and dotted are also supported.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Related stories" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Related stories</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Up to three</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-rels" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Related stories.</b> The editor’s heading, then up to three rows in the related read style. A deleted story in the list is skipped.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
       <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">04 · Discover · the Search tab</div>
     </div>
     <div style="display:flex;gap:56px;align-items:flex-start">

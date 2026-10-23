@@ -1023,6 +1023,15 @@
       <sc-for list="{{ a.blocks }}" as="b" hint-placeholder-count="4">
         <sc-if value="{{ b.isP }}" hint-placeholder-val="{{ true }}"><div style="font-size:{{ bodySize }};line-height:1.6;transition:font-size 250ms cubic-bezier(.16,1,.3,1);text-wrap:pretty">{{ b.text }}</div></sc-if>
         <sc-if value="{{ b.isQ }}" hint-placeholder-val="{{ false }}"><div style="border-top:1px solid {{ artFg }};border-bottom:1px solid {{ artRule }};padding:22px 0;margin:8px 0;display:flex;flex-direction:column;gap:12px"><div style="font-family:var(--font-serif);font-size:32px;line-height:1.08;letter-spacing:-.01em;text-wrap:pretty">{{ b.text }}</div><div style="font-size:13px;color:{{ artMuted }}">{{ b.by }}</div></div></sc-if>
+        <!-- Round 9 article modules, Phase 1 (mods="on") -->
+        <sc-if value="{{ b.isRuns }}" hint-placeholder-val="{{ false }}"><div style="font-size:{{ bodySize }};line-height:1.6;transition:font-size 250ms cubic-bezier(.16,1,.3,1);text-wrap:pretty"><sc-for list="{{ b.runs }}" as="r"><span onClick="{{ r.tap }}" style="text-decoration:{{ r.ul }};text-decoration-thickness:1px;text-underline-offset:.2em;font-style:{{ r.fs }};cursor:{{ r.cur }}">{{ r.t }}</span></sc-for></div></sc-if>
+        <sc-if value="{{ b.isH }}" hint-placeholder-val="{{ false }}"><div data-mod="h" style="font-family:var(--font-serif);font-weight:400;font-size:{{ modHSize }};line-height:1.12;letter-spacing:-.01em;padding-top:14px;text-wrap:pretty;transition:font-size 250ms cubic-bezier(.16,1,.3,1)">{{ b.text }}</div></sc-if>
+        <sc-if value="{{ b.isUl }}" hint-placeholder-val="{{ false }}"><div data-mod="ul" style="display:flex;flex-direction:column;gap:10px;font-size:{{ bodySize }};line-height:1.6"><sc-for list="{{ b.items }}" as="it"><div style="display:flex;gap:14px"><div style="width:6px;height:6px;flex:none;margin-top:.75em;background:{{ artFg }}"></div><div style="flex:1;min-width:0;text-wrap:pretty">{{ it.text }}</div></div></sc-for></div></sc-if>
+        <sc-if value="{{ b.isImg }}" hint-placeholder-val="{{ false }}"><div data-mod="{{ b.mod }}" style="margin:{{ b.mx }};padding:6px 0;display:flex;flex-direction:column;gap:10px"><img src="{{ b.img }}" alt="" style="width:100%;aspect-ratio:{{ b.ar }};object-fit:cover;display:block"><sc-if value="{{ b.hasCap }}" hint-placeholder-val="{{ true }}"><div style="padding:{{ b.capPad }}"><x-import component-from-global-scope="BeGiantDesignSystem_f91809.FigureCaption" caption="{{ b.cap }}" credit="{{ b.credit }}" light="{{ night }}" hint-size="100%,16px"></x-import></div></sc-if></div></sc-if>
+        <sc-if value="{{ b.isPair }}" hint-placeholder-val="{{ false }}"><div data-mod="pair" style="padding:6px 0;display:flex;flex-direction:column;gap:12px"><sc-for list="{{ b.pics }}" as="pc"><div style="display:flex;flex-direction:column;gap:10px"><img src="{{ pc.img }}" alt="" style="width:100%;aspect-ratio:{{ pc.ar }};object-fit:cover;display:block"><sc-if value="{{ pc.hasCap }}" hint-placeholder-val="{{ false }}"><x-import component-from-global-scope="BeGiantDesignSystem_f91809.FigureCaption" caption="{{ pc.cap }}" credit="{{ pc.credit }}" light="{{ night }}" hint-size="100%,16px"></x-import></sc-if></div></sc-for><sc-if value="{{ b.hasCap }}" hint-placeholder-val="{{ true }}"><x-import component-from-global-scope="BeGiantDesignSystem_f91809.FigureCaption" caption="{{ b.cap }}" credit="{{ b.credit }}" light="{{ night }}" hint-size="100%,16px"></x-import></sc-if></div></sc-if>
+        <sc-if value="{{ b.isRule }}" hint-placeholder-val="{{ false }}"><div data-mod="rule" style="padding:22px 0;display:flex;justify-content:center"><div style="width:{{ b.rw }};border-top:1px {{ b.rs }} {{ artFg }}"></div></div></sc-if>
+        <sc-if value="{{ b.isRel }}" hint-placeholder-val="{{ false }}"><div data-mod="rel" onClick="{{ b.rel.open }}" style-active="opacity:.6" style="margin:6px 0;padding:14px 0;border-top:1px solid {{ artFg }};border-bottom:1px solid {{ artRule }};display:flex;gap:14px;align-items:center;cursor:pointer;transition:opacity 150ms ease"><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:{{ artMuted }}">Related</div><div style="font-family:var(--font-serif);font-size:{{ modRelSize }};line-height:1.1;text-wrap:pretty">{{ b.rel.title }}</div><div style="font-size:12px;color:{{ artMuted }}">{{ b.rel.meta }}</div></div><img data-hero="1" src="{{ b.rel.img }}" alt="" style="width:80px;height:80px;object-fit:cover;object-position:{{ b.rel.pos }};display:block;flex:none"></div></sc-if>
+        <sc-if value="{{ b.isRels }}" hint-placeholder-val="{{ false }}"><div data-mod="rels" style="margin:6px 0;border-top:1px solid {{ artFg }};display:flex;flex-direction:column"><div style="padding:14px 0 2px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:{{ artMuted }}">{{ b.head }}</div><sc-for list="{{ b.rels }}" as="rr"><div onClick="{{ rr.open }}" style-active="opacity:.6" style="padding:14px 0;border-bottom:1px solid {{ artRule }};display:flex;gap:14px;align-items:center;cursor:pointer;transition:opacity 150ms ease"><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:6px"><div style="font-family:var(--font-serif);font-size:{{ modRelSize }};line-height:1.1;text-wrap:pretty">{{ rr.title }}</div><div style="font-size:12px;color:{{ artMuted }}">{{ rr.meta }}</div></div><img data-hero="1" src="{{ rr.img }}" alt="" style="width:80px;height:80px;object-fit:cover;object-position:{{ rr.pos }};display:block;flex:none"></div></sc-for></div></sc-if>
       </sc-for>
     </div>
     <div style="padding:48px 24px 0;display:flex;flex-direction:column">
@@ -1656,7 +1665,7 @@ function D(){ return window.BGD; }
 function RID(s){ let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return 'r' + (h >>> 0).toString(36); }
 function RES(u){ const r = window.__resources; if (!r || !u || /^(blob|data):/.test(u)) return u; return r[RID(u)] || u; }
 function resFix(el){ ['src','poster'].forEach(a => { const v = el.getAttribute && el.getAttribute(a); if (v) { const n = RES(v); if (n !== v) el.setAttribute(a, n); } }); }
-function BY(id){ const d = D(); if (!d._by) { d._by = {}; d.ST.forEach(x => d._by[x.id] = x); } return d._by[id]; }
+function BY(id){ const d = D(); if (!d._by) { d._by = {}; d.ST.concat(d.MST || []).forEach(x => d._by[x.id] = x); } return d._by[id]; }
 
 class Component extends DCLogic {
   constructor(p){
@@ -1802,6 +1811,7 @@ class Component extends DCLogic {
     const hs = this.homeScrollRef.current; if (hs && pre.home != null) hs.scrollTop = pre.home;
     this.onHomeScroll();
     const as = this.artScrollRef.current; if (as && pre.art != null) { as.scrollTop = pre.art; this._lastY = as.scrollTop; this.onArtScroll(); }
+    if (as && pre.artSel) { const m = as.querySelector(pre.artSel); if (m) { as.scrollTop = Math.max(0, m.getBoundingClientRect().top - as.getBoundingClientRect().top + as.scrollTop - (pre.artOff || 140)); this._lastY = as.scrollTop; this.onArtScroll(); } }
     const fyEl = this.fyScrollRef.current; if (fyEl && pre.fy != null) { fyEl.scrollTop = pre.fy; this.onCollapseScroll({currentTarget:fyEl}); }
     const vf = this.vFeedRef.current; if (vf && pre.vfeed != null) vf.scrollTop = pre.vfeed * vf.clientHeight;
     this.setP(this.state.feed);
@@ -1975,6 +1985,38 @@ class Component extends DCLogic {
   /* ---------- story + article ---------- */
   rectOf(el){ const root = this.rootRef.current; const rr = root.getBoundingClientRect(), k = rr.width / W, r = el.getBoundingClientRect(); return {x:(r.left - rr.left) / k, y:(r.top - rr.top) / k, w:r.width / k, h:r.height / k}; }
   artBg(theme){ return {paper:'#FFFFFF', cream:'#FAF7F0', night:'#171717'}[theme]; }
+  /* ---------- Round 9 article modules, Phase 1 (opt-in via mods="on"): subheads, links, lists, images, pairs, rules, related reads ---------- */
+  modBlocks(A, on){
+    const d = D(), F = {isP:false, isQ:false, isRuns:false, isH:false, isUl:false, isImg:false, isPair:false, isRule:false, isRel:false, isRels:false, by:''};
+    const ar = (src) => { const m = /-(\d+)x(\d+)\./.exec(src || ''); return m ? m[1] + '/' + m[2] : '3/2'; };
+    const row = (id) => { const x = BY(id); return x && {title:x.t, meta:x.a + ' · ' + x.m + ' min read', img:d.IM(x.img), pos:x.pos || '50% 50%', open:(e) => this.openStory(id, e)}; };
+    const plain = (r) => r.map(x => typeof x === 'string' ? x : x.t).join('');
+    return (A.body || []).map(b => {
+      if (typeof b === 'string') return Object.assign({}, F, {isP:true, text:b});
+      if (!b.k) return Object.assign({}, F, b);
+      if (!on) return b.k === 'p' ? Object.assign({}, F, {isP:true, text:plain(b.r)}) : null;
+      if (b.k === 'p') return Object.assign({}, F, {isRuns:true, runs:b.r.map(x => typeof x === 'string' ? {t:x, ul:'none', fs:'normal', cur:'auto', tap:null}
+        : {t:x.t, ul:x.href ? 'underline' : 'none', fs:x.em ? 'italic' : 'normal', cur:x.href ? 'pointer' : 'auto', tap:x.href ? () => this.openLink(x.href) : null})});
+      if (b.k === 'h') return Object.assign({}, F, {isH:true, text:b.text});
+      if (b.k === 'ul') return Object.assign({}, F, {isUl:true, items:b.items.map(t => ({text:t}))});
+      if (b.k === 'img') { const full = b.size === 'full'; return Object.assign({}, F, {isImg:true, mod:'img-' + (b.size || 'medium'), img:b.img, ar:ar(b.img), cap:b.cap || '', credit:b.credit || '', hasCap:!!(b.cap || b.credit), mx:full ? '0 -24px' : '0', capPad:full ? '0 24px' : '0'}); }
+      if (b.k === 'pair') return Object.assign({}, F, {isPair:true, pics:[[b.l, b.lc, b.lcr], [b.r, b.rc, b.rcr]].map(p => ({img:p[0], ar:ar(p[0]), cap:p[1] || '', credit:p[2] || '', hasCap:!!(p[1] || p[2])})), cap:b.cap || '', credit:b.credit || '', hasCap:!!(b.cap || b.credit)});
+      if (b.k === 'rule') return Object.assign({}, F, {isRule:true, rw:b.style === 'short' ? '64px' : '100%', rs:b.style === 'dotted' ? 'dotted' : 'solid', short:b.style === 'short'});
+      if (b.k === 'rel') { const r = row(b.id); return r ? Object.assign({}, F, {isRel:true, rel:r}) : null; }
+      if (b.k === 'rels') { const rs = (b.ids || []).map(row).filter(Boolean).slice(0, 3); return rs.length ? Object.assign({}, F, {isRels:true, head:b.head || 'Related stories', rels:rs}) : null; }
+      return null;
+    }).filter(Boolean);
+  }
+  /* Links in the body: a Be Giant story the app has opens in place; anything else says where it would go */
+  openLink(href){
+    const m = /begiant\.ca\/stories\/([^?#]+)/.exec(href), t = /[?&]topic=([^&#]+)/.exec(href);
+    const hit = m && D().ST.concat(D().MST || []).find(x => x.slug === m[1].replace(/\/$/, ''));
+    if (hit) { this.openStory(hit.id, null); return; }
+    if (t) { this.toast('Opens the topic ' + decodeURIComponent(t[1]).replace(/-/g, ' ')); return; }
+    if (m) { this.toast('Opens the story in the app'); return; }
+    let host = ''; try { host = new URL(href).hostname.replace(/^www\./, ''); } catch (e) {}
+    this.toast('Opens ' + (host || 'the link') + ' in the in-app browser');
+  }
   openStory(id, e){
     if (this._dragged) return;
     if (e && e.stopPropagation) e.stopPropagation();
@@ -2434,14 +2476,16 @@ class Component extends DCLogic {
       : {bg: on ? '#171717' : 'transparent', fg: on ? '#FFFFFF' : '#171717', bd: on ? '#171717' : '#D6D6D6', cf:'invert(1)'};
     const fItem = (on, extra) => Object.assign({btn: on ? 'Following' : 'Follow', cw: on ? '14px' : '0px', cm: on ? '6px' : '0px', co: on ? 1 : 0, isTopic:false, isPerson:false}, fBtn(on), extra);
     const simT = (d.SIM[A.id] || A.tags).slice(0, 3);
+    /* Round 9 article modules: typed body blocks render only with mods="on"; stories they already show are skipped in More like this */
+    const mods = P.mods === 'on' || P.mods === true, inBody = new Set(mods ? (A.body || []).flatMap(b => b && b.k === 'rel' ? [b.id] : b && b.k === 'rels' ? b.ids : []) : []);
     const follows = simT.map(l => { const on = s.picks.includes(l); return fItem(on, {isTopic:true, label:l, sub: on ? 'Topic · in your For You' : 'Topic', color:SC[l] || NEU, tap:() => this.togglePick(l, true)}); })
       .concat([(() => { const on = s.writers.includes(A.a); return fItem(on, {isPerson:true, label:A.a, sub:'Writer' + (A.bio ? ' · ' + A.bio : ''), av:A.av, tap:() => this.toggleWriter(A.a)}); })()]);
     const a = {img:IM(A.img), pos:A.pos || '50% 50%', title:A.t, dek:A.d, badge:tagOf(A), fol:pk.has(tagOf(A)), color:A.s ? SC[A.s] : NEU, isFr:!!A.s, pillar:A.p,
       hasCap:!!A.cap, cap:A.cap || '', credit:A.credit || '',
       byline:'By ' + A.a + (A.ph ? ' · ' + A.ph : ''), date:A.date, mins:A.m + ' min read', avatar:A.av,
-      blocks:(A.body || []).map(b => typeof b === 'string' ? {isP:true, isQ:false, text:b, by:''} : Object.assign({isP:false, isQ:false, by:''}, b)),
+      blocks:this.modBlocks(A, mods),
       follows:follows,
-      related:d.ST.filter(x => x.id !== A.id && x.id !== nextId && x.tags.some(t => A.tags.includes(t))).slice(0, 3).map(x => ({title:x.t, meta:x.a + ' · ' + x.m + ' min read', img:IM(x.img), pos:x.pos || '50% 50%', open:(e) => this.openStory(x.id, e)})),
+      related:d.ST.filter(x => x.id !== A.id && x.id !== nextId && !inBody.has(x.id) && x.tags.some(t => A.tags.includes(t))).slice(0, 3).map(x => ({title:x.t, meta:x.a + ' · ' + x.m + ' min read', img:IM(x.img), pos:x.pos || '50% 50%', open:(e) => this.openStory(x.id, e)})),
       nextTitle:NX.t, nextDek:NX.d, nextMeta:NX.a + ' · ' + NX.m + ' min read', nextBadge:tagOf(NX), nextFol:pk.has(tagOf(NX)), nextColor:NX.s ? SC[NX.s] : NEU, nextImg:IM(NX.img), nextPos:NX.pos || '50% 50%', nextOpen:(e) => this.openStory(nextId, e)};
     const artBg = this.artBg(s.theme), artFg = night ? '#FFFFFF' : '#171717', artMuted = night ? '#A6A6A6' : '#5C5C5C';
     /* listen */
@@ -2619,7 +2663,7 @@ class Component extends DCLogic {
       hasArt:!!art, a:a, artX:s.artX, artTr:s.artTr, artBg:artBg, artFg:artFg, artMuted:artMuted, night:night,
       artRule: night ? 'rgba(255,255,255,.18)' : '#E6E6E6', artTrack: night ? 'rgba(255,255,255,.14)' : 'rgba(23,23,23,.08)',
       artHeadBg: night ? 'rgba(23,23,23,.86)' : (s.theme === 'cream' ? 'rgba(250,247,240,.88)' : 'rgba(255,255,255,.86)'),
-      artHeadOp: s.pastHero ? 1 : 0, bodySize:[16,17,18,20,22][s.size] + 'px', iconFilter:iconF,
+      artHeadOp: s.pastHero ? 1 : 0, bodySize:[16,17,18,20,22][s.size] + 'px', modHSize:[22,23,24,26,28][s.size] + 'px', modRelSize:[18,19,20,22,24][s.size] + 'px', iconFilter:iconF,
       /* flyer */
       flyOn:!!s.fly, flySrc:flyBase.src || '', flyPos:flyBase.pos || '50% 50%', flyX:(flyBase.x || 0) + 'px', flyY:(flyBase.y || 0) + 'px', flyW:(flyBase.w || 0) + 'px', flyH:(flyBase.h || 0) + 'px',
       flyTr: flyBase.t ? ['left','top','width','height'].map(p => p + ' 440ms ' + EX).join(', ') : 'none', flyBg:flyBase.bg || '#FFFFFF', flyBgOp:flyBase.bgOp || 0,
