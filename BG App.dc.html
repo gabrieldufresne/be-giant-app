@@ -416,8 +416,8 @@ a:hover{opacity:.6}
 
   <section style="display:flex;flex-direction:column;gap:28px">
     <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
-      <div style="font-family:var(--font-sans);font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">03b · Article modules · Round 9, Phase 1</div>
-      <div style="font-size:15px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">The website's in-body blocks, rebuilt for the phone. Two real begiant.ca stories, ported from Sanity: the RBC summit story and the geothermal story. Opt-in with mods="on"; not in the live app yet. Inventory and plan: docs/round-9/article-modules.md.</div>
+      <div style="font-family:var(--font-sans);font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">03b · Article modules · Round 9, Phases 1 and 2</div>
+      <div style="font-size:15px;line-height:1.5;color:#3D3D3D;text-wrap:pretty">The website's in-body blocks, rebuilt for the phone. Real begiant.ca stories, ported from Sanity, all at the top of Home in the app view: RBC summit, geothermal, Hamilton fishway, solar parking lots, Churchill's little industries and Canada's long history. On in the app view and on these phones (mods="on"). Inventory and plan: docs/round-9/article-modules.md.</div>
     </div>
     <div style="display:flex;gap:56px;align-items:flex-start">
       <div data-screen-label="03b Subheads and links" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
@@ -454,6 +454,36 @@ a:hover{opacity:.6}
         <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Related stories</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Up to three</div></div>
         <dc-import name="BeGiantAppPhone" start="mod-rels" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
         <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Related stories.</b> The editor’s heading, then up to three rows in the related read style. A deleted story in the list is skipped.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Gallery" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Gallery</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Swipe or buttons</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-gallery" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Gallery.</b> One photo per page, swiped sideways or stepped with the 44px buttons, so nobody has to discover the swipe. Every photo keeps its shape inside one fixed frame (set by the tallest photo), so the buttons and caption never jump. The caption follows the photo, and “2 of 4” says where you are. Tap a photo for full screen.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Gallery, full width" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Gallery, full width</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Edge to edge</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-gallery-full" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Full width.</b> The same gallery edge to edge; the count and caption stay on the text margin.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Photo viewer" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Photo viewer</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Full screen</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-viewer" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Photo viewer.</b> Opens from any photo in the story (inline, pair or gallery) and swipes through all of them. Tap to hide or show the caption, double-tap to zoom (pinch in the build), swipe down or tap Close to leave; the handle at the top is the cue for the swipe.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Video, Short" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Video, Short</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">9:16, tap to play</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-video" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Video.</b> Most in-article video is YouTube Shorts, so the poster is 9:16 at 78% of the column with a 64px play button and the title and length below, not on top. Nothing autoplays in the story. Tap opens a full-screen player; YouTube plays in its own player.</div></sc-if>
+      </div>
+      <div data-screen-label="03b Video, wide" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Video, wide</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">16:9</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-video-wide" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Wide video.</b> Body-width and full-bleed videos use a 16:9 poster with the same controls.</div></sc-if>
+      </div>
+      <div data-screen-label="03b List" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">List</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Bullets</div></div>
+        <dc-import name="BeGiantAppPhone" start="mod-list" mods="on" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">List.</b> Square bullets in the text colour at body size; they grow with Aa.</div></sc-if>
       </div>
     </div>
   </section>

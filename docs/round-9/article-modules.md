@@ -1,6 +1,6 @@
 # In-article modules: inventory and plan
 
-Status (October 23, 2026): Gabriel accepted the leans on all nine questions below. **Phase 1 is built** and on in the app view (`mods="on"`); see "Phase 1: built" at the end. Phases 2 to 4 not started.
+Status (October 23, 2026): Gabriel accepted the leans on all nine questions below. **Phases 1 and 2 are built** and on in the app view (`mods="on"`); see "Phase 1: built" and "Phase 2: built" at the end. Phases 3 and 4 not started.
 
 ## Sources
 
@@ -157,3 +157,47 @@ Stories shown by a related read or related stories are skipped in More like this
 **For the PRD (coordinating session):** the feature inventory row for "Article reading view" can drop "inline images" from Missing once Phase 1 is approved and switched on. Proposed decision: in-body modules follow `docs/round-9/article-modules.md`. Phase 1 shipped opt-in.
 
 **Next:** Phase 2 (video, gallery, full-screen photo viewer).
+
+## Phase 2: built (October 23, 2026)
+
+Gallery, video and a full-screen photo viewer. Gabriel asked for more real articles with each batch, and for everything to land in the app view as well as the board.
+
+**Four more real stories**, ported by `docs/round-9/port-article.py`. The script reads the public Sanity API and converts the Portable Text body into the prototype's block format. In app terms, the stories are:
+
+| Id | Story | Shows |
+|---|---|---|
+| `bears` | How to protect a little industry when a big one comes to town (Tom Jokinen, Oct 22) | Full-width gallery (5), image pair, inline image, pull quote, related read |
+| `fishway` | This simple idea is booting an invasive species out of a Hamilton marsh (Brian Banks) | Gallery (4), YouTube Short, related read, related stories |
+| `parking` | The parking lot that's keeping the lights on (Connor Garel) | Gallery (3), YouTube Short, pull quote, links |
+| `historica` | Canada's long history of taking on the impossible – and winning (Anthony Wilson-Smith) | 16:9 YouTube video, bulleted list, related stories |
+
+Five more short entries are the targets of their related reads: `polyunity`, `ocean`, `winnipeg`, `upside` and `churchill`.
+
+**Home:**
+- Latest is now `bears`, `fishway`, `parking`, `rbc`, `geo`.
+- Popular is now `historica`, `potash`, `productivity`, `mls`, `summit`, `church`. `rover`, `solar` and `coast` drop off Home, but stay in search and For You.
+- `ORDER` runs family, bears, fishway, parking, rbc, geo, historica, then the rest.
+
+Newsletter CTAs, callouts and parallax are already in the data as `{k:'news'}`, `{k:'callout'}` and `{k:'parallax'}`, so Phase 3 won't need a re-port. They render nothing until then.
+
+**What each block does:**
+
+| Block | Data | Mobile version as built |
+|---|---|---|
+| Gallery | `{k:'gallery', width, items:[{img, cap, credit}]}` | A native sideways scroller with snap, marked `data-hscroll` so it doesn't trigger the article's back-swipe. The frame takes the first photo's shape (clamped between 16:9 and 4:5), and other shapes centre inside it, so the controls never jump. Below it: 44px previous and next buttons with Phosphor carets, a "2 of 4" count, then the current photo's caption. Full width runs edge to edge, with the controls and caption on the text margin. |
+| Video | `{k:'video', width, yt or src, title, dur, poster}` | Social width: a 9:16 poster at 78% of the column, centred. Body and full-bleed: 16:9. A 64px white play button, then the title (15px) and "YouTube · 0:58" below, not on top. The poster is the editor's, or YouTube's thumbnail cropped to shape. Tap opens a full-screen black player: YouTube in its own embedded player (youtube-nocookie, autoplay), uploads in the native player. Close is 44px. Nothing autoplays in the story. |
+| Photo viewer | (every inline, pair and gallery photo) | Opens at the tapped photo and swipes through every photo in the story, with "3 of 8" at the top left and Close at the top right. Tap hides or shows the caption. Double-tap zooms 2x, and you scroll to pan; pinch is for the build. Swipe down (a handle shows at the top) or Close to leave. The status bar turns light while the viewer or player is open, and the phone's own gestures pause. |
+
+**Board:** six more phones in 03b: Gallery, Gallery full width, Photo viewer (opened through a new `tapSel` preset option), Video Short, Video wide and List.
+
+**Checked in the browser:**
+- Every preset lands on its block.
+- The gallery's next button moves to "2 of 4".
+- Tapping the Short opens the player, and the YouTube embed plays.
+- The viewer pages to "3 of 8" and closes.
+- In the app view (`#app`), all six new and Phase 1 stories show on Home, and the fishway story opens with its gallery, video, image and related rows.
+- One fix from testing: the Short player was sized taller than the space between its header and title, so it now fits.
+
+**For the PRD (coordinating session):** Q6 (video autoplay) can be answered for articles: tap to play, no autoplay, as Gabriel accepted. The Video tab's own policy is still open.
+
+**Next:** Phase 3: parallax, newsletter CTA, callout and annotated image.
