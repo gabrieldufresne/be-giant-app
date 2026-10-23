@@ -124,7 +124,7 @@ a:hover{opacity:.6}
 <div ref="{{ cvRef }}" style="position:{{ cvPos }};inset:0;overflow:{{ cvOv }};touch-action:{{ cvTouch }};background:#F4F4F4">
 <div ref="{{ wRef }}" style="width:max-content;min-width:100%;padding:64px 96px 160px;display:flex;flex-direction:column;gap:96px;font-family:var(--font-sans);color:#171717;background:#F4F4F4;transform-origin:0 0">
 
-  <div style="display:flex;align-items:baseline;gap:20px"><img src="assets/be-giant-logo.svg" alt="Be Giant" style="height:26px;width:auto;display:block;align-self:center"><div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7A7A7A">App design · iOS · Round 8</div><div onClick="{{ toApp }}" style-hover="opacity:.8" style="align-self:center;height:40px;padding:0 16px;border-radius:999px;background:#171717;color:#FFFFFF;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">View as app</div></div>
+  <div style="display:flex;align-items:baseline;gap:20px"><img src="assets/be-giant-logo.svg" alt="Be Giant" style="height:26px;width:auto;display:block;align-self:center"><div style="font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7A7A7A">App design · iOS · Round 11</div><div onClick="{{ toApp }}" style-hover="opacity:.8" style="align-self:center;height:40px;padding:0 16px;border-radius:999px;background:#171717;color:#FFFFFF;display:flex;align-items:center;gap:8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer">View as app</div></div>
 
   <section style="display:flex;flex-direction:column;gap:28px">
     <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
@@ -821,6 +821,167 @@ a:hover{opacity:.6}
         <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">iPhone Settings</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">System</div></div>
         <dc-import name="BeGiantAppPhone" still="{{ still }}" start="ios-notif" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
         <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">System settings.</b> The button opens the app’s own notification page (openNotificationSettingsURLString, iOS 16+). Turn on Allow Notifications, then ‹ Be Giant returns to the app with notifications on and a toast.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">10 · Author profile · Round 11</div>
+      <div style="font-size:15px;line-height:1.5;color:#5C5C5C;text-wrap:pretty">Matches begiant.ca/author/{slug}: the name centred in the serif, the bio, a Learn more link when the writer has a website, then “Stories by {first name}”. The app adds Follow and Share. Real writers and stories from Sanity. Open it from the byline, the writer row at the end of a story, or Settings > Following. Live in the app.</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="10 Author" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Profile</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Live in the app</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="author" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Profile.</b> Same order as the website: Writer eyebrow, name on two lines, bio, then Follow and Learn more (the writer&rsquo;s website or first social link). No headshot, as on the site. Back, or a swipe from the left edge, returns to the story it came from.</div></sc-if>
+      </div>
+      <div data-screen-label="10 Author list" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Stories by Lisa</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Scrolled</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="author-list" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Stories.</b> Newest first, as on the website: 16:10 photo, topic tag (with the star when followed), headline, dek, then date and read time. Co-written stories say who with. The header turns frosted and shows the name once the hero has scrolled away.</div></sc-if>
+      </div>
+      <div data-screen-label="10 Author following" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Following</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">State</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="author-following" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Following.</b> Follow uses the same button and toasts as the end of a story, and counts toward the guest follow ask (D24). Following a writer turns on Writers you follow alerts under Balance.</div></sc-if>
+      </div>
+      <div data-screen-label="10 Author none" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">No stories yet</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Empty</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="author-none" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Empty.</b> A writer with a profile but no published stories (Sadiya Ansari today) gets one line and the Follow button. Readers only reach this from a link.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">11 · Loading · Round 11 · proposal</div>
+      <div style="font-size:15px;line-height:1.5;color:#5C5C5C;text-wrap:pretty">Board only. Proposal: the launch screen is the wordmark on white (iOS shows it while the app starts); after that we never show a blank screen. Lists load as grey skeletons in the shape of the real layout with one slow shimmer, and an article opens at once with what the card already had (photo, headline, dek, byline) while the body loads. Reduce Motion stops the shimmer. Option B (the wordmark with a red line) is only for a cold start that takes longer than a second.</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="11 Launch" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Launch screen</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">iOS launch</div></div>
+        <dc-import name="BeGiantAppPhone" still="off" start="load-launch" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Launch.</b> A static launch storyboard: the red wordmark centred on white. iOS shows it for the moment the app takes to start; it can&rsquo;t animate.</div></sc-if>
+      </div>
+      <div data-screen-label="11 Brand" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Slow cold start</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Option B</div></div>
+        <dc-import name="BeGiantAppPhone" still="off" start="load-brand" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Option B.</b> If a cold start runs past one second, a thin red line runs under the wordmark until Home is ready. Not recommended as the default: it adds a screen; skeletons show progress in place.</div></sc-if>
+      </div>
+      <div data-screen-label="11 Home" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Home loading</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Recommended</div></div>
+        <dc-import name="BeGiantAppPhone" still="off" start="load-home" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Skeleton.</b> Blocks in the shape of the 6d hero (the headline boxes in white) and the Latest rows, on #EEEEEE with a 1.6s shimmer. Cached stories show at once instead; skeletons are for a first launch or an empty cache. Swap to content with a 200ms fade.</div></sc-if>
+      </div>
+      <div data-screen-label="11 Slow" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Slow connection</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">After 8 seconds</div></div>
+        <dc-import name="BeGiantAppPhone" still="off" start="load-slow" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Slow.</b> After 8 seconds the skeleton stays and one calm line says the connection may be slow. After 20 seconds it becomes the Couldn&rsquo;t load state (12).</div></sc-if>
+      </div>
+      <div data-screen-label="11 Article" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Article loading</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Recommended</div></div>
+        <dc-import name="BeGiantAppPhone" still="off" start="load-article" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Article.</b> The card already carries the photo, tag, headline, dek and byline, so they appear at once with the shared-element open (ART-01). Only the body shimmers. The reading tools work straight away.</div></sc-if>
+      </div>
+      <div data-screen-label="11 More" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Loading more</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Lists</div></div>
+        <dc-import name="BeGiantAppPhone" still="off" start="author-more" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">More.</b> Long lists (a writer&rsquo;s stories, search results, a topic) load 20 at a time; the next page loads 600pt before the end with the native spinner under the last row.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">12 · Errors and offline · Round 11 · proposal</div>
+      <div style="font-size:15px;line-height:1.5;color:#5C5C5C;text-wrap:pretty">Board only. The rule: keep what the reader already has on screen, say plainly what happened in one line, and offer one way forward. Full-screen states use the website&rsquo;s illustrations and voice; small failures use the existing toast with Retry.</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="12 Banner" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Offline, with stories</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Banner</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="err-banner" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Offline with cache.</b> Home still shows the stories already on the phone. A dark pill above the tab bar says so, with Retry; it goes away by itself when the connection is back. Saved stories open normally.</div></sc-if>
+      </div>
+      <div data-screen-label="12 Toast" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Action failed</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Toast</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="err-toast" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Toast.</b> A save, follow or subscribe that can&rsquo;t reach the server: the same toast as Undo, with Retry. Saves and follows are kept on the phone and sync later, so most never need this.</div></sc-if>
+      </div>
+      <div data-screen-label="12 Offline" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Offline, nothing yet</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Full screen</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="err-offline" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Offline, empty.</b> First launch, or a list that has never loaded, with no connection. Girl-on-planet illustration from the website. Go to Saved only shows when there are saved stories.</div></sc-if>
+      </div>
+      <div data-screen-label="12 Server" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Couldn&rsquo;t load</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Full screen</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="err-server" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Server error.</b> Our side failed (Sanity or the app API). Says so without codes. Try again retries; after three tries it adds a link to the status page if Be Giant has one.</div></sc-if>
+      </div>
+      <div data-screen-label="12 Not found" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Story not found</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">From a link</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="err-404" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Not found.</b> A shared link or a notification for a story that was moved or unpublished. Mirrors the website&rsquo;s 404 page: illustration, &ldquo;doesn&rsquo;t exist yet&rdquo;, then the latest stories.</div></sc-if>
+      </div>
+      <div data-screen-label="12 Article offline" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Story not downloaded</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Article</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="err-article" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Article offline.</b> Opened offline and never downloaded: the card content shows, and the body is replaced by one message. Save it for later saves the story so it downloads when the phone is back online.</div></sc-if>
+      </div>
+      <div data-screen-label="12 Video" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Video can&rsquo;t play</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Video</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="err-video" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Video.</b> The film fails to load (offline, or YouTube or Mux is down). The poster stays dimmed behind the message; Read the story opens the article.</div></sc-if>
+      </div>
+    </div>
+  </section>
+
+  <section style="display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:8px;max-width:980px">
+      <div style="font-size:15px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#171717">13 · Account errors · Round 11 · proposal</div>
+      <div style="font-size:15px;line-height:1.5;color:#5C5C5C;text-wrap:pretty">Board only. Sign in for readers who already have an account (the welcome&rsquo;s &ldquo;I already have an account&rdquo; and the soft-gate sheets would open it), plus validation and the errors around creating an account. Errors sit under the field in red text (#C22F2F, darker than the brand red for contrast) with a red outline; nothing is cleared.</div>
+    </div>
+    <div style="display:flex;gap:56px;align-items:flex-start">
+      <div data-screen-label="13 Sign in" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Sign in</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">New screen</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="acc-signin" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Sign in.</b> Same four ways as Create account, in the same order. Email and password sit below the divider. New to Be Giant goes to Create account. If the email has no account, the next screen offers to create one with it.</div></sc-if>
+      </div>
+      <div data-screen-label="13 Wrong password" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Wrong password</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Error</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="acc-wrong" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Wrong password.</b> Says what is wrong and offers the magic link as the way out. After five wrong tries the button waits 30 seconds (server rule, Field Office).</div></sc-if>
+      </div>
+      <div data-screen-label="13 Email form" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Invalid fields</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Validation</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="acc-email" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Validation.</b> Checked when the reader leaves a field and again on Create account, never while typing. Email must look complete; password at least 8 characters. Name, city and age range stay optional.</div></sc-if>
+      </div>
+      <div data-screen-label="13 Account exists" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Email already used</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Error</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="acc-exists" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Already signed up.</b> Never says &ldquo;error&rdquo;. Offers Sign in, with the topics just picked added to the account, or a sign-in link.</div></sc-if>
+      </div>
+      <div data-screen-label="13 Link expired" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Link expired</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Magic link</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="acc-link" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Expired link.</b> The link was older than 15 minutes, already used, or opened on another device (Q12 decides that last one). One tap sends a new link.</div></sc-if>
+      </div>
+      <div data-screen-label="13 Age" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Under the minimum age</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Proposal</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="acc-age" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Age minimum.</b> Proposed minimum 14: Quebec&rsquo;s Law 25 needs a parent&rsquo;s consent under 14. Picking Under 14 stops the account, not the reading. Needs counsel and Be Giant (new Q16).</div></sc-if>
+      </div>
+      <div data-screen-label="13 Provider" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Apple or Google cancelled</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Toast</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="acc-provider" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Provider.</b> The reader closed the Apple or Google sheet, or it failed. A toast, and the same choices stay on screen. A cancel by the reader shows nothing at all.</div></sc-if>
+      </div>
+      <div data-screen-label="13 Offline" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">No connection</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Error</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="acc-network" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Offline.</b> The account can&rsquo;t be made offline. Choices from the earlier steps are kept, and Skip for now still works.</div></sc-if>
       </div>
     </div>
   </section>

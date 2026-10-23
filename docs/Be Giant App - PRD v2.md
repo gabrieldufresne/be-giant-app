@@ -2,7 +2,7 @@
 
 **Owner:** August Strategy · **Build partner:** Field Office
 **Status:** Living document. Updated at the end of every design round.
-**Last updated:** October 23, 2026, after the Round 9 article modules (Phases 1 to 3)
+**Last updated:** October 23, 2026, after Round 11 (author profile; loading, error and account-error proposals; Series hub removed)
 **Supersedes:** `docs/GIANT-App-Wireflow-PRD.md` (Phase I wireflow). Phase I stays the record of the original structure. Where the two disagree, this document wins.
 **Repo:** https://github.com/gabrieldufresne/be-giant-app (public). Preview: https://gabrieldufresne.github.io/be-giant-app/ (GitHub Pages, deployed from `main`).
 **Design files:** `BG App.dc.html` (board, and the full-screen app on phones or at `#app`), `BeGiantAppPhone.dc.html` (the app itself), `bg-app-data.js` (content). Explorations that compare options live in `explorations/`; round notes in `docs/round-9/`. **Developer handoff:** `docs/handoff/` is the master build spec (every screen and element, with IDs, values, states and data needs, plus a change log). This PRD keeps the decisions and status; the handoff says how to build them. Reference docs are in `docs/`: Strategic Foundation, Phase I wireflow PRD, Decision Roadmap, the Oct 19 prompt pack and the Round 9 plan. Earlier phase files (`archive/`, `Welcome Explorations.dc.html`) stayed in the Claude design project and are not in this repo.
@@ -28,7 +28,7 @@ From the Strategic Foundation: the app is Be Giant's direct line to its readers.
 |---|---|---|---|
 | 0. Strategy | Strategic Foundation, Decision Roadmap | Leadership alignment | Done |
 | 1. Wireflow | Phase I PRD, Wireflow v1 and v2 | Structure approved | Done |
-| 2. UX and UI design | Board, live prototype, this PRD | Every Must feature designed, navigation model chosen, client sign-off | **In progress: Round 10 and the Round 9 article modules** |
+| 2. UX and UI design | Board, live prototype, this PRD | Every Must feature designed, navigation model chosen, client sign-off | **In progress: Round 11** |
 | 3. Design QA and spec | Annotated specs, motion spec, component list, edge states | Field Office confirms it can be built as specified | **Started: `docs/handoff/` drafted (Oct 23); waiting on Field Office (FO questions)** |
 | 4. Build | iOS app | Feature-complete build | Not started |
 | 5. Beta | TestFlight with staff and friendly readers | Crash-free, analytics firing, content pipeline proven | Not started |
@@ -55,7 +55,7 @@ Changes from Phase I are marked **(changed)**.
 | D9 | Article ends with "Follow similar topics" (plus the writer), then "More like this". No newsletter block in articles. | R1 | Replaces "Filed under". **Amended by D50:** the editor-placed newsletter card in the body is in. |
 | D10 | **(changed)** Listen (text to speech) is in V1 as a mini player. | Pre-R1 | Phase I had it out of scope. Needs a technical decision (Q4). |
 | D11 | Home leads with one big story that scrolls away; nothing pins. For You sits one swipe away. | R1 | |
-| D12 | Topics stay filters, not hub screens. Series keep a hub. | Phase I | Unchanged. |
+| D12 | Topics stay filters, not hub screens. ~~Series keep a hub.~~ | Phase I | **Amended by D53:** no Series hub in V1. |
 | D13 | Saving from lists is swipe only. Save icons are removed from cards, the cover and the video feed. The article keeps Save in its reading tools; video keeps double tap. | R2 | |
 | D14 | Tab bar is icons only by default. Labels are a Display setting. | R2 | |
 | D15 | **(changed from D1)** Article page is light or dark only, via the contrast tool. Cream and Paper options are removed; Aa sets text size only. | R2 | |
@@ -96,6 +96,8 @@ Changes from Phase I are marked **(changed)**.
 | D50 | **(amends D9)** The editor-placed newsletter card appears in articles: a cream card with one Subscribe button (one tap when signed in, an email field for guests). It shares the subscribe state with Settings and the P1.3 asks, and disappears from every story once the reader subscribes. | R9 modules | Q7 and Q9 still decide the wider newsletter placement. X-16 to X-18 (Oct 23): the card shows the newsletter's name from Sanity (today "The Leap"); guests are subscribed at once with no confirmation email, as on the website; the Settings row shows the real state and opens Account. |
 | D51 | A story counts as finished at 90% read, everywhere: Saved and Clear finished, milestones, Jump back in and the rating prompt. | R9 rulings (X-05) | Replaces the prototype's 98% in Saved. Answers the feature inventory's "what counts as finished". |
 | D52 | Closing an article by swiping works only from the left edge, like the native iOS back gesture. | R9 rulings (X-15) | Avoids closing a story by accident while reading or swiping a gallery. |
+| D53 | **(changed from D12)** No Series hub in V1. Series stories are ordinary stories (the tag keeps the franchise colour); there is no series screen, rail or filter. A series link from the website opens the website. | R11 | Gabriel, October 23. Removes the Must from the feature inventory and the question of where readers find a series. |
+| D54 | The author profile matches begiant.ca/author/{slug}: "Writer" eyebrow, the name centred in the serif on two lines, the bio, Learn more (the writer's website), then "Stories by {first name}", newest first. No headshot on the page, as on the website. The app adds Follow and Share. It opens from the byline, the writer row at the end of a story and Settings › Following, as a pushed screen with the left-edge back (D52). | R11 | Spec: `docs/handoff/14-author-profile.md`. Real writer data from Sanity. Pages 20 stories at a time in the build. |
 
 ---
 
@@ -111,16 +113,16 @@ Changes from Phase I are marked **(changed)**.
 | Home: lead story, latest, Watch rail, short stories, popular | Must | Designed | R10: Short stories and Popular after Watch (D40). Greeting G4 built, not yet on (D38, Q15). |
 | For You (personalized feed with reasons) | Must | Designed | Star mark (D37); bonus story at the end (D43). Empty state for readers who skip topics is the guest topic picker (D26). |
 | Pull to refresh, new-story indicator | Must | Designed | |
-| Article reading view | Must | Partial | Missing: author link to the Author screen, correction or editor's note block, swipe to the next article. Inline images done (D45). |
+| Article reading view | Must | Partial | Missing: correction or editor's note block, swipe to the next article. Inline images done (D45); the byline opens the author profile (D54). |
 | Article modules (the body) | Must | Designed | R9 modules: 14 modules built and QA'd, 4 fallbacks planned (D45 to D50). Spec: `docs/handoff/07-article-modules.md`. Needs Field Office answers FO-1 to FO-7. |
 | Text size and night page | Must | Designed | Page colour options removed in R2. |
 | Listen (text to speech) | Should | Designed | Needs a voice and vendor decision (Q4). |
 | Share sheet | Must | Designed | Native share sheet, iOS shown (D41). |
 | Follow similar topics at article end | Must | Designed | |
 | Discover (browse and search) | Must | Designed | R10: Series and Pillars removed; Near you and Discover by province added (D39). Needs a location field in Sanity (Q14). |
-| Feed pattern (topic or pillar list, filters, pagination) | Must | Partial | Search results cover it. Still missing: a filter sheet and a loading state when you scroll to the end. |
-| **Series hub** | Must | **Not designed** | Intro, featured entry, entries list, follow series. With Series out of Discover (D39), decide where a reader finds a series. |
-| **Author profile** | Must | **Not designed** | Bio, follow writer, stories list. Follow writer already exists at article end. |
+| Feed pattern (topic or pillar list, filters, pagination) | Must | Partial | Search results cover it. Still missing: a filter sheet. Loading more at the end is proposed (R11, LOAD-06). |
+| ~~Series hub~~ | Removed | Removed (R11) | Out of V1 (D53). |
+| Author profile | Must | Designed | R11 (D54): matches the website, plus Follow and Share. Live in the app; board section 10. Missing: a chooser for bylines with several writers (fallback planned). |
 | Video Feed and Grid | Must | Designed | Needs an autoplay and sound policy (Q6) and captions. |
 | Card long-press menu (Save, Share, Follow topic) | Should | Not designed | |
 | Swipe-to-save hint | Should | Designed | R10 (D42). Board phone 02 Swipe hint. |
@@ -131,7 +133,7 @@ Changes from Phase I are marked **(changed)**.
 |---|---|---|---|
 | Onboarding (welcome and 3 steps) | Must | Designed | R9 and R10 (D35). Board row 09b. |
 | Notification levels and permission | Must | Designed | R9 (D36): Light and Balance, quiet hours, iPhone Settings handoff, declined state. Board row 09c. Copy needs editorial sign-off; cadence and triggers open (Q13). |
-| Create account (Apple, Google, magic link, password) | Must | Partial | R9: magic link and a five-provider layout. Missing: sign-in versus create, validation and error states, age minimum. |
+| Create account (Apple, Google, magic link, password) | Must | Partial | R9: magic link and a five-provider layout. R11 proposal (board section 13, board only): sign in, validation, wrong password, email in use, expired link, age minimum (Q16), provider failure, offline. Waits on approval. |
 | Logged-out states and login gating | Must | Designed | R5: soft gate (D24). Guest Home, For You picker, topic nudge, first-follow notification ask, four account asks, create account opened on its own, unfinished profile strip and avatar dot. Missing: Saved empty state copy for guests, sign in with an existing account from the ask. |
 | Saved, offline, reading progress | Must | Designed | R3: Edit mode with Clear finished and Clear all. Missing: logged-out state and an out-of-storage message. |
 | Jump back in | Should | Designed | R3. |
@@ -146,7 +148,7 @@ Changes from Phase I are marked **(changed)**.
 
 | Feature | Priority | Status | Note |
 |---|---|---|---|
-| Loading, error and offline states (skeletons, retry, no connection) | Must | Not designed | Every screen needs one. |
+| Loading, error and offline states (skeletons, retry, no connection) | Must | Proposed | R11 proposal (board sections 11 and 12, board only): static launch screen, skeletons with a shimmer, articles that open with the card's content, slow-connection line, paging, offline banner and screens, server error, story not found, story not downloaded, video error. Spec: `docs/handoff/15-loading-errors-offline.md`. Waits on approval. |
 | Accessibility: Dynamic Type, VoiceOver labels, reduced motion, contrast | Must | Not specified | G4 has a Reduce Motion version; the Globe welcome and the other motion still need one. |
 | Universal links from begiant.ca into the app | Must | Not specified | Field Office |
 | Analytics events (onboarding steps, opt-in, follows, saves, video plays) | Must | Not specified | Ties to the success measures in section 1. |
@@ -176,6 +178,7 @@ Changes from Phase I are marked **(changed)**.
 | Q13 | Notification cadence and push triggers: is the big story daily and at a fixed time, is there a cap for Balance, and should quiet hours deliver held alerts one by one or as a summary? | Be Giant | Before build |
 | Q14 | Can stories carry a location in Sanity, and who tags them? Needed for Near you and Discover by province. | Field Office with Be Giant | Before build |
 | Q15 | Switch the G4 greeting on in the app? | Gabriel | Next round |
+| Q16 | Minimum age for an account. Proposed 14 (Quebec's Law 25 requires a parent's consent under 14); readers under it keep reading as guests. | Be Giant (and counsel) | Before build |
 
 ---
 
@@ -241,3 +244,6 @@ Mapped all 18 article-body types on begiant.ca (Sanity and `field-office/client-
 ### Round 9 rulings on prototype discrepancies (October 23, 2026)
 Gabriel ruled on the 21 discrepancies the handoff found between the prototype and the decisions (X-01 to X-21 in `docs/handoff/README.md`). The prototype now follows each ruling: Home back to 12 stories; a 5-second Undo everywhere in Saved; topics-only search filters; regular-weight search highlights; "finished" at 90% (D51); the avatar dot only after the strip is dismissed; the follow ask counting follows made after onboarding; the first-follow alert ask for anyone with alerts off; topic colours from Sanity; age ranges everywhere; the back swipe from the left edge only (D52); the newsletter named from Sanity, with no confirmation email and a live Settings row; preview examples for the three current types. Kept as built: milestones up to 500, the ask at any milestone, video buttons at 54pt. The old P1.1 notes are marked superseded.
 
+### Round 11 (October 23, 2026)
+Gabriel's list: remove the Series hub; build author profiles to match the website; propose a loading screen and animation; propose error states and account errors on the board only, not in the working prototype.
+Applied: Series hub removed from V1 (D53). Author profile built in the app and on the board (D54, board section 10): 24 real writers and their latest stories ported from Sanity with `docs/round-11/port-authors.js`; opens from the byline, the writer row at the end of a story and Settings › Following; a story opened from the profile returns to it. Proposals, board only (sections 11 to 13): loading (static launch screen, skeletons with a shimmer, option B wordmark line, article opens with the card's content, slow-connection line, paging), errors and offline (banner, toast with Retry, offline and server screens, story not found, story not downloaded, video error), and account errors (sign in, validation, wrong password, email in use, expired link, age minimum, provider failure, offline). New question Q16 (minimum age). Board header now says Round 11.

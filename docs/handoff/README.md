@@ -1,6 +1,6 @@
 # Be Giant app: developer handoff
 
-**For:** Field Office (build), and the agents and designers who keep it current. **Owner:** August Strategy. **Last updated:** October 23, 2026.
+**For:** Field Office (build), and the agents and designers who keep it current. **Owner:** August Strategy. **Last updated:** October 23, 2026 (Round 11).
 **Live prototype:** https://gabrieldufresne.github.io/be-giant-app/ (the app on a phone; the review board on desktop). **Repo:** https://github.com/gabrieldufresne/be-giant-app
 
 This folder is the master spec for building the iOS app: what every screen and element does, with exact values, states and the Sanity fields it reads. It grows with each design round. Start with the change log below to see what's new since you last looked.
@@ -36,6 +36,8 @@ If this folder and the prototype disagree, tell August Strategy; the prototype i
 | [10-saved.md](10-saved.md) | SAVED | Saved list, offline, Edit mode | Designed |
 | [11-account-and-settings.md](11-account-and-settings.md) | SET | Account sheet, Settings hub and its screens | Designed |
 | [12-notifications-newsletter-listen-share.md](12-notifications-newsletter-listen-share.md) | NOTIF, NEWS, LISTEN, SHARE | Notification presets and permission, newsletter, Listen, share sheet | Partial |
+| [14-author-profile.md](14-author-profile.md) | AUTH | Writer page: name, bio, Learn more, Follow, Share, stories by the writer | Designed (Round 11) |
+| [15-loading-errors-offline.md](15-loading-errors-offline.md) | LOAD, ERR | Launch screen, skeletons, slow connection, paging, offline banner and screens, server error, not found, video error | Proposed (Round 11, board only) |
 | [13-content-model.md](13-content-model.md) | CMS, Q-, SCR-, API- | The Sanity contract: queries per screen, fields per body module, schema change requests, data rules, outside APIs, universal links, reader data | Partial (SCR-01 to SCR-10 pending) |
 
 Each file starts with the same header: ID prefix, status, last changed, board section, where to find it in the prototype, decisions, open questions, and **Affects / depends on** (the other areas a change here touches). Then: Summary, Elements and behaviour (a table with IDs and a **Data** column), States, Motion, Accessibility, Data and analytics, Open items.
@@ -85,9 +87,20 @@ Found while writing these specs and ruled on by Gabriel on October 23, 2026. The
 | Guest gating | Onboarding (skip makes a guest), Home (profile strip, For You picker), Article (follow and save asks), Settings |
 | Saved and reading progress | Home (Jump back in, end-of-Home reading card), Article (Save tool, finished count) |
 | Content model | Every content screen |
+| Author profile | Article (byline, writer row), Settings (Following), Guest gating (follow ask), Notifications (writer alerts), Content model (Q-AUTHOR) |
+| Loading, errors and offline | Every content screen, Foundations (shimmer, error red), Saved (offline copies) |
 
 ## Change log
 Newest first. Each entry lists what changed, the IDs, and the other areas it affects.
+
+### October 23, 2026: Round 11 (author profile; loading, error and account-error proposals; Series hub removed)
+- **Data / schema. New: author profile** (`14-author-profile.md`, AUTH-01 to AUTH-13), built to match begiant.ca/author/{slug}, plus Follow and Share. New query Q-AUTHOR; the universal link `/author/{slug}` now has a screen. No schema change: it reads `author.firstName`, `lastName`, `slug`, `bio`, `website`, `socialLinks`. Decision D54.
+  - **Affects:** `06-article.md` (ART-07 byline and ART-10 writer row open it), `11-account-and-settings.md` (SET-19), `13-content-model.md` (Q-AUTHOR, universal links), `04-…` (follow ask), `12-…` (writer alerts).
+- **UI only. Proposed, board only: loading, errors and offline** (`15-loading-errors-offline.md`, LOAD-01 to LOAD-08, ERR-01 to ERR-07): static launch screen, skeletons with a shimmer, articles that open with the card's content, a slow-connection line, paging, offline banner, offline and server screens, story not found (as the website's 404), story not downloaded, video can't play. Not in the app view until approved.
+  - **Affects:** every content screen; `01-foundations.md` (FND-54 shimmer, proposed).
+- **UI only. Proposed, board only: sign in and account errors** (`03-onboarding.md`, ONB-25 to ONB-32): sign in for existing accounts, field validation, wrong password, email already used, expired link, age minimum (14 proposed, Q16), Apple or Google failure, offline at the account step.
+  - **Affects:** `04-guest-and-account-gating.md` (asks would offer Sign in), `11-…` (SET-14 sign-in row), `01-foundations.md` (FND-19 error red, proposed).
+- **UI only. Removed from V1: the Series hub** (D53). It had no ID in this folder; `08-…` and `13-…` no longer ask where readers find a series. Series stories stay ordinary stories with their franchise colour.
 
 ### October 23, 2026: rulings on X-01 to X-21
 - **UI only.** Gabriel ruled on all 21 discrepancies (table above). Changed: HOME-18 (12 stories), SAVED-07/10/12 and NAV-17 (5s Undo, 90% finished), DISC-13/15/17 (regular highlight, topic filters, copy), GATE-03/09/14 (follow ask after onboarding, dot after dismissal, alert ask for anyone), ONB-08/22 (topic colour, age range), NAV-23 and ART-20 (left-edge back swipe), NOTIF-02 (three types), MOD-44, SET-17/28 and NEWS (newsletter name, no confirmation email, live row). New decisions D51 (finished = 90%) and D52 (left-edge back).

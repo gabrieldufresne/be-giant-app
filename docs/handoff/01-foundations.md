@@ -1,5 +1,5 @@
 # Foundations
-**ID prefix:** FND · **Status:** Designed · **Last changed:** Round 9 article modules, October 23, 2026 · **Board:** every section · **Prototype:** `BeGiantAppPhone.dc.html` (`<helmet>` keyframes, `const W = 402, EX =`), design system bundle `_ds/` · **Decisions:** D1, D15, D22, D27, D29, D34, D44 · **Open questions:** Q8
+**ID prefix:** FND · **Status:** Designed · **Last changed:** Round 11, October 23, 2026 (FND-19 error red, FND-54 shimmer; proposed) · **Board:** every section · **Prototype:** `BeGiantAppPhone.dc.html` (`<helmet>` keyframes, `const W = 402, EX =`), design system bundle `_ds/` · **Decisions:** D1, D15, D22, D27, D29, D34, D44 · **Open questions:** Q8
 **Affects / depends on:** every other file. Change anything here and every area is affected; list it in the change log in `README.md`.
 
 ## Summary
@@ -27,6 +27,7 @@ The app follows the begiant.ca visual system: white pages, ink type, hairline ru
 | FND-15 | Cream | `#FAF7F0` | Only: the unfinished-profile strip, the topic nudge and the in-article newsletter card. Not a page colour (D15, D44). |
 | FND-16 | Night page | `#171717` background, `#FFFFFF` text | Article contrast tool (D15) |
 | FND-17 | Brand red | `#DB3A3A` | Signals and the Get started button; not decoration |
+| FND-19 | Error | `#C22F2F` text, `#DB3A3A` 1.5pt field outline, `#FCEEEE` notice panel | Proposed in Round 11 (account errors, `03-…`). The brand red is too light for 13pt text on white (about 4:1), so error text uses a darker red (about 5.4:1). |
 | FND-18 | Accents | violet `#A293F5`, purple `#936A9B`, magenta `#DD68BB`, yellow `#F5CA55`, peach `#FF9072` | Series colours and topic chip check circles only (D27). Topic neutral `#DCD6FF`. |
 
 ## Type
@@ -67,6 +68,7 @@ The app follows the begiant.ca visual system: white pages, ink type, hairline ru
 | FND-50 | Easing | Standard ease-out `cubic-bezier(.16,1,.3,1)` for most movement; plain `ease` for fades. |
 | FND-51 | Durations | Fades 200 to 250ms; panels and sheets 320 to 340ms; shared-element open into an article 440ms. |
 | FND-52 | Reduce Motion | Every animated feature needs a still version. Built so far: greeting G4 (fade only), article parallax (still layout). Still missing: the Globe welcome, Home hero 6d, the swipe-to-save hint. |
+| FND-54 | Skeleton shimmer | Proposed in Round 11 (`15-…` LOAD-03): blocks `#EEEEEE`, a `#F8F8F8` band sweeping left to right, 1.6s linear, repeating. Reduce Motion: static. |
 | FND-53 | No scroll-jacking | Scroll-linked effects move at the reader's speed; nothing pins input or hijacks scrolling. |
 
 ## Accessibility baseline

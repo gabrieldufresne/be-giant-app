@@ -61,7 +61,7 @@ Discover is the Search tab: browse at rest, search when the field is used (D3). 
 
 ## Open items
 - ~~Series and pillars in search filters~~: resolved (X-03), topics only.
-- Q3 (name), Q14 (place field and who tags), and where a reader finds a series now.
+- Q3 (name), Q14 (place field and who tags). ~~Where a reader finds a series~~: no Series hub in V1 (D53); series stories appear as ordinary stories, with their franchise colour on the tag.
 - Topic chips run a text query in the prototype, not a topic filter (D12); the build should filter.
 - "Sort: Newest" is a label only; the API sorts by relevance when there is a query.
 - The no-results copy promises video search; the index has no videos.

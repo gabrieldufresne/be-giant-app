@@ -47,6 +47,7 @@ Reuse the website's fragments from `frontend/sanity/lib/queries.ts`:
 | Q-SEARCH | Search (`08-…`) | The website endpoint `GET /api/search?q=&type=&pillar=&topic=&page=&perPage=` (Typesense, with a GROQ fallback). No direct GROQ from the app. | As returned |
 | Q-SAVED | Saved (`10-…`) | Reader's saved ids (account) → `*[_type == "article" && _id in $ids]` | `articleCard`; full Q-ARTICLE for offline |
 | Q-NEAR | Near you, Discover by province (`08-…`) | **Blocked by SCR-01** | |
+| Q-AUTHOR | Author profile (`14-…`) | `*[_type == "author" && slug.current == $slug][0]`; stories: `*[_type == "article" && references($authorId) && <live>] | order(publishedAt desc)[$from...$to]` | `firstName`, `lastName`, `slug`, `bio` (`blockContentTextOnly`), `website`, `socialLinks[]{platform, url}`, story count; stories as `articleCard` |
 | Q-NEWSLETTER | Newsletter card, Settings (`07-…`, `11-…`, `12-…`) | `newsletter` documents with `active == true` (the article's own `newsletter` reference first); subscribe through Beehiiv (API-01) | `title`, `description`, `externalId`, `active` |
 
 ## Fields per body module
@@ -100,8 +101,8 @@ Area files may add further requests as "Missing in schema"; they get numbers her
 Website paths, from `frontend/lib/routes.ts`, that should open the app (answers FO-7, to confirm). The app maps each to a screen:
 - `/stories/{pillarSlug}/{slug}`: the article.
 - `/stories?topic={topicSlug}`: Discover filtered by the topic.
-- `/author/{slug}`: the author profile (not designed).
-- `/{slug}`: a page or series.
+- `/author/{slug}`: the author profile (`14-author-profile.md`).
+- `/{slug}`: a page; a series page opens on the website (Series hub removed from V1, D53).
 - `/short-stories`: the Video tab.
 - `/newsletter`: Settings › Newsletter.
 
