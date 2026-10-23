@@ -10,7 +10,8 @@ A clickable, high-fidelity prototype of the Be Giant iOS news app. It is plain s
 - `ios-frame.js` — device bezel used on the board.
 - `_ds/` — Be Giant design system bundle: tokens, fonts, components. Do not edit; upstream is `field-office/client-giant`.
 - `assets/` — Phosphor light/fill icons, imagery, illustrations, gradients, app icon. `uploads/` — the three short-form videos.
-- `docs/` — PRD v2 (source of truth), strategic foundation, original wireflow PRD, decision roadmap, the Oct 19 prompt pack and `Round 9 plan.md`. `docs/round-9/` holds one notes file per prompt.
+- `docs/handoff/` — the developer handoff: master build spec for Field Office, one file per area with stable element IDs, plus a change log in its README.
+- `docs/` — PRD v2 (source of truth for decisions), strategic foundation, original wireflow PRD, decision roadmap, the Oct 19 prompt pack and `Round 9 plan.md`. `docs/round-9/` holds one notes file per prompt.
 - `explorations/` — standalone `.dc.html` pages that compare options (P1.3 newsletter, P3.1 For You icon). Nothing in them changes the app until an option is picked.
 
 ## Running
@@ -31,6 +32,8 @@ Each file is a full HTML page: `<head>` loads `support.js`; the body holds an `<
 
 ## Rules
 - Source of truth: `docs/Be Giant App - PRD v2.md`. Read it at the start of a round. Update its decisions log, feature inventory and round log at the end of every round.
+- Keep `docs/handoff/` current in the same pass: update the affected area files (new or changed element IDs, Last changed), and add a change-log entry at the top of `docs/handoff/README.md` naming the IDs and the other areas affected. Never reuse or delete an ID; mark it Removed.
+- New features go into the app view (`#app`) as well as the board, tested on real begiant.ca stories ported with `docs/round-9/port-article.py`.
 - Prefer targeted edits to `BeGiantAppPhone.dc.html`. Do not rewrite it unless asked. New screens are new sections inside it.
 - Batch edits for a round into as few passes as possible. Structural changes first, polish second.
 - Before a large rebuild, snapshot to `BeGiantAppPhone-backup.dc.html` (git-ignored); delete once approved. Prefer a git branch instead.

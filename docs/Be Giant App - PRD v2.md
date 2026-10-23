@@ -2,10 +2,10 @@
 
 **Owner:** August Strategy · **Build partner:** Field Office
 **Status:** Living document. Updated at the end of every design round.
-**Last updated:** October 20, 2026, after Round 10 (team review feedback)
+**Last updated:** October 23, 2026, after the Round 9 article modules (Phases 1 to 3)
 **Supersedes:** `docs/GIANT-App-Wireflow-PRD.md` (Phase I wireflow). Phase I stays the record of the original structure. Where the two disagree, this document wins.
 **Repo:** https://github.com/gabrieldufresne/be-giant-app (public). Preview: https://gabrieldufresne.github.io/be-giant-app/ (GitHub Pages, deployed from `main`).
-**Design files:** `BG App.dc.html` (board, and the full-screen app on phones or at `#app`), `BeGiantAppPhone.dc.html` (the app itself), `bg-app-data.js` (content). Explorations that compare options live in `explorations/`; round notes in `docs/round-9/`. Reference docs are in `docs/`: Strategic Foundation, Phase I wireflow PRD, Decision Roadmap, the Oct 19 prompt pack and the Round 9 plan. Earlier phase files (`archive/`, `Welcome Explorations.dc.html`) stayed in the Claude design project and are not in this repo.
+**Design files:** `BG App.dc.html` (board, and the full-screen app on phones or at `#app`), `BeGiantAppPhone.dc.html` (the app itself), `bg-app-data.js` (content). Explorations that compare options live in `explorations/`; round notes in `docs/round-9/`. **Developer handoff:** `docs/handoff/` is the master build spec (every screen and element, with IDs, values, states and data needs, plus a change log). This PRD keeps the decisions and status; the handoff says how to build them. Reference docs are in `docs/`: Strategic Foundation, Phase I wireflow PRD, Decision Roadmap, the Oct 19 prompt pack and the Round 9 plan. Earlier phase files (`archive/`, `Welcome Explorations.dc.html`) stayed in the Claude design project and are not in this repo.
 
 ---
 
@@ -52,7 +52,7 @@ Changes from Phase I are marked **(changed)**.
 | D6 | Onboarding is Welcome, Topics, Notifications and Create account. Topics are the only personalization step; pillars, series and writers were removed. | R1 | Phase I had welcome, topics, notifications. |
 | D7 | Notifications start from a level and break down per type and per followed topic, with quiet hours. | R1 | Levels updated in R7 (Everything removed) and R9 (D36). Strategic Foundation: segmentation beats blanket sends. |
 | D8 | Article reading tools replace the tab bar: Back, Aa, Listen, Night, Share, Save. Progress is a thin line under the status bar only. | Pre-R1, R1 | |
-| D9 | Article ends with "Follow similar topics" (plus the writer), then "More like this". No newsletter block in articles. | R1 | Replaces "Filed under". |
+| D9 | Article ends with "Follow similar topics" (plus the writer), then "More like this". No newsletter block in articles. | R1 | Replaces "Filed under". **Amended by D50:** the editor-placed newsletter card in the body is in. |
 | D10 | **(changed)** Listen (text to speech) is in V1 as a mini player. | Pre-R1 | Phase I had it out of scope. Needs a technical decision (Q4). |
 | D11 | Home leads with one big story that scrolls away; nothing pins. For You sits one swipe away. | R1 | |
 | D12 | Topics stay filters, not hub screens. Series keep a hub. | Phase I | Unchanged. |
@@ -88,6 +88,12 @@ Changes from Phase I are marked **(changed)**.
 | D42 | The first time the first Latest story is fully on screen, it slides left to show its Save panel, with a tip: "Swipe left on any story to save it". Once per install in the build; once each time the app opens in the prototype. | R10 | |
 | D43 | The For You end button reads "Show me a bonus story". The send-a-story card no longer says where the link opens. | R10 | |
 | D44 | **(changed from D22)** The end-of-Home milestone and send-a-story cards are white on the grey feed end. Panels inside them use #F2F2F2. | R10 | Cream stays for article pages, the unfinished-profile strip and the topic nudge. |
+| D45 | The app renders the website's article body (Sanity Portable Text) natively, block by block, rebuilt for the phone: subheads, links, lists, inline images, image pairs, galleries, annotated images, video, parallax, dividers, pull quotes, related reads, related stories, newsletter card and callout. Horizontal scroll, social posts, HTML embeds, audio and footnotes get simple fallbacks (link cards or stacked panels). | R9 modules | Spec: `docs/handoff/07-article-modules.md`. Research: `docs/round-9/article-modules.md`. |
+| D46 | Video in articles is tap to play, never autoplay. Shorts get a 9:16 poster; other videos 16:9. Tap opens a full-screen player. | R9 modules | Answers Q6 for articles; the Video tab's policy stays open. |
+| D47 | Editor-placed related reads stay mid-story as a single row. Stories shown there, or in a related-stories box, are left out of More like this. | R9 modules | |
+| D48 | Parallax stays, as on the website: the photo pins and the text scrolls over it on the editor's tint, with no panel behind the text. The photo holds until the last line has left through the top. Reduce Motion and the two largest text sizes get a still version. | R9 modules | Revised after Gabriel's notes (panel removed, longer exit). |
+| D49 | Galleries swipe in place with visible previous and next buttons and a count. Any photo in a story opens a full-screen viewer that pages through all of the story's photos, with tap for caption, double-tap to zoom and swipe down to close. | R9 modules | Also covers the P2.4 "image zoom into article" item. |
+| D50 | **(amends D9)** The editor-placed newsletter card appears in articles: a cream card with one Subscribe button (one tap when signed in, an email field for guests). It shares the subscribe state with Settings and the P1.3 asks, and disappears from every story once the reader subscribes. | R9 modules | Q7 and Q9 still decide the wider newsletter placement. |
 
 ---
 
@@ -103,7 +109,8 @@ Changes from Phase I are marked **(changed)**.
 | Home: lead story, latest, Watch rail, short stories, popular | Must | Designed | R10: Short stories and Popular after Watch (D40). Greeting G4 built, not yet on (D38, Q15). |
 | For You (personalized feed with reasons) | Must | Designed | Star mark (D37); bonus story at the end (D43). Empty state for readers who skip topics is the guest topic picker (D26). |
 | Pull to refresh, new-story indicator | Must | Designed | |
-| Article reading view | Must | Partial | Missing: inline images, author link to the Author screen, correction or editor's note block, swipe to the next article. |
+| Article reading view | Must | Partial | Missing: author link to the Author screen, correction or editor's note block, swipe to the next article. Inline images done (D45). |
+| Article modules (the body) | Must | Designed | R9 modules: 14 modules built and QA'd, 4 fallbacks planned (D45 to D50). Spec: `docs/handoff/07-article-modules.md`. Needs Field Office answers FO-1 to FO-7. |
 | Text size and night page | Must | Designed | Page colour options removed in R2. |
 | Listen (text to speech) | Should | Designed | Needs a voice and vendor decision (Q4). |
 | Share sheet | Must | Designed | Native share sheet, iOS shown (D41). |
@@ -157,7 +164,7 @@ Changes from Phase I are marked **(changed)**.
 | Q3 | Is "Discover" the final name for the Search tab? | Be Giant | Round 2 |
 | Q4 | Listen: synthetic voice vendor, or narrated audio only? | Field Office | Phase 3 |
 | Q5 | Do trending and series rails come back on Home? | August | Round 2 |
-| Q6 | Video: autoplay on Wi-Fi only, starts muted? | Be Giant | Round 2 |
+| Q6 | Video: autoplay on Wi-Fi only, starts muted? (Answered for articles by D46: tap to play. Still open for the Video tab.) | Be Giant | Round 2 |
 | Q7 | Where does newsletter signup live? | Be Giant | Round 2 |
 | Q8 | Is Android in scope for V1? | Be Giant | Before Phase 4 |
 | Q9 | Is newsletter signup a core KPI? Decides between the one-time sheet alone and adding the account-step checkbox. Also: which lists, how often, and CASL consent and double opt-in for guest emails. | Be Giant (and counsel) | Before the newsletter ships |
@@ -225,3 +232,7 @@ Ran the prompt pack (`docs/Round 9 plan.md`) as one agent per prompt, each on it
 ### Round 10 (October 20, 2026): follow-up feedback
 One bottom-anchored "Skip for now" in onboarding and a compact quiet-hours row (D35, D36). Discover: Series and Pillars out, Near you and Discover by province in (D39). Home: Short stories with a stopwatch and read time, then Popular (D40). Native share sheet (D41). First-load swipe-to-save hint on the first Latest story (D42). "Bonus story" and the send-a-story line (D43). End-of-Home cards on white (D44).
 Notes for each prompt are in `docs/round-9/`.
+
+### Round 9 article modules (October 21 to 23, 2026)
+Mapped all 18 article-body types on begiant.ca (Sanity and `field-office/client-giant`), with usage counts, and rebuilt them for the phone in three phases: text, images, dividers and related reads; gallery, video and the photo viewer; parallax, newsletter card, callout and annotated image (D45 to D50). Twelve real begiant.ca stories were ported from Sanity as test content and lead Home. The board's section 03b has 20 phones. Gabriel's QA passed after one revision: parallax text now sits straight on the photo, and the photo holds until the text has left. Also: the article's frosted status strip now shows over the body, and board phones no longer play video or animate. The developer handoff folder `docs/handoff/` was started as the master build spec: 13 area files with stable element IDs and a Data column naming the Sanity fields each element reads. It includes a Sanity contract (queries per screen, schema change requests SCR-01 to SCR-10) and 21 open discrepancies between the prototype and these decisions (X-01 to X-21) for August Strategy to rule on.
+
