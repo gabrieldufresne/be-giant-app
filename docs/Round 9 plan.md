@@ -1,6 +1,6 @@
 # Round 9 plan: Oct 19 team review prompts
 
-## Status (October 20, 2026)
+## Status (October 23, 2026)
 
 | Prompt | Status |
 |---|---|
@@ -10,9 +10,11 @@
 | P3.2 Greeting | G4 overlay chosen and built (opt-in, not on in the app yet). G1 to G3 removed. |
 | P1.3 Newsletter | Merged as an exploration only. Waits on Be Giant's KPI answer (PRD Q9). |
 | P1.4, P1.5, P3.3 | On hold (Gabriel ran only P1.3 from batch 2). P1.5's swipe-to-save peek was built separately in Round 10. |
-| P2.1 to P5.4 | Not started. Round 10 already covered parts of P2.1 (Series and Pillars out, region section), P2.2 (short stories, 12 stories on Home, bonus story) and P2.3 (native share). |
+| P2.1 to P5.4 | Not started as prompts. Round 10 covered parts of P2.1 (Series and Pillars out, region section), P2.2 (short stories, 12 stories on Home, bonus story) and P2.3 (native share); the article-modules work covered P2.4's image zoom. |
+| Article modules (added, not in the pack) | Done: all 18 website body types mapped, 14 rebuilt for the phone in three phases, 4 fallbacks planned, QA'd on 12 real begiant.ca stories ported from Sanity. See `docs/round-9/article-modules.md` and `article-modules-qa.md`. |
+| Developer handoff (added) | Done: `docs/handoff/`, a master build spec with one file per area, stable element IDs and a Sanity contract. Gabriel ruled on all 21 prototype discrepancies (X-01 to X-21); the prototype follows the rulings. |
 
-Decisions are in the PRD decisions log (D34 to D44).
+Decisions are in the PRD decisions log (D34 to D52).
 
 Source: `Be Giant App Design PRD and Agent Prompt Pack.md` (19 prompts, P1.1 to P5.4). This plan maps each prompt onto the prototype as it stands after Round 8, sets how agents share the work, and lists what needs Gabriel or Be Giant before it ships.
 

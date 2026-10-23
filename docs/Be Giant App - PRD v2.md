@@ -28,8 +28,8 @@ From the Strategic Foundation: the app is Be Giant's direct line to its readers.
 |---|---|---|---|
 | 0. Strategy | Strategic Foundation, Decision Roadmap | Leadership alignment | Done |
 | 1. Wireflow | Phase I PRD, Wireflow v1 and v2 | Structure approved | Done |
-| 2. UX and UI design | Board, live prototype, this PRD | Every Must feature designed, navigation model chosen, client sign-off | **In progress: Round 10** |
-| 3. Design QA and spec | Annotated specs, motion spec, component list, edge states | Field Office confirms it can be built as specified | Not started |
+| 2. UX and UI design | Board, live prototype, this PRD | Every Must feature designed, navigation model chosen, client sign-off | **In progress: Round 10 and the Round 9 article modules** |
+| 3. Design QA and spec | Annotated specs, motion spec, component list, edge states | Field Office confirms it can be built as specified | **Started: `docs/handoff/` drafted (Oct 23); waiting on Field Office (FO questions)** |
 | 4. Build | iOS app | Feature-complete build | Not started |
 | 5. Beta | TestFlight with staff and friendly readers | Crash-free, analytics firing, content pipeline proven | Not started |
 | 6. Launch | App Store release | Store listing, privacy labels, marketing plan | Not started |
