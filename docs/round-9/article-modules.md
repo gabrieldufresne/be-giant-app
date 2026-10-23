@@ -247,3 +247,8 @@ There are two more short entries, `gold` and `milica`. The callout is shown on `
 Not checked: Reduce Motion itself (the browser pane can't switch it on). The still version is the same one large text gets.
 
 **Next:** Phase 4, fallbacks for horizontal scroll, social posts, HTML embeds, audio and footnotes. None of the published articles use them now, except two social posts.
+
+### Parallax revision (October 23, 2026, Gabriel's notes)
+
+- **No panel.** The text now sits straight on the photo, under the editor's tint, as on the website: white for light-tone blocks, ink for dark. A soft shadow behind the letters (`0 1px 2px` plus a 24px glow) keeps them readable. One Churchill block has the overlay off, so check that one on a phone.
+- **Exit before release.** The runway after the last block is now a full screen plus 24px, so the last line leaves through the top before the photo lets go. Measured in the browser on three blocks: the photo is still pinned when the last line clears the top, and it releases about 24px of scroll later.

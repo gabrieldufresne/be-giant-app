@@ -1058,7 +1058,7 @@
           <sc-if value="{{ b.plxMove }}" hint-placeholder-val="{{ true }}"><div style="position:relative">
             <div style="position:sticky;top:0;height:{{ b.h }};overflow:hidden;z-index:0"><img src="{{ b.bg }}" alt="" style="width:100%;height:100%;object-fit:cover;display:block"><div style="position:absolute;inset:0;background:{{ b.ov }}"></div></div>
             <div style="position:relative;z-index:1;margin-top:{{ b.neg }};padding:{{ b.top }} 24px {{ b.bot }};display:flex;flex-direction:column;gap:{{ b.gap }}">
-              <sc-for list="{{ b.blocks }}" as="pb"><div style="background:{{ b.pbg }};color:{{ b.pfg }};padding:24px;display:flex;flex-direction:column;gap:14px">
+              <sc-for list="{{ b.blocks }}" as="pb"><div style="color:{{ b.pfg }};text-shadow:{{ b.tsh }};display:flex;flex-direction:column;gap:14px">
                 <sc-if value="{{ pb.hasImg }}" hint-placeholder-val="{{ false }}"><div style="display:flex;flex-direction:column;gap:8px"><img src="{{ pb.img }}" alt="" style="width:100%;aspect-ratio:{{ pb.iar }};object-fit:cover;display:block"><sc-if value="{{ pb.hasIcap }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;line-height:1.4;color:{{ b.pmu }}">{{ pb.icap }} {{ pb.icr }}</div></sc-if></div></sc-if>
                 <sc-if value="{{ pb.hasEyebrow }}" hint-placeholder-val="{{ false }}"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:{{ b.pmu }}">{{ pb.eyebrow }}</div></sc-if>
                 <sc-if value="{{ pb.display }}" hint-placeholder-val="{{ true }}"><sc-for list="{{ pb.paras }}" as="pp"><div style="font-family:var(--font-serif);font-weight:400;font-size:{{ modPlxSize }};line-height:1.16;letter-spacing:-.01em;text-wrap:pretty">{{ pp.t }}</div></sc-for></sc-if>
@@ -2142,11 +2142,12 @@ class Component extends DCLogic {
           play:() => { if (b.href && !b.yt && !b.src) { this.openLink(b.href); return; } this.setState({vp:{yt:b.yt || '', src:b.src || '', social:social, title:b.title || '', cap:b.cap || ''}}); }});
       }
       if (b.k === 'parallax') {
-        /* Moving: the photo pins at screen height and each text block scrolls up over it once in a solid panel. Still (Reduce Motion, or Aa at the three largest sizes): photo, then the text. */
+        /* Moving: the photo pins at screen height and each text block scrolls up over it, straight on the editor's tint (no panel, as on the website), with a soft shadow for legibility.
+           A full screen of runway after the last block lets the text leave through the top before the photo lets go. Still (Reduce Motion, or Aa at the three largest sizes): photo, then the text. */
         const dark = b.tone === 'dark', tint = {dark:.6, normal:.4, light:.25, off:0}[b.tint || 'normal'];
         return Object.assign({}, F, {isPlx:true, plxMove:!still, plxStill:still, bg:b.bg, ar:ar(b.bg), hasCap:!!(b.cap || b.credit), cap:b.cap || '', credit:b.credit || '',
-          ov:(dark ? 'rgba(255,255,255,' : 'rgba(0,0,0,') + tint + ')', h:H + 'px', neg:-H + 'px', top:Math.round(H * .78) + 'px', gap:Math.round(H * .55) + 'px', bot:Math.round(H * .62) + 'px',
-          pbg:dark ? 'rgba(255,255,255,.94)' : 'rgba(23,23,23,.9)', pfg:dark ? '#171717' : '#FFFFFF', pmu:dark ? '#5C5C5C' : 'rgba(255,255,255,.7)',
+          ov:(dark ? 'rgba(255,255,255,' : 'rgba(0,0,0,') + tint + ')', h:H + 'px', neg:-H + 'px', top:Math.round(H * .78) + 'px', gap:Math.round(H * .55) + 'px', bot:(H + 24) + 'px',
+          pfg:dark ? '#171717' : '#FFFFFF', pmu:dark ? '#3D3D3D' : 'rgba(255,255,255,.82)', tsh:dark ? '0 0 18px rgba(255,255,255,.5)' : '0 1px 2px rgba(0,0,0,.4), 0 0 24px rgba(0,0,0,.3)',
           blocks:(b.blocks || []).map(c => ({eyebrow:c.eyebrow || '', hasEyebrow:!!c.eyebrow, display:c.style !== 'flexible', flex:c.style === 'flexible',
             paras:(c.paras || []).map(t => ({t:t})), hasImg:!!c.img, img:c.img || '', iar:ar(c.img), icap:c.icap || '', icr:c.icr || '', hasIcap:!!(c.icap || c.icr)}))});
       }
