@@ -39,7 +39,7 @@ Point to any item by its number (for example "2.3") and say what happened. A scr
 - 5.6 A co-written story (for example by Stephen Maher and Tim Harper): its card on the profile says "With {the other writer}".
 
 ## 5b. Shared bylines (fix after QA)
-- 5.7 Open "Eight ways Canada can turbocharge growth" (Stephen Maher and Tim Harper). Tap the byline. A sheet lists both writers.
+- 5.7 Open "Eight ways Canada can turbocharge growth" (Stephen Maher and Tim Harper; find it on Tim Harper's profile from Settings › Following). Tap the byline. A sheet lists both writers.
 - 5.8 Tap Follow on one writer in the sheet. It turns to Following in place; no toast covers the sheet.
 - 5.9 Tap a writer's name in the sheet. Their profile opens.
 - 5.10 At the end of the same story, under Follow similar topics, each writer has their own row.
@@ -51,7 +51,7 @@ Point to any item by its number (for example "2.3") and say what happened. A scr
 
 ## 7. The board on the phone (tap Board, then pinch to zoom)
 - 7.1 The header says Round 11.
-- 7.2 Section 10, Author profile: four phones (Profile, Stories by Lisa, Following, No stories yet).
+- 7.2 Section 10, Author profile: five phones (Profile, Stories by Lisa, Following, No stories yet, Shared byline).
 - 7.3 Section 11, Loading: the launch screen, the slow cold start with a red line under the wordmark, Home loading with the shimmer, slow connection, article loading, loading more.
 - 7.4 Section 12, Errors and offline: offline banner, Retry toast, offline screen, couldn't load, story not found, story not downloaded, video can't play.
 - 7.5 Section 13, Account errors: sign in, wrong password, invalid fields, email already used, link expired, the age-gate phone (marked not recommended), Apple cancelled, offline.
