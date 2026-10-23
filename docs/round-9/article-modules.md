@@ -1,6 +1,6 @@
 # In-article modules: inventory and plan
 
-Status (October 23, 2026): Gabriel accepted the leans on all nine questions below. **Phase 1 is built**, opt-in only (`mods="on"`); see "Phase 1: built" at the end. Phases 2 to 4 not started.
+Status (October 23, 2026): Gabriel accepted the leans on all nine questions below. **Phase 1 is built** and on in the app view (`mods="on"`); see "Phase 1: built" at the end. Phases 2 to 4 not started.
 
 ## Sources
 
@@ -120,14 +120,14 @@ Update the PRD v2 feature inventory (Article reading view), decisions log and ro
 
 ## Phase 1: built (October 23, 2026)
 
-Board section **03b · Article modules · Round 9, Phase 1**, right after 03 Article: seven phones, one per module, each with `mods="on"` and a preset that scrolls to its block. Nothing changes without the prop, so the shared app and every other phone are as before.
+Board section **03b · Article modules · Round 9, Phase 1**, right after 03 Article: seven phones, one per module, each with `mods="on"` and a preset that scrolls to its block. At Gabriel's request (same day), the app view (`#app`, the shareable app) also has `mods="on"`, and the two test stories sit at the top of Latest on Home. Other board phones keep the prop off.
 
 **Test content.** Two real begiant.ca stories, ported from Sanity with their text, photos, captions and links:
 
 - "Inside 7 of Canada's biggest challenges – and how we can meet them" (`rbc`). It has seven H3 subheads, 11 links, an image pair, an inline image, three related reads and a pull quote.
 - "How tapping into the Earth's layers could yield limitless energy" (`geo`). It has a small, a medium and a full-width image, three short dividers, a related-stories box, 6 links and a pull quote.
 
-Five more entries (`mda`, `arctic`, `spaceport`, `cups`, `sewage`) are the stories those related reads point to: the real headline, dek, photo and opening paragraph, like the app's other short entries. All seven live in `MST` in `bg-app-data.js`, outside `ST`, so Home, search and the other lists don't change. The newsletter CTAs and the video in the originals are left out until Phases 2 and 3. Lists are supported but not shown, since neither story has one (only 2 published articles do).
+Five more entries (`mda`, `arctic`, `spaceport`, `cups`, `sewage`) are the stories those related reads point to: the real headline, dek, photo and opening paragraph, like the app's other short entries. `rbc` and `geo` are in `ST` (so they show in Home's Latest, search and Your next read, and `ORDER` puts them after the family story). The five short entries stay in `MST`, outside every list, and open only from those two stories. Latest now lists five stories instead of three; trim it once Phase 1 is approved. The newsletter CTAs and the video in the originals are left out until Phases 2 and 3. Lists are supported but not shown, since neither story has one (only 2 published articles do).
 
 **What each block does** (`modBlocks()` in `BeGiantAppPhone.dc.html`):
 

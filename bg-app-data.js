@@ -106,7 +106,8 @@ var ST = [
 ];
 ST.forEach(function(x,i){ x.av = AV[i % 4]; });
 // Round 9 article modules (Phase 1): real begiant.ca stories, ported from Sanity, that carry the website's in-body blocks.
-// Kept out of ST so the live app's lists don't change; the phone opens them only with mods="on".
+// rbc and geo join ST (top of Latest on Home); the five related-read targets stay in MST, reachable only from those two.
+// Their modules render only with mods="on" (on in the app view); without it they read as plain paragraphs.
 // Body items: a string is a plain paragraph. {k:'p', r:[...]} is a paragraph with runs (a string, or {t, href} for a link,
 // {t, em:true} for italics). {k:'h', text} subhead. {k:'ul', items} list. {k:'img', size:'small'|'medium'|'full'}.
 // {k:'pair'} image pair. {k:'rule', style:'line'|'short'|'dotted'}. {k:'rel', id} related read. {k:'rels', head, ids} related stories.
@@ -223,6 +224,7 @@ var MST = [
   body:['In downtown Vancouver, it takes a lot for new towers to stand out. Since the turn of the millennium, a landscape of highrise construction cranes has become an enduring complement to the majestic mountains and waterways that frame the city. Yet, even amid the thicket of soaring condominiums and sublime natural surroundings, Sen̓áḵw is a showstopper.']}
 ];
 MST.forEach(function(x,i){ x.av = AV[(i + 1) % 4]; });
+MST.splice(0, 2).forEach(function(x){ ST.push(x); });
 var VID = [
  {st:'family',t:'Taking over the family business',dur:'1:36',secs:96,src:'uploads/BeGiant-Farmer.mp4'},
  {st:'talampassi',t:'The scientist who came home',dur:'1:24',secs:84,src:'uploads/BeGiant-Math.mp4'},
@@ -247,8 +249,8 @@ window.BGD = {
  SER: Object.keys(SC),
  TOP: ['Economy','Small business','Work','Housing','Climate','Energy','Health','Science & tech','Education','Cities','Immigration','Transportation','Arts & culture','Food & farming','Indigenous futures','Wildfire'],
  SIM: {family:['Economy','Small business','Work']},
- ORDER: ['family','potash','productivity','mls','summit','rover','church','solar','dispersa','coast','north'],
- LATEST_A: ['potash','productivity','rover'],
+ ORDER: ['family','rbc','geo','potash','productivity','mls','summit','rover','church','solar','dispersa','coast','north'],
+ LATEST_A: ['rbc','geo','potash','productivity','rover'],
  LATEST_B: ['mls','summit','church','solar','coast'],
  FRESH: ['twisters','upei'],
  FY: [{id:'productivity',why:'Because you follow Economy'},{id:'church',why:'Because you follow Housing'},{id:'coast',why:'Because you follow Climate'},{id:'summit',why:'New from Stephen Maher'},{id:'battery',why:'Read by people who follow Housing'}],
