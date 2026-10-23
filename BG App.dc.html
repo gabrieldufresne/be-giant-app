@@ -846,6 +846,11 @@ a:hover{opacity:.6}
         <dc-import name="BeGiantAppPhone" still="{{ still }}" start="author-following" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
         <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Following.</b> Follow uses the same button and toasts as the end of a story, and counts toward the guest follow ask (D24). Following a writer turns on Writers you follow alerts under Balance.</div></sc-if>
       </div>
+      <div data-screen-label="10 Author following" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">Following</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">State</div></div>
+        <dc-import name="BeGiantAppPhone" still="{{ still }}" start="author-following" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>
+        <sc-if value="{{ notes }}" hint-placeholder-val="{{ true }}"><div style="font-size:13.5px;line-height:1.5;color:#3D3D3D;border-top:1px solid #DADADA;padding-top:12px"><b style="font-weight:600">Shared byline.</b> A story with several writers: tapping the byline opens this sheet, one row per writer with Follow; tapping a name opens that profile. The end of the story also lists each writer on their own row.</div></sc-if>
+      </div>
       <div data-screen-label="10 Author none" style="flex:none;width:402px;display:flex;flex-direction:column;gap:16px">
         <div style="display:flex;align-items:baseline;justify-content:space-between"><div style="font-family:var(--font-sans);font-size:17px;font-weight:600">No stories yet</div><div style="font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#7A7A7A">Empty</div></div>
         <dc-import name="BeGiantAppPhone" still="{{ still }}" start="author-none" model="m1" nav="{{ nav }}" hint-size="402px,874px"></dc-import>

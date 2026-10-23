@@ -1407,6 +1407,20 @@
   </div>
 </div>
 </sc-if>
+<!-- Round 11 (D61): writer chooser for shared bylines -->
+<div role="dialog" aria-label="Writers" style="position:absolute;z-index:61;left:8px;right:8px;bottom:8px;background:#FFFFFF;border-radius:32px;padding:10px 20px 18px;transform:{{ wsTf }};visibility:{{ wsVis }};transition:transform 320ms cubic-bezier(.16,1,.3,1), visibility 320ms;box-shadow:var(--shadow-layer);display:flex;flex-direction:column;gap:14px;color:#171717">
+  <div style="width:36px;height:5px;border-radius:3px;background:#D6D6D6;align-self:center"></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;padding-top:2px"><div style="font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase">Writers</div><div onClick="{{ wsClose }}" aria-label="Close" style="width:32px;height:32px;border-radius:50%;background:rgba(120,120,128,.16);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none"><img src="assets/light/x-light.svg" alt="" style="width:14px;height:14px;display:block"></div></div>
+  <div style="border-top:1px solid #171717">
+    <sc-for list="{{ wsRows }}" as="w" hint-placeholder-count="2">
+      <div style="min-height:68px;display:flex;align-items:center;gap:14px;border-bottom:1px solid #E6E6E6">
+        <div onClick="{{ w.open }}" role="button" style="flex:1;min-width:0;display:flex;align-items:center;gap:14px;cursor:pointer"><img src="{{ w.av }}" alt="" style="width:44px;height:44px;border-radius:50%;object-fit:cover;display:block;flex:none"><div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:2px"><div style="font-size:16px">{{ w.name }}</div><div style="font-size:12px;color:#7A7A7A">{{ w.sub }}</div></div><img src="assets/light/caret-right-light.svg" alt="" style="width:16px;height:16px;display:block;flex:none;opacity:.5"></div>
+        <div onClick="{{ w.tap }}" style="height:44px;display:flex;align-items:center;cursor:pointer;flex:none"><div style-active="transform:scale(.94)" style="height:36px;padding:0 14px;border-radius:8px;display:flex;align-items:center;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:{{ w.bg }};color:{{ w.fg }};box-shadow:inset 0 0 0 1px {{ w.bd }};transition:background-color 200ms ease, color 200ms ease, transform 150ms ease"><img src="assets/light/check-light.svg" alt="" style="width:{{ w.cw }};height:14px;margin-right:{{ w.cm }};display:block;filter:{{ w.cf }};opacity:{{ w.co }};transition:width 250ms cubic-bezier(.16,1,.3,1), margin-right 250ms cubic-bezier(.16,1,.3,1), opacity 150ms ease">{{ w.btn }}</div></div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
 <!-- Round 11: board-only states. Board presets set bs; the app never does. Loading, errors and offline, account errors. Spec: docs/handoff/14-loading-errors-offline.md, 03-onboarding.md -->
 <sc-if value="{{ bsOn }}" hint-placeholder-val="{{ false }}">
 <div style="position:absolute;inset:0;z-index:{{ bsZ }};background:{{ bsBg }};pointer-events:{{ bsPe }};overflow:hidden;font-family:var(--font-sans);color:#171717">
@@ -2720,7 +2734,22 @@ class Component extends DCLogic {
   auVals(V){
     const s = this.state, d = D(), AU = d.AUTH || {}, art = s.art ? BY(s.art) : null, out = {auRef:this.auRef, auScrollRef:this.auScrollRef, onAuScroll:this.onAuScroll, auBack:this.closeAuthor};
     // Entry points: the byline, the writer row at the end of a story, Settings > Following
-    if (V.a && art) { const n = this.auOf(art.a); V.a.auOpen = n ? () => this.openAuthor(n) : null; V.a.auCur = n ? 'pointer' : 'default'; (V.a.follows || []).forEach(f => { if (f.isPerson && AU[f.label]) f.open = () => this.openAuthor(f.label); }); }
+    const wGrad = (n, i) => 'assets/gradients/' + ((AU[n] && AU[n].grad) || ['red-to-orange-btt.svg','pink-to-purple-ltr.svg','orange-to-yellow-ltr.svg','pink-to-red-btt.svg'][i % 4]);
+    const wBtn = (on) => s.theme === 'night' && s.art
+      ? {bg: on ? '#FFFFFF' : 'transparent', fg: on ? '#171717' : '#FFFFFF', bd: on ? '#FFFFFF' : 'rgba(255,255,255,.4)', cf:'none'}
+      : {bg: on ? '#171717' : 'transparent', fg: on ? '#FFFFFF' : '#171717', bd: on ? '#171717' : '#D6D6D6', cf:'invert(1)'};
+    const wItem = (n, i) => { const on = s.writers.includes(n); return Object.assign({name:n, label:n, av:wGrad(n, i), sub:'Writer · ' + AU[n].n + (AU[n].n === 1 ? ' story' : ' stories'), isTopic:false, isPerson:true,
+      btn: on ? 'Following' : 'Follow', cw: on ? '14px' : '0px', cm: on ? '6px' : '0px', co: on ? 1 : 0, tap:() => this.toggleWriter(n), open:() => this.openAuthor(n)}, wBtn(on)); };
+    if (V.a && art) {
+      const names = (art.a || '').split(/, | & /).map(n => n.trim()).filter(n => AU[n]), n = names[0];
+      // D61: a shared byline opens a chooser; a single writer opens the profile
+      V.a.auOpen = names.length > 1 ? () => this.setState({sheet:'writers', auPick:names}) : n ? () => this.openAuthor(n) : null; V.a.auCur = n ? 'pointer' : 'default';
+      if (names.length > 1) V.a.follows = (V.a.follows || []).filter(f => !f.isPerson).concat(names.map(wItem));
+      else (V.a.follows || []).forEach(f => { if (f.isPerson && AU[f.label]) f.open = () => this.openAuthor(f.label); });
+    }
+    const wsOn = s.sheet === 'writers' && !!(s.auPick || []).length;
+    if (wsOn) { V.toastOp = 0; V.toastPe = 'none'; } // the Follow button shows the change; a toast would cover the sheet
+    Object.assign(out, {wsTf: wsOn ? 'translateY(0)' : 'translateY(110%)', wsVis: wsOn ? 'visible' : 'hidden', wsRows:(s.auPick || []).filter(n => AU[n]).map(wItem), wsClose:() => this.setState({sheet:null})});
     (V.writerRows || []).forEach(w => { if (AU[w.name]) w.open = () => this.openAuthor(w.name); });
     const A = s.au && AU[s.au];
     if (!A) return Object.assign(out, {hasAu:false});

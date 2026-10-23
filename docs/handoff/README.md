@@ -93,6 +93,10 @@ Found while writing these specs and ruled on by Gabriel on October 23, 2026. The
 ## Change log
 Newest first. Each entry lists what changed, the IDs, and the other areas it affects.
 
+### October 23, 2026: Round 11 QA fix (shared bylines)
+- **UI only.** Gabriel's phone QA: stories by several writers only linked to the first. Now built per D61: AUTH-14 writer chooser from the byline, and one row per writer in ART-10. New board phone "Shared byline" (section 10).
+  - **Affects:** `06-article.md` (ART-07, ART-10), `14-author-profile.md`.
+
 ### October 23, 2026: Round 11 calls
 - **UI only.** Gabriel's calls: loading approved as a board spec with option B (D55, LOAD-01 to LOAD-08); errors and offline approved for the app (D58, ERR-01 to ERR-07); sign in and account errors approved except the age gate (D59, ONB-25 to ONB-29, ONB-31, ONB-32; ONB-30 not recommended, Q16); FND-19 and FND-54 confirmed; writer chooser for shared bylines decided (D61, `14-…`). G4 greeting on once a day (D56, `05-…`), red only on Get started (D57, `01-…`), no Trending rail on Home (D60, `05-…`).
   - **Affects:** `05-home-and-for-you.md` (G4, no Trending rail), `04-guest-and-account-gating.md` (Sign in link on the asks), `01-foundations.md` (red on Get started only).

@@ -1,5 +1,5 @@
 # Author profile
-**ID prefix:** AUTH · **Status:** Designed (pagination and multi-author bylines Fallback planned) · **Last changed:** Round 11, October 23, 2026 · **Board:** 10 Author profile (Profile, Stories by Lisa, Following, No stories yet); 11 Loading (Loading more) · **Prototype:** `BeGiantAppPhone.dc.html` (search `hasAu`, `auVals(`, `openAuthor(`, `closeAuthor`, `openAuStory(`, `onAuScroll`); writer data `AUTH` in `bg-app-data.js` (ported from Sanity by `docs/round-11/port-authors.js`; prototype reference only); presets `author`, `author-list`, `author-following`, `author-none`, `author-more` · **Decisions:** D54 (and D24, D26, D52) · **Open questions:** none numbered; see Open items
+**ID prefix:** AUTH · **Status:** Designed (pagination Fallback planned) · **Last changed:** Round 11, October 23, 2026 · **Board:** 10 Author profile (Profile, Stories by Lisa, Following, No stories yet, Shared byline); 11 Loading (Loading more) · **Prototype:** `BeGiantAppPhone.dc.html` (search `hasAu`, `auVals(`, `openAuthor(`, `closeAuthor`, `openAuStory(`, `onAuScroll`); writer data `AUTH` in `bg-app-data.js` (ported from Sanity by `docs/round-11/port-authors.js`; prototype reference only); presets `author`, `author-list`, `author-following`, `author-none`, `author-more`, `author-shared`; chooser: search `wsRows`, `auPick` · **Decisions:** D54, D61 (and D24, D26, D52) · **Open questions:** none numbered; see Open items
 **Affects / depends on:** `06-article.md` (ART-07 byline and ART-10 writer row open the profile), `11-account-and-settings.md` (SET-19 writer rows open the profile), `02-app-shell-and-navigation.md` (pushed screen, left-edge back, tab bar stays as tabs), `04-guest-and-account-gating.md` (Follow counts toward the third-follow ask), `12-notifications-newsletter-listen-share.md` (Writers you follow alerts), `13-content-model.md` (Q-AUTHOR, universal link `/author/{slug}`), `15-loading-errors-offline.md` (LOAD-06 paging).
 
 ## Summary
@@ -20,13 +20,14 @@ A writer's page, built to match begiant.ca/author/{slug} in content and order: a
 | AUTH-10 | Story card | One per story, newest first. Tap opens the article. | 16:10 photo, square, full width; 12pt gap; topic tag (12pt square + 12pt uppercase, star when followed, HOME-11 rule); headline serif 24pt, line height 1.08; dek 15pt `#5C5C5C` (hidden when empty); meta 12pt `#7A7A7A` "{date} · {n} min read", with "With {other writers} · " first for co-written stories. 40pt between cards. Swipe to save as on other lists (D13); not wired in the prototype. | Q-AUTHOR `articleCard` |
 | AUTH-11 | Empty | A writer with no published stories. | One line under a hairline: "No stories yet. Follow {first} to hear when the first one is published." 15pt `#5C5C5C`. | count = 0 |
 | AUTH-12 | More stories | Pages 20 at a time, loading the next page 600pt before the end (LOAD-06). | The prototype ports each writer's latest 8 stories and shows "The latest 8 of {n} stories" 12pt `#7A7A7A` centred under a hairline; the build replaces it with paging. | Q-AUTHOR with `[$from...$to]` |
+| AUTH-14 | Writer chooser (shared bylines) | A story by several writers: tapping the byline opens a half sheet listing each writer (D61). Tap a name to open that profile; Follow follows in place. The end of the story (ART-10) also gives each writer their own row. | The soft-gate sheet frame: 8pt insets, 32pt radius, grabber, "Writers" overline 11pt with a 32pt close button, 1pt ink rule. Rows 68pt: 44pt gradient avatar, name 16pt, "Writer · {n} stories" 12pt `#7A7A7A`, caret, then the Follow button (ART-10 style). The follow toast is held back while the sheet is open (it would cover the first row); the button shows the change. Tap outside or close dismisses. | `authors[]->{firstName, lastName, slug}` |
 | AUTH-13 | Back stack | Back, or a swipe from the left edge (D52), returns to what opened the profile. A story opened from the profile pushes over it; closing that story returns to the profile, and closing the profile returns to the story the reader came from. | Native: a normal navigation stack. The tab bar shows the tabs (not the reading tools) while the profile is on top. | — |
 
 ## States
 - **Default:** as above. **Following:** AUTH-06 filled. **No link:** AUTH-07 hidden. **No bio:** AUTH-05 hidden.
 - **No stories:** AUTH-11. **Loading:** the hero text shows at once from the byline data; cards load as skeletons (LOAD-03 style). **Offline:** cached profile, else ERR-03.
 - **Unknown or unpublished writer (link):** ERR-05 Not found.
-- **Several writers on one byline:** decided (D61): tapping the byline opens a short sheet listing each writer with Follow; tapping a name opens the profile. Not built yet; the prototype opens the first writer who has a profile.
+- **Several writers on one byline:** AUTH-14 chooser (D61), built in Round 11 after QA.
 
 ## Motion
 Push and pop 340ms / 300ms EX, like the article. Header frost 250ms. Follow check 250ms.
@@ -42,6 +43,5 @@ Push and pop 340ms / 300ms EX, like the article. Header frost 250ms. Follow chec
 - Proposed events: `author_open` (source: byline, article_end, following, link), `follow_writer` (source: author_profile), `author_story_open`, `author_link_open`.
 
 ## Open items
-- Multi-author byline sheet: decided (D61), build next round.
 - Whether series should get their own page later: Series hub removed from V1 (D53).
 - Prototype: the 8 latest stories per writer and their first paragraphs are stubs ported from Sanity on October 23, 2026; re-run `node docs/round-11/port-authors.js` to refresh.

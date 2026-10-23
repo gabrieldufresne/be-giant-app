@@ -437,7 +437,7 @@ window.BGD = {
   'rate':{s:{rate:true, endMod:0}, home:99999},
   // Round 11: author profile (in the app too), then board-only states (bs: the app never sets it)
   'author':{s:{au:'Lisa Hrabluk'}}, 'author-list':{s:{au:'Lisa Hrabluk'}, auY:620}, 'author-following':{s:{au:'Tom Jokinen', writers:['Tom Jokinen']}, auY:0},
-  'author-none':{s:{au:'Sadiya Ansari'}, auY:330}, 'author-more':{s:{au:'Lisa Hrabluk', auMore:true}, auY:99999},
+  'author-none':{s:{au:'Sadiya Ansari'}, auY:330}, 'author-shared':{s:{art:'summit', sheet:'writers', auPick:['Stephen Maher','Tim Harper']}, art:420}, 'author-more':{s:{au:'Lisa Hrabluk', auMore:true}, auY:99999},
   'load-launch':{s:{bs:'load-launch'}}, 'load-brand':{s:{bs:'load-brand'}}, 'load-home':{s:{bs:'load-home'}}, 'load-slow':{s:{bs:'load-slow'}},
   'load-article':{s:{art:'drucker', bs:'load-article'}},
   'err-banner':{s:{bs:'err-banner'}, home:560}, 'err-toast':{s:{toast:'Couldn\u2019t save. Check your connection.', toastOn:true, toastAct:'retry'}, home:560},

@@ -38,6 +38,12 @@ Point to any item by its number (for example "2.3") and say what happened. A scr
 - 5.5 Any profile: do the bio and names match begiant.ca/author/{name}?
 - 5.6 A co-written story (for example by Stephen Maher and Tim Harper): its card on the profile says "With {the other writer}".
 
+## 5b. Shared bylines (fix after QA)
+- 5.7 Open "Eight ways Canada can turbocharge growth" (Stephen Maher and Tim Harper). Tap the byline. A sheet lists both writers.
+- 5.8 Tap Follow on one writer in the sheet. It turns to Following in place; no toast covers the sheet.
+- 5.9 Tap a writer's name in the sheet. Their profile opens.
+- 5.10 At the end of the same story, under Follow similar topics, each writer has their own row.
+
 ## 6. Nothing else changed
 - 6.1 Home, For You, Discover, Video and Saved look and work as before.
 - 6.2 Story modules (galleries, parallax, video) still work in the module stories.

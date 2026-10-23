@@ -104,7 +104,7 @@ Changes from Phase I are marked **(changed)**.
 | D58 | Error and offline states are approved as proposed and go into the app view. | R11 calls | ERR-01 to ERR-07. Build next round. |
 | D59 | Sign in and the account errors are approved as proposed, except the age gate. Sign in opens from the welcome's "I already have an account" and from a Sign in link on each soft-gate sheet. | R11 calls | ONB-25 to ONB-29, ONB-31, ONB-32. ONB-30 (age gate) is not recommended (Q16). |
 | D60 | **(answers Q5)** No Trending rail on Home. Popular covers it; trending stays in Discover. Series rails are gone with D53. | R11 calls | Home stays at 12 stories (D40). |
-| D61 | A byline with several writers opens a short sheet listing each writer, with Follow; tapping a name opens the profile. | R11 calls | AUTH-13 chooser. Build next round. |
+| D61 | A byline with several writers opens a short sheet listing each writer, with Follow; tapping a name opens the profile. The end of the story gives each writer their own row. | R11 calls | AUTH-14. Built after Round 11 QA. |
 
 ---
 
@@ -129,7 +129,7 @@ Changes from Phase I are marked **(changed)**.
 | Discover (browse and search) | Must | Designed | R10: Series and Pillars removed; Near you and Discover by province added (D39). Needs a location field in Sanity (Q14). |
 | Feed pattern (topic or pillar list, filters, pagination) | Must | Partial | Search results cover it. Still missing: a filter sheet. Loading more at the end is proposed (R11, LOAD-06). |
 | ~~Series hub~~ | Removed | Removed (R11) | Out of V1 (D53). |
-| Author profile | Must | Designed | R11 (D54): matches the website, plus Follow and Share. Live in the app; board section 10. The chooser for bylines with several writers is decided (D61), not built yet. |
+| Author profile | Must | Designed | R11 (D54): matches the website, plus Follow and Share. Live in the app; board section 10. Shared bylines open a writer chooser (D61). |
 | Video Feed and Grid | Must | Designed | Needs an autoplay and sound policy (Q6) and captions. |
 | Card long-press menu (Save, Share, Follow topic) | Should | Not designed | |
 | Swipe-to-save hint | Should | Designed | R10 (D42). Board phone 02 Swipe hint. |
@@ -257,3 +257,6 @@ Applied: Series hub removed from V1 (D53). Author profile built in the app and o
 
 ### Round 11 calls (October 23, 2026)
 Gabriel answered the open calls: loading as skeletons plus option B, board only (D55); G4 on, once a day (D56); red only on Get started (D57); errors and offline approved for the app (D58); sign in and account errors approved, with Sign in on the welcome and the asks (D59); no Trending rail on Home (D60, closes Q5); a writer chooser for shared bylines (D61). August recommends floating (Q1), Model 1 (Q2) and no minimum age (Q16) to Be Giant. Board captions stay at 10px. Still to build: D56, D58, D59 and D61 in the app view.
+
+### Round 11 QA (October 23, 2026)
+Gabriel tested on the phone: everything passed except shared bylines, which only linked to the first writer. Fixed by building D61: a writer chooser from the byline, and one row per writer at the end of the story. Still to build: D56, D58, D59.
