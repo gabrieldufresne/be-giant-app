@@ -1,5 +1,5 @@
 # Article modules (the article body)
-**ID prefix:** MOD · **Status:** Designed for 18 of 18 body types (14 built; 4 have planned fallbacks, Phase 4) · **Last changed:** October 23, 2026 (Round 9 article modules, Phases 1 to 3, QA passed) · **Board:** 03b Article modules (20 phones) · **Prototype:** `BeGiantAppPhone.dc.html` (`modBlocks(`, `data-mod=`, `openPhotos`, `vpOn`), content in `bg-app-data.js` (prototype reference only), presets `mod-*` · **Decisions:** D45–D50 (amend D9 and answer Q6 for articles) · **Open questions:** Q6 (Video tab only), FO-2 and FO-4 below (FO-1, 3, 5, 6, 7 answered as decisions to confirm)
+**ID prefix:** MOD · **Status:** Designed for 18 of 18 body types (14 built; 4 have planned fallbacks, Phase 4) · **Last changed:** Round 12, October 23, 2026 (MOD-44 double opt-in for guests, D64); October 23, 2026 (Round 9 article modules, Phases 1 to 3, QA passed) · **Board:** 03b Article modules (20 phones) · **Prototype:** `BeGiantAppPhone.dc.html` (`modBlocks(`, `data-mod=`, `openPhotos`, `vpOn`), content in `bg-app-data.js` (prototype reference only), presets `mod-*` · **Decisions:** D45–D50 (amend D9 and answer Q6 for articles) · **Open questions:** Q6 (Video tab only), FO-2 and FO-4 below (FO-1, 3, 5, 6, 7 answered as decisions to confirm)
 **Affects / depends on:** `06-article.md` (the page around the body; More like this de-duplication), `12-notifications-newsletter-listen-share.md` (newsletter state is shared with the P1.3 newsletter work and Settings), `09-video.md` (video playback policy differs: articles never autoplay), `13-content-model.md` (Sanity fields per module), `01-foundations.md` (square media, Reduce Motion, tap targets).
 
 ## Summary
@@ -27,7 +27,7 @@ Editors build article bodies on begiant.ca from rich text plus 17 custom blocks 
 | MOD-41 | Divider | `divider` | 92 in 35 | Built |
 | MOD-42 | Related read | `relatedRead` | 126 in 92 | Built |
 | MOD-43 | Related stories | `relatedStories` | 22 in 20 | Built |
-| MOD-44 | Newsletter CTA | `newsletterCTA` | 116 in 115 | Built |
+| MOD-44 | Newsletter CTA | `newsletterCTA` **Round 12:** guests confirm by email (double opt-in, D64; reverses X-16): done state "Almost there" / "Check your email: tap the link in it to confirm, and the first one is on its way. You can unsubscribe anytime."; toast "Check your email to confirm". Signed-in readers are subscribed at once. | 116 in 115 | Built |
 | MOD-45 | Callout | `callout` | 15 in 15 | Built |
 | MOD-90 | Horizontal scroll | `articleHorizontalScroll` | 0 | Fallback planned |
 | MOD-91 | Social media post | `socialEmbed` | 2 in 2 | Fallback planned |

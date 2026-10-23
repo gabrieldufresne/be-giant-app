@@ -93,6 +93,11 @@ Found while writing these specs and ruled on by Gabriel on October 23, 2026. The
 ## Change log
 Newest first. Each entry lists what changed, the IDs, and the other areas it affects.
 
+### October 23, 2026: Round 12 (Q7 to Q14 recorded and built)
+- **UI only.** Built in the app and on the board: newsletter in three places, the account-step checkbox, the second-story sheet and Settings (D62; NEWS-01, NEWS-03); double opt-in for guests (D64; MOD-44, NEWS-03); no gender (D65; ONB-19, ONB-20); the three most-read topics pre-checked (D66; ONB-07); links work on any device (D67; ONB-18); the big story only when there is one (D68; NOTIF-02, NOTIF-03, NOTIF-05).
+- **Data / schema.** SCR-01 confirmed (D69); SCR-04 drops `preselectedTopics` for an analytics source (D66); SCR-05 option B (D68); API-01 confirmation email on for guests (D64). iOS first, Android after V1 (D63).
+  - **Affects:** `03-…`, `07-…`, `12-…`, `13-…`; `04-…` (guests who subscribe confirm by email).
+
 ### October 23, 2026: August's answers to Q7 to Q14 (waiting on Be Giant)
 - **Data / schema, pending.** Recorded in the PRD's Open questions; no area file changes until Be Giant confirms. Expected knock-ons: `12-…` and `07-…` MOD-44 (double opt-in for guest newsletter signups, reversing X-16; the account-step checkbox and the one-time sheet), `03-…` (About you without gender; most-read topics pre-checked), `13-…` (SCR-04 drops `preselectedTopics` for an analytics source; SCR-05 option B; SCR-01 confirmed; API-01 confirmation email on), `12-…` NOTIF (Light preset copy without a fixed 7 a.m.).
 
