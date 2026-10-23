@@ -1,6 +1,6 @@
 # Be Giant app: developer handoff
 
-**For:** Field Office (build), and the agents and designers who keep it current. **Owner:** August Strategy. **Last updated:** October 23, 2026 (Round 11).
+**For:** Field Office (build), and the agents and designers who keep it current. **Owner:** August Strategy. **Last updated:** October 23, 2026 (Round 12).
 **Live prototype:** https://gabrieldufresne.github.io/be-giant-app/ (the app on a phone; the review board on desktop). **Repo:** https://github.com/gabrieldufresne/be-giant-app
 
 This folder is the master spec for building the iOS app: what every screen and element does, with exact values, states and the Sanity fields it reads. It grows with each design round. Start with the change log below to see what's new since you last looked.
@@ -48,6 +48,43 @@ Each file starts with the same header: ID prefix, status, last changed, board se
 - Values are in iOS points. Copy in quotes is exact.
 - **Data column:** Sanity fields as paths (for example `article.readTime`, `author.firstName` + `author.lastName`), "App state (device)", "Account (backend)", an outside API (API-01 onward), or "Missing in schema", which points to a schema change request (SCR) in `13-content-model.md`. "—" means pure UI.
 - **Change tags:** every change-log entry is tagged **UI only** (no Sanity or API work) or **Data / schema** (touches queries, fields, schema or APIs).
+
+## Decisions since this folder was written (D53 to D70)
+The PRD's decisions log has the full wording. Built = in the live prototype's app view; Board = drawn on the board only; Data = needs Field Office or Be Giant data work.
+
+| D | Decision | Where | Status |
+|---|---|---|---|
+| D53 | No Series hub in V1; series stories are ordinary stories | `08-…`, `13-…` | Built (removed) |
+| D54 | Author profile matching begiant.ca/author/{slug}, plus Follow and Share | `14-…` AUTH-01 to AUTH-13 | Built |
+| D55 | Loading: static launch screen, skeletons with a shimmer, option B wordmark line on slow cold starts | `15-…` LOAD-01 to LOAD-08, FND-54 | Board |
+| D56 | G4 greeting on, first open of each day, tap to skip | `05-…` HOME-06 | To build |
+| D57 | Red only on Get started; every other primary is ink | `01-…` FND-17 | Built (already so) |
+| D58 | Error and offline states approved for the app | `15-…` ERR-01 to ERR-07 | Board; to build |
+| D59 | Sign in and account errors; Sign in from the welcome and every soft-gate ask; no age gate | `03-…` ONB-25 to ONB-32, `04-…` GATE-13, FND-19 | Board; to build |
+| D60 | No Trending rail on Home | `05-…` | Built (no change) |
+| D61 | Shared bylines open a writer chooser; one end-of-story row per writer | `14-…` AUTH-14, `06-…` ART-07, ART-10 | Built |
+| D62 | Newsletter in three places: account-step checkbox, second-story sheet, Settings (plus the article card) | `12-…` NEWS-01, NEWS-03; `03-…` ONB-12 | Built |
+| D63 | iOS first; Android after V1 | `01-…` FND-01 | — |
+| D64 | Newsletter is a core KPI; guests confirm by email (double opt-in) | `07-…` MOD-44, `12-…` NEWS-03, NEWS-07, `13-…` API-01 | Built; Data (Beehiiv confirmation on) |
+| D65 | No gender question | `03-…` ONB-19, ONB-20 | Built |
+| D66 | Onboarding pre-checks the three most-read topics | `03-…` ONB-07, `13-…` SCR-04 | Built; Data (per-topic readership) |
+| D67 | Sign-in links: once, 15 minutes, any device; no Microsoft | `03-…` ONB-18, ONB-29 | Built |
+| D68 | Big story pushed only when one merits it, at most once a day | `12-…` NOTIF-02, 03, 05; `13-…` SCR-05 | Built (copy); Data (SCR-05) |
+| D69 | Editors tag each story's place at publish | `13-…` SCR-01 | Data |
+| D70 | Settings › Newsletter is its own screen; Account has no newsletter section | `11-…` SET-30, SET-17 Removed | Built |
+
+## Build guidelines (from Rounds 11 and 12)
+These come from decisions and QA; follow them where a screen isn't specified.
+1. **Build to the decision, not the board.** Phones on the board marked Board, Proposal or a `bs`/`start` preset are specs; app behaviour comes from the D numbers above and the area files.
+2. **Pushed screens** (article, author profile, Settings sub-screens) slide in from the right and close with Back or a swipe from the left edge only (D52). The tab bar shows the tabs on every pushed screen except the article, which shows the reading tools.
+3. **Never a blank screen.** Show what the app already has (cache, the tapped card) and load the rest in place; skeletons follow the real layout (`15-…`).
+4. **Errors:** say what happened in one plain line, offer one way forward, no error codes, never clear what the reader typed. Field errors use FND-19 red text under the field; whole-screen errors use the website's illustrations.
+5. **Sheets:** use the soft-gate sheet frame (8pt insets, 32pt radius, grabber, shared backdrop). Don't show a toast over an open sheet; let the control show its new state instead (AUTH-14).
+6. **Settings screens hold only their own settings** (D70). Link out to the screen that owns a value (for example the newsletter's email address links to Account) instead of repeating it.
+7. **Newsletter consent:** checkboxes are never pre-ticked (CASL). Guests confirm by email before they count as subscribed (D64); the state is "To confirm" until then. Signed-in readers with a verified email are subscribed at once. One subscribe state is shared by every placement (NEWS-05).
+8. **Writers:** a byline with several writers always offers each writer (D61). Writer names are `firstName` + `lastName` (CMS-07); the profile shows no headshot, the byline avatar does (headshot, else the initial in the writer's gradient).
+9. **Copy:** sentence case, Canadian spelling, no fixed send times in notification copy (D68), no gender or age gates in sign-up (D65, Q16).
+10. **Data first:** every element reads real Sanity fields; if a field doesn't exist, add a schema change request (SCR) in `13-…` rather than hard-coding.
 
 ## Discrepancies: prototype vs decisions (all resolved)
 Found while writing these specs and ruled on by Gabriel on October 23, 2026. The prototype, the PRD and the area files now follow each ruling. If a new discrepancy turns up, add it here as X-22 onward, and **build to the decision (D number)** until it's ruled on.

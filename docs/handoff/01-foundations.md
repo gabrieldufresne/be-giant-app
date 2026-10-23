@@ -1,5 +1,5 @@
 # Foundations
-**ID prefix:** FND · **Status:** Designed · **Last changed:** Round 11, October 23, 2026 (FND-19 error red, FND-54 shimmer) · **Board:** every section · **Prototype:** `BeGiantAppPhone.dc.html` (`<helmet>` keyframes, `const W = 402, EX =`), design system bundle `_ds/` · **Decisions:** D1, D15, D22, D27, D29, D34, D44 · **Open questions:** Q8
+**ID prefix:** FND · **Status:** Designed · **Last changed:** Round 12, October 23, 2026 (FND-01 Android after V1, D63; FND-17 red on Get started only, D57); Round 11, October 23, 2026 (FND-19 error red, FND-54 shimmer) · **Board:** every section · **Prototype:** `BeGiantAppPhone.dc.html` (`<helmet>` keyframes, `const W = 402, EX =`), design system bundle `_ds/` · **Decisions:** D1, D15, D22, D27, D29, D34, D44 · **Open questions:** Q8
 **Affects / depends on:** every other file. Change anything here and every area is affected; list it in the change log in `README.md`.
 
 ## Summary
@@ -9,7 +9,7 @@ The app follows the begiant.ca visual system: white pages, ink type, hairline ru
 
 | ID | Topic | Spec |
 |---|---|---|
-| FND-01 | Target | iOS, iPhone, portrait. iPad is Later. Android is open (Q8). |
+| FND-01 | Target | iOS, iPhone, portrait. iPad is Later. Android comes after V1 (D63, answers Q8). |
 | FND-02 | Canvas | 402pt wide in the prototype. Layouts are fluid from 375pt to 440pt; nothing may assume 402. |
 | FND-03 | Status bar | Native: content runs under the status bar with iOS 26's soft scroll-edge blur, controls above it (D34). The prototype's solid bar on the home-screen preview is a web limitation, not the design. In articles, a 50pt frosted strip (white at 86% with a 16px blur, or ink at 86% on the night page) fades in once the reader is past the hero and sits above all article content. |
 | FND-04 | Safe areas | Respect top and bottom safe areas. Floating controls (tab bar, reading tools, mini player) sit above the home indicator. |
@@ -26,7 +26,7 @@ The app follows the begiant.ca visual system: white pages, ink type, hairline ru
 | FND-14 | Feed-end grey | `#F0F0F0` | Surface below the Home and For You feeds; panels inside cards on it use `#F2F2F2` (D44) |
 | FND-15 | Cream | `#FAF7F0` | Only: the unfinished-profile strip, the topic nudge and the in-article newsletter card. Not a page colour (D15, D44). |
 | FND-16 | Night page | `#171717` background, `#FFFFFF` text | Article contrast tool (D15) |
-| FND-17 | Brand red | `#DB3A3A` | Signals and the Get started button; not decoration |
+| FND-17 | Brand red | `#DB3A3A` | Signals, and the welcome's Get started button only (D57): every other primary button is ink. Not decoration. Error text uses the darker FND-19. |
 | FND-19 | Error | `#C22F2F` text, `#DB3A3A` 1.5pt field outline, `#FCEEEE` notice panel | Round 11 (account errors, `03-…`, D59). The brand red is too light for 13pt text on white (about 4:1), so error text uses a darker red (about 5.4:1). |
 | FND-18 | Accents | violet `#A293F5`, purple `#936A9B`, magenta `#DD68BB`, yellow `#F5CA55`, peach `#FF9072` | Series colours and topic chip check circles only (D27). Topic neutral `#DCD6FF`. |
 

@@ -11,7 +11,7 @@ A clickable, high-fidelity prototype of the Be Giant iOS news app. It is plain s
 - `_ds/` — Be Giant design system bundle: tokens, fonts, components. Do not edit; upstream is `field-office/client-giant`.
 - `assets/` — Phosphor light/fill icons, imagery, illustrations, gradients, app icon. `uploads/` — the three short-form videos.
 - `docs/handoff/` — the developer handoff: master build spec for Field Office, one file per area with stable element IDs, plus a change log in its README.
-- `docs/` — PRD v2 (source of truth for decisions), strategic foundation, original wireflow PRD, decision roadmap, the Oct 19 prompt pack and `Round 9 plan.md`. `docs/round-9/` holds one notes file per prompt. `docs/round-11/` holds the writer port script (`port-authors.js`) and the phone QA list.
+- `docs/` — PRD v2 (source of truth for decisions), strategic foundation, original wireflow PRD, decision roadmap, the Oct 19 prompt pack and `Round 9 plan.md`. `docs/round-9/` holds one notes file per prompt. `docs/round-11/` holds the writer port script (`port-authors.js`); each `docs/round-N/qa.md` is that round's numbered phone QA list. `docs/Next session prompt.md` is the hand-off prompt for a new session.
 - `explorations/` — standalone `.dc.html` pages that compare options (P1.3 newsletter, P3.1 For You icon). Nothing in them changes the app until an option is picked.
 
 ## Running
