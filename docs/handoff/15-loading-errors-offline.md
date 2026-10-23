@@ -1,5 +1,5 @@
 # Loading, errors and offline
-**ID prefixes:** LOAD, ERR · **Status:** Proposed (board only; not in the app view until approved) · **Last changed:** Round 11, October 23, 2026 · **Board:** 11 Loading (Launch screen, Slow cold start, Home loading, Slow connection, Article loading, Loading more); 12 Errors and offline (Offline with stories, Action failed, Offline nothing yet, Couldn't load, Story not found, Story not downloaded, Video can't play) · **Prototype:** `BeGiantAppPhone.dc.html` (search `bsVals(`, `bsOn`, `bsHome`, `bsArt`, `bsEmpty`, `bs404`, `bsVid`, `bsBanner`; keyframes `bgShim`, `bgSpin`, `bgLoad`); presets `load-*` and `err-*` in `bg-app-data.js` · **Decisions:** none yet (proposal, see the PRD round log) · **Open questions:** see Open items
+**ID prefixes:** LOAD, ERR · **Status:** Designed. Loading approved as a board spec with option B (D55); errors and offline approved for the app, build next round (D58) · **Last changed:** Round 11, October 23, 2026 · **Board:** 11 Loading (Launch screen, Slow cold start, Home loading, Slow connection, Article loading, Loading more); 12 Errors and offline (Offline with stories, Action failed, Offline nothing yet, Couldn't load, Story not found, Story not downloaded, Video can't play) · **Prototype:** `BeGiantAppPhone.dc.html` (search `bsVals(`, `bsOn`, `bsHome`, `bsArt`, `bsEmpty`, `bs404`, `bsVid`, `bsBanner`; keyframes `bgShim`, `bgSpin`, `bgLoad`); presets `load-*` and `err-*` in `bg-app-data.js` · **Decisions:** D55, D58 · **Open questions:** see Open items
 **Affects / depends on:** every content screen: `05-home-and-for-you.md`, `06-article.md`, `07-article-modules.md`, `08-discover-and-search.md`, `09-video.md`, `10-saved.md` (offline copies), `14-author-profile.md`; `02-app-shell-and-navigation.md` (toast pattern, tab bar stays); `01-foundations.md` (shimmer motion, Reduce Motion, error red); `13-content-model.md` (CMS-11 caching, CMS-12 offline).
 
 ## Summary
@@ -9,7 +9,7 @@ The rules: never show a blank screen; show what the app already has (cached stor
 | ID | Element | Behaviour | Spec | Data |
 |---|---|---|---|---|
 | LOAD-01 | Launch screen | iOS launch storyboard while the app starts. Static. | White; red wordmark (`be-giant-logo.svg`) 40pt tall, centred. | — |
-| LOAD-02 | Slow cold start (option B) | Only if a cold start passes 1s with nothing cached: a thin red line runs under the wordmark until Home is ready. Not recommended as the default. | Track 96 × 2pt `#F0F0F0`, 22pt under the wordmark; red `#DB3A3A` segment 40% wide sweeps left to right, 1.3s, ease-in-out, repeating. Reduce Motion: no line. | — |
+| LOAD-02 | Slow cold start (option B) | Only if a cold start passes 1s with nothing cached: a thin red line runs under the wordmark until Home is ready. Kept as an option for slow cold starts (D55). | Track 96 × 2pt `#F0F0F0`, 22pt under the wordmark; red `#DB3A3A` segment 40% wide sweeps left to right, 1.3s, ease-in-out, repeating. Reduce Motion: no line. | — |
 | LOAD-03 | Skeleton | Grey blocks in the shape of the screen's real layout. Used when nothing is cached: first launch, a new list, a cleared cache. | Blocks `#EEEEEE`, square. Shimmer: a lighter band (`#F8F8F8`) sweeps left to right, 1.6s linear, repeating, across all blocks together. Reduce Motion: no shimmer. Content replaces the skeleton with a 200ms fade; never move the layout. | — |
 | LOAD-04 | Home loading | LOAD-03 for Home: the 6d hero as one 560pt block with the header controls and the headline boxes in white, then Latest rows (text lines left, 104pt square right). The tab bar is live. | Hero 560pt; headline boxes 300 / 236 / 150 × 34pt at 20pt left; rows 18pt padding, hairlines. | Q-HOME-* |
 | LOAD-05 | Article loading | Opens at once with what the card had: photo, tag, headline, dek, byline, date and read time. Only the body shows LOAD-03 lines. Reading tools work straight away. | Body lines 15pt tall, 12pt gaps, widths 100/96/100/88/100/62%, then a paragraph gap. | Card data from the list; Q-ARTICLE for the body |
@@ -42,7 +42,7 @@ Shimmer 1.6s linear, repeating (`bgShim`). Skeleton to content 200ms fade. LOAD-
 - Proposed events: `load_slow` (screen), `error_shown` (kind: offline, server, not_found, not_downloaded, video), `error_retry` (kind, attempt), `offline_banner_shown`.
 
 ## Open items
-- Approve the proposal (skeletons over a branded loader; LOAD-02 kept as an option only).
+- ~~Approve the proposal~~: approved (D55, D58).
 - Status page for ERR-04: does Be Giant have one?
 - Offline reading of stories that aren't saved: cache the last N opened stories as well? (Field Office, storage budget.)
 - Illustrations: ERR-03 and ERR-04 share `girl-on-planet.svg`; Maya may want a second drawing for the server error (P3.3 illustrated states).

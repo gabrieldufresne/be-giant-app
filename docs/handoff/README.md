@@ -93,6 +93,10 @@ Found while writing these specs and ruled on by Gabriel on October 23, 2026. The
 ## Change log
 Newest first. Each entry lists what changed, the IDs, and the other areas it affects.
 
+### October 23, 2026: Round 11 calls
+- **UI only.** Gabriel's calls: loading approved as a board spec with option B (D55, LOAD-01 to LOAD-08); errors and offline approved for the app (D58, ERR-01 to ERR-07); sign in and account errors approved except the age gate (D59, ONB-25 to ONB-29, ONB-31, ONB-32; ONB-30 not recommended, Q16); FND-19 and FND-54 confirmed; writer chooser for shared bylines decided (D61, `14-…`). G4 greeting on once a day (D56, `05-…`), red only on Get started (D57, `01-…`), no Trending rail on Home (D60, `05-…`).
+  - **Affects:** `05-home-and-for-you.md` (G4, no Trending rail), `04-guest-and-account-gating.md` (Sign in link on the asks), `01-foundations.md` (red on Get started only).
+
 ### October 23, 2026: Round 11 (author profile; loading, error and account-error proposals; Series hub removed)
 - **Data / schema. New: author profile** (`14-author-profile.md`, AUTH-01 to AUTH-13), built to match begiant.ca/author/{slug}, plus Follow and Share. New query Q-AUTHOR; the universal link `/author/{slug}` now has a screen. No schema change: it reads `author.firstName`, `lastName`, `slug`, `bio`, `website`, `socialLinks`. Decision D54.
   - **Affects:** `06-article.md` (ART-07 byline and ART-10 writer row open it), `11-account-and-settings.md` (SET-19), `13-content-model.md` (Q-AUTHOR, universal links), `04-…` (follow ask), `12-…` (writer alerts).

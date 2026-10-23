@@ -98,6 +98,13 @@ Changes from Phase I are marked **(changed)**.
 | D52 | Closing an article by swiping works only from the left edge, like the native iOS back gesture. | R9 rulings (X-15) | Avoids closing a story by accident while reading or swiping a gallery. |
 | D53 | **(changed from D12)** No Series hub in V1. Series stories are ordinary stories (the tag keeps the franchise colour); there is no series screen, rail or filter. A series link from the website opens the website. | R11 | Gabriel, October 23. Removes the Must from the feature inventory and the question of where readers find a series. |
 | D54 | The author profile matches begiant.ca/author/{slug}: "Writer" eyebrow, the name centred in the serif on two lines, the bio, Learn more (the writer's website), then "Stories by {first name}", newest first. No headshot on the page, as on the website. The app adds Follow and Share. It opens from the byline, the writer row at the end of a story and Settings › Following, as a pushed screen with the left-edge back (D52). | R11 | Spec: `docs/handoff/14-author-profile.md`. Real writer data from Sanity. Pages 20 stories at a time in the build. |
+| D55 | Loading: a static wordmark launch screen; then grey skeletons in the shape of each screen with one slow shimmer; articles open at once with the card's content. Option B is kept: on a cold start that passes one second with nothing cached, a thin red line runs under the wordmark. | R11 calls | LOAD-01 to LOAD-08. Board only in the prototype; the app view stays instant. |
+| D56 | **(answers Q15)** The G4 greeting is on in the app, on the first open of each day only; a tap skips it. | R11 calls | Not yet switched on in the app view (next build). |
+| D57 | Red stays on the Get started button only. Every other primary button is ink. | R11 calls | Closes the open "red as the primary button colour" item from R7. |
+| D58 | Error and offline states are approved as proposed and go into the app view. | R11 calls | ERR-01 to ERR-07. Build next round. |
+| D59 | Sign in and the account errors are approved as proposed, except the age gate. Sign in opens from the welcome's "I already have an account" and from a Sign in link on each soft-gate sheet. | R11 calls | ONB-25 to ONB-29, ONB-31, ONB-32. ONB-30 (age gate) is not recommended (Q16). |
+| D60 | **(answers Q5)** No Trending rail on Home. Popular covers it; trending stays in Discover. Series rails are gone with D53. | R11 calls | Home stays at 12 stories (D40). |
+| D61 | A byline with several writers opens a short sheet listing each writer, with Follow; tapping a name opens the profile. | R11 calls | AUTH-13 chooser. Build next round. |
 
 ---
 
@@ -122,7 +129,7 @@ Changes from Phase I are marked **(changed)**.
 | Discover (browse and search) | Must | Designed | R10: Series and Pillars removed; Near you and Discover by province added (D39). Needs a location field in Sanity (Q14). |
 | Feed pattern (topic or pillar list, filters, pagination) | Must | Partial | Search results cover it. Still missing: a filter sheet. Loading more at the end is proposed (R11, LOAD-06). |
 | ~~Series hub~~ | Removed | Removed (R11) | Out of V1 (D53). |
-| Author profile | Must | Designed | R11 (D54): matches the website, plus Follow and Share. Live in the app; board section 10. Missing: a chooser for bylines with several writers (fallback planned). |
+| Author profile | Must | Designed | R11 (D54): matches the website, plus Follow and Share. Live in the app; board section 10. The chooser for bylines with several writers is decided (D61), not built yet. |
 | Video Feed and Grid | Must | Designed | Needs an autoplay and sound policy (Q6) and captions. |
 | Card long-press menu (Save, Share, Follow topic) | Should | Not designed | |
 | Swipe-to-save hint | Should | Designed | R10 (D42). Board phone 02 Swipe hint. |
@@ -133,7 +140,7 @@ Changes from Phase I are marked **(changed)**.
 |---|---|---|---|
 | Onboarding (welcome and 3 steps) | Must | Designed | R9 and R10 (D35). Board row 09b. |
 | Notification levels and permission | Must | Designed | R9 (D36): Light and Balance, quiet hours, iPhone Settings handoff, declined state. Board row 09c. Copy needs editorial sign-off; cadence and triggers open (Q13). |
-| Create account (Apple, Google, magic link, password) | Must | Partial | R9: magic link and a five-provider layout. R11 proposal (board section 13, board only): sign in, validation, wrong password, email in use, expired link, age minimum (Q16), provider failure, offline. Waits on approval. |
+| Create account (Apple, Google, magic link, password) | Must | Partial | R9: magic link and a five-provider layout. R11 (D59): sign in, validation, wrong password, email in use, expired link, provider failure and offline approved (board section 13); build into the app next. No age gate recommended (Q16). |
 | Logged-out states and login gating | Must | Designed | R5: soft gate (D24). Guest Home, For You picker, topic nudge, first-follow notification ask, four account asks, create account opened on its own, unfinished profile strip and avatar dot. Missing: Saved empty state copy for guests, sign in with an existing account from the ask. |
 | Saved, offline, reading progress | Must | Designed | R3: Edit mode with Clear finished and Clear all. Missing: logged-out state and an out-of-storage message. |
 | Jump back in | Should | Designed | R3. |
@@ -148,7 +155,7 @@ Changes from Phase I are marked **(changed)**.
 
 | Feature | Priority | Status | Note |
 |---|---|---|---|
-| Loading, error and offline states (skeletons, retry, no connection) | Must | Proposed | R11 proposal (board sections 11 and 12, board only): static launch screen, skeletons with a shimmer, articles that open with the card's content, slow-connection line, paging, offline banner and screens, server error, story not found, story not downloaded, video error. Spec: `docs/handoff/15-loading-errors-offline.md`. Waits on approval. |
+| Loading, error and offline states (skeletons, retry, no connection) | Must | Designed | R11: loading approved as a board spec with option B (D55); errors and offline approved and to be built into the app next (D58). Spec: `docs/handoff/15-loading-errors-offline.md`. |
 | Accessibility: Dynamic Type, VoiceOver labels, reduced motion, contrast | Must | Not specified | G4 has a Reduce Motion version; the Globe welcome and the other motion still need one. |
 | Universal links from begiant.ca into the app | Must | Not specified | Field Office |
 | Analytics events (onboarding steps, opt-in, follows, saves, video plays) | Must | Not specified | Ties to the success measures in section 1. |
@@ -163,11 +170,11 @@ Changes from Phase I are marked **(changed)**.
 
 | # | Question | Owner | Needed by |
 |---|---|---|---|
-| Q1 | Floating or docked tab bar? | Be Giant + August | End of Round 2 |
-| Q2 | Model 1 (Home, Video, Saved and Search) or Model 3 (Read and Watch plus a menu)? | Be Giant + August | End of Round 2 |
+| Q1 | Floating or docked tab bar? **August recommends floating (R11).** | Be Giant + August | End of Round 2 |
+| Q2 | Model 1 (Home, Video, Saved and Search) or Model 3 (Read and Watch plus a menu)? **August recommends Model 1 (R11).** | Be Giant + August | End of Round 2 |
 | Q3 | Is "Discover" the final name for the Search tab? | Be Giant | Round 2 |
 | Q4 | Listen: synthetic voice vendor, or narrated audio only? | Field Office | Phase 3 |
-| Q5 | Do trending and series rails come back on Home? | August | Round 2 |
+| ~~Q5~~ | ~~Do trending and series rails come back on Home?~~ Answered by D60 (no). | August | Closed |
 | Q6 | Video: autoplay on Wi-Fi only, starts muted? (Answered for articles by D46: tap to play. Still open for the Video tab.) | Be Giant | Round 2 |
 | Q7 | Where does newsletter signup live? | Be Giant | Round 2 |
 | Q8 | Is Android in scope for V1? | Be Giant | Before Phase 4 |
@@ -177,8 +184,8 @@ Changes from Phase I are marked **(changed)**.
 | Q12 | Magic-link lifetime, whether the link opens on another device, and whether a fifth sign-in provider (Microsoft) is wanted. | Be Giant with Field Office | Before build |
 | Q13 | Notification cadence and push triggers: is the big story daily and at a fixed time, is there a cap for Balance, and should quiet hours deliver held alerts one by one or as a summary? | Be Giant | Before build |
 | Q14 | Can stories carry a location in Sanity, and who tags them? Needed for Near you and Discover by province. | Field Office with Be Giant | Before build |
-| Q15 | Switch the G4 greeting on in the app? | Gabriel | Next round |
-| Q16 | Minimum age for an account. Proposed 14 (Quebec's Law 25 requires a parent's consent under 14); readers under it keep reading as guests. | Be Giant (and counsel) | Before build |
+| ~~Q15~~ | ~~Switch the G4 greeting on in the app?~~ Answered by D56 (on, once a day). | Gabriel | Closed |
+| Q16 | Minimum age for an account. **August recommends no minimum:** keep the optional age range and no gate (the board's age-gate phone stays for reference only). Counsel to confirm, including Quebec's Law 25 (a parent's consent under 14). | Be Giant (and counsel) | Before build |
 
 ---
 
@@ -247,3 +254,6 @@ Gabriel ruled on the 21 discrepancies the handoff found between the prototype an
 ### Round 11 (October 23, 2026)
 Gabriel's list: remove the Series hub; build author profiles to match the website; propose a loading screen and animation; propose error states and account errors on the board only, not in the working prototype.
 Applied: Series hub removed from V1 (D53). Author profile built in the app and on the board (D54, board section 10): 24 real writers and their latest stories ported from Sanity with `docs/round-11/port-authors.js`; opens from the byline, the writer row at the end of a story and Settings › Following; a story opened from the profile returns to it. Proposals, board only (sections 11 to 13): loading (static launch screen, skeletons with a shimmer, option B wordmark line, article opens with the card's content, slow-connection line, paging), errors and offline (banner, toast with Retry, offline and server screens, story not found, story not downloaded, video error), and account errors (sign in, validation, wrong password, email in use, expired link, age minimum, provider failure, offline). New question Q16 (minimum age). Board header now says Round 11.
+
+### Round 11 calls (October 23, 2026)
+Gabriel answered the open calls: loading as skeletons plus option B, board only (D55); G4 on, once a day (D56); red only on Get started (D57); errors and offline approved for the app (D58); sign in and account errors approved, with Sign in on the welcome and the asks (D59); no Trending rail on Home (D60, closes Q5); a writer chooser for shared bylines (D61). August recommends floating (Q1), Model 1 (Q2) and no minimum age (Q16) to Be Giant. Board captions stay at 10px. Still to build: D56, D58, D59 and D61 in the app view.

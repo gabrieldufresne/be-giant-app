@@ -26,7 +26,7 @@ A writer's page, built to match begiant.ca/author/{slug} in content and order: a
 - **Default:** as above. **Following:** AUTH-06 filled. **No link:** AUTH-07 hidden. **No bio:** AUTH-05 hidden.
 - **No stories:** AUTH-11. **Loading:** the hero text shows at once from the byline data; cards load as skeletons (LOAD-03 style). **Offline:** cached profile, else ERR-03.
 - **Unknown or unpublished writer (link):** ERR-05 Not found.
-- **Several writers on one byline:** Fallback planned: tapping the byline opens a short sheet listing each writer; the prototype opens the first writer who has a profile.
+- **Several writers on one byline:** decided (D61): tapping the byline opens a short sheet listing each writer with Follow; tapping a name opens the profile. Not built yet; the prototype opens the first writer who has a profile.
 
 ## Motion
 Push and pop 340ms / 300ms EX, like the article. Header frost 250ms. Follow check 250ms.
@@ -42,6 +42,6 @@ Push and pop 340ms / 300ms EX, like the article. Header frost 250ms. Follow chec
 - Proposed events: `author_open` (source: byline, article_end, following, link), `follow_writer` (source: author_profile), `author_story_open`, `author_link_open`.
 
 ## Open items
-- Multi-author byline sheet (Fallback planned above).
+- Multi-author byline sheet: decided (D61), build next round.
 - Whether series should get their own page later: Series hub removed from V1 (D53).
 - Prototype: the 8 latest stories per writer and their first paragraphs are stubs ported from Sanity on October 23, 2026; re-run `node docs/round-11/port-authors.js` to refresh.
